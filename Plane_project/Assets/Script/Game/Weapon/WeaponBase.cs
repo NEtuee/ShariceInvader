@@ -1,0 +1,187 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class WeaponBase
+{
+    protected PlaneBase _plane;
+    protected PlaneBase _aimTarget = null;
+    protected Sprite _icon = null;
+
+    public float mainCoolDown{get{return _mainTimer;}}
+    public float specCoolDown{get{return _specTimer;}}
+
+    public bool mainAttack;
+    public bool specAttack;
+
+
+    public float mainCoolTime = 0f;
+    public float specCoolTime = 0f;
+    protected float _mainTimer = 0f;
+    protected float _specTimer = 0f;
+    protected bool _aim = false;
+    protected bool _canAim = false;
+    protected bool _hideAimObject = false;
+
+    private SpriteRenderer _aimObject = null;
+	private AnimationControll _aimAni;
+
+    public virtual void Initialize()
+    {
+        mainCoolTime = 0.5f;
+        specCoolTime = 0.5f;
+        _mainTimer = 0f;
+        _specTimer = 0f;
+
+        mainAttack = false;
+        specAttack = false;
+    }
+    public virtual void Progress(float deltaTime)
+    {
+        if(_canAim)
+        {
+            if(_aimTarget != null && !_hideAimObject)
+		    {
+		    	_aimObject.transform.position = _aimTarget.position;
+		    	_aimAni.AnimationProgress(ref _aimObject,deltaTime);
+		    }
+        }
+    }
+    public abstract void MainAttack();
+    public abstract bool SpecialAttack(Vector3 dir);
+    public abstract bool CollisionCheck(PlaneBase target);
+    public virtual void WhenChanged()
+    {
+        MainHud.instance.WeaponChange(_icon);
+
+        if(_aimObject != null)
+        {
+            //_aimObject.gameObject.SetActive(false);
+            GameObject.Destroy(_aimObject);
+            _aimAni = null;
+        }
+    }
+    public void SetTarget(PlaneBase plane) {_plane = plane;}
+
+    public virtual void PropelRelase()
+    {
+        
+    }
+
+    public Vector3 GetAimTargetDirection()
+    {
+        return _aimTarget == null ? Vector3.zero : (_aimTarget.position - _plane.position).normalized;
+    }
+
+    public void UpdateAimTarget(float aimDist, float aimAngle)
+	{
+		if(_plane.place == null)
+		{
+			_aimTarget = null;
+			return;
+		}
+
+        Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
+
+		var link = ObjectManager.GetInstance().GetFirstLink(t);//place.GetLinkToType(Define.ObjectType.enemy);
+		ObjectBase target = null;
+		float dist = aimDist + 1f;
+		
+		while(link != null)
+		{
+			float d = Vector2.Distance(link.target.position,_plane.position);
+			if(d <= aimDist)
+			{
+				if(d < dist)
+				{
+					dist = d;
+					target = link.target;
+				}
+			}
+
+			link = link.next;
+		}
+
+		if(target != null)
+		{
+			float dot = Mathf.Cos(Mathf.Deg2Rad * aimAngle);
+            Vector3 dir = (target.position - _plane.position).normalized;
+
+
+            if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * _plane.angle)) > dot)
+            {
+                if(_aimTarget != target)
+                {
+
+                    if(!_hideAimObject)
+                    {
+                        _aimObject.transform.position = target.position;
+			            _aimAni.ChangeAni("On",false);
+			            _aimObject.gameObject.SetActive(true);
+                    }
+                }
+
+            }
+            else
+                target = null;
+		}
+
+		if(target == null && !_hideAimObject)
+			_aimObject.gameObject.SetActive(false);
+
+		if(target != null)
+        {
+            _aimTarget = (PlaneBase)target;
+        }
+        else
+            _aimTarget = null;
+        
+        _aim = _aimTarget != null;
+	}
+
+    public void InitAimObject()
+    {
+        Transform obj = _plane.transform.Find("Aim");
+        if(obj == null)
+        {
+            _aimObject = new GameObject("Aim").AddComponent<SpriteRenderer>();;
+		    _aimObject.sortingOrder = 10;
+           // _aimObject.transform.SetParent(_plane.transform);
+        }
+        else
+        {
+            _aimObject = obj.GetComponent<SpriteRenderer>();
+            _aimObject.gameObject.SetActive(true);
+        }
+
+        _aimAni = new AnimationControll();
+		_aimAni.AddAnimation("On","Effects/Aim");
+		_aimAni.SetFps(18);
+
+        _canAim = true;
+    }
+
+    public virtual bool CoolDownCheck(ref float timer, float deltaTime)
+    {
+        if(timer > 0f)
+        {
+            timer -= deltaTime;
+            if(timer <= 0f)
+            {
+                timer = 0f;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public WeaponBase(PlaneBase plane) 
+    {
+        if(plane != null)
+        {
+            SetTarget(plane);
+            Initialize();
+        }
+    }
+}
