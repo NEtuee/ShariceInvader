@@ -84,7 +84,8 @@ public class GameMain : MonoBehaviour {
 		
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			_objManager.AddObject<Intercepter>(Define.ObjectType.enemy,"Intercepter").SetPosition(new Vector3(0f,5f));
+			//_objManager.AddObject<Intercepter>(Define.ObjectType.enemy,"Intercepter").SetPosition(new Vector3(0f,5f));
+			EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
 		}
 
 		_objManager.progress(deltaTime);
