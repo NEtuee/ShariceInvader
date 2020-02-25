@@ -126,14 +126,16 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		}
 	}
 
-	public void Explosion(Vector3 pos,int count)
+	public void Explosion(Vector3 pos,int count,float randFactor = 0.2f,float startSize = 0.09f, float endSize = 0.18f)
 	{
 		ParticleSystem sys;
 		if(_particles.TryGetValue("ExplosionCircle",out sys))
 		{
 			for(int i = 0; i < count; ++i)
 			{
-				_param.position = pos + new Vector3(UnityEngine.Random.Range(-0.2f,0.2f),UnityEngine.Random.Range(-0.2f,0.2f));
+				_param.position = pos + new Vector3(UnityEngine.Random.Range(-randFactor,randFactor),
+													UnityEngine.Random.Range(-randFactor,randFactor));
+				
 				sys.Emit(_param,1);
 			}
 		}

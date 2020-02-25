@@ -45,6 +45,7 @@ public abstract class PlaneBase : Collisionable {
 	protected bool _controllLock = false;
 	protected bool _immortal = false;
 	private bool _lerpAddSpeed = false;
+	public bool _bounceOff = false;
 
 	protected int _hp = 1;
 	protected int _bodyAttack = 1;
@@ -55,6 +56,7 @@ public abstract class PlaneBase : Collisionable {
 
 
 	protected bool _fall = false;
+	protected bool _trailEmmit = true;
 	private float _fallTimer = 1f;
 	protected float _controllLockTimer = 0f;
 	protected float _spriteAngle;
@@ -231,7 +233,9 @@ public abstract class PlaneBase : Collisionable {
 		if(_noclip || target.noClip)
 			return false;
 
-		return base.CollisionCheck(target);
+		bool val = base.CollisionCheck(target);
+
+		return val;
 	}
 
 	public bool CollisionBullet(BulletBase target)
@@ -256,6 +260,11 @@ public abstract class PlaneBase : Collisionable {
 		if(!b)
 		{
 			Hit(plane);
+
+			// if(_bounceOff)
+			// {
+			// 	plane.SetAbsoluteForce(-plane.velocity);
+			// }
 		}
 
 	}
@@ -289,7 +298,8 @@ public abstract class PlaneBase : Collisionable {
 	public void BasicUpdate(float deltaTime)
 	{
 		_trail.emitting = _speed != 0f;
-		_trail.emitting = _trail.emitting == true ? !_controllLock : false;
+		_trail.emitting = _trail.emitting ? !_controllLock : false;
+		_trail.emitting = _trail.emitting ? _trailEmmit : false;
 
 		if(!_directionAngle)
 			_boostSpr.enabled = _speed != 0f;
