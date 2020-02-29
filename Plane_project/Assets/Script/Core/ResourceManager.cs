@@ -81,6 +81,32 @@ public class ResourceManager : Singleton<ResourceManager> {
 		return obj;
 	}
 
+	public Sprite[] GetSpriteAll(string folderName, int type = 0)
+	{
+		string cut = folderName.Substring(folderName.IndexOf("Resources") + 10);
+		if(spriteSet.ContainsKey(cut))
+			return spriteSet[cut];
+
+		string path = cut;
+		UnityEngine.Object[] obj = LoadAll(path, spriteType);
+		if(obj.Length == 0)
+		{
+			Debug.Log("file does not exist");
+			Debug.Log(cut);
+			return null;
+		}
+
+		Sprite[] sprites = new Sprite[obj.Length];
+		for(int i = 0; i < obj.Length; ++i)
+		{
+			sprites[i] = obj[i] as Sprite;
+		}
+
+		spriteSet.Add(cut,sprites);
+
+		return sprites;
+	}
+
 	public Sprite[] GetSpriteSet(string folderName, int type = 0)
 	{
 		if(spriteSet.ContainsKey(folderName))

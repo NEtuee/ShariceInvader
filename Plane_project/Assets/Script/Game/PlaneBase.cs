@@ -29,7 +29,7 @@ public abstract class PlaneBase : Collisionable {
 	protected Sprite[] _dirSprites;
 	protected Vector3 _velocity = new Vector2();
 	protected Vector3 _friction = new Vector2();
-	protected float _mass = 1f;
+	public float _mass = 1f;
 	protected float _frictionFactor = 0.01f;
 	protected float _gravityScale = .7f;
 	protected float _maxSpeed = 5f;
@@ -285,7 +285,6 @@ public abstract class PlaneBase : Collisionable {
 
 				EffectManager.GetInstance().Explosion(_position,10);
 				_bodyAttack = 0;
-				_mass = 2f;
 				// Delete();
 			}
 

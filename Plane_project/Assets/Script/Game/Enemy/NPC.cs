@@ -8,19 +8,22 @@ public class NPC : PlaneBase {
 
 	Vector3 randD;
 	bool random = false;
+	bool act = false;
 	float timer = 0f;
 
-
+	float actTime = 0f;
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("Enemy",AnimationType.Horizontal);
+		SetSpriteSet("missile",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
-		_sprRenderer.color = new Color(.5f,.3f,.3f);
+		_sprRenderer.flipX = true;
 
 		_maxSpeed = Random.Range(3f,4f);
 		_speed = .1f;
+
+		_rotateLock = true;
 		//_maxSpeed = 6.2f;
 	}
 
@@ -28,10 +31,12 @@ public class NPC : PlaneBase {
 	{
 		BasicInitialize();
 		
-		randD = new Vector3(Random.Range(-2.5f,2.5f),Random.Range(-2.5f,2.5f));
-		SetAbsoluteForce(randD);
 		SetNoClip(false);
 		_hp = 1;
+
+		actTime = Random.Range(.6f,1.4f);
+
+		AddForce(Vector3.down * Random.Range(1f,2f));
 
 		RegisteCollisionList();
 	}
@@ -44,6 +49,24 @@ public class NPC : PlaneBase {
 
 	public override void progress(float deltaTime)
 	{
+		if(!act)
+		{
+			timer += deltaTime;
+
+			if(timer >= actTime)
+			{
+				timer = 0f;
+				act = false;
+				_rotateLock = false;
+			}
+			else
+			{
+				BasicUpdate(deltaTime);
+				return;
+			}
+		}
+
+
 		_direction = (GameManager.instance.player.position - _position).normalized;
 
 		// float dist = Vector3.Distance(_position,GameManager.instance.player.position);
@@ -95,8 +118,6 @@ public class NPC : PlaneBase {
 		}
 
 		BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
-
-
 		BasicUpdate(deltaTime);
 	}
 }

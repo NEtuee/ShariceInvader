@@ -18,7 +18,13 @@ public class Timer : Singleton<Timer> {
 
 	public float SetDeltaTime(float value) {_deltaTime = value; return deltaTime;}
 	public float TimeScaling(float time) {return time * (1f / _timeScale);}
-	public void SetTimeScale(float value) {_timeScale = value;}
+	public void SetTimeScale(float value) 
+	{
+		if(_scaleTimer != 0f)
+			_scaleTimer = 0f;
+			
+		_timeScale = value;
+	}
 
 	public void TimeScaleUpdate()
 	{

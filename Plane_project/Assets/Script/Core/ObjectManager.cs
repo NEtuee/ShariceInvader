@@ -17,7 +17,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		_cache = new ObjectCache();
 		_place = new PlaceMapper();
 
-		_place.InitPlace(20,10,5);
+		_place.InitPlace(30,10,5);
 
 		int end = (int)Define.ObjectType.AutoProgressEnd;
 		for(int i = 0; i < end; ++i)

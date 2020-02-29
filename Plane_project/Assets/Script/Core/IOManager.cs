@@ -5,9 +5,9 @@ using UnityEngine;
 
 public static class IOManager {
 
-	public static void WriteStringToFile_NoMark(string[] str,string fileName)
+	public static void WriteStringToFile_NoMark(string[] str,string fileName, bool docu = true)
 	{
-		string path = PathForDocumentsFile(fileName);
+		string path = docu ? PathForDocumentsFile(fileName) : fileName;
 		FileStream file = new FileStream ( path, FileMode.Create, FileAccess.Write );
 		StreamWriter sw = new StreamWriter( file );
 		int line = str.Length;
@@ -43,7 +43,10 @@ public static class IOManager {
 			return s;
 		}
 		else
+		{
+			Debug.Log("file is does not exists");
 			return null;
+		}
 	}
 
 	public static string ReadStringFromFile_NoSplit(string fileName)

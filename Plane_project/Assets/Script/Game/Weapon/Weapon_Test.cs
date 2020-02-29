@@ -84,14 +84,17 @@ public class Weapon_Test : WeaponBase
             if(dist <= 5f)
             {
                 var obj = (PlaneBase)link.target;
-                Vector3 d = (obj.position - _plane.position).normalized;
+                if(obj._mass < 5f)
+                {
+                    Vector3 d = (obj.position - _plane.position).normalized;
 
-                obj.SetAbsoluteForce(d * 3f);
-                obj.ControllLock(1f);
-
-                EffectManager.GetInstance().AddEffect(obj.position,"Electric",false,obj).SetSortingOrder(1).SetAngle(Random.Range(0f,360f));
-                EffectManager.GetInstance().AddEffect(obj.position,"Burst",false)
-                                        .SetAngle(MathEx.directionToAngle(d));
+                    obj.SetAbsoluteForce(d * 3f);
+                    obj.ControllLock(1f);
+    
+                    EffectManager.GetInstance().AddEffect(obj.position,"Electric",false,obj).SetSortingOrder(1).SetAngle(Random.Range(0f,360f));
+                    EffectManager.GetInstance().AddEffect(obj.position,"Burst",false)
+                                            .SetAngle(MathEx.directionToAngle(d));
+                }
             }
 
             link = link.next;

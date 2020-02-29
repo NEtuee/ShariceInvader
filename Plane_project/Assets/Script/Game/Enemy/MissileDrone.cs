@@ -14,7 +14,9 @@ public class MissileDrone : PlaneBase
 		SetSpriteSet("drone1C",AnimationType.None);
 		SetCollider(new Define.SimpleBoxCollider(1.15f,.2f,_position));
 
-		_maxSpeed = 1f;
+		SetSortingOrder(1);
+
+		_maxSpeed = .9f;
 		_speed = .2f;
         _gravityScale = 0f;
         _mass = 5f;
@@ -45,8 +47,25 @@ public class MissileDrone : PlaneBase
 	{            
         _direction = Vector3.left;
 
+		float dist = Vector3.Distance(GameManager.instance.player.position,_position);
+		act = dist < 8f ? true : false;
+
+		if(act)
+		{
+			shotTimer += deltaTime;
+			if(shotTimer >= 5f)
+			{
+				shotTimer = 0f;
+
+				for(int i = 0; i < 5; ++i)
+				{
+					ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"Missile").
+												SetPosition(_position + new Vector3(Random.Range(-0.4f,0.4f),0f));
+				}
+			}
+		}
         
-		if(_hp < 20)
+		if(_hp < 15)
 		{
 			explosiveTimer -= deltaTime;
 
@@ -56,7 +75,7 @@ public class MissileDrone : PlaneBase
 
 				Vector3 randPos = new Vector3(Random.Range(-1.15f,1.15f),Random.Range(-.2f,.2f));
 
-				EffectManager.GetInstance().Explosion(_position + randPos,7,0.4f);
+				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
 			}
 		}
 

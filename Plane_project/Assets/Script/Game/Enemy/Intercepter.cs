@@ -27,7 +27,7 @@ public class Intercepter : PlaneBase
 
         _direction = Vector3.left;
         _speed = 0.2f;
-        _maxSpeed = 3.2f;
+        _maxSpeed = 3.2f; 
 
         WeaponChange(new Weapon_Lancer(this));
 
@@ -36,7 +36,7 @@ public class Intercepter : PlaneBase
 
     public override void progress(float deltaTime)
     {
-        mainWeapon.Progress(deltaTime);
+        mainWeapon.Progress(deltaTime); 
 
 
         _direction = (GameManager.instance.player.position - _position).normalized;
