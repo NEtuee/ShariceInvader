@@ -22,6 +22,11 @@ public class Editor_PlaneBuilder : MonoBehaviour
     public InputField       speed;
     public InputField       dodgeDist;
 
+    public InputField       trailTime;
+    public InputField       trailStartWidth;
+    public InputField       trailEndWidth;
+    public InputField       trailSortingOrder;
+
     public Toggle           rotateLock;
     public Toggle           velocityFlip;
     public Toggle           directionAngle;
@@ -45,6 +50,8 @@ public class Editor_PlaneBuilder : MonoBehaviour
 
     public Sprite trailCursorSprite;
     public Sprite boostCursorSprite;
+
+    public Editor_Addon_DirectionWheel directionWheel;
 
     private List<Editor_CursorBase> _trailCursor = new List<Editor_CursorBase>();
     private List<Editor_CursorBase> _boostCursor = new List<Editor_CursorBase>();
@@ -84,7 +91,65 @@ public class Editor_PlaneBuilder : MonoBehaviour
             foreach(var ani in _boostAnimation)
             {
                 ani.AnimationProgress(Time.deltaTime);
+                ani._sprRenderer.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(directionWheel.direction) - 180f);
+
+                if(ani.isEnd)
+                {
+                    ani.ChangeAni("Loop",true);
+                }
             }
+        }
+
+        foreach(var trail in _trailRenderers)
+        {
+            trail.direction = directionWheel.direction;
+        }
+    }
+
+    public void ApplyAllCursorButton()
+    {
+        Editor_EventSystem.instance.ActiveMessageBox("ApplyAllCursor","Do you really want to apply it to every frame?",ApplyAllCursor);
+    }
+
+    public void ApplyAllCursor()
+    {
+        foreach(var cursor in Editor_CursorBase.selectedCursorList)
+        {
+            if(_trailCursor.Contains(cursor))
+            {
+                foreach(var item in planeInfo.trailPoint)
+                {
+                    item.Value[cursor.uniqueNumber] = planeInfo.trailPoint[Editor_AnimationKeyBase.selected.frame][cursor.uniqueNumber];
+                }
+            }
+            else if(_boostCursor.Contains(cursor))
+            {
+                foreach(var item in planeInfo.boostPoint)
+                {
+                    item.Value[cursor.uniqueNumber] = planeInfo.boostPoint[Editor_AnimationKeyBase.selected.frame][cursor.uniqueNumber];
+                }
+            }
+        }
+
+        Editor_EventSystem.instance.ActiveNotice("Work Complete");
+
+    }
+
+    public void AddBoostPointButton()
+    {
+        AddBoostCursor(Vector2.zero);
+    }
+
+    public void AddTrailPointButton()
+    {
+        AddTrailCursor(Vector2.zero);
+    }
+
+    public void PlayBurstAnimationButton()
+    {
+        foreach(var ani in _boostAnimation)
+        {
+            ani.ChangeAni("Burst",false);
         }
     }
 
@@ -126,7 +191,7 @@ public class Editor_PlaneBuilder : MonoBehaviour
 
     public void MoveTrailRendererPosition(Vector2 pos, int target)
     {
-        _trailRenderers[target].transform.position = pos;
+        _trailRenderers[target].targetPos = pos;
     }
 
     public void AddTrailRenderer(Vector2 pos)
@@ -375,7 +440,7 @@ public class Editor_PlaneBuilder : MonoBehaviour
             
             UpdateTrailCount();
 
-            uIBase.ContentLock(true);
+            //uIBase.ContentLock(true);
         }
         else if (_boostCursor.Contains(cursor))
         {
@@ -389,7 +454,7 @@ public class Editor_PlaneBuilder : MonoBehaviour
 
             UpdateBoostCount();
 
-            uIBase.ContentLock(true);
+            //uIBase.ContentLock(true);
         }
     }
 
@@ -454,6 +519,11 @@ public class Editor_PlaneBuilder : MonoBehaviour
         bodyAttack.text = planeInfo.bodyAttack.ToString();;
         boostCount.text = planeInfo.boostCount.ToString();;
         trailCount.text = planeInfo.trailCount.ToString();;
+
+        trailTime.text = planeInfo.trailInfo.time.ToString();
+        trailStartWidth.text = planeInfo.trailInfo.startWidth.ToString();
+        trailEndWidth.text = planeInfo.trailInfo.endWidth.ToString();
+        trailSortingOrder.text = planeInfo.trailInfo.sortingOrder.ToString();
     }
 
     public void DataSet_animationType(){planeInfo.animationType = (PlaneBase.AnimationType)animationType.value;}
@@ -505,4 +575,9 @@ public class Editor_PlaneBuilder : MonoBehaviour
     public void DataSet_bodyAttack(){planeInfo.bodyAttack = int.Parse(bodyAttack.text);}
     public void DataSet_boostCount(){planeInfo.boostCount = int.Parse(boostCount.text);}
     public void DataSet_trailCount(){planeInfo.trailCount = int.Parse(trailCount.text);}
+
+    public void DataSet_TrailTime(){planeInfo.trailInfo.time = float.Parse(trailTime.text); UpdateTrailData();}
+    public void DataSet_TrailStartWidth(){planeInfo.trailInfo.startWidth = float.Parse(trailStartWidth.text); UpdateTrailData();}
+    public void DataSet_TrailEndWidth(){planeInfo.trailInfo.endWidth = float.Parse(trailEndWidth.text); UpdateTrailData();}
+    public void DataSet_TrailSortingOredr(){planeInfo.trailInfo.sortingOrder = int.Parse(trailSortingOrder.text); UpdateTrailData();}
 }

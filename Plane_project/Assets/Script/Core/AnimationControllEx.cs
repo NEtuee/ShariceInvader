@@ -63,10 +63,13 @@ public class AnimationControllEx
 
     public void ClearAnimationList()
     {
-        foreach(var ani in animations)
-        {
-            animations[ani.Key] = null;
-        }
+		// Debug.Log("start");
+        // foreach(var ani in animations)
+        // {
+		// 	Debug.Log("key null");
+        //     animations[ani.Key] = null;
+		// 	Debug.Log("complete");
+        // }
 
         animations.Clear();
     }

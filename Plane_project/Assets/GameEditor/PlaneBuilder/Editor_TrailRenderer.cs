@@ -15,6 +15,8 @@ public class Editor_TrailRenderer : MonoBehaviour
 
     private Vector3 _prevPos;
 
+    public Vector3 targetPos;
+
 
     public void Init(Editor_PlaneInfoBase i)
     {
@@ -48,6 +50,8 @@ public class Editor_TrailRenderer : MonoBehaviour
             trail.AddPosition(gameObject.transform.position);
         else
             _prevPos = transform.position;
+
+        transform.position = Vector3.Lerp(transform.position,targetPos,0.2f);
     }
 
     public void TrailDataUpdate()

@@ -25,6 +25,7 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
     public clickEventBase clickEvent = new clickEventBase((RectTransform t)=>{});
     public clickEventBase nullClickEvent = new clickEventBase((RectTransform t)=>{});
     public clickEventBase mouseMoveEvent = new clickEventBase((RectTransform t)=>{});
+    public clickEventBase uiMouseMoveEvent = new clickEventBase((RectTransform t)=>{});
     public clickEventBase keyUpEvent = new clickEventBase((RectTransform t)=>{});
 
     private Vector2 _clickedPos;
@@ -92,6 +93,8 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
                     selectedUI.Move(GetMouseMovePosition());
                 if(selectedTarget == null)
                     mouseMoveEvent(null);
+                else
+                    uiMouseMoveEvent(null);
             break;
             };
 

@@ -121,7 +121,7 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
         }
         
 
-        if(cursorList.Count == 0)
+        //if(cursorList.Count == 0)
             UIActive(false);
         
         if(_deleteCursors.Length > 1)

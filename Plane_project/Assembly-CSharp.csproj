@@ -61,6 +61,7 @@
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyBase.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyViewer.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_KeyDataModifier.cs" />
+     <Compile Include="Assets\GameEditor\Editor_Addon_DirectionWheel.cs" />
      <Compile Include="Assets\GameEditor\Editor_CameraControllBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_CursorBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_CursorController.cs" />
