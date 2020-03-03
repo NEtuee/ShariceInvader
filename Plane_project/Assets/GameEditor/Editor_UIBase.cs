@@ -10,6 +10,7 @@ public class Editor_UIBase : MonoBehaviour
     public Text hideButtonText;
     
     public GameObject mainContent;
+    public GameObject contentLockPanel;
 
     private bool _hide = false;
     private Vector2 _mainPos;
@@ -35,5 +36,10 @@ public class Editor_UIBase : MonoBehaviour
         _hide = !_hide;
         hideButtonText.text = _hide ? "▼" : "-";
         mainContent.SetActive(!_hide);
+    }
+    
+    public void ContentLock(bool b)
+    {
+        contentLockPanel.SetActive(b);
     }
 }

@@ -20,6 +20,9 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
     public Text stayTimeText;
     public Text currTimeText;
 
+    public bool createAnimationFile = true;
+    public bool keySelectWhilePlay = false;
+
     private List<Editor_AnimationKeyBase> _keys = new List<Editor_AnimationKeyBase>();
     private Queue<Editor_AnimationKeyBase> _keyPool = new Queue<Editor_AnimationKeyBase>();
 
@@ -78,6 +81,9 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
                 _aniPreviewer.sprite = _keys[_pos].sprite;
 
                 _keys[_pos].image.color = Color.blue;
+
+                if(keySelectWhilePlay)
+                    KeySelectEvent(_pos);
             }
 
             double t = Math.Truncate(_timer * 10000f) / 10000f;
@@ -151,6 +157,11 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
         if(Editor_AnimationKeyBase.selected != null)
             Editor_AnimationKeyBase.selected.image.color = Color.white;
         _keys[pos].image.color = Color.blue;
+
+        if(keySelectWhilePlay)
+        {
+            KeySelectEvent(pos);
+        }
         
     }
 
@@ -220,8 +231,8 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
 
     public void SetKeyData(string path, Sprite[] sprites)
     {
-        string file = path.Substring(path.LastIndexOf('\\')) + ".shrani";
-        string name = path + file;
+        string file = path.Substring(path.LastIndexOf('\\'));
+        string name = path + file  + ".shrani";
 
         file = file.Replace('\\',' ');
         aniName.text = file;
@@ -229,7 +240,7 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
         string[] data = IOManager.ReadStringFromFile(name);
         savePath = name;
 
-        if(data == null)
+        if(data == null && createAnimationFile)
         {
             Debug.Log("create");
             
@@ -284,7 +295,9 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
             ClearKeyList();
 
             CreateAnimationKeys(spr.Length);
+
             SetKeyData(item.filePath,spr);
+
 
             _aniPreviewer.sprite = spr[0];
 

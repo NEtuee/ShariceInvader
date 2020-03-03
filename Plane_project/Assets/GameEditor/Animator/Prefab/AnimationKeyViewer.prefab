@@ -338,6 +338,7 @@ MonoBehaviour:
   rectTp: {fileID: 2968646351510088783}
   hideButtonText: {fileID: 2968646350741343106}
   mainContent: {fileID: 2968646350281029443}
+  contentLockPanel: {fileID: 0}
 --- !u!1 &2968646351826876973
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +427,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5197983214355067299}
-  - component: {fileID: 5197983214355067298}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -453,18 +453,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &5197983214355067298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5197983214355067296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5197983214404799293
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +501,7 @@ GameObject:
   - component: {fileID: 5197983214638007689}
   - component: {fileID: 5197983214638007798}
   - component: {fileID: 5197983214638007688}
+  - component: {fileID: 7753774145277989684}
   m_Layer: 5
   m_Name: KeyHolder
   m_TagString: Untagged
@@ -609,6 +598,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7753774145277989684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197983214638007796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5197983214647189117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,6 +1902,7 @@ MonoBehaviour:
   aniName: {fileID: 5197983214657636876}
   stayTimeText: {fileID: 5197983215868379605}
   currTimeText: {fileID: 5197983214647189119}
+  createAnimationFile: 1
 --- !u!1 &5197983215919727437
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,11 +6,12 @@ public abstract class PlaneBase : Collisionable {
 
 	public enum AnimationType
 	{
-		Vertical,
+		Vertical = 0,
 		Vertical_Angled,
 		Vertical_Velocity,
 		Horizontal,
 		None,
+		End,
 	}
 
 	public bool activeBody = true;
@@ -43,6 +44,7 @@ public abstract class PlaneBase : Collisionable {
 	public bool _rotateLock = false;
 	public bool _directionAngle = false;
 	protected bool _controllLock = false;
+	protected bool _velocityFlip = true;
 	protected bool _immortal = false;
 	private bool _lerpAddSpeed = false;
 	public bool _bounceOff = false;
@@ -57,6 +59,7 @@ public abstract class PlaneBase : Collisionable {
 
 	protected bool _fall = false;
 	protected bool _trailEmmit = true;
+	protected bool _boostAniProgress = true;
 	private float _fallTimer = 1f;
 	protected float _controllLockTimer = 0f;
 	protected float _spriteAngle;
@@ -300,12 +303,12 @@ public abstract class PlaneBase : Collisionable {
 		_trail.emitting = _trail.emitting ? !_controllLock : false;
 		_trail.emitting = _trail.emitting ? _trailEmmit : false;
 
-		if(!_directionAngle)
+		if(_boostAniProgress)
+		{
 			_boostSpr.enabled = _speed != 0f;
-
-
-		if(_boostAni.AnimationProgress(ref _boostSpr,deltaTime) == -1)
-			_boostAni.ChangeAni("Loop",false);
+			if(_boostAni.AnimationProgress(ref _boostSpr,deltaTime) == -1)
+				_boostAni.ChangeAni("Loop",false);
+		}
 
 		if(_controllLockTimer != 0f)
 		{
@@ -512,12 +515,14 @@ public abstract class PlaneBase : Collisionable {
 		{
 			if(!_rotateLock)
 			{
-				_eulerAngle = MathEx.directionToAngle(_velocity.normalized);
+				if(_directionAngle)
+					DirectionRotate();
+				else
+					_eulerAngle = MathEx.directionToAngle(_velocity.normalized);
 			}
-			else if(_directionAngle)
-				DirectionRotate();
+			
 
-			if(!_rotateLock)
+			if(_velocityFlip)
 			{
 				if(_velocity.x < 0f)
 					_scale.y = -1f;

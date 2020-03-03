@@ -51,8 +51,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
         if(CoolDownCheck(ref _mainTimer,deltaTime))
         {
-            _plane._rotateLock = true;
-            _plane._rotateLock = true;
+            //_plane._rotateLock = true;
         }
     }
     public override void MainAttack()

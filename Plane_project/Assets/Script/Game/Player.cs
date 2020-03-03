@@ -76,6 +76,7 @@ public class Player : PlaneBase {
 		
 		_burst = true;
 		_rotateLock = true;
+		_velocityFlip = false;
 		_noclip = true;
 		//_immortal = true;
 

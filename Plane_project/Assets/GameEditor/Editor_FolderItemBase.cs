@@ -28,7 +28,7 @@ public class Editor_FolderItemBase : MonoBehaviour
 
     public void ShowSubfolder()
     {
-        downText.text = "▶";
+        downText.text = "▼";
         subFolderRoot.gameObject.SetActive(true);
 
         _subfolder = true;
@@ -36,7 +36,7 @@ public class Editor_FolderItemBase : MonoBehaviour
 
     public void HideSubfolder()
     {
-        downText.text = "▼";
+        downText.text = "▶";
         subFolderRoot.gameObject.SetActive(false);
 
         _subfolder = false;

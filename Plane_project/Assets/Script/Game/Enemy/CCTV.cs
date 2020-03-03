@@ -70,7 +70,7 @@ public class CCTV : PlaneBase
 		BasicInitialize();
 		
 		SetNoClip(false);
-        _rotateLock = true;
+        _velocityFlip = false;
         _directionAngle = true;
 		_hp = 15;
 

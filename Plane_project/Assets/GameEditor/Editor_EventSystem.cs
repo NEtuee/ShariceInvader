@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,9 +18,14 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
     public GraphicRaycaster raycaster;
     public Image noticeImage;
     public Text noticeText;
+    public Editor_MessageBox messageBox;
+
     public MouseState mouseState;
 
     public clickEventBase clickEvent = new clickEventBase((RectTransform t)=>{});
+    public clickEventBase nullClickEvent = new clickEventBase((RectTransform t)=>{});
+    public clickEventBase mouseMoveEvent = new clickEventBase((RectTransform t)=>{});
+    public clickEventBase keyUpEvent = new clickEventBase((RectTransform t)=>{});
 
     private Vector2 _clickedPos;
     private Vector2 _currScreenPos;
@@ -29,6 +35,8 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
 
     private float _noticeTimer;
     private float _noticeTimerOrigin;
+
+    private bool _screenMove = false;
 
     private Color _noticeImageColor;
     private Color _noticeTextColor;
@@ -62,6 +70,8 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
 
                 if(selectedTarget != null)
                     clickEvent(selectedTarget);
+                else
+                    nullClickEvent(null);
                 if(selectedUI != null)
                     selectedUI.Select();
             break;
@@ -80,6 +90,8 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
             case MouseState.UIControll:
                 if(selectedUI != null)
                     selectedUI.Move(GetMouseMovePosition());
+                if(selectedTarget == null)
+                    mouseMoveEvent(null);
             break;
             };
 
@@ -92,8 +104,7 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
             KeyUpEvents();
         }
 
-        if(selectedTarget == null)
-            CamControllWheel();
+        CamControllWheel();
         HotKeyCheck();
 
         if(_noticeTimer != 0f)
@@ -120,6 +131,11 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
                 noticeText.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void ActiveMessageBox(string t, string c, Action a)
+    {
+        messageBox.Active(t,c,a);
     }
 
     public void ActiveNotice(string title)
@@ -167,6 +183,8 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
 
     public void KeyUpEvents()
     {
+        _screenMove = false;
+
         switch(mouseState)
         {
         case MouseState.CameraMove:
@@ -182,11 +200,23 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
             _results.Clear();
         break;
         };
+
+        keyUpEvent(null);
     }
 
     public Vector2 GetMouseMovePosition()
     {
         return _currScreenPos - _clickedPos;
+    }
+
+    public bool UIRayCheck()
+    {
+        _results.Clear();
+        var ped = new PointerEventData(null);
+        ped.position = Input.mousePosition;
+        raycaster.Raycast(ped, _results);
+
+        return _results.Count != 0;
     }
 
     public void UIRaycast()
@@ -215,17 +245,28 @@ public class Editor_EventSystem : SingletonMono<Editor_EventSystem>
 
     public void CamControllClick()
     {
-        cam.MovePosStart(_clickedPos);
+        if(!UIRayCheck())
+        {
+            _screenMove = true;
+            cam.MovePosStart(_clickedPos);
+        }
     }
 
     public void CamControllMove()
     {
-        cam.MovePosCenterBase(_currScreenPos);
+        if(_screenMove)
+        {
+            cam.MovePosCenterBase(_currScreenPos);
+        }
     }
 
     public void CamControllWheel()
     {
-        cam.AddSize(-Input.mouseScrollDelta.y * 0.5f);
+        if(Input.mouseScrollDelta.y != 0)
+        {
+            if(!UIRayCheck())
+                cam.AddSize(-Input.mouseScrollDelta.y * 0.5f);
+        }
     }
 
 

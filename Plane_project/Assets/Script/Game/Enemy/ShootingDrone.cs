@@ -46,7 +46,7 @@ public class ShootingDrone : PlaneBase
 		BasicInitialize();
 		
 		SetNoClip(false);
-        _rotateLock = true;
+        _velocityFlip = false;
         _directionAngle = true;
 		_hp = 5;
         timer = Random.Range(0f,.4f);

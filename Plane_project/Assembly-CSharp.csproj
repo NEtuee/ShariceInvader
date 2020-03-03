@@ -63,11 +63,16 @@
      <Compile Include="Assets\GameEditor\Animator\Editor_KeyDataModifier.cs" />
      <Compile Include="Assets\GameEditor\Editor_CameraControllBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_CursorBase.cs" />
+     <Compile Include="Assets\GameEditor\Editor_CursorController.cs" />
      <Compile Include="Assets\GameEditor\Editor_EventSystem.cs" />
      <Compile Include="Assets\GameEditor\Editor_FolderItemBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_FolderViewer.cs" />
+     <Compile Include="Assets\GameEditor\Editor_MessageBox.cs" />
      <Compile Include="Assets\GameEditor\Editor_SpritePreview.cs" />
      <Compile Include="Assets\GameEditor\Editor_UIBase.cs" />
+     <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneBuilder.cs" />
+     <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneInfoBase.cs" />
+     <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_TrailRenderer.cs" />
      <Compile Include="Assets\MainHud.cs" />
      <Compile Include="Assets\particleTest.cs" />
      <Compile Include="Assets\PhysicsTest.cs" />
@@ -75,6 +80,7 @@
      <Compile Include="Assets\ScreenGlitch.cs" />
      <Compile Include="Assets\ScreenPixelization.cs" />
      <Compile Include="Assets\Script\Core\AnimationControll.cs" />
+     <Compile Include="Assets\Script\Core\AnimationControllEx.cs" />
      <Compile Include="Assets\Script\Core\CameraControll.cs" />
      <Compile Include="Assets\Script\Core\Collisionable.cs" />
      <Compile Include="Assets\Script\Core\CollisionManager.cs" />

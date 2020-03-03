@@ -37,7 +37,7 @@ public class BoomDrone : PlaneBase
 		BasicInitialize();
 		
 		SetNoClip(false);
-        _rotateLock = true;
+        _velocityFlip = false;
         _directionAngle = true;
 		_hp = 1;
 

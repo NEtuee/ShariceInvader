@@ -35,7 +35,7 @@ public static class IOManager {
 			}
 
 			string[] s = null;
-			s = st.ReadToEnd().Split('\n');
+			s = st.ReadToEnd().Replace("\r",string.Empty).Split('\n');
 
 			st.Close();
 			file.Close();
@@ -44,7 +44,7 @@ public static class IOManager {
 		}
 		else
 		{
-			Debug.Log("file is does not exists");
+			Debug.Log("file does not exists");
 			return null;
 		}
 	}
