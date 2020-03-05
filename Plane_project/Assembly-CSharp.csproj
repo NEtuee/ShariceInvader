@@ -119,7 +119,9 @@
      <Compile Include="Assets\Script\Game\Enemy\NPC.cs" />
      <Compile Include="Assets\Script\Game\Enemy\PointMarker.cs" />
      <Compile Include="Assets\Script\Game\Enemy\ShootingDrone.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\TheMarker.cs" />
      <Compile Include="Assets\Script\Game\Enemy\UACV.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\WandsBase.cs" />
      <Compile Include="Assets\Script\Game\GameMain.cs" />
      <Compile Include="Assets\Script\Game\GameManager.cs" />
      <Compile Include="Assets\Script\Game\PlaneBase.cs" />

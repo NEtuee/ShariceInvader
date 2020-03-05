@@ -84,6 +84,9 @@ public class Weapon_PhantomStinger : WeaponBase
     public override void WhenChanged()
     {
         base.WhenChanged();
+
+        // if(_aimObj != null)
+        UnityEngine.GameObject.Destroy(_aimObj.gameObject);
     }
 
     public void UpdateAim()

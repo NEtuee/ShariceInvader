@@ -37,6 +37,7 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 
 	public abstract void firstSetting();
 	public abstract void initialize();
+	public virtual void BeforeCreated(){}
 	public abstract void progress(float deltaTime);
 	public virtual void afterProgress(float deltaTime){}
 	public virtual void deleteEvent(){}

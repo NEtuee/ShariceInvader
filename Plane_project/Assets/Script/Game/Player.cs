@@ -54,9 +54,6 @@ public class Player : PlaneBase {
 		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("PlayerMinimapIcon");
 		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
-		mainWeapon = new Weapon_PhantomStinger(this);
-
-
 		_miniMapHeightIcon = new GameObject(name + " HeightIcon").transform;
 		SpriteRenderer spr = _miniMapHeightIcon.gameObject.AddComponent<SpriteRenderer>();
 		spr.sprite = ResourceManager.GetInstance().GetSprite("UI/MiniMapHeightIcon");
@@ -67,7 +64,7 @@ public class Player : PlaneBase {
 		_angleCount = CanvasScript.instance.gameObject.transform.Find("AngleCount").GetComponent<TextMesh>();
 		HeightIconUpdate();
 		
-		WeaponChange(mainWeapon);
+		WeaponChange(new Weapon_PhantomStinger(this));
 	}
 
 	public override void initialize()

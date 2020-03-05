@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ComboCount : SingletonMono<ComboCount>
 {
+    public GameObject comboUI;
     TextMesh text;
     int combo;
     float comboCount;
@@ -36,10 +37,12 @@ public class ComboCount : SingletonMono<ComboCount>
         if(combo == 0)
         {
             text.text = "";
+            comboUI.SetActive(false);
             comboCount = 0f;
         }
         else  
         {
+            comboUI.SetActive(true);
             text.text = combo.ToString();
         }
     }

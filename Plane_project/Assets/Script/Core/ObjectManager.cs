@@ -12,6 +12,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 
 	private float _stopTimer = 0f;
 
+	private List<ObjectBase> _created = new List<ObjectBase>();
+
 	public void firstSetting()
 	{
 		_cache = new ObjectCache();
@@ -46,6 +48,16 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	// }
 	public void progress(float deltaTime)
 	{
+		if(_created.Count != 0)
+		{
+			for(int i = 0; i < _created.Count; ++i)
+			{
+				_created[i].BeforeCreated();
+			}
+
+			_created.Clear();
+		}
+
 		if(_stopTimer != 0f)
 		{
 			_stopTimer -= deltaTime;
@@ -165,6 +177,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		ObjectBase obj = _cache.GetCacheObject(type,name);
 		_objectDic[type].Add(obj);
 		
+		_created.Add(obj);
+
 		return obj;
 		
 	}
@@ -174,6 +188,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		ObjectBase obj = CreateObject(type,origin,true,false);
 		_objectDic[type].Add(obj);
 
+		_created.Add(obj);
+
 		return obj;
 	}
 
@@ -181,6 +197,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	{
 		T obj = CreateObject<T>(type,name,true,false);
 		_objectDic[type].Add(obj);
+
+		_created.Add(obj);
 
 		return obj;
 	}
