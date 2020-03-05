@@ -28,7 +28,7 @@ public class Player : PlaneBase {
 	{
 		base.firstSetting();
 
-		SetSpriteSet("Player",AnimationType.Horizontal);
+		SetSpriteSet("Player_New",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.05f,.05f,_position));
 
 		for(int i = 0; i < 3; ++i)
@@ -306,10 +306,10 @@ public class Player : PlaneBase {
 
 				//_eulerAngle = MathEx.directionToAngle(_direction);
 
-				if(_direction.x < 0f)
-					_scale.y = -1f;
-				else if(_direction.x > 0f)
-					_scale.y = 1f;
+				// if(_direction.x < 0f)
+				// 	_scale.y = -1f;
+				// else if(_direction.x > 0f)
+				// 	_scale.y = 1f;
 			}
 
 		}

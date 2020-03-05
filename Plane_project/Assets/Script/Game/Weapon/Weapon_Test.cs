@@ -12,7 +12,9 @@ public class Weapon_Test : WeaponBase
         _collider = new Define.SimpleCircleCollider(0.6f,0.6f,Vector2.zero);
         _plane.SetImmortal(false);
 
-        MainHud.instance.wpIcon.sprite = ResourceManager.GetInstance().GetSprite("UI/icon_nova");
+        _icon = ResourceManager.GetInstance().GetSprite("UI/icon_nova");
+        _ui = ResourceManager.GetInstance().GetSprite("UI/ui_nova");
+
     }
     public override void Progress(float deltaTime)
     {

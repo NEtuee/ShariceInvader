@@ -133,9 +133,12 @@
      <Compile Include="Assets\Script\Game\Weapon\WeaponBase.cs" />
      <Compile Include="Assets\testsss.cs" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Loop\Loop_Ani.txt" />
      <None Include="Assets\Script\Shader\Pixelization.shader" />
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Script\Shader\ComboCount.shader" />
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />

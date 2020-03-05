@@ -8443,6 +8443,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnimationKeyViewer
       objectReference: {fileID: 0}
+    - target: {fileID: 5197983215903134176, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
+        type: 3}
+      propertyPath: createAnimationFile
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197983215903134176, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
+        type: 3}
+      propertyPath: keySelectWhilePlay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2968646351510088783, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8548,16 +8558,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5197983215903134176, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
-        type: 3}
-      propertyPath: createAnimationFile
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5197983215903134176, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
-        type: 3}
-      propertyPath: keySelectWhilePlay
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5197983215398515773, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8568,11 +8568,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5197983215398515773, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2968646351510088782, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
         type: 3}
       propertyPath: contentLockPanel
       value: 
       objectReference: {fileID: 1978877149}
+    - target: {fileID: 5197983214355067299, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 5197983215550715464, guid: 90bd5bbeac2c9ab41b1899df6a1d56ca,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

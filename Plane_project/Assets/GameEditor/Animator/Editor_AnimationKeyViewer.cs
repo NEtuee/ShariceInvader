@@ -232,7 +232,7 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
     public void SetKeyData(string path, Sprite[] sprites)
     {
         string file = path.Substring(path.LastIndexOf('\\'));
-        string name = path + file  + ".shrani";
+        string name = path + file + "_Ani" + ".txt";
 
         file = file.Replace('\\',' ');
         aniName.text = file;

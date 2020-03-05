@@ -25,9 +25,6 @@ public class SupplyShip : PlaneBase
         timer = 1f;
         _bodyAttack = 0;
         _gravityScale = 0f;
-        _trail.transform.position = new Vector3(-0.5f,0f);
-        _trail.startWidth = .05f;
-		_trail.endWidth = .0025f;
 
         _direction = Vector2.down;
 

@@ -58,24 +58,24 @@ public abstract class PlaneBase : Collisionable {
 
 
 	protected bool _fall = false;
-	protected bool _trailEmmit = true;
-	protected bool _boostAniProgress = true;
+	protected bool _trailEmmit = false;
+	protected bool _boostAniProgress = false;
 	private float _fallTimer = 1f;
 	protected float _controllLockTimer = 0f;
 	protected float _spriteAngle;
 
-	protected TrailRenderer _trail;
-	protected SpriteRenderer _boostSpr;
-	protected AnimationControll _boostAni;
+	protected List<TrailRenderer> _trail = new List<TrailRenderer>();
+	protected List<AnimationControllEx> _boostAni = new List<AnimationControllEx>();
 	private Material _trailMat;
 	protected Transform miniMapIcon;
 
 	protected AnimationType _aniType;
 
+	protected Editor_PlaneInfoBase _infoBase;
+
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		TrailSetUp();
 		MiniMapIconSetup();
 	}
 
@@ -165,6 +165,7 @@ public abstract class PlaneBase : Collisionable {
 		mainWeapon = weapon;
 		mainWeapon.SetTarget(this);
 		mainWeapon.Initialize();
+		mainWeapon.Change();
 	}
 
 	public void Dodge(Vector3 dir, bool effectActive = true)
@@ -194,8 +195,14 @@ public abstract class PlaneBase : Collisionable {
 	public virtual void BurstActive(bool effectActive = true)
 	{
 		SetAbsoluteForce((_direction * 150f));
-		_boostAni.ChangeAni("Burst",false);
 
+		if(_boostAniProgress)
+		{
+			foreach(var ani in _boostAni)
+			{
+				ani.ChangeAni("Burst",false);
+			}
+		}
 		_burst = false;
 
 
@@ -299,15 +306,30 @@ public abstract class PlaneBase : Collisionable {
 
 	public void BasicUpdate(float deltaTime)
 	{
-		_trail.emitting = _speed != 0f;
-		_trail.emitting = _trail.emitting ? !_controllLock : false;
-		_trail.emitting = _trail.emitting ? _trailEmmit : false;
-
-		if(_boostAniProgress)
+		if(_trailEmmit)
 		{
-			_boostSpr.enabled = _speed != 0f;
-			if(_boostAni.AnimationProgress(ref _boostSpr,deltaTime) == -1)
-				_boostAni.ChangeAni("Loop",false);
+			_trailMat.SetFloat("_random",Random.Range(40000f,50000f));
+		}
+		foreach(var trail in _trail)
+		{
+			trail.emitting = _speed != 0f;
+			trail.emitting = trail.emitting ? !_controllLock : false;
+			trail.emitting = trail.emitting ? _trailEmmit : false;
+		}
+
+		foreach(var ani in _boostAni)
+		{
+			
+			if(_boostAniProgress)
+			{
+				if(ani.AnimationProgress(deltaTime) == -1)
+					ani.ChangeAni("Loop",false);
+				ani._sprRenderer.enabled = _speed != 0f;
+			}
+			else
+			{
+				ani._sprRenderer.enabled = _boostAniProgress;
+			}
 		}
 
 		if(_controllLockTimer != 0f)
@@ -346,8 +368,6 @@ public abstract class PlaneBase : Collisionable {
 		else
 			_burst = true;
 
-		_trailMat.SetFloat("_random",Random.Range(40000f,50000f));
-
 		FrictionCheck();
 		GravityCheck(deltaTime);
 
@@ -364,6 +384,9 @@ public abstract class PlaneBase : Collisionable {
 			_sprRenderer.color = col;
 		}
 
+		UpdateTrails();
+		UpdateBoosts();
+
 		UpdateMiniMapIcon();
 		GroundCheck();
 	}
@@ -371,8 +394,9 @@ public abstract class PlaneBase : Collisionable {
 	public void SpriteUpdate()
 	{
 		if(_controllLock)
+		{
 			return;
-
+		}
 		if(_aniType == AnimationType.Horizontal)
 		{
 			float ang = _eulerAngle;
@@ -435,6 +459,7 @@ public abstract class PlaneBase : Collisionable {
 
 		if(_aniType == AnimationType.Horizontal)
 		{
+			name = name.Replace("\\",string.Empty);
 			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name,2);
 			_spriteAngle = 90f / ((float)_dirSprites.Length / 2f);
 		}
@@ -456,6 +481,71 @@ public abstract class PlaneBase : Collisionable {
 		else if(_aniType == AnimationType.None)
 		{
 			SetSprite(name);
+		}
+
+		LoadPlaneData(name);
+	}
+
+	public void LoadPlaneData(string n)
+	{
+		string path = "Sprites/SpriteSet/Planes/" + n + "/" + n + "_Plane";
+
+		string[] data = ResourceManager.GetInstance().GetSaveData(path);
+		if(data == null)
+		{
+			Debug.Log(n + " plane data does not exist");
+			return;
+		}
+
+		_infoBase = new Editor_PlaneInfoBase();
+		_infoBase.LoadDataFile(data);
+
+		_mass = _infoBase.mass;
+		_maxSpeed = _infoBase.maxSpeed;
+		_rotateLock = _infoBase.rotateLock;
+		_speed = _infoBase.speed;
+		_bodyAttack = _infoBase.bodyAttack;
+		_boostAniProgress = _infoBase.boostAniProgress;
+		_trailEmmit = _infoBase.trailEmmit; 
+		_velocityFlip = _infoBase.velocityFlip;
+		_directionAngle = _infoBase.directionAngle;
+		_dodgeDist = _infoBase.dodgeDist;
+		_hp = _infoBase.hp;
+		
+		int trailCount = _infoBase.trailCount;
+		int boostCount = _infoBase.boostCount;
+
+		for(int i = 0; i < trailCount; ++i)
+		{
+			TrailSetUp(_infoBase.trailPoint[0][i],_infoBase.trailInfo.trailMaterial,
+						_infoBase.trailInfo.time,_infoBase.trailInfo.startWidth,_infoBase.trailInfo.endWidth,
+						_infoBase.trailInfo.sortingOrder);
+		}
+
+		for(int i = 0; i < boostCount; ++i)
+		{
+			BoostSetUp(_infoBase.boostAni,_infoBase.boostPoint[0][i]);
+		}
+
+		UpdateTrails();
+		UpdateBoosts();
+
+		//SetSpriteSet(_infoBase.spriteSet,_infoBase.animationType);
+	}
+
+	public void UpdateTrails()
+	{
+		for(int i = 0; i < _trail.Count; ++i)
+		{
+			_trail[i].transform.localPosition = Vector3.Lerp(_trail[i].transform.localPosition, _infoBase.trailPoint[_spritePoint][i], 0.2f);
+		}
+	}
+
+	public void UpdateBoosts()
+	{
+		for(int i = 0; i < _boostAni.Count; ++i)
+		{
+			_boostAni[i]._sprRenderer.transform.localPosition = _infoBase.boostPoint[_spritePoint][i];
 		}
 	}
 
@@ -538,10 +628,13 @@ public abstract class PlaneBase : Collisionable {
 	{
 		if(!deleted)
 		{
-			_trail.emitting = false;
-			if(_trail.positionCount > 0)
+			foreach(var trail in _trail)
 			{
-				_trail.Clear();
+				trail.emitting = false;
+				if(trail.positionCount > 0)
+				{
+					trail.Clear();
+				}
 			}
 		}
 	}
@@ -629,28 +722,40 @@ public abstract class PlaneBase : Collisionable {
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * ratio,CanvasScript.instance.canvasHeight - 20));
 	}
 
-	public void TrailSetUp()
+	public void TrailSetUp(Vector2 pos, string material, float time, float startWidth, float endWidth, int sortingOrder)
 	{
 		GameObject trailObj = new GameObject("trail");
-		trailObj.transform.position = new Vector3(-0.1f,0f,0f);
+		trailObj.transform.position = pos;
 		trailObj.transform.SetParent(tp);
 
-		_trailMat = new Material(ResourceManager.GetInstance().GetMaterial("PlaneTrail"));
+		_trailMat = new Material(ResourceManager.GetInstance().GetMaterial(material));
 		_trailMat.SetFloat("_random",Random.Range(.5f,1.5f));
-		_trail = trailObj.AddComponent<TrailRenderer>();
-		_trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-		_trail.receiveShadows = false;
-		_trail.allowOcclusionWhenDynamic = false;
-		_trail.material = _trailMat;
-		_trail.time = 0.5f;
-		_trail.startWidth = .03f;
-		_trail.endWidth = .005f;
-		_trail.sortingOrder = -4;
 
-		_boostSpr = trailObj.AddComponent<SpriteRenderer>();
-		_boostAni = new AnimationControll();
-		_boostAni.AddAnimation("Loop","Effects/Boost/Loop");
-		_boostAni.AddAnimation("Burst","Effects/Boost/Burst");
-		_boostAni.ChangeAni("Loop",true);
+		var trail = trailObj.AddComponent<TrailRenderer>();
+		trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+		trail.receiveShadows = false;
+		trail.allowOcclusionWhenDynamic = false;
+		trail.material = _trailMat;
+		trail.time = time;
+		trail.startWidth = startWidth;
+		trail.endWidth = endWidth;
+		trail.sortingOrder = sortingOrder;
+
+		_trail.Add(trail);
+	}
+
+	public void BoostSetUp(string n, Vector2 pos)
+	{
+		SpriteRenderer spr = new GameObject("boost").AddComponent<SpriteRenderer>();
+		AnimationControllEx ani = new AnimationControllEx(spr);
+
+		ani.AddAnimation("Loop", n + "/Loop");
+		ani.AddAnimation("Burst", n + "/Burst");
+		ani.ChangeAni("Loop",true);
+
+		spr.transform.position = pos;
+		spr.transform.SetParent(tp);
+
+		_boostAni.Add(ani);
 	}
 }

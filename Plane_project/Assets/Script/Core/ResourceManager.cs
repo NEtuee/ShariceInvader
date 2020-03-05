@@ -9,6 +9,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 	private Dictionary<string ,Sprite[]> spriteSet = new Dictionary<string, Sprite[]>();
 	private Dictionary<string, AudioClip> audio = new Dictionary<string, AudioClip>();
 	private Dictionary<string, Material> material = new Dictionary<string, Material>();
+	private Dictionary<string, string[]> saveData = new Dictionary<string, string[]>();
 
 	private static string spritesFilePath = "Sprites/";
 	private static string[] spriteSetFilePath = 
@@ -22,6 +23,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 	private static Type audioType = typeof(AudioClip);
 	private static Type GameObjectType = typeof(GameObject);
 	private static Type MaterialType = typeof(Material);
+	private static Type textType = typeof(TextAsset);
 
 	private Material pixelSnap;
 	private Sprite _skipSprite;
@@ -165,6 +167,24 @@ public class ResourceManager : Singleton<ResourceManager> {
 		material.Add(fileName,obj);
 
 		return obj;
+	}
+
+	public string[] GetSaveData(string fileName)
+	{
+		if(saveData.ContainsKey(fileName))
+			return saveData[fileName];
+
+		TextAsset text = Load(fileName,textType) as TextAsset;
+		if(text == null)
+		{
+			Debug.Log("file does not exist");
+			return null;
+		}
+
+		string[] s = null;
+		s = text.text.Replace("\r",string.Empty).Split('\n');
+
+		return s;
 	}
 
 	public void UnloadAllAset()

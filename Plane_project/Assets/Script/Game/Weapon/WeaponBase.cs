@@ -7,6 +7,7 @@ public abstract class WeaponBase
     protected PlaneBase _plane;
     protected PlaneBase _aimTarget = null;
     protected Sprite _icon = null;
+    protected Sprite _ui = null;
 
     public float mainCoolDown{get{return _mainTimer;}}
     public float specCoolDown{get{return _specTimer;}}
@@ -50,10 +51,12 @@ public abstract class WeaponBase
     public abstract void MainAttack();
     public abstract bool SpecialAttack(Vector3 dir);
     public abstract bool CollisionCheck(PlaneBase target);
+    public void Change()
+    {
+        MainHud.instance.WeaponChange(_icon,_ui);
+    }
     public virtual void WhenChanged()
     {
-        MainHud.instance.WeaponChange(_icon);
-
         if(_aimObject != null)
         {
             //_aimObject.gameObject.SetActive(false);
@@ -129,6 +132,11 @@ public abstract class WeaponBase
 		if(target == null && !_hideAimObject)
 			_aimObject.gameObject.SetActive(false);
 
+        if(!_hideAimObject && _aimTarget != null && _aimTarget != target)
+        {
+            EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Disappear");
+        }
+
 		if(target != null)
         {
             _aimTarget = (PlaneBase)target;
@@ -155,7 +163,7 @@ public abstract class WeaponBase
         }
 
         _aimAni = new AnimationControll();
-		_aimAni.AddAnimation("On","Effects/Aim");
+		_aimAni.AddAnimation("On","Effects/PhantomString_Aim/Appear");
 		_aimAni.SetFps(18);
 
         _canAim = true;

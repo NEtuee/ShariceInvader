@@ -10,6 +10,8 @@ public class AnimationControllEx
         public Sprite sprite;
     };
 
+	public static Dictionary<string,AnimationKey[]> loadedAnimations = new Dictionary<string,AnimationKey[]>();
+
     public Dictionary<string, AnimationKey[]> animations = new Dictionary<string, AnimationKey[]>();
 
 	public bool isEnd{get{return _animationEnd;}}
@@ -76,34 +78,46 @@ public class AnimationControllEx
 
 	public void AddAnimation(string name, string path)
 	{
-		Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
-		if(sprites == null)
-			return;
+		Debug.Log(path);
+		AnimationKey[] key;
 
-        string file = path.Substring(path.LastIndexOf('/'));
-        string pathName =  IOManager.PathForDocumentsFile("Assets\\Resources\\Sprites\\SpriteSet\\") + path + file + ".shrani";
+		if(!loadedAnimations.ContainsKey(path))
+		{
+			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
+			if(sprites == null)
+				return;
 
-        string[] data = IOManager.ReadStringFromFile(pathName);
+        	string file = path.Substring(path.LastIndexOf('/'));
+        	string pathName =  "Sprites/SpriteSet/" + path + file + "_Ani.txt";
 
-        if(data == null)
-        {
-            CreateAnimationRef(pathName,0.08333f,sprites.Length);
-        }
+			Debug.Log(pathName);
 
-        AnimationKey[] key = new AnimationKey[sprites.Length];
+        	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 
-        for(int i = 0; i < sprites.Length; ++i)
-        {
-            float t = 0.08333f;
+        	if(data == null)
+        	{
+        	    CreateAnimationRef(pathName,0.08333f,sprites.Length);
+        	}
 
-            if(data != null)
-            {
-                t = float.Parse(data[i]);
-            }
+        	key = new AnimationKey[sprites.Length];
 
-            key[i].duration = t;
-            key[i].sprite = sprites[i];
-        }
+        	for(int i = 0; i < sprites.Length; ++i)
+        	{
+        	    float t = 0.08333f;
+
+        	    if(data != null)
+        	    {
+        	        t = float.Parse(data[i]);
+        	    }
+
+        	    key[i].duration = t;
+        	    key[i].sprite = sprites[i];
+        	}
+
+			loadedAnimations.Add(path,key);
+		}
+		else
+			key = loadedAnimations[path];
 
         animations.Add(name, key);
 	}
@@ -140,7 +154,7 @@ public class AnimationControllEx
 		return _aniPos;
 	}
 
-    public void CreateAnimationRef(string name, float time, int count)
+    public void CreateAnimationRef(string n, float time, int count)
     {
         List<string> s = new List<string>();
 
@@ -150,7 +164,7 @@ public class AnimationControllEx
             s.Add(t);
         }
 
-        IOManager.WriteStringToFile_NoMark(s.ToArray(),name,false);
+        IOManager.WriteStringToFile_NoMark(s.ToArray(),"Assets/Resources/" + n,false);
     }
 
     public AnimationControllEx(SpriteRenderer spr){_sprRenderer = spr;}

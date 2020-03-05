@@ -8,6 +8,8 @@ public class Weapon_Lancer : WeaponBase
     private float _mainSpeed;
     private Vector3 _dodgeStartPos;
 
+    private SpriteRenderer _aimObj;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -15,7 +17,9 @@ public class Weapon_Lancer : WeaponBase
         _mainSpeed = _plane.maxSpeed;
         _plane.SetImmortal(false);
         
-        MainHud.instance.wpIcon.sprite = ResourceManager.GetInstance().GetSprite("UI/icon_lancer");
+        _icon = ResourceManager.GetInstance().GetSprite("UI/icon_lancer");
+        _ui = ResourceManager.GetInstance().GetSprite("UI/ui_lancer");
+
         InitAimObject();
         _hideAimObject = true;
     }
@@ -52,6 +56,8 @@ public class Weapon_Lancer : WeaponBase
             _plane.SetImmortal(false);
 			_plane.SetBodyAttack(5);
         }
+
+        UpdateAim();
     }
     public override void MainAttack()
     {
@@ -151,11 +157,23 @@ public class Weapon_Lancer : WeaponBase
 		_plane.SetControll(false);
 		_plane.SetImmortal(false);
 		_plane.SetBodyAttack(5);
+
+        UnityEngine.GameObject.Destroy(_aimObj.gameObject);
+    }
+
+    public void UpdateAim()
+    {
+        Vector3 pos = _plane.position + _plane.direction * 0.4f;
+        _aimObj.transform.position = pos;
+        _aimObj.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(_plane.direction));
     }
 
     public Weapon_Lancer(PlaneBase plane) : base(plane)
     {
-        
+        _aimObj = new GameObject("LancerAim").AddComponent<SpriteRenderer>();
+        _aimObj.sprite = ResourceManager.GetInstance().GetSprite("center_lanceaim");
+
+        UpdateAim();
     }
 
 }

@@ -12,7 +12,7 @@ public class PlayerFollower : SingletonMono<PlayerFollower>
     {
         if(GameManager.instance.player != null)
         {
-            transform.position = Vector3.Lerp(GameManager.instance.player.position,transform.position,0.65f);
+            transform.position = Vector3.Lerp(GameManager.instance.player.transform.position,transform.position,0.65f);
         }
         else
             this.gameObject.SetActive(false);

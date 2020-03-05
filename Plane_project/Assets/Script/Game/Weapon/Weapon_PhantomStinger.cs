@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Weapon_PhantomStinger : WeaponBase
 {
-
+    private SpriteRenderer _aimObj;
     
 
     public override void Initialize()
     {
         base.Initialize();
-        MainHud.instance.wpIcon.sprite = ResourceManager.GetInstance().GetSprite("UI/icon_phantomstinger");
+        _icon = ResourceManager.GetInstance().GetSprite("UI/icon_phantomstinger");
+        _ui = ResourceManager.GetInstance().GetSprite("UI/ui_phantomstinger");
+
         InitAimObject();
         
     }
@@ -53,6 +55,8 @@ public class Weapon_PhantomStinger : WeaponBase
         {
             //_plane._rotateLock = true;
         }
+
+        UpdateAim();
     }
     public override void MainAttack()
     {
@@ -82,8 +86,18 @@ public class Weapon_PhantomStinger : WeaponBase
         base.WhenChanged();
     }
 
+    public void UpdateAim()
+    {
+        Vector3 pos = _plane.position + _plane.direction * 0.4f;
+        _aimObj.transform.position = pos;
+        _aimObj.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(_plane.direction));
+    }
+
     public Weapon_PhantomStinger(PlaneBase plane) : base(plane)
     {
-    
+        _aimObj = new GameObject("PhantomAim").AddComponent<SpriteRenderer>();
+        _aimObj.sprite = ResourceManager.GetInstance().GetSprite("center_phantomstepaim");
+
+        UpdateAim();
     }
 }

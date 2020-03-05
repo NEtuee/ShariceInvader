@@ -6,6 +6,9 @@ public class MainHud : SingletonMono<MainHud>
 {
     public SpriteRenderer wpIcon;
     public SpriteRenderer gague;
+    public SpriteRenderer mainUI;
+
+    public Sprite nullUI;
 
     private Material gagueMat;
 
@@ -32,15 +35,17 @@ public class MainHud : SingletonMono<MainHud>
         gagueMat.SetFloat("_Progress",g);
     }
 
-    public void WeaponChange(Sprite spr)
+    public void WeaponChange(Sprite spr, Sprite ui)
     {
         wpIcon.sprite = spr;
+        mainUI.sprite = ui == null ? nullUI : ui;
         UpdateGague(1f);
     }
 
     public void SetNull()
     {
         wpIcon.sprite = null;
+        mainUI.sprite = nullUI;
     }
 
     public void SetDistTarget(ObjectBase obj)

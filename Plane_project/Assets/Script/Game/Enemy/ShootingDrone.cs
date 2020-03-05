@@ -34,8 +34,6 @@ public class ShootingDrone : PlaneBase
         _gravityScale = 0.5f;
 
         //standPos = ObjectManager.GetInstance()._place.mainPlace.leftBottom;
-        
-        _trail.gameObject.transform.position = new Vector2(0f,-0.1f);
 
         GunPointSetup();
         
@@ -51,8 +49,6 @@ public class ShootingDrone : PlaneBase
 		_hp = 5;
         timer = Random.Range(0f,.4f);
         standPos = position;
-
-        _trail.time = 0.2f;
 
         RegisteCollisionList();
 	}

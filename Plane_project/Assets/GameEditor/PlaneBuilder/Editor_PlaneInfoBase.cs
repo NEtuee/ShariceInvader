@@ -207,10 +207,8 @@ public class Editor_PlaneInfoBase
         }
     }
 
-    public void LoadDataFile()
+    public void LoadDataFile(string[] data)
     {
-        string[] data = IOManager.ReadStringFromFile(_path);
-
         ClearDictionary();
 
         foreach(var d in data)
@@ -271,5 +269,12 @@ public class Editor_PlaneInfoBase
                 ParseDictionaryData(ref boostPoint,split[1]);
             }
         }
+    }
+
+    public void LoadDataFile()
+    {
+        string[] data = IOManager.ReadStringFromFile(_path);
+
+        LoadDataFile(data);
     }
 }

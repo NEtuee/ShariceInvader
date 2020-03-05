@@ -299,7 +299,7 @@ public class Editor_PlaneBuilder : MonoBehaviour
             _boostCursorCount = 0;
 
             string file = path.Substring(path.LastIndexOf('\\'));
-            string name = path + file  + ".shrpln";
+            string name = path + file + "_Plane"  + ".txt";
 
             planeInfo.SetPath(name);
 

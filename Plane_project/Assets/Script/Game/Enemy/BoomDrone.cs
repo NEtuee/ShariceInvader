@@ -43,11 +43,8 @@ public class BoomDrone : PlaneBase
 
         standPos = this;
         master = false;
-
-        _trail.gameObject.transform.position = new Vector2(0f,-0.05f);
-        _trail.time = 0.4f;
-
-        _boostSpr.enabled = false;
+        
+        _boostAniProgress = false;
 
         RegisteCollisionList();
 	}
