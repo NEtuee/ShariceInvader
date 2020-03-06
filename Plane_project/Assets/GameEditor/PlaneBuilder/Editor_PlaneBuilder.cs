@@ -350,6 +350,8 @@ public class Editor_PlaneBuilder : MonoBehaviour
         {
             cursor.SetPosition(planeInfo.boostPoint[frame][cursor.uniqueNumber]);
         }
+
+        Editor_CursorBase.UpdateCenterPosition();
     }
 
     public void AddTrailCursor(Vector2 pos, bool load = false)

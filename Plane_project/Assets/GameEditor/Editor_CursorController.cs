@@ -16,14 +16,18 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
 
     public Toggle hideCursor;
 
+    public GameObject cursorButtonBase;
+    public RectTransform cursorListViewer;
+
     public Editor_UIBase uIBase;
 
     public List<Editor_CursorBase> cursorList = new List<Editor_CursorBase>();
+    public Dictionary<Editor_CursorBase, Editor_CursorListButton> buttonList = new Dictionary<Editor_CursorBase, Editor_CursorListButton>();
 
     private bool _cursorClicked = false;
     private bool _multipleSelected = false;
     private Queue<Editor_CursorBase> _cursorPool = new Queue<Editor_CursorBase>();
-
+    private Queue<Editor_CursorListButton> _buttonPool = new Queue<Editor_CursorListButton>();
     
 
     private Vector2 clickedPos;
@@ -82,8 +86,53 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
         cursor.transform.SetParent(_cursorParent.transform);
 
         cursorList.Add(cursor);
-
+        
+        AddButton(cursor);
         return cursor;
+    }
+
+    public void UpdateButtonListHeight()
+    {
+        Vector2 size = cursorListViewer.sizeDelta;
+        size.y = buttonList.Count * 30 + buttonList.Count * 7 + 10f;
+        cursorListViewer.sizeDelta = size;
+    }
+
+    public void AddButton(Editor_CursorBase cursor)
+    {
+        Editor_CursorListButton button = null;
+
+        if(_buttonPool.Count == 0)
+        {
+            button = Instantiate(cursorButtonBase,Vector3.zero,Quaternion.identity).GetComponent<Editor_CursorListButton>();
+        }
+        else
+        {
+            button = _buttonPool.Dequeue();
+        }
+
+        button.Init(cursor);
+        button.transform.SetParent(cursorListViewer);
+
+        button.rect.anchoredPosition = new Vector2(2f,buttonList.Count * -30f + (buttonList.Count + 1) * -7);
+        button.gameObject.SetActive(true);
+
+        buttonList.Add(cursor,button);
+
+        UpdateButtonListHeight();
+    }
+
+    public void DeleteButton(Editor_CursorBase cursor)
+    {
+        var button = buttonList[cursor];
+
+        button.gameObject.SetActive(false);
+        _buttonPool.Enqueue(button);
+
+        buttonList.Remove(cursor);
+
+        UpdateButtonPos();
+        UpdateButtonListHeight();
     }
 
     public void UIActive(bool val)
@@ -118,6 +167,8 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
             _cursorPool.Enqueue(cursor);
 
             deleteCursorEvent(cursor);
+
+            DeleteButton(cursor);
         }
         
 
@@ -133,6 +184,7 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
     public void DisableAllCursor()
     {
         Editor_CursorBase.DeselectAll();
+        UpdateButtonColor();
 
         foreach(var cursor in cursorList)
         {
@@ -141,6 +193,15 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
         }
 
         cursorList.Clear();
+
+        foreach(var button in buttonList)
+        {
+            button.Value.gameObject.SetActive(false);
+            _buttonPool.Enqueue(button.Value);
+        }
+
+        buttonList.Clear();
+        UpdateButtonListHeight();
     }
 
     public void WhenXValueChanged()
@@ -239,16 +300,16 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
         {
             if(cursor.PointInCollider(clickedPos))
             {
-                if(multiSelect)
-                {
-                    Editor_CursorBase.SelectMultipleCursor(cursor);
-                }
-                else
-                {
-                    Editor_CursorBase.SelectSingleCursor(cursor);
-                }
+                // if(multiSelect)
+                // {
+                //     Editor_CursorBase.SelectMultipleCursor(cursor);
+                // }
+                // else
+                // {
+                //     Editor_CursorBase.SelectSingleCursor(cursor);
+                // }
 
-                UpdateCursorInfo(cursor,multiSelect);
+                // UpdateCursorInfo(cursor,multiSelect);
 
                 _cursorClicked = true;
                 uiLock = true;
@@ -263,5 +324,39 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
         {
             Editor_CursorBase.DeselectAll();
         }
+
+        UpdateButtonColor();
+    }
+
+    public void UpdateButtonPos()
+    {
+        int i = 0;
+        foreach(var button in buttonList)
+        {
+            if(!button.Value.cursor.selected)
+            {
+                button.Value.Deselect();
+            }
+
+            ++i;
+        }
+    }
+
+    public void UpdateButtonColor()
+    {
+        foreach(var button in buttonList)
+        {
+            if(!button.Value.cursor.selected)
+            {
+                button.Value.Deselect();
+            }
+        }
+        // for(int i = 0; i < buttonList.Count; ++i)
+        // {
+        //     if(!buttonList[i].cursor.selected)
+        //     {
+        //         buttonList[i].Deselect();
+        //     }
+        // }
     }
 }

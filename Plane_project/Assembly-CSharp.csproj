@@ -65,6 +65,7 @@
      <Compile Include="Assets\GameEditor\Editor_CameraControllBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_CursorBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_CursorController.cs" />
+     <Compile Include="Assets\GameEditor\Editor_CursorListButton.cs" />
      <Compile Include="Assets\GameEditor\Editor_EventSystem.cs" />
      <Compile Include="Assets\GameEditor\Editor_FolderItemBase.cs" />
      <Compile Include="Assets\GameEditor\Editor_FolderViewer.cs" />
@@ -140,10 +141,14 @@
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\ShootingDrone_Plane.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\CCTVDrone\CCTVDrone_Plane.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Script\Shader\ComboCount.shader" />
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/LeeUmin/Desktop/Invader/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
