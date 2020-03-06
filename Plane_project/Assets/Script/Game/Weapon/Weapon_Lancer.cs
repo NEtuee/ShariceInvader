@@ -28,7 +28,7 @@ public class Weapon_Lancer : WeaponBase
         base.Progress(deltaTime);
         UpdateAimTarget(4.5f,30f);
 
-        specAttack = false;
+        //specAttack = false;
 
         if(_attackTime != 0f)
         {
@@ -102,34 +102,44 @@ public class Weapon_Lancer : WeaponBase
     public override bool SpecialAttack(Vector3 dir)
     {
         _dodgeStartPos = _plane.position;
-        specAttack = true;
 
-        Vector3 pos = _dodgeStartPos;
-
-		EffectManager.GetInstance().AddEffect(pos + dir * (_plane._dodgeDist / 2f),"Weapon/Lancer/Drive")
+		EffectManager.GetInstance().AddEffect(_dodgeStartPos + dir * (_plane._dodgeDist / 2f),"Weapon/Lancer/Drive")
                                     .SetFps(12f)
 									.SetAngle(MathEx.directionToAngle(dir));
 
-        return true;
+        Vector3 pos = _plane.position;
+		Vector3 dirPos = dir / 10f;
+		
+		_plane.SetPosition(pos + dir * _plane._dodgeDist);
+
+        Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
+        var list = CollisionManager.GetInstance().GetCollisionList(t);
+
+        if(list != null)
+        {
+            int count = list.Count;
+
+
+            for(int i = 0 ; i < count; ++i)
+            {
+                _plane.UpdateCollider();
+                list[i].UpdateCollider();
+    
+                if(Define.SimpleCollider.CircleLineCircle(list[i].position,_dodgeStartPos,_plane.position,
+							_plane.coll.bound.box.x * 4f, list[i].coll.bound.box.x))
+		        {
+                    ((PlaneBase)list[i]).DecreaseHP(15);
+		        }
+            }
+        }
+
+        CameraControll.instance.FollowDelay(0.1f);
+
+        return false;
     }
     public override bool CollisionCheck(PlaneBase target)
     {
-        if(specAttack)
-		{
-			_plane.UpdateCollider();
-			target.UpdateCollider();
-
-			if(Define.SimpleCollider.CircleLineCircle(target.position,_dodgeStartPos,_plane.position,
-								_plane.coll.bound.box.x * 2f, target.coll.bound.box.x))
-			{
-				_plane.SetImmortal(true);
-				//_plane.Hit(target);
-                target.DecreaseHP(15);
-				_plane.SetImmortal(false);
-				return true;
-			}
-		}
-		else if(mainAttack)
+        if(mainAttack)
 		{
 			_plane.SetImmortal(true);
 			ObjectManager.GetInstance().UpdateStop(0.1f);

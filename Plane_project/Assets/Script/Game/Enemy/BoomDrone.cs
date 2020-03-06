@@ -54,6 +54,10 @@ public class BoomDrone : PlaneBase
 		base.deleteEvent();
 		ComboCount.instance.AddComboCount(1);
 
+        if(effect != null && effect.gameObject.activeInHierarchy)
+        {
+            effect.SetActive(false);
+        }
 	}
 
     public override void WhenDecreaseHP()

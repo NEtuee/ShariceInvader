@@ -128,7 +128,6 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
 
         button.gameObject.SetActive(false);
         _buttonPool.Enqueue(button);
-
         buttonList.Remove(cursor);
 
         UpdateButtonPos();
@@ -335,7 +334,7 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
         {
             if(!button.Value.cursor.selected)
             {
-                button.Value.Deselect();
+                button.Value.rect.anchoredPosition = new Vector2(2f,i * -30f + (i + 1) * -7);
             }
 
             ++i;

@@ -16,6 +16,9 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 	private ParticleSystem.EmitParams _param = new ParticleSystem.EmitParams();
 	private ParticleSystem.EmitParams _scaledParam = new ParticleSystem.EmitParams();
 
+	private TrailRenderer _bezierLine;
+	private List<Vector3> _bezierList = new List<Vector3>();
+
 	public void firstSetting()
 	{
 		_resManager = ResourceManager.GetInstance();
@@ -30,6 +33,9 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		_cache.CreateObject(count);
 
 		_effectProgress = new Action<EffectBase>(Loop);
+
+		GameObject trail = GameObject.FindGameObjectWithTag("BezierTrail");
+		_bezierLine = trail.GetComponent<TrailRenderer>();
 
 		GetParticleSystems();
 	}
@@ -141,6 +147,26 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 				sys.Emit(p,1);
 			}
 		}
+	}
+
+	public void DrawBezierLine(Vector2 start, Vector2 end, Vector2 bezierOne, Vector2 bezierTwo, float accuracy)
+	{
+		_bezierLine.AddPosition(start);
+		_bezierLine.emitting = true;
+
+		float progress = accuracy;
+		
+		while(progress <= 1f)
+		{
+			_bezierLine.AddPosition(MathEx.GetPointOnBezierCurve(start,bezierOne,bezierTwo,end,progress));
+			progress += accuracy;
+		}
+
+		_bezierLine.emitting = false;
+		_bezierLine.AddPosition(MathEx.GetPointOnBezierCurve(start,bezierOne,bezierTwo,end,1f));
+
+		_bezierLine.transform.position = Camera.main.transform.position;
+		//_bezierLine.transform.position = end;
 	}
 
 	public void lateProgress(float delatTime)

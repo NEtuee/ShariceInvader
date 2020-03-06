@@ -14,6 +14,7 @@ public abstract class WeaponBase
 
     public bool mainAttack;
     public bool specAttack;
+    public bool immedyActiveSpecAttack = false;
 
 
     public float mainCoolTime = 0f;
@@ -24,7 +25,7 @@ public abstract class WeaponBase
     protected bool _canAim = false;
     protected bool _hideAimObject = false;
 
-    private SpriteRenderer _aimObject = null;
+    protected SpriteRenderer _aimObject = null;
 	private AnimationControll _aimAni;
 
     public virtual void Initialize()
@@ -86,55 +87,24 @@ public abstract class WeaponBase
 
         Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
 
-		var link = ObjectManager.GetInstance().GetFirstLink(t);//place.GetLinkToType(Define.ObjectType.enemy);
-		ObjectBase target = null;
-		float dist = aimDist + 1f;
-		
-		while(link != null)
-		{
-			float d = Vector2.Distance(link.target.position,_plane.position);
-			if(d <= aimDist)
-			{
-				if(d < dist)
-				{
-					dist = d;
-					target = link.target;
-				}
-			}
+		var target = FindSingleTarget(aimDist,aimAngle);
 
-			link = link.next;
-		}
-
-		if(target != null)
-		{
-			float dot = Mathf.Cos(Mathf.Deg2Rad * aimAngle);
-            Vector3 dir = (target.position - _plane.position).normalized;
-
-
-            if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * _plane.angle)) > dot)
+        if(_aimTarget != target && target != null)
+        {
+            if(!_hideAimObject)
             {
-                if(_aimTarget != target)
-                {
-
-                    if(!_hideAimObject)
-                    {
-                        _aimObject.transform.position = target.position;
-			            _aimAni.ChangeAni("On",false);
-			            _aimObject.gameObject.SetActive(true);
-                    }
-                }
-
+                _aimObject.transform.position = target.position;
+		        _aimAni.ChangeAni("On",false);
+		        _aimObject.gameObject.SetActive(true);
             }
-            else
-                target = null;
-		}
+        }
 
 		if(target == null && !_hideAimObject)
 			_aimObject.gameObject.SetActive(false);
 
         if(!_hideAimObject && _aimTarget != null && _aimTarget != target)
         {
-            EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Disappear");
+            EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Disappear").SetSortingOrder(10);
         }
 
 		if(target != null)
@@ -146,6 +116,94 @@ public abstract class WeaponBase
         
         _aim = _aimTarget != null;
 	}
+
+    Define.SimpleCircleCollider distColl = new Define.SimpleCircleCollider(0f,0f,Vector2.zero);
+    public ObjectBase FindSingleTarget(float aimDist, float aimAngle)
+    {
+        Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
+
+		var link = ObjectManager.GetInstance().GetFirstLink(t);//place.GetLinkToType(Define.ObjectType.enemy);
+		ObjectBase target = null;
+		float dist = aimDist + 1f;
+
+        while(link != null)
+		{
+            float dot = Mathf.Cos(Mathf.Deg2Rad * aimAngle);
+            Vector3 dir = (link.target.position - _plane.position).normalized;
+
+            if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * _plane.angle)) > dot)
+            {
+                float d = Vector2.Distance(link.target.position,_plane.position);
+			    var p = (PlaneBase)link.target;
+
+                p.UpdateCollider();
+                distColl.Setup(aimDist,aimDist,_plane.position);
+
+                if(p.coll.CollisionCheck(distColl))
+                {
+                    if(dist > d)
+                    {
+                        dist = d;
+			            target = link.target;
+                    }
+                }
+            }
+
+			link = link.next;
+		}
+
+        return target;
+    }
+
+    protected List<ObjectBase> _multiTarget = new List<ObjectBase>();
+    public void FindMultipleTarget(float aimDist, float aimAngle)
+    {
+        _multiTarget.Clear();
+
+        Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
+
+		var link = ObjectManager.GetInstance().GetFirstLink(t);
+		float dist = aimDist + 1f;
+
+        while(link != null)
+		{
+            float dot = Mathf.Cos(Mathf.Deg2Rad * aimAngle);
+            Vector3 dir = (link.target.position - _plane.position).normalized;
+
+            if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * _plane.angle)) > dot)
+            {
+                float d = Vector2.Distance(link.target.position,_plane.position);
+			    var p = (PlaneBase)link.target;
+
+                p.UpdateCollider();
+                distColl.Setup(aimDist,aimDist,_plane.position);
+
+                if(p.coll.CollisionCheck(distColl))
+                {
+                    if(dist > d)
+                    {
+                        _multiTarget.Add(link.target);
+                    }
+                }
+            }
+
+			// float d = Vector2.Distance(link.target.position,_plane.position);
+			// if(d <= aimDist)
+			// {
+            //     float dot = Mathf.Cos(Mathf.Deg2Rad * aimAngle);
+            //     Vector3 dir = (link.target.position - _plane.position).normalized;
+
+
+            //     if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * _plane.angle)) > dot)
+            //     {
+            //         _multiTarget.Add(link.target);
+            //     }
+			// }
+
+			link = link.next;
+		}
+
+    }
 
     public void InitAimObject()
     {

@@ -13,9 +13,12 @@ public class EffectBase : Drawable {
 	Color _lerpEnd;
 
 	bool _colorLerp = false;
+	bool _realTimeProgress = false;
+	bool _passiveDeactive = false;
 
 	private float timer = 0f;
 	private float _existsTime = 0f;
+	private float _delayApear = 0f;
 	public override void firstSetting()
 	{
 		base.firstSetting();
@@ -32,6 +35,9 @@ public class EffectBase : Drawable {
 		_scale = new Vector3(1f,1f,1f);
 		_addPoint = Vector3.zero;
 
+		_realTimeProgress = false;
+		_passiveDeactive = false;
+
 		_position = pos;
 		ani.SetAnimation(sprites);
 		ani.InitValue(loop);
@@ -45,6 +51,7 @@ public class EffectBase : Drawable {
 		target = t;
 
 		timer = 0f;
+		_delayApear = 0f;
 
 		_sprRenderer.color = Color.white;
 		_colorLerp = false;
@@ -54,6 +61,9 @@ public class EffectBase : Drawable {
 
 	public EffectBase SetFps(float fps){ani.SetFps(fps); return this;}
 	public EffectBase SetAddPoint(Vector3 value) {_addPoint = value; return this;}
+	public EffectBase RealTimeProgress() {_realTimeProgress = true; return this;}
+	public EffectBase PassiveDeactive() {_passiveDeactive = true; return this;}
+	public EffectBase DelayApear(float time) {_delayApear = time; return this;}
 
 	public EffectBase Active(Vector2 pos, Sprite sprite, float time, ObjectBase t = null)
 	{
@@ -68,12 +78,16 @@ public class EffectBase : Drawable {
 		ani.ChangeAni("",false);
 		_sprRenderer.sprite = sprite;
 
+		_realTimeProgress = false;
+		_passiveDeactive = false;
+
 		SetSortingOrder(-1);
 
 		UpdateTransform();
 		SetActive(true);
 
 		target = t;
+		_delayApear = 0f;
 
 		timer = time;
 		_existsTime = time;
@@ -116,20 +130,37 @@ public class EffectBase : Drawable {
 
 	public override void progress(float deltaTime)
 	{
-		ani.AnimationProgress(ref _sprRenderer,deltaTime);
-		Move(deltaTime);
+		float time = _realTimeProgress ? Timer.GetInstance().noneScaledDeltaTime : deltaTime;
+		if(_delayApear != 0f)
+		{
+			sprRenderer.sprite = null;
+			_delayApear -= time;
+
+			if(_delayApear <= 0f)
+			{
+				_delayApear = 0f;
+			}
+			else
+			{
+				return;
+			}
+		}
+
+
+		ani.AnimationProgress(ref _sprRenderer,time);
+		Move(time);
 
 		if(target != null)
 			_position = target.position + _addPoint;
 
-		if(ani.isEnd)
+		if(ani.isEnd && !_passiveDeactive)
 		{
 			SetActive(false);
 		}
 
 		if(timer != 0f)
 		{
-			timer -= deltaTime;
+			timer -= time;
 
 			if(_colorLerp)
 			{

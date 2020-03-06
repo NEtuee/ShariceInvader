@@ -88,9 +88,7 @@ public class AnimationControllEx
 				return;
 
         	string file = path.Substring(path.LastIndexOf('/'));
-        	string pathName =  "Sprites/SpriteSet/" + path + file + "_Ani.txt";
-
-			Debug.Log(pathName);
+        	string pathName =  "Sprites/SpriteSet/" + path + file + "_Ani";
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 

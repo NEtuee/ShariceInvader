@@ -79,7 +79,8 @@ public class GameMain : MonoBehaviour {
 		
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			_objManager.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(new Vector3(0f,5f));
+			EffectManager.GetInstance().DrawBezierLine(Vector2.zero,new Vector2(0f,3f),new Vector2(1f,1f),new Vector2(-1f,2f),0.1f);
+			//_objManager.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(new Vector3(0f,5f));
 			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
 		}
 

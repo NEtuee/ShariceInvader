@@ -4,6 +4,40 @@ using UnityEngine;
 
 public abstract class PlaneBase : Collisionable {
 
+	public class DelayItem
+	{
+		public delegate void hitEventDelegate(PlaneBase plane);
+
+		public hitEventDelegate hitEvent;
+		public int attack;
+		public float timer;
+
+		public bool progress(float deltaTime)
+		{
+			timer -= deltaTime;
+			if(timer <= 0f)
+			{
+				timer = 0f;
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public void Set(int a, float t)
+		{
+			attack = a;
+			timer = t;
+		}
+
+		public DelayItem(int a, float t)
+		{
+			Set(a,t);
+		}
+	}
+
+
 	public enum AnimationType
 	{
 		Vertical = 0,
@@ -72,6 +106,11 @@ public abstract class PlaneBase : Collisionable {
 	protected AnimationType _aniType;
 
 	protected Editor_PlaneInfoBase _infoBase;
+
+
+
+	private List<DelayItem> _delayHitList = new List<DelayItem>();
+	private static Queue<DelayItem> _delayPool = new Queue<DelayItem>();
 
 	public override void firstSetting()
 	{
@@ -238,6 +277,46 @@ public abstract class PlaneBase : Collisionable {
 		DecreaseHP(bullet.attack);
 	}
 
+	public void AddDelayAttackList(int attack, float time, DelayItem.hitEventDelegate hitEvent)
+	{
+		DelayItem item = null;
+
+		if(_delayPool.Count != 0)
+		{
+			item = _delayPool.Dequeue();
+			item.Set(attack,time);
+		}
+		else
+		{
+			item = new DelayItem(attack,time);
+		}
+
+		item.hitEvent = hitEvent;
+
+		_delayHitList.Add(item);
+	}
+
+	public void DelayAttackProgress(float deltaTime)
+	{
+		for(int i = 0; i < _delayHitList.Count;)
+		{
+			if(_delayHitList[i].progress(deltaTime))
+			{
+				_delayHitList[i].hitEvent(this);
+				DecreaseHP(_delayHitList[i].attack);
+
+				if(deleted)
+					return;
+
+				_delayPool.Enqueue(_delayHitList[i]);
+
+				_delayHitList.RemoveAt(i);
+			}
+			else
+				++i;
+		}
+	}
+
 	public override bool CollisionCheck(Collisionable target)
 	{
 		if(_noclip || target.noClip)
@@ -306,6 +385,9 @@ public abstract class PlaneBase : Collisionable {
 
 	public void BasicUpdate(float deltaTime)
 	{
+		DelayAttackProgress(deltaTime);
+
+
 		if(_trailEmmit)
 		{
 			_trailMat.SetFloat("_random",Random.Range(40000f,50000f));
@@ -667,6 +749,13 @@ public abstract class PlaneBase : Collisionable {
 							ExplosionSmoke(_position,_position + targetDir * range,0.1f,0.025f,35);
 			}
 		}
+
+		foreach(var item in  _delayHitList)
+		{
+			_delayPool.Enqueue(item);
+		}
+
+		_delayHitList.Clear();
 
 		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetAngle(Random.Range(0f,360f));
 

@@ -248,6 +248,12 @@ public class SimpleCircleCollider : SimpleCollider
 		return false;
 	}
 
+	public void Setup(float x, float y,Vector2 pos)
+	{
+		_bound.SetRect(x,y);
+		_bound.UpdateRect(pos);
+	}
+
 	public SimpleCircleCollider(float x, float y,Vector2 pos)
 	{
 		_bound = new SimpleRect(x,y,pos);

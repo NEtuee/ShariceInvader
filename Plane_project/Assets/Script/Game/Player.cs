@@ -189,36 +189,46 @@ public class Player : PlaneBase {
 		if(Input.GetKeyDown(KeyCode.Mouse1))
 		{
 			Timer.GetInstance().SetTimeScale(0.1f);
+			
+			Vector3 mouse =_cam.ScreenToWorldMouse();
+			mouse = (mouse - _position).normalized;
+			if(mainWeapon.immedyActiveSpecAttack)
+			{
+				mainWeapon.SpecialAttack(mouse);
+			}
 		}
 		else if(Input.GetKeyUp(KeyCode.Mouse1))
 		{
 			Vector3 mouse =_cam.ScreenToWorldMouse();
 			mouse = (mouse - _position).normalized;
-			if(mainWeapon.SpecialAttack(mouse))
+			if(!mainWeapon.immedyActiveSpecAttack)
 			{
-
-				//_dodgeStartPos = _position;
-
-				Dodge(mouse,false);
-				_dodge = true;
-				//_dodgeAttack = true;
-
-				_cam.Shake(0.2f, _direction / 20f);
-
-				// if(!isnone)
-				// 	weaponGague -= 3;
-
-				MainHud.instance.UpdateGague((float)weaponGague / 12f);
-
-				if(weaponGague <= 0)
+				if(mainWeapon.SpecialAttack(mouse))
 				{
-					WeaponChange(new Weapon_None(this));
-					isnone = true;
-					weaponGague = 0;
 
-					MainHud.instance.UpdateGague(0f);
+					//_dodgeStartPos = _position;
+
+					Dodge(mouse,false);
+					_dodge = true;
+					//_dodgeAttack = true;
+
+					_cam.Shake(0.2f, _direction / 20f);
+
+					// if(!isnone)
+					// 	weaponGague -= 3;
+
+					MainHud.instance.UpdateGague((float)weaponGague / 12f);
+
+					if(weaponGague <= 0)
+					{
+						WeaponChange(new Weapon_None(this));
+						isnone = true;
+						weaponGague = 0;
+
+						MainHud.instance.UpdateGague(0f);
+					}
+					Timer.GetInstance().SetTimeScale(1f);
 				}
-				Timer.GetInstance().SetTimeScale(1f);
 			}
 
 		}

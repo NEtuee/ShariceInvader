@@ -22,6 +22,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	private float _zoomScale;
 	private float _glitchTimer = 0f;
 	private float _timeSaver = 0f;
+	private float _delayTimer = 0f;
 
 	private float camWidth;
 	private float camHeight;
@@ -72,8 +73,20 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	{
 		if(_followTarget != null)
 		{
-			_position = Vector2.Lerp(_position,_followTarget.position,deltaTime * _followSpeed);
-			_position.z = _zDist;
+			if(_delayTimer != 0f)
+			{
+				_delayTimer -= Time.deltaTime;
+				if(_delayTimer <= 0f)
+				{
+					Timer.GetInstance().SetTimeScaleTimer(1f,0.3f,true);
+					_delayTimer = 0f;
+				}
+			}
+			else
+			{
+				_position = Vector2.Lerp(_position,_followTarget.position,deltaTime * _followSpeed);
+				_position.z = _zDist;
+			}
 		}
 
 		if(_shakeTimer > 0f)
@@ -144,6 +157,11 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	{
 		if(_main.orthographicSize > scale)
 			_main.orthographicSize = scale;
+	}
+
+	public void FollowDelay(float delay)
+	{
+		_delayTimer = delay;
 	}
 
 	public void release()

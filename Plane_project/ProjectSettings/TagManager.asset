@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ParticleSystems
+  - BezierTrail
   layers:
   - Default
   - TransparentFX
