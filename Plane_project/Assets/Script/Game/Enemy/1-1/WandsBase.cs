@@ -8,14 +8,16 @@ public class WandsBase : PlaneBase
     {
         base.firstSetting();
 
-        LoadPlaneData("Boss_1-1/Marker");
-        //SetSpriteSet("Boss_1-1/Marker",AnimationType.None);
-		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
-        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("Boss_1-1/Marker",2);
-        _spriteAngle = 360f / _dirSprites.Length;
+        Debug.Log("one");
+        // LoadPlaneData("Boss_1-1/Marker");
+        // //SetSpriteSet("Boss_1-1/Marker",AnimationType.None);
+		// SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
-        UpdateSprite();
+        // _dirSprites = ResourceManager.GetInstance().GetSpriteSet("Boss_1-1/Marker",2);
+        // _spriteAngle = 360f / _dirSprites.Length;
+
+        // UpdateSprite();
     }
 
     public float mainAngle = 0f;
@@ -40,6 +42,8 @@ public class WandsBase : PlaneBase
         _speed = 0.2f;
         _maxSpeed = 3.2f; 
         _gravityScale = 0f;
+
+        _hp = 30;
 
 
         RegisteCollisionList();

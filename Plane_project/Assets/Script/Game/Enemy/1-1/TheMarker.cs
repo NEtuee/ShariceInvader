@@ -50,7 +50,7 @@ public class TheMarker : PlaneBase
 
     private float _spinSpeedTarget = 180f;
     private float _markerSpreadTarget = -5f;
-    private float _wandsPosX = -0.2f;
+    private float _wandsPosX = 0.2f;
 
     private bool _spreading = false;
 
@@ -116,7 +116,7 @@ public class TheMarker : PlaneBase
     {
         for(int i = 0; i < 5; ++i)
         {
-            var wand = ObjectManager.GetInstance().AddObject<Wand_Defender>(Define.ObjectType.enemy,"Wands");
+            var wand = ObjectManager.GetInstance().AddObject<Wand_Defender>(Define.ObjectType.enemy,"Defender");
             wand.tp.position = _position;
             wand.SetPosition(_position);
             wand.targetPos = _position;
@@ -220,7 +220,7 @@ public class TheMarker : PlaneBase
     {
         MarkerSpread(45f);
 
-        _wandsPosX = -0.35f;
+        _wandsPosX = -0.2f;
     }
 
     public void Fold()
@@ -232,7 +232,7 @@ public class TheMarker : PlaneBase
     {
         _spinSpeedTarget = 1440f;
         _markerSpreadTarget = angle;
-        _wandsPosX = -0.2f;
+        _wandsPosX = 0.2f;
 
         _spreading = true;
     }

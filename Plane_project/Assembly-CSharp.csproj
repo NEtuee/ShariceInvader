@@ -142,7 +142,6 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Loop\Loop_Ani.txt" />
      <None Include="Assets\Script\Shader\Pixelization.shader" />
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />

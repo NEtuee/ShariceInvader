@@ -13,6 +13,15 @@ public class Wand_Archer : WandsBase
     {
         base.firstSetting();
 
+        LoadPlaneData("Boss_1-1/Marker");
+        //SetSpriteSet("Boss_1-1/Marker",AnimationType.None);
+		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
+
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("Boss_1-1/Marker",2);
+        _spriteAngle = 360f / _dirSprites.Length;
+
+        UpdateSprite();
+
         _missile = ResourceManager.GetInstance().GetPrefab("Wand_Missile");
         del = ObjectCreateEvent;
     }

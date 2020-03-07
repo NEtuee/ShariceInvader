@@ -115,6 +115,9 @@ public abstract class PlaneBase : Collisionable {
 	public override void firstSetting()
 	{
 		base.firstSetting();
+
+		if(name == "Defender")
+			Debug.Log("two");
 		MiniMapIconSetup();
 	}
 

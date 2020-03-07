@@ -7,7 +7,8 @@ public abstract class Drawable : ObjectBase {
 	public SpriteRenderer sprRenderer{get{return _sprRenderer;}}
 	protected SpriteRenderer _sprRenderer;
 
-	public override void firstSetting(){AddSpriteRenderer();}
+	public override void firstSetting(){ if(name == "Defender")
+			Debug.Log("three");AddSpriteRenderer();}
 	public abstract override void initialize();
 	public abstract override void progress(float deltaTime);
 	public override void release(){}

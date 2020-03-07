@@ -315,10 +315,10 @@ public class Player : PlaneBase {
 
 				//_eulerAngle = MathEx.directionToAngle(_direction);
 
-				// if(_direction.x < 0f)
-				// 	_scale.y = -1f;
-				// else if(_direction.x > 0f)
-				// 	_scale.y = 1f;
+				if(_direction.y < 0f)
+					_scale.y = -1f;
+				else if(_direction.y > 0f)
+					_scale.y = 1f;
 			}
 
 		}
