@@ -14,15 +14,13 @@ public class Editor_PlaneInfoBase
         public float time;
         public float startWidth;
         public float endWidth;
-        public int sortingOrder;
 
-        public TrailInfo(string mat, float t, float s, float e, int sort)
+        public TrailInfo(string mat, float t, float s, float e)
         {
             trailMaterial = mat;
             time = t;
             startWidth = s;
             endWidth = e;
-            sortingOrder = sort;
         }
     };
 
@@ -53,6 +51,7 @@ public class Editor_PlaneInfoBase
     public TrailInfo trailInfo;
 
     public Dictionary<int,List<Vector2>> trailPoint = new Dictionary<int,List<Vector2>>();
+    public Dictionary<int,List<int>> trailSortingOredrs = new Dictionary<int, List<int>>();
     public Dictionary<int,List<Vector2>> boostPoint = new Dictionary<int,List<Vector2>>();
 
     private string _path;
@@ -66,6 +65,12 @@ public class Editor_PlaneInfoBase
             item.Value.Clear();
         }
         trailPoint.Clear();
+
+        foreach(var item in trailSortingOredrs)
+        {
+            item.Value.Clear();
+        }
+        trailSortingOredrs.Clear();
 
         foreach(var item in boostPoint)
         {
@@ -98,7 +103,7 @@ public class Editor_PlaneInfoBase
         boostCount = 1;
         trailCount = 1;
 
-        trailInfo = new TrailInfo("PlaneTrail",0.5f,0.03f,0.005f,-4);
+        trailInfo = new TrailInfo("PlaneTrail",0.5f,0.03f,0.005f);
 
         ClearDictionary();
 
@@ -106,12 +111,15 @@ public class Editor_PlaneInfoBase
         {
             List<Vector2> trailList = new List<Vector2>();
             List<Vector2> boostList = new List<Vector2>();
+            List<int> sortList = new List<int>();
 
             trailList.Add(new Vector2(0f,0f));
             boostList.Add(new Vector2(0f,0f));
+            sortList.Add(-1);
 
             trailPoint.Add(i,trailList);
             boostPoint.Add(i,boostList);
+            trailSortingOredrs.Add(i,sortList);
         }
 
         spriteSet = spr;
@@ -142,7 +150,7 @@ public class Editor_PlaneInfoBase
         data.Add("bodyAttack:" + bodyAttack.ToString());
         data.Add("boostCount:" + boostCount.ToString());
         data.Add("trailCount:" + trailCount.ToString());
-        data.Add("trailInfo:" + trailInfo.trailMaterial + "," + trailInfo.time + "," + trailInfo.startWidth + "," + trailInfo.endWidth + "," + trailInfo.sortingOrder);
+        data.Add("trailInfo:" + trailInfo.trailMaterial + "," + trailInfo.time + "," + trailInfo.startWidth + "," + trailInfo.endWidth);
 
         if(trailPoint.Count > 0)
         {
@@ -153,6 +161,18 @@ public class Editor_PlaneInfoBase
                 foreach(var vector in item.Value)
                 {
                     s += vector.x + "," + vector.y + "!";
+                }
+                s += "/";
+            }
+            data.Add(s);
+
+            s = "trailSortingOrder:";
+            foreach(var item in trailSortingOredrs)
+            {
+                s += item.Key.ToString() + "_";
+                foreach(var i in item.Value)
+                {
+                    s += i + "!";
                 }
                 s += "/";
             }
@@ -207,6 +227,32 @@ public class Editor_PlaneInfoBase
         }
     }
 
+    public void ParseDictionaryDataForSortingOrder(ref Dictionary<int,List<int>> dic, string data)
+    {
+        data = data.Replace("\r",string.Empty);
+        string[] splitData = data.Split('/');
+        foreach(var d in splitData)
+        {
+            if(d == "")
+                continue;
+
+            string[] row = d.Split('_');
+            string[] ints = row[1].Split('!');
+
+            List<int> intList = new List<int>();
+            foreach(var i in ints)
+            {
+                if(i == "")
+                    continue;
+
+                string pureData = i.Replace(" ",string.Empty);
+                intList.Add(int.Parse(pureData));
+            }
+
+            dic.Add(int.Parse(row[0]),intList);
+        }
+    }
+
     public void LoadDataFile(string[] data)
     {
         ClearDictionary();
@@ -258,7 +304,7 @@ public class Editor_PlaneInfoBase
             else if(split[0] == "trailInfo")
             {
                 string[] row = split[1].Split(',');
-                trailInfo = new TrailInfo(row[0],float.Parse(row[1]),float.Parse(row[2]),float.Parse(row[3]),int.Parse(row[4]));
+                trailInfo = new TrailInfo(row[0],float.Parse(row[1]),float.Parse(row[2]),float.Parse(row[3]));
             }
             else if(split[0] == "trailPoints")
             {
@@ -267,6 +313,10 @@ public class Editor_PlaneInfoBase
             else if(split[0] == "boostPoints")
             {
                 ParseDictionaryData(ref boostPoint,split[1]);
+            }
+            else if(split[0] == "trailSortingOrder")
+            {
+                ParseDictionaryDataForSortingOrder(ref trailSortingOredrs,split[1]);
             }
         }
     }

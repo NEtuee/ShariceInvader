@@ -309,7 +309,7 @@ public class Player : PlaneBase {
 					// 	Debug.Log("tre");
 				}
 
-				_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,(_speed == 0f ? 10f : 5f) * curve * delta);
+				_eulerAngle = MathEx.clamp360Degree(Mathf.LerpAngle(_eulerAngle,controllAngle,(_speed == 0f ? 10f : 5f) * curve * delta));
 				_direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
 
 

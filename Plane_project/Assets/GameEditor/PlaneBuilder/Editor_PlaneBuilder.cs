@@ -74,6 +74,8 @@ public class Editor_PlaneBuilder : MonoBehaviour
         cursorController.deleteCursorEvent += DeleteCursor;
         Editor_AnimationKeyViewer.keySelected += KeySelectEvent;
         Editor_CursorBase.cursorValueChangedEvent += CursorPositionUpdateEvent;
+        Editor_CursorBase.cursorSelectedEvent += UpdateTrailSortingOrderData;
+        Editor_CursorBase.cursorDeselectedEvent += UpdateTrailSortingOrderData;
 
         _boostObjects = new GameObject("BoostObjects");
         _trailObjects = new GameObject("TrailObjects");
@@ -186,6 +188,16 @@ public class Editor_PlaneBuilder : MonoBehaviour
         foreach(var trail in _trailRenderers)
         {
             trail.TrailDataUpdate();
+        }
+    }
+
+    public void UpdateTrailSotringOrder()
+    {
+        int frame = Editor_AnimationKeyBase.selected.frame;
+
+        for(int i = 0; i < _trailRenderers.Count; ++i)
+        {
+            _trailRenderers[i].trail.sortingOrder = planeInfo.trailSortingOredrs[frame][i];
         }
     }
 
@@ -352,6 +364,8 @@ public class Editor_PlaneBuilder : MonoBehaviour
         }
 
         Editor_CursorBase.UpdateCenterPosition();
+        UpdateTrailSortingOrderData(null);
+        UpdateTrailSotringOrder();
     }
 
     public void AddTrailCursor(Vector2 pos, bool load = false)
@@ -370,10 +384,16 @@ public class Editor_PlaneBuilder : MonoBehaviour
             {
                 item.Value.Add(pos);
             }
+            foreach(var item in planeInfo.trailSortingOredrs)
+            {
+                item.Value.Add(-1);
+            }
+
             UpdateTrailCount();
         }
 
         AddTrailRenderer(pos);
+
     }
 
     public void AddBoostCursor(Vector2 pos, bool load = false)
@@ -436,6 +456,11 @@ public class Editor_PlaneBuilder : MonoBehaviour
             Debug.Log(cursor.uniqueNumber);
 
             foreach(var item in planeInfo.trailPoint)
+            {
+                item.Value.RemoveAt(cursor.uniqueNumber);
+            }
+
+            foreach(var item in planeInfo.trailSortingOredrs)
             {
                 item.Value.RemoveAt(cursor.uniqueNumber);
             }
@@ -525,7 +550,39 @@ public class Editor_PlaneBuilder : MonoBehaviour
         trailTime.text = planeInfo.trailInfo.time.ToString();
         trailStartWidth.text = planeInfo.trailInfo.startWidth.ToString();
         trailEndWidth.text = planeInfo.trailInfo.endWidth.ToString();
-        trailSortingOrder.text = planeInfo.trailInfo.sortingOrder.ToString();
+
+        UpdateTrailSortingOrderData(null);
+    }
+
+    public void UpdateTrailSortingOrderData(Editor_CursorBase c)
+    {
+        if(c.selected && _boostCursor.Contains(c))
+        {
+            trailSortingOrder.interactable = false;
+            return;
+        }
+
+        int count = Editor_CursorBase.selectedCursorList.Count;
+        if(count == 1)
+        {
+            int key = Editor_AnimationKeyBase.selected.frame;
+            int cursor = Editor_CursorBase.selectedCursorList[0].uniqueNumber;
+
+            trailSortingOrder.text = planeInfo.trailSortingOredrs[key][cursor].ToString();
+        }
+        else
+        {
+            trailSortingOrder.text = "";
+        }
+
+        if(count == 0)
+        {
+            trailSortingOrder.interactable = false;
+        }
+        else
+        {
+            trailSortingOrder.interactable = true;
+        }
     }
 
     public void DataSet_animationType(){planeInfo.animationType = (PlaneBase.AnimationType)animationType.value;}
@@ -581,5 +638,15 @@ public class Editor_PlaneBuilder : MonoBehaviour
     public void DataSet_TrailTime(){planeInfo.trailInfo.time = float.Parse(trailTime.text); UpdateTrailData();}
     public void DataSet_TrailStartWidth(){planeInfo.trailInfo.startWidth = float.Parse(trailStartWidth.text); UpdateTrailData();}
     public void DataSet_TrailEndWidth(){planeInfo.trailInfo.endWidth = float.Parse(trailEndWidth.text); UpdateTrailData();}
-    public void DataSet_TrailSortingOredr(){planeInfo.trailInfo.sortingOrder = int.Parse(trailSortingOrder.text); UpdateTrailData();}
+    public void DataSet_TrailSortingOredr()
+    {
+        int key = Editor_AnimationKeyBase.selected.frame;
+
+        foreach(var item in Editor_CursorBase.selectedCursorList)
+        {
+            planeInfo.trailSortingOredrs[key][item.uniqueNumber] = int.Parse(trailSortingOrder.text);
+        }
+
+        UpdateTrailSotringOrder();
+    }
 }

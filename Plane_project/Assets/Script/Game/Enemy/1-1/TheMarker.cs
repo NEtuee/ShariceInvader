@@ -116,7 +116,7 @@ public class TheMarker : PlaneBase
     {
         for(int i = 0; i < 5; ++i)
         {
-            var wand = ObjectManager.GetInstance().AddObject<WandsBase>(Define.ObjectType.enemy,"Wands");
+            var wand = ObjectManager.GetInstance().AddObject<Wand_Defender>(Define.ObjectType.enemy,"Wands");
             wand.tp.position = _position;
             wand.SetPosition(_position);
             wand.targetPos = _position;

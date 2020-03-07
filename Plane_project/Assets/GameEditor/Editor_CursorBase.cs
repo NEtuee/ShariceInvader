@@ -7,6 +7,8 @@ public class Editor_CursorBase : MonoBehaviour
     public delegate void cursorValueChanged(Editor_CursorBase cursor);
     public static List<Editor_CursorBase> selectedCursorList = new List<Editor_CursorBase>();
     public static cursorValueChanged cursorValueChangedEvent = new cursorValueChanged((Editor_CursorBase cursor)=>{});
+    public static cursorValueChanged cursorSelectedEvent = new cursorValueChanged((Editor_CursorBase cursor)=>{});
+    public static cursorValueChanged cursorDeselectedEvent = new cursorValueChanged((Editor_CursorBase cursor)=>{});
     public SpriteRenderer mainRenderer;
     public Collider2D mainCollider;
     public bool selected = false;
@@ -22,11 +24,14 @@ public class Editor_CursorBase : MonoBehaviour
             cursor.DeselectProgress();
         }
 
+        cursorDeselectedEvent(null);
+
         selectedCursorList.Clear();
     }
     public static void DeselectCursor(Editor_CursorBase cursor)
     {
         selectedCursorList.Remove(cursor);
+        cursorDeselectedEvent(cursor);
     }
     public static void SetXValue(float x)
     {
@@ -71,6 +76,7 @@ public class Editor_CursorBase : MonoBehaviour
         {
             cursor.Select();
             selectedCursorList.Add(cursor);
+            cursorSelectedEvent(cursor);
         }
     }
 

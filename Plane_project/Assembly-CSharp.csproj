@@ -122,6 +122,7 @@
      <Compile Include="Assets\Script\Game\Enemy\1-1\TheMarker.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\UACV.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Archer.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Defender.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Missile.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\WandsBase.cs" />
      <Compile Include="Assets\Script\Game\Enemy\AIBase.cs" />

@@ -483,6 +483,7 @@ public abstract class PlaneBase : Collisionable {
 		if(_aniType == AnimationType.Horizontal)
 		{
 			float ang = _eulerAngle;
+			Debug.Log(_eulerAngle);
 			ang = MathEx.abs(ang);
 
 			int div = (int)ang / 180;
@@ -601,8 +602,7 @@ public abstract class PlaneBase : Collisionable {
 		for(int i = 0; i < trailCount; ++i)
 		{
 			TrailSetUp(_infoBase.trailPoint[0][i],_infoBase.trailInfo.trailMaterial,
-						_infoBase.trailInfo.time,_infoBase.trailInfo.startWidth,_infoBase.trailInfo.endWidth,
-						_infoBase.trailInfo.sortingOrder);
+						_infoBase.trailInfo.time,_infoBase.trailInfo.startWidth,_infoBase.trailInfo.endWidth);
 		}
 
 		for(int i = 0; i < boostCount; ++i)
@@ -621,6 +621,7 @@ public abstract class PlaneBase : Collisionable {
 		for(int i = 0; i < _trail.Count; ++i)
 		{
 			_trail[i].transform.localPosition = Vector3.Lerp(_trail[i].transform.localPosition, _infoBase.trailPoint[_spritePoint][i], 0.2f);
+			_trail[i].sortingOrder = _infoBase.trailSortingOredrs[_spritePoint][i];
 		}
 	}
 
@@ -812,7 +813,7 @@ public abstract class PlaneBase : Collisionable {
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * ratio,CanvasScript.instance.canvasHeight - 20));
 	}
 
-	public void TrailSetUp(Vector2 pos, string material, float time, float startWidth, float endWidth, int sortingOrder)
+	public void TrailSetUp(Vector2 pos, string material, float time, float startWidth, float endWidth)
 	{
 		GameObject trailObj = new GameObject("trail");
 		trailObj.transform.position = pos;
@@ -829,7 +830,6 @@ public abstract class PlaneBase : Collisionable {
 		trail.time = time;
 		trail.startWidth = startWidth;
 		trail.endWidth = endWidth;
-		trail.sortingOrder = sortingOrder;
 
 		_trail.Add(trail);
 	}

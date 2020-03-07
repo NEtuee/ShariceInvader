@@ -60,6 +60,5 @@ public class Editor_TrailRenderer : MonoBehaviour
 		trail.time = info.trailInfo.time;
 		trail.startWidth = info.trailInfo.startWidth;
 		trail.endWidth = info.trailInfo.endWidth;
-		trail.sortingOrder = info.trailInfo.sortingOrder;
     }
 }
