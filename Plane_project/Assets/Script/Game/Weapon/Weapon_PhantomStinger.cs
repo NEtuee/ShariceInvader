@@ -9,7 +9,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     private List<EffectBase> _aimEffects = new List<EffectBase>();
 
-    int _maxTarget = 5;
+    int _maxTarget = 30;
 
     public override void Initialize()
     {
@@ -34,6 +34,7 @@ public class Weapon_PhantomStinger : WeaponBase
             if(Input.GetKeyUp(KeyCode.W))
             {
                 MainAttackProgress();
+                _aimObj.gameObject.SetActive(false);
             }
         }
         else if(specAttack)
@@ -44,6 +45,7 @@ public class Weapon_PhantomStinger : WeaponBase
             if(Input.GetKeyUp(KeyCode.Mouse1))
             {
                 SpecialAttackProgress();
+                _aimObj.gameObject.SetActive(false);
             }
         }
         else
@@ -60,8 +62,6 @@ public class Weapon_PhantomStinger : WeaponBase
     }
     public override void MainAttack()
     {
-        _aimObj.gameObject.SetActive(true);
-
         if(_aim)
         {
             _plane.SetSpeed(0f);
@@ -69,6 +69,8 @@ public class Weapon_PhantomStinger : WeaponBase
 
             Timer.GetInstance().SetTimeScale(0.2f);
             mainAttack = true;
+
+            _aimObj.gameObject.SetActive(true);
         }
         else
         {
@@ -100,7 +102,7 @@ public class Weapon_PhantomStinger : WeaponBase
         _aimTarget.DecreaseHP(5);
 
         float dist = Vector2.Distance(_plane.position,_aimTarget.position);
-        Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.333f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
+        Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         Vector2 two = Vector2.Lerp(_plane.position,_aimTarget.position,0.666f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         EffectManager.GetInstance().DrawBezierLine(_plane.position,_aimTarget.position,one,two,0.05f);
     }
@@ -122,15 +124,13 @@ public class Weapon_PhantomStinger : WeaponBase
                 var effect = EffectManager.GetInstance().AddEffect(pos,"PhantomString_Aim/Appear",false,_multiTarget[count])
                             .RealTimeProgress()
                             .PassiveDeactive()
-                            .DelayApear(i * 0.07f);
+                            .DelayApear(i * 0.06f);
                 effect.SetSortingOrder(10);
                 _aimEffects.Add(effect);
 
                 ++count;
             }
         }
-
-        _aimObject.gameObject.SetActive(false);
 
         specAttack = true;
         _plane.SetControll(true);
@@ -173,7 +173,7 @@ public class Weapon_PhantomStinger : WeaponBase
         HitEffects(target.position);
 
         float dist = Vector2.Distance(_plane.position,target.position);
-        Vector2 one = Vector2.Lerp(_plane.position,target.position,0.333f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
+        Vector2 one = Vector2.Lerp(_plane.position,target.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         Vector2 two = Vector2.Lerp(_plane.position,target.position,0.666f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         EffectManager.GetInstance().DrawBezierLine(_plane.position,target.position,one,two,0.05f);
     }
@@ -185,8 +185,6 @@ public class Weapon_PhantomStinger : WeaponBase
         _plane.SetAbsoluteForce(_plane.direction * 1000f);
         EffectManager.GetInstance().AddEffect(_plane.position,"Burst")
 							.SetAngle(MathEx.directionToAngle(_plane.direction));
-        
-        _aimObj.gameObject.SetActive(false);
     }
 
     public void HitEffects(Vector3 pos)
@@ -209,15 +207,20 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public void UpdateAim()
     {
-        Vector3 pos = _plane.position + _plane.direction * 0.4f;
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouse.z = 0f;
+
+        Vector3 dir = (mouse - _plane.position).normalized;
+        Vector3 pos = _plane.position + dir * 0.4f;
         _aimObj.transform.position = pos;
-        _aimObj.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(_plane.direction));
+        _aimObj.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(dir.normalized));
     }
 
     public Weapon_PhantomStinger(PlaneBase plane) : base(plane)
     {
         _aimObj = new GameObject("PhantomAim").AddComponent<SpriteRenderer>();
         _aimObj.sprite = ResourceManager.GetInstance().GetSprite("center_phantomstepaim");
+        _aimObj.gameObject.SetActive(false);
 
         UpdateAim();
     }

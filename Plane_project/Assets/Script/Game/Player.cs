@@ -153,6 +153,8 @@ public class Player : PlaneBase {
 			}
 		}
 
+
+		BulletManager.GetInstance().CollisionCheck(this,BulletType.enemy);
 		HeightIconUpdate();
 	}
 

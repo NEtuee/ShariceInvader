@@ -233,6 +233,7 @@ public abstract class PlaneBase : Collisionable {
 
 	public virtual void BurstActive(bool effectActive = true)
 	{
+		SetAdditionalSpeed(2f,0.3f,true);
 		SetAbsoluteForce((_direction * 150f));
 
 		if(_boostAniProgress)

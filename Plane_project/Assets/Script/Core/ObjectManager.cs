@@ -3,6 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
+	public delegate void DelayObjectCreateEventDelegate(ObjectBase obj);
+
+	public class DelayObjectCreateItem
+	{
+		public string name;
+		public float timer;
+		public GameObject target;
+		public Define.ObjectType type;
+		public DelayObjectCreateEventDelegate eventDelegate;
+
+		public bool progress(float deltaTime)
+		{
+			timer -= deltaTime;
+			if(timer <= 0f)
+			{
+				timer = 0f;
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public void Set(string n, float t, DelayObjectCreateEventDelegate d,GameObject tar, Define.ObjectType ty)
+		{
+			name = n;
+			timer = t;
+			eventDelegate = d;
+			target = tar;
+			type = ty;
+		}
+	}
 
 	private Dictionary<Define.ObjectType, LinkedList<ObjectBase>> _objectDic =
 			new Dictionary<Define.ObjectType, LinkedList<ObjectBase>>();
@@ -13,6 +45,11 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	private float _stopTimer = 0f;
 
 	private List<ObjectBase> _created = new List<ObjectBase>();
+
+
+	private List<DelayObjectCreateItem> _createRequests = new List<DelayObjectCreateItem>();
+	private Queue<DelayObjectCreateItem> _createPool = new Queue<DelayObjectCreateItem>();
+	
 
 	public void firstSetting()
 	{
@@ -39,13 +76,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	}
 
 	public LinkBase<ObjectBase> GetFirstLink(Define.ObjectType type) {return _objectDic[type].front;}
-	// public LinkBase<ObjectBase> GetPlaceObjectLink(ObjectBase obj, Define.ObjectType type)
-	// {
-	// 	if(obj.place == null)
-	// 		return null;
-		
-	// 	return obj.place.GetLinkToType(obj.type);
-	// }
+
 	public void progress(float deltaTime)
 	{
 		if(_created.Count != 0)
@@ -124,6 +155,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 			}
 		}
 
+		DelayedRequestsProgress(deltaTime);
+
 		foreach(var dic in _objectDic)
 		{
 			if(dic.Value.count > 0)
@@ -153,6 +186,44 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 				dic.Value.DeleteProgress();
 			}
 		}
+	}
+
+	public void DelayedRequestsProgress(float deltaTime)
+	{
+		for(int i = 0; i < _createRequests.Count;)
+		{
+			if(_createRequests[i].progress(deltaTime))
+			{
+				var obj = AddObject(_createRequests[i].type,_createRequests[i].target);
+				obj.name = _createRequests[i].name;
+				_createRequests[i].eventDelegate(obj);
+
+				_createPool.Enqueue(_createRequests[i]);
+				_createRequests.RemoveAt(i);
+			}
+			else
+			{
+				++i;
+			}
+		}
+	}
+
+	public void AddObjectDelayed(float time, string name, GameObject origin, Define.ObjectType type, DelayObjectCreateEventDelegate del)
+	{
+		DelayObjectCreateItem item = null;
+
+		if(_createPool.Count != 0)
+		{
+			item = _createPool.Dequeue();
+		}
+		else
+		{
+			item = new DelayObjectCreateItem();
+		}
+
+		item.Set(name,time,del,origin,type);
+
+		_createRequests.Add(item);
 	}
 
 	public void UpdateStop(float time)

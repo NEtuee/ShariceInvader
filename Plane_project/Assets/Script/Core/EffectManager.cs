@@ -164,7 +164,7 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 
 		_bezierLine.emitting = false;
 		_bezierLine.AddPosition(MathEx.GetPointOnBezierCurve(start,bezierOne,bezierTwo,end,1f));
-
+	
 		_bezierLine.transform.position = Camera.main.transform.position;
 		//_bezierLine.transform.position = end;
 	}

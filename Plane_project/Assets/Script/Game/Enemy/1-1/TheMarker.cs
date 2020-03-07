@@ -133,7 +133,7 @@ public class TheMarker : PlaneBase
         _archerPos.SetParent(tp);
         _archerPos.localPosition = new Vector2(-0.7f,0f);
 
-        var archer = ObjectManager.GetInstance().AddObject<WandsBase>(Define.ObjectType.enemy,"Wands");
+        var archer = ObjectManager.GetInstance().AddObject<Wand_Archer>(Define.ObjectType.enemy,"Wands");
         archer.SetPosition(_archerPos.position);
         archer.targetPos = _archerPos.position;
         _archer = archer;

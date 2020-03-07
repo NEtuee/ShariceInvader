@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FOrTestst : MonoBehaviour
 {
-    public Sprite sprite;
-
-  
-
+    MeshRenderer mesh;
+    public void Start()
+    {
+        mesh.sortingOrder = 20;
+    }
 }

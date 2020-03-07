@@ -63,7 +63,7 @@ public class WandsBase : PlaneBase
     {
         if(!act)
         {
-            _position = Vector3.Lerp(_position,targetPos,0.2f);
+            _position = targetPos;// Vector3.Lerp(_position,targetPos,0.2f);
         }
         
         UpdateSprite();

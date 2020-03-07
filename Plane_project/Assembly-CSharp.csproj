@@ -111,18 +111,20 @@
      <Compile Include="Assets\Script\Game\BulletBase.cs" />
      <Compile Include="Assets\Script\Game\BulletManager.cs" />
      <Compile Include="Assets\Script\Game\DistanceMarker.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\BoomDrone.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\CCTV.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\EnemyCreator.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\Intercepter.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\MissileDrone.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\NPC.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\PointMarker.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\ShootingDrone.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\TheMarker.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\UACV.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Archer.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Missile.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\WandsBase.cs" />
      <Compile Include="Assets\Script\Game\Enemy\AIBase.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\BoomDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\CCTV.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\EnemyCreator.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\Intercepter.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\MissileDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\NPC.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\PointMarker.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\ShootingDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\TheMarker.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\UACV.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\WandsBase.cs" />
      <Compile Include="Assets\Script\Game\GameMain.cs" />
      <Compile Include="Assets\Script\Game\GameManager.cs" />
      <Compile Include="Assets\Script\Game\PlaneBase.cs" />
@@ -148,7 +150,9 @@
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Script\Shader\ComboCount.shader" />
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />
+     <None Include="Assets\Script\Shader\BezierTrail.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
+     <None Include="Assets\Script\Shader\ScreenSoftNoise.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/LeeUmin/Desktop/Invader/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
