@@ -556,10 +556,13 @@ public class Editor_PlaneBuilder : MonoBehaviour
 
     public void UpdateTrailSortingOrderData(Editor_CursorBase c)
     {
-        if(c.selected && _boostCursor.Contains(c))
+        if(c != null)
         {
-            trailSortingOrder.interactable = false;
-            return;
+            if(c.selected && _boostCursor.Contains(c))
+            {
+                trailSortingOrder.interactable = false;
+                return;
+            }
         }
 
         int count = Editor_CursorBase.selectedCursorList.Count;

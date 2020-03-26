@@ -114,11 +114,6 @@ public class Player : PlaneBase {
 				a = 0;
 			}
 		}
-
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			_controllLock = !_controllLock;
-		}
 	
 
 		BasicUpdate(deltaTime);
