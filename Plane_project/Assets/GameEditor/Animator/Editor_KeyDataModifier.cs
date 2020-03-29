@@ -56,6 +56,17 @@ public class Editor_KeyDataModifier : MonoBehaviour
         }
     }
 
+    public void ApplyAllFrame()
+    {
+        if(stayTimeField.text != "" && _key != null)
+        {
+            _key.stayTime = float.Parse(stayTimeField.text);
+            Editor_AnimationKeyViewer.instance.SetAllKeyDuration(_key.stayTime);
+
+            Editor_EventSystem.instance.ActiveNotice("Apply All Frame Durations to " + stayTimeField.text);
+        }
+    }
+
     public void SetSpriteToImage()
     {
         Vector2 spriteSize = new Vector2(_sprite.rect.width,_sprite.rect.height);

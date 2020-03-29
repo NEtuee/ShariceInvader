@@ -246,9 +246,9 @@ public class Editor_PlaneInfoBase
                     continue;
 
                 string pureData = i.Replace(" ",string.Empty);
+
                 intList.Add(int.Parse(pureData));
             }
-
             dic.Add(int.Parse(row[0]),intList);
         }
     }

@@ -31,6 +31,8 @@ public class GameMain : MonoBehaviour {
 		_bulletManager = BulletManager.GetInstance();
 		_collisionManager = CollisionManager.GetInstance();
 
+		ControllerEx.GetInstance().CreateKeys();
+
 
 		GetComponent<GameManager>().firstSetting();
 		timer = Timer.GetInstance();
@@ -76,6 +78,7 @@ public class GameMain : MonoBehaviour {
 	void Update ()
 	{
 		float deltaTime = timer.SetDeltaTime(Time.deltaTime);
+		ControllerEx.GetInstance().UpdateKeyState();
 		
 		if(Input.GetKeyDown(KeyCode.E))
 		{

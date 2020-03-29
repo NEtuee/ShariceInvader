@@ -146,12 +146,11 @@
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\ShootingDrone_Plane.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\CCTVDrone\CCTVDrone_Plane.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
      <None Include="Assets\Script\Shader\ComboCount.shader" />
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleExplosion\CircleExplosion_Ani.txt" />
      <None Include="Assets\Script\Shader\BezierTrail.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
      <None Include="Assets\Script\Shader\ScreenSoftNoise.shader" />

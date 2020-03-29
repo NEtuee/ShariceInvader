@@ -486,7 +486,6 @@ public abstract class PlaneBase : Collisionable {
 		if(_aniType == AnimationType.Horizontal)
 		{
 			float ang = _eulerAngle;
-			Debug.Log(_eulerAngle);
 			ang = MathEx.abs(ang);
 
 			int div = (int)ang / 180;

@@ -1,7 +1,7 @@
 ﻿Shader "Custom/ScreenSoftNoise" {
 	Properties {
-		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-
+		_MainTex ("Noise Texture", 2D) = "white" {}
+		_ScreenTex ("MainScreenTexture", 2D) = "white" {}
 	}
 	SubShader {
 		//Tags { "RenderType"="Opaque" }
@@ -13,7 +13,6 @@
 		Lighting Off
 		Blend SrcAlpha OneMinusSrcAlpha
 
-		GrabPass{}//카메라 화면을 받아오는 부분
 
 		LOD 200
 
@@ -23,7 +22,7 @@
 
 		#pragma target 3.0
 		sampler2D _MainTex;
-		sampler2D _GrabTexture;
+		sampler2D _ScreenTex;
 
 		struct Input 
 		{
@@ -37,7 +36,7 @@
 			float2 screenUV = IN.screenPos.rgb / IN.screenPos.a;
 
 			screenUV = float2(screenUV.r,screenUV.g);
-			o.Emission = tex2D(_GrabTexture,screenUV + c.r * 0.01 - 0.005);
+			o.Emission = tex2D(_ScreenTex,screenUV + c.r * 0.01 - 0.005);
 			o.Alpha = c.a;
 		}
 

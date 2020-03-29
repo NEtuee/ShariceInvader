@@ -96,7 +96,7 @@ public class Player : PlaneBase {
 			}
 		}
 
-		if(Input.GetKeyDown(KeyCode.R))
+		if(ControllerEx.GetInstance().KeyDown("WeaponChange"))
 		{
 			if(a == 0)
 			{
@@ -183,7 +183,7 @@ public class Player : PlaneBase {
 
 	public void DodgeCheck()
 	{
-		if(Input.GetKeyDown(KeyCode.Mouse1))
+		if(ControllerEx.GetInstance().KeyDown("DriveAttack"))
 		{
 			Timer.GetInstance().SetTimeScale(0.1f);
 			
@@ -194,7 +194,7 @@ public class Player : PlaneBase {
 				mainWeapon.SpecialAttack(mouse);
 			}
 		}
-		else if(Input.GetKeyUp(KeyCode.Mouse1))
+		else if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
 		{
 			Vector3 mouse =_cam.ScreenToWorldMouse();
 			mouse = (mouse - _position).normalized;
@@ -233,8 +233,7 @@ public class Player : PlaneBase {
 
 	public void Propel()
 	{
-		bool keyCheck = Input.GetKeyDown(KeyCode.W);
-		if(keyCheck)
+		if(ControllerEx.GetInstance().KeyDown("MainAttack"))
 		{
 	//		BurstActive();
 			_speed = .4f;
@@ -261,7 +260,7 @@ public class Player : PlaneBase {
 				}
 			}
 		}
-		else if(!Input.GetKey(KeyCode.W))
+		else if(!ControllerEx.GetInstance().KeyPress("MainAttack"))
 		{
 			_speed = 0f;
 		}
@@ -269,54 +268,51 @@ public class Player : PlaneBase {
 
 	public void Look(float delta)
 	{
-		target = _cam.ScreenToWorldMouse();
-		if(target.magnitude != 0)
+		_controllPoint = ControllerEx.GetInstance().centerAxis;
+
+		//_direction = Vector3.Lerp(_direction,_controllPoint,(_speed == 0f ? 18f : 5f) * delta).normalized;
+
+		if(_rotateLock)
 		{
-			_controllPoint = (target - _position).normalized;//target.normalized;
-
-			//_direction = Vector3.Lerp(_direction,_controllPoint,(_speed == 0f ? 18f : 5f) * delta).normalized;
-
-			if(_rotateLock)
+			float controllAngle = MathEx.directionToAngle(_controllPoint);
+			float curve = 1f;
+			if(_speed != 0)
 			{
-				float controllAngle = MathEx.directionToAngle(_controllPoint);
-				float curve = 1f;
-				if(_speed != 0)
+				float f= Vector3.Dot(_direction,_controllPoint);
+				if(f < -0.8f && cuttingCurve)
 				{
-					float f= Vector3.Dot(_direction,_controllPoint);
-					if(f < -0.8f && cuttingCurve)
-					{
-						AddForce(-_velocity * 0.65f);
-						
-						Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
-						_cam.Shake(0.05f, _direction / 20f);
-						EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"CuttingCurve").SetAngle(_eulerAngle);
-						EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));
-						_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,0.5f);
-						cuttingCurve = false;
-						cuttingCurveTimer = 0.5f;
-					}
-					else
-					{
-						//_additionalSpeed = 0f;
-					}
-					// float sub = MathEx.abs(controllAngle - _eulerAngle);
-					// if(sub >= 90f)
-					// 	Debug.Log("tre");
+					AddForce(-_velocity * 0.65f);
+					
+					Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
+					_cam.Shake(0.05f, _direction / 20f);
+					EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"CuttingCurve").SetAngle(_eulerAngle);
+					EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));
+					_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,0.5f);
+					cuttingCurve = false;
+					cuttingCurveTimer = 0.5f;
 				}
-
-				_eulerAngle = MathEx.clamp360Degree(Mathf.LerpAngle(_eulerAngle,controllAngle,(_speed == 0f ? 10f : 5f) * curve * delta));
-				_direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
-
-
-				//_eulerAngle = MathEx.directionToAngle(_direction);
-
-				if(_direction.y < 0f)
-					_scale.y = -1f;
-				else if(_direction.y > 0f)
-					_scale.y = 1f;
+				else
+				{
+					//_additionalSpeed = 0f;
+				}
+				// float sub = MathEx.abs(controllAngle - _eulerAngle);
+				// if(sub >= 90f)
+				// 	Debug.Log("tre");
 			}
 
+			_eulerAngle = MathEx.clamp360Degree(Mathf.LerpAngle(_eulerAngle,controllAngle,(_speed == 0f ? 10f : 5f) * curve * delta));
+			_direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
+
+
+			//_eulerAngle = MathEx.directionToAngle(_direction);
+
+			if(_direction.y < 0f)
+				_scale.y = -1f;
+			else if(_direction.y > 0f)
+				_scale.y = 1f;
 		}
+
+
 	}
 
 	public void HeightIconUpdate()

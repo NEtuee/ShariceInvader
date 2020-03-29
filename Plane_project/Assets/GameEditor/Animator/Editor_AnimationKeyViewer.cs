@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Editor_AnimationKeyViewer : MonoBehaviour
+public class Editor_AnimationKeyViewer : SingletonMono<Editor_AnimationKeyViewer>
 {
     public delegate void keySelectedEvent(Editor_AnimationKeyBase key);
 
@@ -46,6 +46,8 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
 
         _aniPreviewer = new GameObject("AnimationPreviewer").AddComponent<SpriteRenderer>();
         _aniPreviewer.transform.position = Vector3.zero;
+
+        SetSingleton(this);
     }
 
     public void Update()
@@ -174,6 +176,16 @@ public class Editor_AnimationKeyViewer : MonoBehaviour
         key.gameObject.SetActive(true);
 
         return key;
+    }
+
+    public void SetAllKeyDuration(float d)
+    {
+        foreach(var key in _keys)
+        {
+            key.stayTime = d;
+        }
+
+        Editor_AnimationKeyBase.keyModity();
     }
 
     public void ClearKeyList()
