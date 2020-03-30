@@ -5,18 +5,31 @@ using UnityEngine;
 public class MissileDrone : PlaneBase
 {
     bool act = false;
+	bool shot = false;
+
+	int shotCount = 6;
 
     float shotTimer = 0f;
 	float explosiveTimer = 0f;
+
+	float close = 1f;
+	float shotTurm = 0f;
+
+	Vector3 shotPoint = new Vector3(-0.284f,0.3f,1f);
+
+	AnimationControllEx spine;
+
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("drone1C",AnimationType.None);
+		SetSpriteSet("SpriteSet/Planes/MissileDrone/drone1C_body",AnimationType.None);
 		SetCollider(new Define.SimpleBoxCollider(1.15f,.2f,_position));
 
 		SetSortingOrder(1);
 
-		_maxSpeed = .9f;
+		CreateDecos();
+
+		_maxSpeed = .4f;
 		_speed = .2f;
         _gravityScale = 0f;
         _mass = 5f;
@@ -50,17 +63,55 @@ public class MissileDrone : PlaneBase
 		float dist = Vector3.Distance(GameManager.instance.player.position,_position);
 		act = dist < 8f ? true : false;
 
+		if(close != 0f)
+		{
+			close -= deltaTime;
+			if(close <= 0f)
+			{
+				if(spine.currAni == "open")
+					if(spine.isEnd)
+						spine.ChangeAni("close",false);
+			}
+		}
+
 		if(act)
 		{
 			shotTimer += deltaTime;
 			if(shotTimer >= 5f)
 			{
 				shotTimer = 0f;
+				close = 1.5f;
 
-				for(int i = 0; i < 5; ++i)
+				spine.ChangeAni("open",false);
+				EffectManager.GetInstance().AddEffect(_position + new Vector3(-0.01f,0.495f),"Planes/MissileDrone/launch",false,this,0)
+											.SetAddPoint(new Vector3(-0.01f,0.495f))
+											.SetScale(_scale.x,1f,1f);
+
+				shotCount = 6;
+				shot = true;
+				shotTurm = 0.1f;
+			}
+		}
+
+		if(shot)
+		{
+			shotTurm -= deltaTime;
+			if(shotTurm <= 0f)
+			{
+				shotTurm = 0.1f;
+
+				Vector3 pos = _position + shotPoint;
+				pos.x -= (float)(6 - shotCount) * (0.109f * -_scale.x);
+
+				var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
+				obj.SetPosition(pos).SetDirection(new Vector3(0f,1f));
+				obj.SetAngle(90f);
+				obj.SetAbsoluteForce(new Vector3(0f,1000f));
+				obj._gravityScale = 5f;
+
+				if(--shotCount == 0)
 				{
-					ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"Missile").
-												SetPosition(_position + new Vector3(Random.Range(-0.4f,0.4f),0f));
+					shot = false;
 				}
 			}
 		}
@@ -81,5 +132,32 @@ public class MissileDrone : PlaneBase
 
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
 		BasicUpdate(deltaTime);
-	}   
+	}  
+
+	public void CreateDecos()
+	{
+		spine = _deco.AddDeco(new Vector2(-0.09f,0.195f));
+		var fin = _deco.AddDeco(new Vector2(0.59f,0.005f));
+		var boost = _deco.AddDeco(new Vector2(-0.76f,0.22f));
+		var sideLight = _deco.AddDeco(new Vector2(0.23f,0.11f));
+
+		spine.AddAnimation("close","Planes/MissileDrone/spineClosing");
+		spine.AddAnimation("open","Planes/MissileDrone/spineOpening");
+
+		fin.AddAnimation("loop","Planes/MissileDrone/fin");
+
+		boost.AddAnimation("loop","Planes/MissileDrone/booster");
+
+		sideLight.AddAnimation("loop","Planes/MissileDrone/sideLight");
+
+		spine.ChangeAni("close",false);
+		fin.ChangeAni("loop",true);
+		boost.ChangeAni("loop",true);
+		sideLight.ChangeAni("loop",true);
+
+		spine._sprRenderer.flipX = true;
+		fin._sprRenderer.flipX = true;
+		boost._sprRenderer.flipX = true;
+		sideLight._sprRenderer.flipX = true;
+	}
 }

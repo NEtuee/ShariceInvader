@@ -38,6 +38,7 @@ public class ControllerEx : Singleton<ControllerEx>
     public Dictionary<string,Key> keyBindList = new Dictionary<string, Key>();
     public ControllerType controller = ControllerType.KeyboardMouse;
     public Vector2 centerAxis;
+    public Camera mainView;
 
     public bool KeyDown(string key) {return KeyCheck(key) == KeyState.Down;}
     public bool KeyPress(string key) {return KeyCheck(key) == KeyState.Press;}
@@ -121,7 +122,7 @@ public class ControllerEx : Singleton<ControllerEx>
     public Vector2 GetWorldScreenCenterAxis(Vector3 c)
     {
         Vector2 pos = Input.mousePosition;
-        Vector2 center = Camera.main.WorldToScreenPoint(c);
+        Vector2 center = mainView.WorldToScreenPoint(c);
 
         return (pos - center).normalized;
     }
@@ -137,5 +138,10 @@ public class ControllerEx : Singleton<ControllerEx>
     public Vector2 GetJoystickAxis()
     {
         return new Vector2(Input.GetAxis("Vertical"),Input.GetAxis("Horizontal"));
+    }
+
+    public void SetMainViewCamera(Camera cam)
+    {
+        mainView = cam;
     }
 }

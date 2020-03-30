@@ -32,7 +32,7 @@ public class GameMain : MonoBehaviour {
 		_collisionManager = CollisionManager.GetInstance();
 
 		ControllerEx.GetInstance().CreateKeys();
-
+		ControllerEx.GetInstance().SetMainViewCamera(GameObject.Find("MainScreenCamera").GetComponent<Camera>());
 
 		GetComponent<GameManager>().firstSetting();
 		timer = Timer.GetInstance();
@@ -52,17 +52,17 @@ public class GameMain : MonoBehaviour {
 
 		background.firstSetting();
 
-		_objManager.AddObject<TheMarker>(Define.ObjectType.enemy,"CCTV").SetPosition(_objManager._place.MapPosToWorldPos(new Vector3(0f,5f)));
+		//_objManager.AddObject<TheMarker>(Define.ObjectType.enemy,"CCTV").SetPosition(_objManager._place.MapPosToWorldPos(new Vector3(0f,5f)));
 
 		//EnemyCreator.ShootingDrone(20,new Vector3(0f,5f));
 
 		//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
 
 
-		EnemyCreator.CCTV(5,new Vector3(6f,5f));
+		// EnemyCreator.CCTV(5,new Vector3(6f,5f));
 
-		EnemyCreator.CCTV(5,new Vector3(8f,5f));
-		EnemyCreator.CCTV(5,new Vector3(10f,5f));
+		// EnemyCreator.CCTV(5,new Vector3(8f,5f));
+		// EnemyCreator.CCTV(5,new Vector3(10f,5f));
 		// EnemyCreator.CCTV(0,new Vector3(6f,5f));
 		// EnemyCreator.CCTV(0,new Vector3(7f,5f));
 
@@ -84,6 +84,13 @@ public class GameMain : MonoBehaviour {
 		{
 			//EffectManager.GetInstance().DrawBezierLine(Vector2.zero,new Vector2(0f,3f),new Vector2(1f,1f),new Vector2(-1f,2f),0.1f);
 			_objManager.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(new Vector3(0f,5f));
+
+			// var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
+			// 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+			// 	obj.SetAbsoluteForce(new Vector3(0f,1000f));
+			// 	obj.SetAngle(90f);
+			// 	obj._gravityScale = 5f;
+
 			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
 		}
 

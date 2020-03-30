@@ -93,6 +93,7 @@
      <Compile Include="Assets\Script\Core\EffectManager.cs" />
      <Compile Include="Assets\Script\Core\IOManager.cs" />
      <Compile Include="Assets\Script\Core\KeyInputManager.cs" />
+     <Compile Include="Assets\Script\Core\MainScreenCam.cs" />
      <Compile Include="Assets\Script\Core\MathEx.cs" />
      <Compile Include="Assets\Script\Core\ObjectBase.cs" />
      <Compile Include="Assets\Script\Core\ObjectCache.cs" />
@@ -111,6 +112,7 @@
      <Compile Include="Assets\Script\Core\UI\TouchInfo.cs" />
      <Compile Include="Assets\Script\Game\BulletBase.cs" />
      <Compile Include="Assets\Script\Game\BulletManager.cs" />
+     <Compile Include="Assets\Script\Game\DecoAnimeController.cs" />
      <Compile Include="Assets\Script\Game\DistanceMarker.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\BoomDrone.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\CCTV.cs" />
@@ -139,21 +141,32 @@
      <Compile Include="Assets\Script\Game\Weapon\Weapon_Test.cs" />
      <Compile Include="Assets\Script\Game\Weapon\WeaponBase.cs" />
      <Compile Include="Assets\testsss.cs" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Loop\Loop_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\sideLight\sideLight_Ani.txt" />
      <None Include="Assets\Script\Shader\Pixelization.shader" />
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\launch\launch_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\booster\booster_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
      <None Include="Assets\Script\Shader\ComboCount.shader" />
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleExplosion\CircleExplosion_Ani.txt" />
      <None Include="Assets\Script\Shader\BezierTrail.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineOpening\spineOpening_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\spin\spin_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\fin\fin_Ani.txt" />
      <None Include="Assets\Script\Shader\ScreenSoftNoise.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineClosing\spineClosing_Ani.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

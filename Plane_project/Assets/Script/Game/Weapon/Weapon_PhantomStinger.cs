@@ -31,7 +31,7 @@ public class Weapon_PhantomStinger : WeaponBase
         {
             _plane.SetAngle(MathEx.directionToAngle(GetAimTargetDirection()));
             
-            if(Input.GetKeyUp(KeyCode.W))
+            if(ControllerEx.GetInstance().KeyUp("MainAttack"))
             {
                 MainAttackProgress();
                 _aimObj.gameObject.SetActive(false);
@@ -42,7 +42,7 @@ public class Weapon_PhantomStinger : WeaponBase
             if(_multiTarget.Count > 0)
                 _plane.SetAngle(MathEx.directionToAngle(GetAimTargetDirection()));
 
-            if(Input.GetKeyUp(KeyCode.Mouse1))
+            if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
             {
                 SpecialAttackProgress();
                 _aimObj.gameObject.SetActive(false);
@@ -180,7 +180,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public void BurstAimDirection(float addForce, float time)
     {
-        _plane.SetDirection((CameraControll.instance.ScreenToWorldMouse() - _plane.position).normalized);
+        _plane.SetDirection(ControllerEx.GetInstance().centerAxis);
         _plane.SetAdditionalSpeed(addForce,time,true);
         _plane.SetAbsoluteForce(_plane.direction * 1000f);
         EffectManager.GetInstance().AddEffect(_plane.position,"Burst")
@@ -207,7 +207,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public void UpdateAim()
     {
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouse = ControllerEx.GetInstance().centerAxis;
         mouse.z = 0f;
 
         Vector3 dir = (mouse - _plane.position).normalized;

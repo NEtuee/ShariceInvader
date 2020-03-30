@@ -118,7 +118,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 		UnityEngine.Object[] obj = LoadAll(path, spriteType);
 		if(obj.Length == 0)
 		{
-			Debug.Log("file does not exist");
+			Debug.Log(folderName + " : file does not exist");
 			return null;
 		}
 

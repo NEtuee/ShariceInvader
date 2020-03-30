@@ -66,7 +66,7 @@ public abstract class PlaneBase : Collisionable {
 	protected Vector3 _friction = new Vector2();
 	public float _mass = 1f;
 	protected float _frictionFactor = 0.01f;
-	protected float _gravityScale = .7f;
+	public float _gravityScale = .7f;
 	protected float _maxSpeed = 5f;
 	public float _dodgeDist = 1f;
 	private float _additionalSpeed;
@@ -105,7 +105,9 @@ public abstract class PlaneBase : Collisionable {
 
 	protected AnimationType _aniType;
 
-	protected Editor_PlaneInfoBase _infoBase;
+	protected Editor_PlaneInfoBase _infoBase = null;
+
+	protected DecoAnimeController _deco;
 
 
 
@@ -116,9 +118,10 @@ public abstract class PlaneBase : Collisionable {
 	{
 		base.firstSetting();
 
-		if(name == "Defender")
-			Debug.Log("two");
+		AddSortingGroup();
 		MiniMapIconSetup();
+
+		_deco = new DecoAnimeController(tp);
 	}
 
 	public void BasicInitialize()
@@ -391,7 +394,8 @@ public abstract class PlaneBase : Collisionable {
 	{
 		DelayAttackProgress(deltaTime);
 
-
+		_deco.DecoAniProgress(deltaTime);
+		
 		if(_trailEmmit)
 		{
 			_trailMat.SetFloat("_random",Random.Range(40000f,50000f));
@@ -629,9 +633,12 @@ public abstract class PlaneBase : Collisionable {
 
 	public void UpdateBoosts()
 	{
-		for(int i = 0; i < _boostAni.Count; ++i)
+		if(_infoBase != null)
 		{
-			_boostAni[i]._sprRenderer.transform.localPosition = _infoBase.boostPoint[_spritePoint][i];
+			for(int i = 0; i < _boostAni.Count; ++i)
+			{
+				_boostAni[i]._sprRenderer.transform.localPosition = _infoBase.boostPoint[_spritePoint][i];
+			}
 		}
 	}
 
@@ -735,8 +742,8 @@ public abstract class PlaneBase : Collisionable {
 
 			for(int i = 0; i < 3; ++i)
 			{
-				float range = Random.Range(0.65f,1f);
-				EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.1f,0.025f,17);
+				float range = Random.Range(0.8f,1.25f);
+				EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.15f,0.03f,17);
 				randDir = new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
 			}
 			
@@ -747,10 +754,10 @@ public abstract class PlaneBase : Collisionable {
 
 			for(int i = 0; i < 3; ++i)
 			{
-				float range = Random.Range(0.65f,1f);
+				float range = Random.Range(0.8f,1.25f);
 				Vector3 targetDir = (dir + new Vector3(Random.Range(-0.7f,0.7f),Random.Range(-0.7f,0.7f))).normalized;
 				EffectManager.GetInstance().
-							ExplosionSmoke(_position,_position + targetDir * range,0.1f,0.025f,35);
+							ExplosionSmoke(_position,_position + targetDir * range,0.15f,0.03f,35);
 			}
 		}
 
@@ -768,6 +775,8 @@ public abstract class PlaneBase : Collisionable {
 		_noclip = true;
 
 		miniMapIcon.gameObject.SetActive(false);
+
+		_deco.DestroyAll();
 
 		CameraControll.instance.Zoom(1.7f);
 		// for(int i = 0; i < 5; ++i)

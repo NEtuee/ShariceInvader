@@ -47,8 +47,9 @@ public class AnimationControllEx
 		if(animations.ContainsKey(name))
 		{
 			if(_currAni == animations[name] && lp)
+			{
 				return;
-				
+			}	
 			SetAnimation(animations[name]);
 			_currAniName = name;
 		}
@@ -56,6 +57,11 @@ public class AnimationControllEx
 		{
 			_currAni = null;
 			_currAniName = "";
+
+			Debug.Log("ani does not exists");
+
+			_sprRenderer.sprite = null;
+			return;
 		}
 
         _sprRenderer.sprite = _currAni[0].sprite;
@@ -94,6 +100,7 @@ public class AnimationControllEx
 
         	if(data == null)
         	{
+				Debug.Log(path + " : " + "??");
         	    CreateAnimationRef(pathName,0.08333f,sprites.Length);
         	}
 
@@ -132,6 +139,7 @@ public class AnimationControllEx
             _timer -= _currAni[_aniPos].duration;
             ++_aniPos;
 
+
             if(_aniPos >= _currAni.Length)
             {
                 if(_loop)
@@ -162,7 +170,7 @@ public class AnimationControllEx
             s.Add(t);
         }
 
-        IOManager.WriteStringToFile_NoMark(s.ToArray(),"Assets/Resources/" + n,false);
+        IOManager.WriteStringToFile_NoMark(s.ToArray(),"Assets/Resources/" + n + ".txt",false);
     }
 
     public AnimationControllEx(SpriteRenderer spr){_sprRenderer = spr;}

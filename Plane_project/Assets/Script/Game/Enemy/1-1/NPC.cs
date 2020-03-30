@@ -12,19 +12,29 @@ public class NPC : PlaneBase {
 	float timer = 0f;
 
 	float actTime = 0f;
+
+	AnimationControllEx _ani;
+
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("missile",AnimationType.None);
+		SetSpriteSet("SpriteSet/Planes/commonMissile/missile",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
+
+		//BoostSetUp("Effects/commonMissileBoost",new Vector2(-0.1f,0f));
+		//_boostAniProgress = true;
 
 		_sprRenderer.flipX = true;
 
-		_maxSpeed = Random.Range(3f,4f);
+		_maxSpeed = Random.Range(3.5f,4.5f);
 		_speed = .1f;
 
-		_rotateLock = true;
-		//_maxSpeed = 6.2f;
+		_ani = new AnimationControllEx(_sprRenderer);
+		_ani.AddAnimation("open","Planes/commonMissile/launch");
+		_ani.AddAnimation("loop","Planes/commonMissile/spin");
+
+		//_sprRenderer.sprite = _ani.animations["open"][0].sprite;
+		_ani.ChangeAni("open",false);
 	}
 
 	public override void initialize()
@@ -34,9 +44,9 @@ public class NPC : PlaneBase {
 		SetNoClip(false);
 		_hp = 1;
 
-		actTime = Random.Range(.6f,1.4f);
-
-		AddForce(Vector3.down * Random.Range(1f,2f));
+		actTime = 0.7f;
+		_burst = false;
+		_rotateLock = true;
 
 		RegisteCollisionList();
 	}
@@ -56,8 +66,15 @@ public class NPC : PlaneBase {
 			if(timer >= actTime)
 			{
 				timer = 0f;
-				act = false;
+				act = true;
 				_rotateLock = false;
+
+				_ani.ChangeAni("open",false);
+				_gravityScale = .7f;
+				_mass = 1f;
+				BurstActive();
+				EffectManager.GetInstance().AddEffect(_position + new Vector3(0f,-0.1f),"commonMissileBoost/Burst")
+											.SetAngle(90f);
 			}
 			else
 			{
@@ -66,9 +83,22 @@ public class NPC : PlaneBase {
 			}
 		}
 
+		float dist = Vector3.Distance(_position,GameManager.instance.player.position);
+
+		_ani.AnimationProgress(deltaTime);
+
+		if(_ani.currAni == "open" && _ani.isEnd)
+		{
+			_ani.ChangeAni("loop",true);
+		}
 
 		_direction = (GameManager.instance.player.position - _position).normalized;
 
+		if(dist <= 5f && !_controllLock)
+		{
+			Vector3 pos = new Vector3(Random.Range(-0.02f,0.02f),Random.Range(-0.02f,0.02f)) + _position;
+			EffectManager.GetInstance().EmitParticles("MissileTrailSmoke",pos,Random.Range(0.8f,2f),Random.Range(0.2f,0.35f),1);
+		}
 		// float dist = Vector3.Distance(_position,GameManager.instance.player.position);
 		// if(dist <= 2f)
 		// 	_maxSpeed = Random.Range(10f,11f);
@@ -94,7 +124,7 @@ public class NPC : PlaneBase {
 			_direction = (GameManager.instance.player.position - _position).normalized +
 							randD.normalized * .1f;
 
-		if(Vector3.Distance(_position,GameManager.instance.player.position) < 0.5f)
+		if(dist < 0.5f)
 		{
 			randD = (GameManager.instance.player.position - _position).normalized * Random.Range(1f,1.25f);;
 			timer = Random.Range(2f,2.5f);
@@ -109,7 +139,7 @@ public class NPC : PlaneBase {
 			timer = Random.Range(0.5f,4f);
 			randD = new Vector3(Random.Range(-1.5f,1.5f),Random.Range(-1.5f,1.5f));
 
-			if(Vector3.Distance(_position,GameManager.instance.player.position) < 1.5f)
+			if(dist < 1.5f)
 			{
 				randD = (_position - GameManager.instance.player.position).normalized;
 				timer = Random.Range(0.5f,2f);

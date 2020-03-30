@@ -211,7 +211,7 @@ public class ShootingDrone : PlaneBase
         ang.y = (float)_spritePoint * _spriteAngle;
         gunPoint.transform.localEulerAngles = ang;
 
-        int sortingOrder = _sprRenderer.sortingOrder;
+        int sortingOrder = _sortingGroup.sortingOrder;
         int add = _direction.x < 0 ? -1 : 1;
 
 

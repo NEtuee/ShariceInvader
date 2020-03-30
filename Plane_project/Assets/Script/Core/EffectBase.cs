@@ -24,7 +24,7 @@ public class EffectBase : Drawable {
 		base.firstSetting();
 		ani = new AnimationControll();
 
-		_sprRenderer.sortingOrder = -1;
+		SetSortingOrder(-1);
 	}
 
 	public EffectBase Active(Vector2 pos, Sprite[] sprites, bool loop = false,ObjectBase t = null)

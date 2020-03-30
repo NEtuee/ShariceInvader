@@ -24,6 +24,11 @@
 		sampler2D _MainTex;
 		sampler2D _ScreenTex;
 
+		float Lerp(float start, float end, float time)
+		{
+			return start + (end - start) * time;
+		}
+
 		struct Input 
 		{
 			float2 uv_MainTex;

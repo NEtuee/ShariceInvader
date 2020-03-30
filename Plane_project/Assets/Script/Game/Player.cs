@@ -187,8 +187,7 @@ public class Player : PlaneBase {
 		{
 			Timer.GetInstance().SetTimeScale(0.1f);
 			
-			Vector3 mouse =_cam.ScreenToWorldMouse();
-			mouse = (mouse - _position).normalized;
+			Vector3 mouse = ControllerEx.GetInstance().centerAxis;
 			if(mainWeapon.immedyActiveSpecAttack)
 			{
 				mainWeapon.SpecialAttack(mouse);
@@ -196,8 +195,7 @@ public class Player : PlaneBase {
 		}
 		else if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
 		{
-			Vector3 mouse =_cam.ScreenToWorldMouse();
-			mouse = (mouse - _position).normalized;
+			Vector3 mouse = ControllerEx.GetInstance().centerAxis;
 			if(!mainWeapon.immedyActiveSpecAttack)
 			{
 				if(mainWeapon.SpecialAttack(mouse))

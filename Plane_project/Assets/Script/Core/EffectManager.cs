@@ -40,10 +40,10 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		GetParticleSystems();
 	}
 
-	public EffectBase AddEffect(Vector2 pos, string ef, bool loop = false, ObjectBase target = null)
+	public EffectBase AddEffect(Vector2 pos, string ef, bool loop = false, ObjectBase target = null, int type = 1)
 	{
 
-		return _cache.ActiveObject().Active(pos,_resManager.GetSpriteSet(ef,1),loop,target);
+		return _cache.ActiveObject().Active(pos,_resManager.GetSpriteSet(ef,type),loop,target);
 	}
 
 	public EffectBase AddEffect(Vector2 pos, Sprite sprite, float timer, ObjectBase target = null)
@@ -132,7 +132,7 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		}
 	}
 
-	public void Explosion(Vector3 pos,int count,float randFactor = 0.2f,float startSize = 0.09f, float endSize = 0.18f)
+	public void Explosion(Vector3 pos,int count,float randFactor = 0.2f,float startSize = 0.1f, float endSize = 0.19f)
 	{
 		ParticleSystem sys;
 		ParticleSystem.EmitParams p = new ParticleSystem.EmitParams();
