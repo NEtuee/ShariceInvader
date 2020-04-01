@@ -42,13 +42,13 @@ public class AnimationControllEx
 		_aniLen = _currAni.Length;
 	}
 
-	public void ChangeAni(string name, bool lp)
+	public bool ChangeAni(string name, bool lp)
 	{
 		if(animations.ContainsKey(name))
 		{
 			if(_currAni == animations[name] && lp)
 			{
-				return;
+				return false;
 			}	
 			SetAnimation(animations[name]);
 			_currAniName = name;
@@ -61,12 +61,14 @@ public class AnimationControllEx
 			Debug.Log("ani does not exists");
 
 			_sprRenderer.sprite = null;
-			return;
+			return false;
 		}
 
         _sprRenderer.sprite = _currAni[0].sprite;
 
 		InitValue(lp);
+
+		return true;
 	}
 
     public void ClearAnimationList()
@@ -84,7 +86,6 @@ public class AnimationControllEx
 
 	public void AddAnimation(string name, string path)
 	{
-		Debug.Log(path);
 		AnimationKey[] key;
 
 		if(!loadedAnimations.ContainsKey(path))

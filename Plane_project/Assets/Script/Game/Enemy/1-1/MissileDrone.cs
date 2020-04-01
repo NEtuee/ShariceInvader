@@ -106,7 +106,7 @@ public class MissileDrone : PlaneBase
 				var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
 				obj.SetPosition(pos).SetDirection(new Vector3(0f,1f));
 				obj.SetAngle(90f);
-				obj.SetAbsoluteForce(new Vector3(0f,1000f));
+				obj.SetAbsoluteForce(new Vector3(0f,100f));
 				obj._gravityScale = 5f;
 
 				if(--shotCount == 0)

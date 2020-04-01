@@ -8,6 +8,8 @@ TextureImporter:
     21300006: missile_launchboost_3
     21300008: missile_launchboost_4
     21300010: missile_launchboost_5
+    21300012: missile_launchboost_6
+    21300014: missile_launchboost_7
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -94,9 +96,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
-        width: 113
-        height: 20
+        y: 224
+        width: 32
+        height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,7 +106,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70aac8750abecae4ebb416ec0f6a6755
+      spriteID: 4362640e961c4ee45b12e0cd3b821f6e
       vertices: []
       indices: 
       edges: []
@@ -114,9 +116,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
-        width: 113
-        height: 20
+        y: 192
+        width: 32
+        height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,7 +126,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02164dd1cd095654baa25b098abc00a8
+      spriteID: 9b08cbb7b54d7a9428985d9cd01a1b58
       vertices: []
       indices: 
       edges: []
@@ -134,9 +136,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 60
-        width: 113
-        height: 20
+        y: 160
+        width: 32
+        height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,7 +146,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94ae4c2eb10b47848a68ea2ed712984f
+      spriteID: fa77c36276a04a6428aea226f006b7c2
       vertices: []
       indices: 
       edges: []
@@ -154,9 +156,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 113
-        height: 20
+        y: 128
+        width: 32
+        height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68874c1cb38ae7a45bd7ba7319578dd1
+      spriteID: 8a04bf79e4904d14dbbc50db12ccac94
       vertices: []
       indices: 
       edges: []
@@ -174,9 +176,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 20
-        width: 113
-        height: 20
+        y: 96
+        width: 32
+        height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,7 +186,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f5910d60e1894d4983a801bac842985
+      spriteID: cb04fa998b5b4ab45aed0ad291d1eb50
       vertices: []
       indices: 
       edges: []
@@ -194,9 +196,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 113
-        height: 20
+        y: 64
+        width: 32
+        height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,7 +206,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 300ff9dc45efa6c4ab967da9351b434a
+      spriteID: 2c201e1e56a7bff4589aba0d994928ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: missile_launchboost_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dffe19278555f6245a58317c2c344a42
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: missile_launchboost_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276fb97ec4c17ea4dae9b5cceb6e22cf
       vertices: []
       indices: 
       edges: []
@@ -212,7 +254,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: dc1e8b0539a50014a92eca9b23575573
+    spriteID: 7be9d724daa9edf4785617fa35f9a7b5
     vertices: []
     indices: 
     edges: []

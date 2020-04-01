@@ -413,7 +413,8 @@ public abstract class PlaneBase : Collisionable {
 			if(_boostAniProgress)
 			{
 				if(ani.AnimationProgress(deltaTime) == -1)
-					ani.ChangeAni("Loop",false);
+					if(!ani.ChangeAni("Loop",true))
+						_boostAniProgress = false;
 				ani._sprRenderer.enabled = _speed != 0f;
 			}
 			else
@@ -769,6 +770,8 @@ public abstract class PlaneBase : Collisionable {
 		_delayHitList.Clear();
 
 		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetAngle(Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position + _velocity.normalized,"Burst")
+										.SetAngle(MathEx.directionToAngle(_velocity.normalized));
 
 		EffectManager.GetInstance().Explosion(_position,15);
 

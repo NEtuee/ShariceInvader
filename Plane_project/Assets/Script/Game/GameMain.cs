@@ -94,6 +94,17 @@ public class GameMain : MonoBehaviour {
 			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
 		}
 
+		if(Input.GetKeyDown(KeyCode.Q))
+		{
+			var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
+				obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+				obj.SetAngle(90f);
+				obj.SetAbsoluteForce(new Vector3(0f,100f));
+				obj._gravityScale = 5f;
+
+			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
+		}
+
 		_objManager.progress(deltaTime);
 		PlayerFollower.instance.CC(deltaTime);
 		follower.instance.CC(deltaTime);

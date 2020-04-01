@@ -21,12 +21,11 @@ public class NPC : PlaneBase {
 		SetSpriteSet("SpriteSet/Planes/commonMissile/missile",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
-		//BoostSetUp("Effects/commonMissileBoost",new Vector2(-0.1f,0f));
-		//_boostAniProgress = true;
+		BoostSetUp("Effects/commonMissileBoost",new Vector2(-0.1f,0f));
 
 		_sprRenderer.flipX = true;
 
-		_maxSpeed = Random.Range(3.5f,4.5f);
+		_maxSpeed = 4f;
 		_speed = .1f;
 
 		_ani = new AnimationControllEx(_sprRenderer);
@@ -42,9 +41,12 @@ public class NPC : PlaneBase {
 		BasicInitialize();
 		
 		SetNoClip(false);
+
+		_maxSpeed = 4f;
+		_speed = .1f;
 		_hp = 1;
 
-		actTime = 0.7f;
+		actTime = 1f;
 		_burst = false;
 		_rotateLock = true;
 
@@ -70,11 +72,15 @@ public class NPC : PlaneBase {
 				_rotateLock = false;
 
 				_ani.ChangeAni("open",false);
+
+				_maxSpeed = Random.Range(3.8f,4.5f);
 				_gravityScale = .7f;
 				_mass = 1f;
+
+				_boostAniProgress = true;
 				BurstActive();
-				EffectManager.GetInstance().AddEffect(_position + new Vector3(0f,-0.1f),"commonMissileBoost/Burst")
-											.SetAngle(90f);
+				// EffectManager.GetInstance().AddEffect(_position + new Vector3(0f,-0.1f),"commonMissileBoost/Burst")
+				// 							.SetAngle(90f);
 			}
 			else
 			{
@@ -97,6 +103,7 @@ public class NPC : PlaneBase {
 		if(dist <= 5f && !_controllLock)
 		{
 			Vector3 pos = new Vector3(Random.Range(-0.02f,0.02f),Random.Range(-0.02f,0.02f)) + _position;
+			EffectManager.GetInstance().EmitParticles("MissileTrailSmoke",pos,Random.Range(0.8f,2f),Random.Range(0.2f,0.35f),1);
 			EffectManager.GetInstance().EmitParticles("MissileTrailSmoke",pos,Random.Range(0.8f,2f),Random.Range(0.2f,0.35f),1);
 		}
 		// float dist = Vector3.Distance(_position,GameManager.instance.player.position);
