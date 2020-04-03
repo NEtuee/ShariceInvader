@@ -147,12 +147,14 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\sideLight\sideLight_Ani.txt" />
      <None Include="Assets\Script\Shader\Pixelization.shader" />
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\explosion\explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\booster\booster_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
+     <None Include="Assets\Script\Shader\ColorLerp.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
@@ -161,6 +163,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleExplosion\CircleExplosion_Ani.txt" />
      <None Include="Assets\Script\Shader\BezierTrail.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\charge\charge_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineOpening\spineOpening_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\spin\spin_Ani.txt" />

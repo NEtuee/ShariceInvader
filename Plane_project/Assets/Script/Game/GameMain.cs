@@ -96,11 +96,12 @@ public class GameMain : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.Q))
 		{
-			var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
-				obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
-				obj.SetAngle(90f);
-				obj.SetAbsoluteForce(new Vector3(0f,100f));
-				obj._gravityScale = 5f;
+			EnemyCreator.BoomDrone(1,new Vector3(0f,1f));
+			// var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
+			// 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+			// 	obj.SetAngle(90f);
+			// 	obj.SetAbsoluteForce(new Vector3(0f,100f));
+			// 	obj._gravityScale = 5f;
 
 			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
 		}
@@ -109,9 +110,9 @@ public class GameMain : MonoBehaviour {
 		PlayerFollower.instance.CC(deltaTime);
 		follower.instance.CC(deltaTime);
 		_bulletManager.progress(deltaTime);
-		_effectManager.progress(deltaTime);
-
 		_collisionManager.UpdateCollisionList();
+
+		_effectManager.progress(deltaTime);
 
 		background.progress(deltaTime);
 

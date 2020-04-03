@@ -151,8 +151,11 @@ public class EffectBase : Drawable {
 		Move(time);
 
 		if(target != null)
+		{
+			if(target.deleted)
+				SetActive(false);
 			_position = target.position + _addPoint;
-
+		}
 		if(ani.isEnd && !_passiveDeactive)
 		{
 			SetActive(false);

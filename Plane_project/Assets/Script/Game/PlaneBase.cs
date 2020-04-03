@@ -92,6 +92,7 @@ public abstract class PlaneBase : Collisionable {
 
 
 	protected bool _fall = false;
+	protected bool _fallExplosion = false;
 	protected bool _trailEmmit = false;
 	protected bool _boostAniProgress = false;
 	private float _fallTimer = 1f;
@@ -131,9 +132,10 @@ public abstract class PlaneBase : Collisionable {
 		_directionAngle = false;
 		_controllLock = false;
 		_fall = false;
+		_fallExplosion = false;
 		_immortal = false;
 
-		_fallTimer = Random.Range(.8f,1.2f);
+		_fallTimer = Random.Range(1f,1.5f);
 
 		SetNoClip(false);
 
@@ -454,6 +456,12 @@ public abstract class PlaneBase : Collisionable {
 				{
 					Delete();
 				}
+				else if(_fallTimer <= 0.7f && !_fallExplosion)
+				{
+					_fallExplosion = true;
+					EffectManager.GetInstance().AddEffect(_position,"Explosion").SetAngle(Random.Range(0f,360f));
+					EffectManager.GetInstance().Explosion(_position,15,0.2f);
+				}
 			}
 		}
 		else
@@ -741,10 +749,10 @@ public abstract class PlaneBase : Collisionable {
 		{
 			Vector3 randDir = new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
 
-			for(int i = 0; i < 3; ++i)
+			for(int i = 0; i < 4; ++i)
 			{
-				float range = Random.Range(0.8f,1.25f);
-				EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.15f,0.03f,17);
+				float range = Random.Range(0.6f,1.5f);
+				EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.13f,0.04f,22);
 				randDir = new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
 			}
 			
@@ -753,12 +761,12 @@ public abstract class PlaneBase : Collisionable {
 		{
 			Vector3 dir = _velocity.normalized;
 
-			for(int i = 0; i < 3; ++i)
+			for(int i = 0; i < 4; ++i)
 			{
-				float range = Random.Range(0.8f,1.25f);
+				float range = Random.Range(0.6f,1.5f);
 				Vector3 targetDir = (dir + new Vector3(Random.Range(-0.7f,0.7f),Random.Range(-0.7f,0.7f))).normalized;
 				EffectManager.GetInstance().
-							ExplosionSmoke(_position,_position + targetDir * range,0.15f,0.03f,35);
+							ExplosionSmoke(_position,_position + targetDir * range,0.13f,0.04f,22);
 			}
 		}
 
@@ -770,10 +778,7 @@ public abstract class PlaneBase : Collisionable {
 		_delayHitList.Clear();
 
 		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetAngle(Random.Range(0f,360f));
-		EffectManager.GetInstance().AddEffect(_position + _velocity.normalized,"Burst")
-										.SetAngle(MathEx.directionToAngle(_velocity.normalized));
-
-		EffectManager.GetInstance().Explosion(_position,15);
+		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
 
 		_noclip = true;
 

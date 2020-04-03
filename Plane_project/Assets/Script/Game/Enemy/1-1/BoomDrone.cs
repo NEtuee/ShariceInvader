@@ -10,10 +10,12 @@ public class BoomDrone : PlaneBase
     bool master = false;
 
     bool empStun = false;
+    bool stunCharge = false;
 
     float timer = 0f;
 
-    EffectBase effect;
+    EffectBase rangeCircle = null;
+    Color32 startColor = new Color32(28,64,141,255);
 
 	public override void firstSetting()
 	{
@@ -22,6 +24,8 @@ public class BoomDrone : PlaneBase
 
 		SetSpriteSet("BoomDrone",AnimationType.Vertical_Angled);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
+
+
 
 		_maxSpeed = 3.4f;
 		_speed = .2f;
@@ -43,6 +47,7 @@ public class BoomDrone : PlaneBase
 
         standPos = this;
         master = false;
+        stunCharge = false;
         
         _boostAniProgress = false;
 
@@ -54,10 +59,7 @@ public class BoomDrone : PlaneBase
 		base.deleteEvent();
 		ComboCount.instance.AddComboCount(1);
 
-        if(effect != null && effect.gameObject.activeInHierarchy)
-        {
-            effect.SetActive(false);
-        }
+        rangeCircle.SetActive(false);
 	}
 
     public override void WhenDecreaseHP()
@@ -66,17 +68,13 @@ public class BoomDrone : PlaneBase
         {
             float d = Vector2.Distance(position,standPos.position);
 
-            if(d <= 1.5f)
+            if(d <= 1.5f && stunCharge)
             {
                 GameManager.instance.player.ControllLock(1f);
                 GameManager.instance.player.AddForce(-GameManager.instance.player.velocity / 1.5f);
             }
 
             empStun = false;
-
-            effect.sprRenderer.color = Color.white;
-            effect.SetTimer(0.1f);
-
             act = false;
         }
     }
@@ -89,6 +87,9 @@ public class BoomDrone : PlaneBase
             master = true;
             _maxSpeed = Random.Range(3f,3.5f);
 		    _speed = Random.Range(.2f,.25f);
+
+            rangeCircle = EffectManager.GetInstance().AddEffect(_position,"CircleRange",true,this);
+            rangeCircle.sprRenderer.color = startColor;
         }
 
         if(act && !_fall)
@@ -105,7 +106,7 @@ public class BoomDrone : PlaneBase
                     timer = 0f;
                     empStun = true;
 
-                    effect = EffectManager.GetInstance().AddEffect(_position,"CircleEffect",false,this).SetFps(0f);
+                    EffectManager.GetInstance().AddEffect(_position,"ElectricBoom/charge",false,this);
                 }
             }
 
@@ -133,19 +134,20 @@ public class BoomDrone : PlaneBase
         {
             timer += deltaTime;
 
-            Color c = effect.sprRenderer.color;
-
-            c.a = Mathf.Sin((timer * 720f) * Mathf.Deg2Rad);
-
-            if(timer >= 0.8f)
+            if(master)
             {
+                rangeCircle.sprRenderer.color = Color32.Lerp(startColor,new Color32(0,255,0,255),timer * 0.5f);
+            }
+            if(timer >= 2f)
+            {
+                stunCharge = true;
                 DecreaseHP(_hp);
-                c.a = 1f;
-                effect.SetTarget(null);
-                effect.SetSortingOrder(1);
+                EffectManager.GetInstance().AddEffect(_position,"ElectricBoom/explosion",false);
+
+                if(rangeCircle != null)
+                    rangeCircle.SetActive(false);
             }
 
-            effect.sprRenderer.color = c;
         }
 
         if(!_fall)
