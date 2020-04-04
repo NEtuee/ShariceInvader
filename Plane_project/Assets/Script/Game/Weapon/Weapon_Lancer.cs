@@ -32,7 +32,7 @@ public class Weapon_Lancer : WeaponBase
 
         if(_attackTime != 0f)
         {
-            _plane.SetAbsoluteForce(_plane.direction * 10f);
+            _plane.SetAbsoluteForce(_plane.direction * 13f);
 
 			//Vector3 pos = _plane.position + new Vector3(Mathf.Sin(Random.Range(0,360f)),Mathf.Cos(Random.Range(0,360f)),0f) * 0.055f;
 			//EffectManager.GetInstance().EmitParticles("AttackTrail",pos,-_plane.angle,1);
@@ -92,8 +92,8 @@ public class Weapon_Lancer : WeaponBase
                                         .SetAddPoint(_plane.direction.normalized * 0.35f)
 										.SetAngle(MathEx.directionToAngle(_plane.direction));
 
-        _attackTime = .15f;
-        _plane.SetMaxSpeed(_mainSpeed + 6f);
+        _attackTime = .12f;
+        _plane.SetMaxSpeed(_mainSpeed + 9f);
 		mainAttack = true;
 		_plane.SetControll(true);
 
@@ -132,8 +132,9 @@ public class Weapon_Lancer : WeaponBase
 		        }
             }
         }
-
-        CameraControll.instance.FollowDelay(0.1f);
+        
+        _plane.SpriteDisapear(0.1f);
+        CameraControll.instance.FollowDelay(0.3f);
 
         return false;
     }

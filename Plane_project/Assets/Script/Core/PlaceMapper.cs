@@ -205,6 +205,19 @@ public class PlaceMapper
         return Vector2.zero;
     }
 
+    public Vector2 GetPosPercentage(Vector3 obj)
+    {
+        int place = PlaceCheck(obj);
+
+        if(place != -1)
+        {
+            float dist = obj.x - _places[place].leftBottom.x;
+            return new Vector2((dist + (float)place * _placeWidth) / _mapWidth,obj.y / _mapHeight);
+        }
+
+        return new Vector2();
+    }
+
     public Vector2 GetPosPercentage(ObjectBase obj)
     {
         int place = PlaceCheck(obj);
@@ -227,6 +240,25 @@ public class PlaceMapper
             
             float dist = x - _left.leftBottom.x;
             int p = (int)(MathEx.abs(dist) / _placeWidth);
+
+            return p;
+        }
+        else
+            return -1;
+    }
+
+    public int PlaceCheck(Vector3 obj)
+    {
+        float x = obj.x;
+
+        if(x >= _left.leftBottom.x && x <= _right.leftBottom.x + _placeWidth)
+        {
+            
+            float dist = x - _left.leftBottom.x;
+            int p = (int)(MathEx.abs(dist) / _placeWidth);
+
+            p = _left.placeCount + p;
+            p = p >= _placeCount ? p - _placeCount : p;
 
             return p;
         }

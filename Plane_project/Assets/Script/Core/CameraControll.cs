@@ -71,6 +71,10 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	public void progress(float deltaTime)
 	{
+		_followSpeed = Mathf.Lerp(_followSpeed,10f,0.05f);
+		_position = Vector2.Lerp(_position,_followTarget.position,Timer.GetInstance().noneScaledDeltaTime * _followSpeed);
+		_position.z = _zDist;
+
 		if(_followTarget != null)
 		{
 			if(_delayTimer != 0f)
@@ -81,11 +85,6 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 					Timer.GetInstance().SetTimeScaleTimer(1f,0.3f,true);
 					_delayTimer = 0f;
 				}
-			}
-			else
-			{
-				_position = Vector2.Lerp(_position,_followTarget.position,deltaTime * _followSpeed);
-				_position.z = _zDist;
 			}
 		}
 
@@ -162,6 +161,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	public void FollowDelay(float delay)
 	{
 		_delayTimer = delay;
+
+		SetSpeed(1f);
 	}
 
 	public void release()

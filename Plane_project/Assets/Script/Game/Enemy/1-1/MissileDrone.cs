@@ -35,7 +35,6 @@ public class MissileDrone : PlaneBase
         _mass = 5f;
 
         _trailEmmit = false;
-		_sprRenderer.flipX = true;
 		_bounceOff = true;
 	}
 
@@ -83,9 +82,9 @@ public class MissileDrone : PlaneBase
 				close = 1.5f;
 
 				spine.ChangeAni("open",false);
-				EffectManager.GetInstance().AddEffect(_position + new Vector3(-0.01f,0.495f),"Planes/MissileDrone/launch",false,this,0)
-											.SetAddPoint(new Vector3(-0.01f,0.495f))
-											.SetScale(_scale.x,1f,1f);
+				EffectManager.GetInstance().AddEffect(_position + new Vector3(0.01f * _scale.x,0.495f),"Planes/MissileDrone/launch",false,this,0)
+											.SetAddPoint(new Vector3(-0.01f * _scale.x,0.495f))
+											.SetScale(-_scale.x,1f,1f);
 
 				shotCount = 6;
 				shot = true;
@@ -154,10 +153,5 @@ public class MissileDrone : PlaneBase
 		fin.ChangeAni("loop",true);
 		boost.ChangeAni("loop",true);
 		sideLight.ChangeAni("loop",true);
-
-		spine._sprRenderer.flipX = true;
-		fin._sprRenderer.flipX = true;
-		boost._sprRenderer.flipX = true;
-		sideLight._sprRenderer.flipX = true;
 	}
 }

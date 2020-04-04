@@ -22,7 +22,7 @@ public class BackgroundManager : MonoBehaviour, Define.IManager
 	{
         if(_place.mainObject != null)
         {
-            Vector2 percentage = _place.GetPosPercentage(_place.mainObject);
+            Vector2 percentage = _place.GetPosPercentage(CameraControll.instance.transform.position);
             for(int i = 0; i < backgrounds.Length; ++i)
             {
                 backgrounds[i].ScreenScroll(percentage);

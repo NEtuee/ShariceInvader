@@ -68,10 +68,15 @@ public class BoomDrone : PlaneBase
         {
             float d = Vector2.Distance(position,standPos.position);
 
-            if(d <= 1.5f && stunCharge)
+            if(d <= 1.5f)// && stunCharge)
             {
                 GameManager.instance.player.ControllLock(1f);
                 GameManager.instance.player.AddForce(-GameManager.instance.player.velocity / 1.5f);
+
+                if(!stunCharge)
+                {
+                    EffectManager.GetInstance().AddEffect(_position,"ElectricBoom/explosion",false);
+                }
             }
 
             empStun = false;

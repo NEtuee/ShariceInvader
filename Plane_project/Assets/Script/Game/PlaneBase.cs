@@ -97,6 +97,7 @@ public abstract class PlaneBase : Collisionable {
 	protected bool _boostAniProgress = false;
 	private float _fallTimer = 1f;
 	protected float _controllLockTimer = 0f;
+	protected float _spriteDisapearTimer = 0f;
 	protected float _spriteAngle;
 
 	protected List<TrailRenderer> _trail = new List<TrailRenderer>();
@@ -136,6 +137,9 @@ public abstract class PlaneBase : Collisionable {
 		_immortal = false;
 
 		_fallTimer = Random.Range(1f,1.5f);
+
+		_controllLockTimer = 0f;
+		_spriteDisapearTimer = 0f;
 
 		SetNoClip(false);
 
@@ -436,6 +440,20 @@ public abstract class PlaneBase : Collisionable {
 			}
 		}
 
+		if(_spriteDisapearTimer != 0f)
+		{
+			_spriteDisapearTimer -= deltaTime;
+
+			if(_spriteDisapearTimer <= 0f)
+			{
+				_spriteDisapearTimer = 0f;
+				_sprRenderer.enabled = true;
+
+				EffectManager.GetInstance().AddEffect(_position,"Burst")
+										.SetAngle(MathEx.directionToAngle(_direction));
+			}
+		}
+
 		//_trail.time = Timer.GetInstance().TimeScaling(_trail.time);
 
 		if(_direction.magnitude != 0)
@@ -660,6 +678,12 @@ public abstract class PlaneBase : Collisionable {
 
 			_eulerAngle = Mathf.LerpAngle(_eulerAngle,a,0.2f);
 		}
+	}
+
+	public void SpriteDisapear(float time)
+	{
+		_sprRenderer.enabled = false;
+		_spriteDisapearTimer = time;
 	}
 
 	public void ControllLock(float time)

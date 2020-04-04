@@ -28,12 +28,17 @@ public class ComboCount : SingletonMono<ComboCount>
                 AddComboCount(0);
             }
         }
+
+        Vector3 scale = text.gameObject.transform.localScale;
+        text.gameObject.transform.localScale = Vector3.Lerp(scale,new Vector3(1f,1f,1f),.3f);
     }
 
     public void AddComboCount(int i)
     {
         combo += i;
         comboCount = 3f;
+        text.gameObject.transform.localScale = new Vector3(1.5f,1.9f);
+
         if(combo == 0)
         {
             text.text = "";
