@@ -9,7 +9,7 @@ public class MissileDrone : PlaneBase
 
 	int shotCount = 6;
 
-    float shotTimer = 0f;
+    float shotTimer = 5f;
 	float explosiveTimer = 0f;
 
 	float close = 1f;
@@ -76,7 +76,7 @@ public class MissileDrone : PlaneBase
 		if(act)
 		{
 			shotTimer += deltaTime;
-			if(shotTimer >= 5f)
+			if(shotTimer >= 10f)
 			{
 				shotTimer = 0f;
 				close = 1.5f;
@@ -126,6 +126,7 @@ public class MissileDrone : PlaneBase
 				Vector3 randPos = new Vector3(Random.Range(-1.15f,1.15f),Random.Range(-.2f,.2f));
 
 				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
+				EffectManager.GetInstance().AddEffect(_position + randPos,"Explosion").SetAngle(Random.Range(0f,360f));
 			}
 		}
 

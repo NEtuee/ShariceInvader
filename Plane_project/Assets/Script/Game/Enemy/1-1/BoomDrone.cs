@@ -59,7 +59,8 @@ public class BoomDrone : PlaneBase
 		base.deleteEvent();
 		ComboCount.instance.AddComboCount(1);
 
-        rangeCircle.SetActive(false);
+        if(rangeCircle != null)
+            rangeCircle.SetActive(false);
 	}
 
     public override void WhenDecreaseHP()

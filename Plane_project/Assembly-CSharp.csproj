@@ -153,6 +153,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
      <None Include="Assets\Script\Shader\ColorLerp.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />

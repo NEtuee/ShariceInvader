@@ -10,12 +10,13 @@ public class CCTV : PlaneBase
     Vector2 point0;
     Vector2 point1;
 
-    float recogDist = 4f;
+    float recogDist = 5.5f;
     public float mainAngle = 0f;
     float plusAngle = 15f;
 
     float timer = 0f;
     float alertTimer = 0f;
+    float spawnTimer = 0f;
 
     float xRand = 0f;
 
@@ -48,8 +49,8 @@ public class CCTV : PlaneBase
         line.SetPosition(1,new Vector2());
         line.SetPosition(2,new Vector2());
         
-        line.startWidth = 0.025f;
-        line.endWidth = 0.025f;
+        line.startWidth = 0.02f;
+        line.endWidth = 0.02f;
 
         line.material = ResourceManager.GetInstance().GetMaterial("SpriteDefault");
 
@@ -63,6 +64,8 @@ public class CCTV : PlaneBase
         _camPos = new Vector3(0f,-0.1f,0f);
 
         miniMapIcon.gameObject.SetActive(false);
+
+        PhysicsDebugSetup();
 	}
 
 	public override void initialize()
@@ -72,7 +75,9 @@ public class CCTV : PlaneBase
 		SetNoClip(false);
         _velocityFlip = false;
         _directionAngle = true;
-		_hp = 15;
+		_hp = 35;
+
+        spawnTimer = Random.Range(1.5f,2f);
 
         xRand = Random.Range(-1f,1f);
 
@@ -125,7 +130,7 @@ public class CCTV : PlaneBase
                 Vector3 dir = new Vector3();
 
                 
-                if(targetDist < 1f)
+                if(targetDist < 1.5f)
                     dir = (_position - targetPos).normalized * 1f;
                 else
                     dir = GameManager.instance.player.velocity.normalized;
@@ -146,7 +151,7 @@ public class CCTV : PlaneBase
 
                 alertTimer += deltaTime;
 
-                if(alertTimer >= 4f)
+                if(alertTimer >= 15f)
                 {
                     Delete();
 
@@ -155,6 +160,21 @@ public class CCTV : PlaneBase
             }
 
             mainAngle = Mathf.LerpAngle(mainAngle,ang,deltaTime * 20f);
+
+            spawnTimer -= deltaTime;
+            if(spawnTimer <= 0f)
+            {
+                float x = Random.Range(-3f,3f);
+                x += x > 0 ? -7.2f : 7.2f;
+
+                float y = Random.Range(-3f,3f);
+                y += y > 0 ? -3.6f : 3.6f;
+                y += y < 1f ? 3.6f : 0f;
+
+                EnemyCreator.ShootingDrone(1,new Vector3(x,y) + targetPos,targetPos);
+
+                spawnTimer = Random.Range(1.2f,1.8f);
+            }
 
         }
         else
@@ -169,74 +189,14 @@ public class CCTV : PlaneBase
             mainAngle = MathEx.directionToAngle(_direction);
         }
 
-        line.startColor = Color.Lerp(Color.white,maxColor,alertTimer / 3f);
+        line.startColor = Color.Lerp(Color.white,maxColor,alertTimer / 15f);
         line.endColor = line.startColor;
 
-        // if(!burstCall)
-        // {
-        //     float a = 0f;
-        //     Vector3 pos = GameManager.instance.player.position;
-
-        //     if(!act)
-        //     {
-        //         timer += 0.25f * deltaTime;
-        //         a = 130f * Mathf.Sin(timer) + 90f;
-
-        //         float d = Vector2.Distance(position,pos);
-
-        //         float dot = Mathf.Cos(Mathf.Deg2Rad * plusAngle);
-        //         Vector3 dir = (pos - position).normalized;
-
-        //         mainAngle = Mathf.Lerp(mainAngle,a,0.05f);
-
-        //         if(d <= recogDist)
-        //         {
-        //             if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * mainAngle)) > dot)
-        //             {
-        //                 act = true;
-        //                 maxColor = Color.red;
-        //                 alertTimer = 0f;
-        //             }
-        //         }
-        //     }
-        //     else
-        //     {
-        //         a = MathEx.directionToAngle((pos - position).normalized);
-
-        //         float d = Vector2.Distance(position,pos);
-
-        //         alertTimer += deltaTime;
-
-        //         if(alertTimer >= 2f)
-        //         {
-        //             burstCall = true;
-        //             line.enabled = false;
-        //             var p = position;
-        //             p.y = 3f;
-        //             EnemyCreator.BoomDrone(13,ObjectManager.GetInstance()._place.WorldPosToMapPos(p));
-        //         }
-
-        //         mainAngle = Mathf.LerpAngle(mainAngle,a,0.2f);
-
-        //         if(d > recogDist)
-        //         {
-        //             act = false;
-        //             mainAngle += -(float)((int)mainAngle / 360) * 360;
-
-        //             alertTimer = 0.2f;
-
-        //             maxColor = Color.white;
-        //         }
-        //     }
-
-        //     line.startColor = Color.Lerp(Color.white,maxColor,alertTimer / 2f);
-        //     line.endColor = line.startColor;
-        // }
-
-        //GameManager.instance.player.Collision(this);
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
         
 		BasicUpdate(deltaTime);
+
+        PhysicsDebugUpdate();
 	}
 
     public void AirStand()

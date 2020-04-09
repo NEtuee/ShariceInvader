@@ -13,6 +13,7 @@ public class AnimationControllEx
 	public static Dictionary<string,AnimationKey[]> loadedAnimations = new Dictionary<string,AnimationKey[]>();
 
     public Dictionary<string, AnimationKey[]> animations = new Dictionary<string, AnimationKey[]>();
+	public Dictionary<string, string> aniOriginPath = new Dictionary<string, string>();
 
 	public bool isEnd{get{return _animationEnd;}}
 	public string currAni{get{return _currAniName;}}
@@ -84,7 +85,73 @@ public class AnimationControllEx
         animations.Clear();
     }
 
+	public void CopyAnimation(string copy, string target)
+	{
+		if(!animations.ContainsKey(copy) || !loadedAnimations.ContainsKey(target))
+		{
+			Debug.Log("animation does not loaded!!!");
+			return;
+		}
+
+		animations[copy] = loadedAnimations[target];
+	}
+
+	public void CopyAnimation(string copy, AnimationKey[] keys)
+	{
+		if(!animations.ContainsKey(copy))
+		{
+			Debug.Log("animation does not loaded!!!");
+			return;
+		}
+
+		animations[copy] = keys;
+	}
+	
 	public void AddAnimation(string name, string path)
+	{
+		AnimationKey[] key;
+
+		if(!loadedAnimations.ContainsKey(path))
+		{
+			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
+			if(sprites == null)
+				return;
+
+        	string file = path.Substring(path.LastIndexOf('/'));
+        	string pathName =  "Sprites/SpriteSet/" + path + file + "_Ani";
+
+        	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
+
+        	if(data == null)
+        	{
+        	    CreateAnimationRef(pathName,0.08333f,sprites.Length);
+        	}
+
+        	key = new AnimationKey[sprites.Length];
+
+        	for(int i = 0; i < sprites.Length; ++i)
+        	{
+        	    float t = 0.08333f;
+
+        	    if(data != null)
+        	    {
+        	        t = float.Parse(data[i]);
+        	    }
+
+        	    key[i].duration = t;
+        	    key[i].sprite = sprites[i];
+        	}
+
+			loadedAnimations.Add(path,key);
+		}
+		else
+			key = loadedAnimations[path];
+
+		aniOriginPath.Add(name,path);
+        animations.Add(name, key);
+	}
+
+	public static void LoadAnimation(string path)
 	{
 		AnimationKey[] key;
 
@@ -122,10 +189,6 @@ public class AnimationControllEx
 
 			loadedAnimations.Add(path,key);
 		}
-		else
-			key = loadedAnimations[path];
-
-        animations.Add(name, key);
 	}
 
 	public int AnimationProgress(float deltaTime) //고치삼
@@ -161,7 +224,7 @@ public class AnimationControllEx
 		return _aniPos;
 	}
 
-    public void CreateAnimationRef(string n, float time, int count)
+    public static void CreateAnimationRef(string n, float time, int count)
     {
         List<string> s = new List<string>();
 

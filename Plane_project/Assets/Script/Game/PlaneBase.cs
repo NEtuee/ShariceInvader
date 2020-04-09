@@ -101,7 +101,7 @@ public abstract class PlaneBase : Collisionable {
 	protected float _spriteAngle;
 
 	protected List<TrailRenderer> _trail = new List<TrailRenderer>();
-	protected List<AnimationControllEx> _boostAni = new List<AnimationControllEx>();
+	public List<AnimationControllEx> _boostAni = new List<AnimationControllEx>();
 	private Material _trailMat;
 	protected Transform miniMapIcon;
 
@@ -111,6 +111,9 @@ public abstract class PlaneBase : Collisionable {
 
 	protected DecoAnimeController _deco;
 
+
+	protected LineRenderer directionViewer;
+	protected LineRenderer velocityViewer;
 
 
 	private List<DelayItem> _delayHitList = new List<DelayItem>();
@@ -890,5 +893,38 @@ public abstract class PlaneBase : Collisionable {
 		spr.transform.SetParent(tp);
 
 		_boostAni.Add(ani);
+	}
+
+	public void PhysicsDebugSetup()
+	{
+		directionViewer = new GameObject("dirLine").AddComponent<LineRenderer>();
+		velocityViewer = new GameObject("velLine").AddComponent<LineRenderer>();
+
+		directionViewer.startWidth = 0.02f;
+        directionViewer.endWidth = 0.02f;
+
+		velocityViewer.startWidth = 0.02f;
+        velocityViewer.endWidth = 0.02f;
+
+		directionViewer.material = ResourceManager.GetInstance().GetMaterial("SpriteDefault");
+		velocityViewer.material = ResourceManager.GetInstance().GetMaterial("SpriteDefault");
+
+		directionViewer.startColor = Color.green;
+		directionViewer.endColor = Color.green;
+		
+		velocityViewer.startColor = Color.red;
+		velocityViewer.endColor = Color.red;
+
+		directionViewer.transform.SetParent(tp);
+		velocityViewer.transform.SetParent(tp);
+	}
+
+	public void PhysicsDebugUpdate()
+	{
+		directionViewer.SetPosition(0,_position);
+		directionViewer.SetPosition(1,_position + _direction);
+
+		velocityViewer.SetPosition(0,_position);
+		velocityViewer.SetPosition(1,_position + _velocity.normalized * 1.2f);
 	}
 }

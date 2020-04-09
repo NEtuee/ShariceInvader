@@ -52,6 +52,8 @@ public class GameMain : MonoBehaviour {
 
 		background.firstSetting();
 
+		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
+
 		//_objManager.AddObject<TheMarker>(Define.ObjectType.enemy,"CCTV").SetPosition(_objManager._place.MapPosToWorldPos(new Vector3(0f,5f)));
 
 		//EnemyCreator.ShootingDrone(20,new Vector3(0f,5f));
@@ -96,14 +98,16 @@ public class GameMain : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.Q))
 		{
-			EnemyCreator.BoomDrone(1,new Vector3(0f,1f));
+			//EnemyCreator.BoomDrone(1,new Vector3(0f,1f));
 			// var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
 			// 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
 			// 	obj.SetAngle(90f);
 			// 	obj.SetAbsoluteForce(new Vector3(0f,100f));
 			// 	obj._gravityScale = 5f;
 
-			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
+			//EnemyCreator.ShootingDrone(1,new Vector3(0f,1f));
+
+			EnemyCreator.CCTV(0,new Vector3(0f,1f));
 		}
 
 		_objManager.progress(deltaTime);

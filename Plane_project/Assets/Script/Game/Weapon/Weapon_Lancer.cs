@@ -10,6 +10,7 @@ public class Weapon_Lancer : WeaponBase
 
     private SpriteRenderer _aimObj;
 
+
     public override void Initialize()
     {
         base.Initialize();
@@ -19,6 +20,11 @@ public class Weapon_Lancer : WeaponBase
         
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_lancer");
         _ui = ResourceManager.GetInstance().GetSprite("UI/ui_lancer");
+
+        foreach(var ani in _plane._boostAni)
+        {
+            ani.CopyAnimation("Burst","Effects/Weapon/Lancer/Burst");
+        }
 
         InitAimObject();
         _hideAimObject = true;
@@ -81,23 +87,23 @@ public class Weapon_Lancer : WeaponBase
 
         _plane.BurstActive();
 
-        Vector3 pos = _plane.position;
-		pos -= _plane.direction.normalized * 0.25f;
-		EffectManager.GetInstance().AddEffect(_plane.position + _plane.direction.normalized * 0.2f,"Weapon/Lancer/Trail")
-                                        .SetFps(14f)
-										.SetAngle(MathEx.directionToAngle(_plane.direction));
+        // Vector3 pos = _plane.position;
+		// pos -= _plane.direction.normalized * 0.25f;
+		// EffectManager.GetInstance().AddEffect(_plane.position + _plane.direction.normalized * 0.2f,"Weapon/Lancer/Trail")
+        //                                 .SetFps(14f)
+		// 								.SetAngle(MathEx.directionToAngle(_plane.direction));
 
-        EffectManager.GetInstance().AddEffect(pos,"Weapon/Lancer/Chase",false,_plane)
-                                        .SetFps(16f)
-                                        .SetAddPoint(_plane.direction.normalized * 0.35f)
-										.SetAngle(MathEx.directionToAngle(_plane.direction));
+        // EffectManager.GetInstance().AddEffect(pos,"Weapon/Lancer/Chase",false,_plane)
+        //                                 .SetFps(16f)
+        //                                 .SetAddPoint(_plane.direction.normalized * 0.35f)
+		// 								.SetAngle(MathEx.directionToAngle(_plane.direction));
 
-        _attackTime = .12f;
-        _plane.SetMaxSpeed(_mainSpeed + 9f);
+        _attackTime = .18f;
+        _plane.SetMaxSpeed(_mainSpeed + 5f);
 		mainAttack = true;
 		_plane.SetControll(true);
 
-        Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
+        //Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
     }
     public override bool SpecialAttack(Vector3 dir)
     {
@@ -134,7 +140,7 @@ public class Weapon_Lancer : WeaponBase
         }
         
         _plane.SpriteDisapear(0.1f);
-        CameraControll.instance.FollowDelay(0.3f);
+        CameraControll.instance.FollowDelay(0.5f);
 
         return false;
     }
@@ -170,6 +176,11 @@ public class Weapon_Lancer : WeaponBase
 		_plane.SetBodyAttack(5);
 
         UnityEngine.GameObject.Destroy(_aimObj.gameObject);
+
+        foreach(var ani in _plane._boostAni)
+        {
+            ani.CopyAnimation("Burst",ani.aniOriginPath["Burst"]);
+        }
     }
 
     public void UpdateAim()

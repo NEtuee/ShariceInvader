@@ -38,6 +38,19 @@ public static class EnemyCreator
         }
     }
 
+    public static void ShootingDrone(int count, Vector2 worldPos, Vector2 targetPos)
+    {
+        ObjectManager _objManager = ObjectManager.GetInstance();
+
+        for(int i = 0; i < count; ++i)
+        {
+			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
+			boom.SetPosition(worldPos);
+            boom.standPos = targetPos;
+            boom.act = true;
+        }
+    }
+
     public static void CCTV(int shootingDroneCount, Vector2 mapPos)
     {
         ObjectManager _objManager = ObjectManager.GetInstance();

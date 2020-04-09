@@ -1,24 +1,24 @@
 fileFormatVersion: 2
-guid: 9f1c969dc170f11409cd0ec2ed2dfbce
+guid: a44c3f776ed2f6d48b23dc80a9c2c2c0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: drone1B_spritesheet_0
-    21300002: drone1B_spritesheet_1
-    21300004: drone1B_spritesheet_2
-    21300006: drone1B_spritesheet_3
-    21300008: drone1B_spritesheet_4
-    21300010: drone1B_spritesheet_5
-    21300012: drone1B_spritesheet_6
-    21300014: drone1B_spritesheet_7
-    21300016: drone1B_spritesheet_8
-    21300018: drone1B_spritesheet_9
-    21300020: drone1B_spritesheet_10
-    21300022: drone1B_spritesheet_11
-    21300024: drone1B_spritesheet_12
-    21300026: drone1B_spritesheet_13
-    21300028: drone1B_spritesheet_14
-    21300030: drone1B_spritesheet_15
-    21300032: drone1B_spritesheet_16
+    21300000: drone1B_0
+    21300002: drone1B_1
+    21300004: drone1B_2
+    21300006: drone1B_3
+    21300008: drone1B_4
+    21300010: drone1B_5
+    21300012: drone1B_6
+    21300014: drone1B_7
+    21300016: drone1B_8
+    21300018: drone1B_9
+    21300020: drone1B_10
+    21300022: drone1B_11
+    21300024: drone1B_12
+    21300026: drone1B_13
+    21300028: drone1B_14
+    21300030: drone1B_15
+    21300032: drone1B_16
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -101,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: drone1B_spritesheet_0
+      name: drone1B_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,19 +115,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ce90cdd36e239743855581a543f62a8
+      spriteID: 250a03ad31bfa5e458d97769bc2a0062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_1
+      name: drone1B_1
       rect:
         serializedVersion: 2
         x: 66
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,19 +135,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c87927b19bc1884b96d4adc169dfd0e
+      spriteID: 8de13757a29673c4d8c84f6f481a9ea1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_2
+      name: drone1B_2
       rect:
         serializedVersion: 2
         x: 132
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,19 +155,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 181a6ca5a20787f4c9c57460059c27ce
+      spriteID: 5842ff85c258d2945b1b425bd411728c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_3
+      name: drone1B_3
       rect:
         serializedVersion: 2
         x: 198
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,19 +175,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e852f7f2e6673524fb72eea65d687bed
+      spriteID: 0c2b83102a5e39b40bb7b579fc7783e4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_4
+      name: drone1B_4
       rect:
         serializedVersion: 2
         x: 264
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,19 +195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddc5a444b743fd3419de9b6899492ab0
+      spriteID: c6b794ae099e98c46a6b847f8cb13b8f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_5
+      name: drone1B_5
       rect:
         serializedVersion: 2
         x: 330
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,19 +215,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f623db5423f5db34699624b33b783f0c
+      spriteID: 0b37ef57040849146b9f280bebf97b9a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_6
+      name: drone1B_6
       rect:
         serializedVersion: 2
         x: 396
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,19 +235,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fe83133838c036438866674340b12a8
+      spriteID: 4f7be36de9d52eb48bf9dc83712130b7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_7
+      name: drone1B_7
       rect:
         serializedVersion: 2
         x: 462
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,19 +255,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8526394ba8c8404aa6b733fa2d76877
+      spriteID: 31488e54449678b47aa377624f2b27e5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_8
+      name: drone1B_8
       rect:
         serializedVersion: 2
         x: 528
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,19 +275,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0febec5a5cb4f14fbf67b17f87e9ac6
+      spriteID: b84cafcd7cb830c47aa1eea1b51a7f86
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_9
+      name: drone1B_9
       rect:
         serializedVersion: 2
         x: 594
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,19 +295,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cce2ff8173676645b75af649d0e180e
+      spriteID: 07dfb95b97e77ed46bd3ecb4d56bdef2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_10
+      name: drone1B_10
       rect:
         serializedVersion: 2
         x: 660
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,19 +315,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50c65322afd0c68449b4b9f3a7543b0e
+      spriteID: cb5614f3a06d8e940b8e575e93a96204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_11
+      name: drone1B_11
       rect:
         serializedVersion: 2
         x: 726
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -335,19 +335,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2e0118794475dd43bdebde5ae0fe192
+      spriteID: 8cd6f9df6852e3144add1c1392a8f8b1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_12
+      name: drone1B_12
       rect:
         serializedVersion: 2
         x: 792
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,19 +355,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a809722124290c145806fd5326024dff
+      spriteID: e264962cdb1189e47a78c7d4c1d58eca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_13
+      name: drone1B_13
       rect:
         serializedVersion: 2
         x: 858
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,19 +375,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea537084b7612f5458f0364df9c2680a
+      spriteID: e387c83bc16451c499eb6ab9bcec008d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_14
+      name: drone1B_14
       rect:
         serializedVersion: 2
         x: 924
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -395,19 +395,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fa0bb8ef70ceda438567b0961e976f3
+      spriteID: 94c775b9bbfaa024fb21ec14a70f52ab
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_15
+      name: drone1B_15
       rect:
         serializedVersion: 2
         x: 990
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,19 +415,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ace6b2707adb64f4c88b862ed64a1308
+      spriteID: 73bf2ba05de64ba4096c167a815d860f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B_spritesheet_16
+      name: drone1B_16
       rect:
         serializedVersion: 2
         x: 1056
         y: 0
         width: 66
-        height: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -435,7 +435,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46e6c80b12cb95a40b4f555b273aa45c
+      spriteID: e9afc02c4dffc544594470c9028274e0
       vertices: []
       indices: 
       edges: []
@@ -443,7 +443,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5252fdaeae854ee4b85f71e4526d08d9
+    spriteID: 2bef253f70cf35e488d3b25cf3d85e34
     vertices: []
     indices: 
     edges: []

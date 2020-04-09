@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingDrone : PlaneBase
 {
-    Vector3 standPos;
+    public Vector3 standPos;
 
     float timer;
     float shotTimer = 0f;
@@ -13,7 +13,7 @@ public class ShootingDrone : PlaneBase
     int flashCount = 0;
     int count = 0;
 
-    bool act = false;
+    public bool act = false;
 
     public ObjectBase standBase = null;
 
@@ -82,7 +82,7 @@ public class ShootingDrone : PlaneBase
 
                 float d = Vector2.Distance(standPos,position);
 
-                if(d <= 1f)
+                if(d <= 2f)
                 {
                     d = Vector2.Distance(position,GameManager.instance.player.position);
 
