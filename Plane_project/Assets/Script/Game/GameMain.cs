@@ -105,9 +105,12 @@ public class GameMain : MonoBehaviour {
 			// 	obj.SetAbsoluteForce(new Vector3(0f,100f));
 			// 	obj._gravityScale = 5f;
 
+			var obj = ObjectManager.GetInstance().AddObject<LaserDrone>(Define.ObjectType.enemy,"laserDrone");
+			 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+
 			//EnemyCreator.ShootingDrone(1,new Vector3(0f,1f));
 
-			EnemyCreator.CCTV(0,new Vector3(0f,1f));
+			//EnemyCreator.CCTV(0,new Vector3(0f,1f));
 		}
 
 		_objManager.progress(deltaTime);

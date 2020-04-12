@@ -118,6 +118,7 @@
      <Compile Include="Assets\Script\Game\Enemy\1-1\CCTV.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\EnemyCreator.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\Intercepter.cs" />
+     <Compile Include="Assets\Script\Game\Enemy\1-1\LaserDrone.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\MissileDrone.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\NPC.cs" />
      <Compile Include="Assets\Script\Game\Enemy\1-1\PointMarker.cs" />
