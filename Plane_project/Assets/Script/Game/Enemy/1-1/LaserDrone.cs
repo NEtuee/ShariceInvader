@@ -5,27 +5,36 @@ using UnityEngine;
 public class LaserDrone : PlaneBase
 {
     Vector2 _targetMapPos;
+    Vector3 _attackDir;
 
     float _updateTimer = 0.1f;
     float _chargeTimer = 0f;
     float _blinkTimer = 0f;
     float _attackTimer = 0f;
-    float _alertTimer = 0f;
     float _attackCooldown = 5f;
+
+    float _verticalAngle = 0f;
+    float _spinAccel = 0f;
+    
 
     bool _move = false;
     bool _act = false;
     bool _charging = false;
 
-    int _alertCount = 0;
+    AnimationControllEx _back;
+    AnimationControllEx _front;
 
 
     public override void firstSetting()
     {
         base.firstSetting();
 
-        SetSpriteSet("BoomDrone",AnimationType.None);
+        //SetSpriteSet("Planes/LaserDrone/",AnimationType.None);
+        _aniType = AnimationType.None;
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("LaserDrone/Center",2);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
+
+        AddDeco();
     }
 
     public override void deleteEvent()
@@ -56,14 +65,16 @@ public class LaserDrone : PlaneBase
 
     public override void progress(float deltaTime)
     {
-        Vector3 pos = ObjectManager.GetInstance()._place.MapPosToWorldPos(_targetMapPos);
+        Vector3 pos = GameManager.instance.player.position;//ObjectManager.GetInstance()._place.MapPosToWorldPos(_targetMapPos);
         float dist = Vector3.Distance(pos,_position);
 
         if(_move && _updateTimer <= 0f)
         {
-            _direction = (pos - _position).normalized;
+            Vector3 targetPos = ObjectManager.GetInstance()._place.MapPosToWorldPos(_targetMapPos);
+            float targetDist = Vector3.Distance(targetPos,_position);
+            _direction = (targetPos - _position).normalized;
 
-            if(dist <= 0.1f)
+            if(targetDist <= 0.2f)
             {
                 _speed = 0f;
                 _move = false;
@@ -104,20 +115,21 @@ public class LaserDrone : PlaneBase
 
                 if(_chargeTimer <= 0f)
                 {
-                    _attackTimer = 1.5f;
-                    _alertCount = 0;
+                    _attackTimer = 2f;
 
-                    _alertTimer = 0.2f;
                     _charging = false;
                     _sprRenderer.color = Color.white;
 
-                    Vector3 dir = (GameManager.instance.player.position - _position).normalized;
+                    _attackDir = (GameManager.instance.player.position - _position).normalized;
+                    _spinAccel = 0f;
+
                     for(int i = 0; i < 20; ++i)
                     {
-                        EffectManager.GetInstance().AddEffect(_position + (dir * 0.05f) + (dir * (0.35f * (float)i)),"PhantomString_Aim/Appear",false)
+                        EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.1f) + (_attackDir * (0.745f * (float)i)),"Planes/LaserDrone/Aim",false,null,0)
                                 .PassiveDeactive()
-                                .DelayApear(0.05f * (float)i)
-                                .SetTimer(1.5f - 0.05f * (float)i);
+                                .DelayApear(0.1f * (float)i)
+                                .SetTimer(2f - 0.1f * (float)i)
+                                .SetAngle(MathEx.directionToAngle(_attackDir) - 20f);
                     }
                 }
             }
@@ -126,9 +138,18 @@ public class LaserDrone : PlaneBase
             {
                 _attackTimer -= deltaTime;
 
+                _verticalAngle = Mathf.LerpAngle(_verticalAngle, 0f,0.05f);
+                _eulerAngle = Mathf.LerpAngle(_eulerAngle, MathEx.directionToAngle(_attackDir),0.05f);
+
                 if(_attackTimer <= 0f)
                 {
                     Debug.Log("laser shot");
+                    EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.01f),"Planes/LaserDrone/Laser",false,null,0)
+                                                .SetAngle(MathEx.directionToAngle(_attackDir));
+
+                    EffectManager.GetInstance().AddLineEffect(_position,_position + _attackDir * 20f,0.06f,1f)
+                                                .SetColor(Color.yellow)
+                                                .SetLerpWidth(0.001f,0.2f);
                     _attackTimer = 0f;
                     _attackCooldown = Random.Range(5f,8f);
                 }
@@ -142,10 +163,22 @@ public class LaserDrone : PlaneBase
             }
         }
 
+        if(_attackTimer == 0f)
+        {
+            _spinAccel = _spinAccel < 180f ? _spinAccel + 100 * deltaTime : 180f;
+            _verticalAngle += _spinAccel * deltaTime;
+            _eulerAngle -= _spinAccel / 2f * deltaTime;
+
+            _eulerAngle = MathEx.clamp360Degree(_eulerAngle);
+        }
+
         if(Input.GetKeyDown(KeyCode.I))
         {
             SetMovePoint(GameManager.instance.player.position);
+
         }
+
+        SpinProgress();
 
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
 		BasicUpdate(deltaTime);
@@ -157,5 +190,51 @@ public class LaserDrone : PlaneBase
         _speed = 0.2f;
 
         _move = true;
+    }
+
+    public void SpinProgress()
+    {
+        _verticalAngle = MathEx.clamp360Degree(_verticalAngle);
+        int point = (int)(_verticalAngle / _spriteAngle);
+
+        _back.SetAnimationSprite(point);
+        _front.SetAnimationSprite(point);
+
+        SetSprite(_dirSprites[point]);
+
+        Vector2 dir = MathEx.angleToDirection(_verticalAngle * Mathf.Deg2Rad);
+
+        _back._sprRenderer.transform.localPosition = new Vector2(-0.21f,0f) * dir;
+        _front._sprRenderer.transform.localPosition = new Vector2(0.2f,0f) * dir;
+
+        if(_verticalAngle > 180f)
+        {
+            _back._sprRenderer.sortingOrder = 1;
+            _front._sprRenderer.sortingOrder = -1;
+        }
+        else
+        {
+            _back._sprRenderer.sortingOrder = -1;
+            _front._sprRenderer.sortingOrder = 1;
+        }
+    }
+
+    public void AddDeco()
+    {
+        _deco.aniProgress = false;
+
+        _back = _deco.AddDeco(new Vector2(-0.21f,0f));
+        _front = _deco.AddDeco(new Vector2(0.2f,0f));
+
+        _back.AddAnimation("progress","Planes/LaserDrone/Back");
+        _front.AddAnimation("progress","Planes/LaserDrone/Front");
+
+        _back.ChangeAni("progress",false);
+        _front.ChangeAni("progress",false);
+
+        _back._sprRenderer.sortingOrder = -1;
+        _front._sprRenderer.sortingOrder = 1;
+
+        _spriteAngle = 360f / 64f;
     }
 }

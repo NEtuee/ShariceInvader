@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectBase : Drawable {
 
-	AnimationControll ani;
+	AnimationControllEx ani;
 	ObjectBase target;
 
 	private Vector3 _addPoint;
@@ -15,6 +15,7 @@ public class EffectBase : Drawable {
 	bool _colorLerp = false;
 	bool _realTimeProgress = false;
 	bool _passiveDeactive = false;
+	bool _singleSprite = false;
 
 	private float timer = 0f;
 	private float _existsTime = 0f;
@@ -22,12 +23,12 @@ public class EffectBase : Drawable {
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		ani = new AnimationControll();
+		ani = new AnimationControllEx(_sprRenderer);
 
 		SetSortingOrder(-1);
 	}
 
-	public EffectBase Active(Vector2 pos, Sprite[] sprites, bool loop = false,ObjectBase t = null)
+	public EffectBase Active(Vector2 pos, string path, int type, bool loop = false,ObjectBase t = null)
 	{
 		_eulerAngle = 0f;
 		_direction = Vector3.zero;
@@ -37,11 +38,12 @@ public class EffectBase : Drawable {
 
 		_realTimeProgress = false;
 		_passiveDeactive = false;
+		_singleSprite = false;
 
 		_position = pos;
-		ani.SetAnimation(sprites);
+		ani.SetAnimation(ani.LoadAnimationToPath(path, type));
+		ani.SetAnimationSprite(0);
 		ani.InitValue(loop);
-		ani.SetFps(12f);
 
 		SetSortingOrder(-1);
 
@@ -59,7 +61,7 @@ public class EffectBase : Drawable {
 		return this;
 	}
 
-	public EffectBase SetFps(float fps){ani.SetFps(fps); return this;}
+	//public EffectBase SetFps(float fps){ani.SetFps(fps); return this;}
 	public EffectBase SetAddPoint(Vector3 value) {_addPoint = value; return this;}
 	public EffectBase RealTimeProgress() {_realTimeProgress = true; return this;}
 	public EffectBase PassiveDeactive() {_passiveDeactive = true; return this;}
@@ -75,11 +77,12 @@ public class EffectBase : Drawable {
 		_position = pos;
 		// ani.SetAnimation(sprites);
 		// ani.InitValue(loop);
-		ani.ChangeAni("",false);
+		// ani.ChangeAni("",false);
 		_sprRenderer.sprite = sprite;
 
 		_realTimeProgress = false;
 		_passiveDeactive = false;
+		_singleSprite = true;
 
 		SetSortingOrder(-1);
 
@@ -147,7 +150,7 @@ public class EffectBase : Drawable {
 		}
 
 
-		ani.AnimationProgress(ref _sprRenderer,time);
+		ani.AnimationProgress(time);
 		Move(time);
 
 		if(target != null)

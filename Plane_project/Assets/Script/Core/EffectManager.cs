@@ -7,10 +7,12 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 
 	private ResourceManager _resManager;
 	private Define.SimpleCache<EffectBase> _cache;
+	private Define.SimpleCache<LineEffectBase> _lineCache;
 
 	private const int count = 100;
 	private float timer = 0f;
 	private Action<EffectBase> _effectProgress;
+	private Action<LineEffectBase> _lineEffectProgress;
 
 	private Dictionary<string,ParticleSystem> _particles = new Dictionary<string, ParticleSystem>();
 	private ParticleSystem.EmitParams _param = new ParticleSystem.EmitParams();
@@ -32,7 +34,15 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		});
 		_cache.CreateObject(count);
 
+		obj = _resManager.GetPrefab("LineEffectBase");
+		_lineCache = new Define.SimpleCache<LineEffectBase>(obj,(LineEffectBase e)=>{
+			e.SetNecessary();
+			e.firstSetting();
+		});
+		_lineCache.CreateObject(5);
+
 		_effectProgress = new Action<EffectBase>(Loop);
+		_lineEffectProgress = new Action<LineEffectBase>(LineLoop);
 
 		GameObject trail = GameObject.FindGameObjectWithTag("BezierTrail");
 		_bezierLine = trail.GetComponent<TrailRenderer>();
@@ -42,13 +52,17 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 
 	public EffectBase AddEffect(Vector2 pos, string ef, bool loop = false, ObjectBase target = null, int type = 1)
 	{
-
-		return _cache.ActiveObject().Active(pos,_resManager.GetSpriteSet(ef,type),loop,target);
+		return _cache.ActiveObject().Active(pos,ef,type,loop,target);
 	}
 
 	public EffectBase AddEffect(Vector2 pos, Sprite sprite, float timer, ObjectBase target = null)
 	{
 		return _cache.ActiveObject().Active(pos,sprite,timer,target);
+	}
+
+	public LineEffectBase AddLineEffect(Vector2 start, Vector2 end,float width, float timer)
+	{
+		return _lineCache.ActiveObject().Active(start,end,width,timer);
 	}
 
 	public void GetParticleSystems()
@@ -67,12 +81,18 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 	{
 		timer = deltaTIme;
 		_cache.Loop(_effectProgress);
+		_lineCache.Loop(_lineEffectProgress);
 	}
 
 	public void Loop(EffectBase e)
 	{
 		e.progress(timer);
 		e.UpdateTransform();
+	}
+
+	public void LineLoop(LineEffectBase e)
+	{
+		e.progress(timer);
 	}
 
 	public void EmitParticles(string name, Vector3 pos,int count)

@@ -15,6 +15,10 @@ public class ResourceManager : Singleton<ResourceManager> {
 	private static string[] spriteSetFilePath = 
 	{"Sprites/SpriteSet/", "Sprites/SpriteSet/Effects/",
 	"Sprites/SpriteSet/Planes/"};
+	public static string[] spriteSetFolder =
+	{
+		"", "Effects/", "Planes/"
+	};
 	private static string prefabFilePath = "Prefab/";
 	private static string audioFilePath = "Audio/";
 	private static string materialPath = "Material/";

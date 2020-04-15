@@ -125,9 +125,23 @@ public abstract class SimpleCollider
 
 	public static bool CircleLineCircle(Vector2 point,Vector2 lineStart,Vector2 lineEnd,float radiusOne, float radiusTwo)
 	{
-		float dist = MathEx.DistanceFromPointToLine(point,lineStart,lineEnd);
+		float startDist = Vector2.Distance(point,lineStart);
+		float endDist = Vector2.Distance(point,lineEnd);
+		float lineLen = Vector2.Distance(lineStart,lineEnd);
+		float collisionDist = radiusOne + radiusTwo;
 
-		return dist <= radiusOne + radiusTwo;
+		if(startDist <= collisionDist)
+			return true;
+		else if(endDist <= collisionDist)
+			return true;
+		else
+		{
+			if(startDist > lineLen || endDist > lineLen)
+			{
+				return false;
+			}
+			return MathEx.DistanceFromPointToLine(point,lineStart,lineEnd) <= radiusOne + radiusTwo;
+		}
 	}
 
 	public static bool PointInCircle(Vector2 point, Vector2 circlePos, float radius)

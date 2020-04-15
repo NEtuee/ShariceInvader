@@ -7,6 +7,8 @@ public class DecoAnimeController
     public List<AnimationControllEx> aniList = new List<AnimationControllEx>();
     public Transform parent;
 
+    public bool aniProgress = true;
+
     public AnimationControllEx AddDeco(Vector2 pos)
     {
         GameObject deco = new GameObject("deco");
@@ -24,6 +26,9 @@ public class DecoAnimeController
 
     public void DecoAniProgress(float deltaTime)
     {
+        if(!aniProgress)
+            return;
+        
         foreach(var ani in aniList)
         {
             ani.AnimationProgress(deltaTime);

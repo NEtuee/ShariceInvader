@@ -43,6 +43,11 @@ public class AnimationControllEx
 		_aniLen = _currAni.Length;
 	}
 
+	public void SetAnimation(string path)
+	{
+
+	}
+
 	public bool ChangeAni(string name, bool lp)
 	{
 		if(animations.ContainsKey(name))
@@ -107,18 +112,35 @@ public class AnimationControllEx
 		animations[copy] = keys;
 	}
 	
-	public void AddAnimation(string name, string path)
+	public void AddAnimation(string name, string path, int type = 0)
+	{
+		AnimationKey[] key = LoadAnimationToPath(path, type);
+
+		if (key == null)
+		{
+			Debug.Log("animation Load Error : " + path);
+
+			return;
+		}
+
+		aniOriginPath.Add(name,path);
+        animations.Add(name, key);
+	}
+
+	public AnimationKey[] LoadAnimationToPath(string path,int type)
 	{
 		AnimationKey[] key;
-
 		if(!loadedAnimations.ContainsKey(path))
 		{
-			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
+			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path,type);
 			if(sprites == null)
-				return;
+				return null;
 
-        	string file = path.Substring(path.LastIndexOf('/'));
-        	string pathName =  "Sprites/SpriteSet/" + path + file + "_Ani";
+        	string file = path;// path.Substring(path.LastIndexOf('/'));
+			if(file.Contains("/"))
+				file = file.Substring(path.LastIndexOf('/'));
+				
+        	string pathName =  "Sprites/SpriteSet/" + ResourceManager.spriteSetFolder[type] + path + file + "_Ani";
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 
@@ -147,8 +169,7 @@ public class AnimationControllEx
 		else
 			key = loadedAnimations[path];
 
-		aniOriginPath.Add(name,path);
-        animations.Add(name, key);
+		return key;
 	}
 
 	public static void LoadAnimation(string path)
@@ -218,10 +239,16 @@ public class AnimationControllEx
 			    }
             }
 
-            _sprRenderer.sprite = _currAni[_aniPos].sprite;
+           SetAnimationSprite(_aniPos);
         }
 
 		return _aniPos;
+	}
+
+	public void SetAnimationSprite(int pos)
+	{
+		if(_currAni != null)
+			_sprRenderer.sprite = _currAni[pos].sprite;
 	}
 
     public static void CreateAnimationRef(string n, float time, int count)

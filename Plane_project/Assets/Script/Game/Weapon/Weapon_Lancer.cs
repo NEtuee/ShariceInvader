@@ -110,7 +110,6 @@ public class Weapon_Lancer : WeaponBase
         _dodgeStartPos = _plane.position;
 
 		EffectManager.GetInstance().AddEffect(_dodgeStartPos + dir * (_plane._dodgeDist / 2f),"Weapon/Lancer/Drive")
-                                    .SetFps(12f)
 									.SetAngle(MathEx.directionToAngle(dir));
 
         Vector3 pos = _plane.position;

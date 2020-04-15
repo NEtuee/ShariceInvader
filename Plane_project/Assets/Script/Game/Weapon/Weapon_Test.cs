@@ -43,7 +43,6 @@ public class Weapon_Test : WeaponBase
         // _plane.SetMaxSpeed(20f);
 		mainAttack = true;
         EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/EnergyBurst",false)
-                                .SetFps(16f)
                                 .SetSortingOrder(1);
         Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
 
