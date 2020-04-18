@@ -480,7 +480,7 @@ public abstract class PlaneBase : Collisionable {
 				else if(_fallTimer <= 0.7f && !_fallExplosion)
 				{
 					_fallExplosion = true;
-					EffectManager.GetInstance().AddEffect(_position,"Explosion").SetAngle(Random.Range(0f,360f));
+					EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
 					EffectManager.GetInstance().Explosion(_position,15,0.2f);
 				}
 			}
@@ -804,7 +804,7 @@ public abstract class PlaneBase : Collisionable {
 
 		_delayHitList.Clear();
 
-		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetAngle(Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
 
 		_noclip = true;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,10 +13,13 @@ public class EffectBase : Drawable {
 	Color _lerpStart;
 	Color _lerpEnd;
 
+	Action _apearEvent;
+
 	bool _colorLerp = false;
 	bool _realTimeProgress = false;
 	bool _passiveDeactive = false;
 	bool _singleSprite = false;
+	bool _eventAction = false;
 
 	private float timer = 0f;
 	private float _existsTime = 0f;
@@ -66,6 +70,7 @@ public class EffectBase : Drawable {
 	public EffectBase RealTimeProgress() {_realTimeProgress = true; return this;}
 	public EffectBase PassiveDeactive() {_passiveDeactive = true; return this;}
 	public EffectBase DelayApear(float time) {_delayApear = time; return this;}
+	public EffectBase SetApearEvent(Action evt) {_eventAction = true; _apearEvent = evt; return this;}
 
 	public EffectBase Active(Vector2 pos, Sprite sprite, float time, ObjectBase t = null)
 	{
@@ -82,6 +87,7 @@ public class EffectBase : Drawable {
 
 		_realTimeProgress = false;
 		_passiveDeactive = false;
+		_eventAction = false;
 		_singleSprite = true;
 
 		SetSortingOrder(-1);
@@ -141,6 +147,8 @@ public class EffectBase : Drawable {
 
 			if(_delayApear <= 0f)
 			{
+				if(_eventAction)
+					_apearEvent();
 				_delayApear = 0f;
 			}
 			else

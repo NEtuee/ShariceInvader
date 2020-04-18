@@ -9,7 +9,7 @@ public class Weapon_Test : WeaponBase
     public override void Initialize()
     {
         base.Initialize();
-        _collider = new Define.SimpleCircleCollider(0.6f,0.6f,Vector2.zero);
+        _collider = new Define.SimpleCircleCollider(0.76f,0.76f,Vector2.zero);
         _plane.SetImmortal(false);
 
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_nova");
@@ -41,10 +41,8 @@ public class Weapon_Test : WeaponBase
 
         // _attackTime = .1f;
         // _plane.SetMaxSpeed(20f);
-		mainAttack = true;
-        EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/EnergyBurst",false)
-                                .SetSortingOrder(1);
-        Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
+
+        bool atk = false;
 
         Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
         var list = CollisionManager.GetInstance().GetCollisionList(t);
@@ -68,8 +66,18 @@ public class Weapon_Test : WeaponBase
                     CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
     
                     ((PlaneBase)list[i]).Hit(_plane);
+
+                    atk = true;
                 }
             }
+        }
+
+        if(atk)
+        {
+            mainAttack = true;
+            EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/EnergyBurst",false)
+                                .SetSortingOrder(1);
+            //Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
         }
 
 		//_plane.SetControll(true);

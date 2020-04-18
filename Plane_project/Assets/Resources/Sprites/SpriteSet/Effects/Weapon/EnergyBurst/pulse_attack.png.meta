@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: f191fdcd42587e641845cfb461bc5c4e
+guid: 7331029ba830dfb41bf56678d96acb6d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: energyburstattack-Sheet_0
-    21300002: energyburstattack-Sheet_1
-    21300004: energyburstattack-Sheet_2
-    21300006: energyburstattack-Sheet_3
-    21300008: energyburstattack-Sheet_4
-    21300010: energyburstattack-Sheet_5
+    21300000: pulse_attack_0
+    21300002: pulse_attack_1
+    21300004: pulse_attack_2
+    21300006: pulse_attack_3
+    21300008: pulse_attack_4
+    21300010: pulse_attack_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -48,12 +48,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -90,13 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energyburstattack-Sheet_0
+      name: pulse_attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 122
-        height: 122
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,19 +104,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01ef559f714d0e84c89f8bfce9bf0d6e
+      spriteID: 1639686bcdec25a4da3899274ca87f3b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energyburstattack-Sheet_1
+      name: pulse_attack_1
       rect:
         serializedVersion: 2
-        x: 122
+        x: 152
         y: 0
-        width: 122
-        height: 122
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 808904f0d89747d478349b646617ba68
+      spriteID: 4bd2b550063ab9a49ac975515989ac8b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energyburstattack-Sheet_2
+      name: pulse_attack_2
       rect:
         serializedVersion: 2
-        x: 244
+        x: 304
         y: 0
-        width: 122
-        height: 122
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8287b51dbe8d1c94aa4506dedb1a3fad
+      spriteID: 79b3d44439e8a38468e8f0b5a4d0dbd3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energyburstattack-Sheet_3
+      name: pulse_attack_3
       rect:
         serializedVersion: 2
-        x: 366
+        x: 456
         y: 0
-        width: 122
-        height: 122
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,19 +164,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30ed7b45ddc5a4c4c814466025bd78ea
+      spriteID: fa6821595f27baa4ebde9c540f8e7785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energyburstattack-Sheet_4
+      name: pulse_attack_4
       rect:
         serializedVersion: 2
-        x: 488
+        x: 608
         y: 0
-        width: 122
-        height: 122
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,19 +184,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63540e1876bbb2449bde3e67c3027765
+      spriteID: 1bb8571c1e7050c409375dd3f65179a0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energyburstattack-Sheet_5
+      name: pulse_attack_5
       rect:
         serializedVersion: 2
-        x: 610
+        x: 760
         y: 0
-        width: 122
-        height: 122
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,7 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31c28e69ba0e96c4db09c595aee0572c
+      spriteID: f1770f3ee37812f41bb351e85e8762e9
       vertices: []
       indices: 
       edges: []
@@ -212,7 +212,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 825f2396eb0cd994a93307c5e5c00ce3
+    spriteID: 1c62b3f36baafb74cb4d86d8894d3165
     vertices: []
     indices: 
     edges: []

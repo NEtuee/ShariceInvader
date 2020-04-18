@@ -71,8 +71,6 @@ public class LineEffectBase : ObjectBase
         if(_lerpWidth)
         {
             float width = Mathf.Lerp(mainLine.startWidth,_widthLerpEnd,_widthLerpTimer);
-
-            Debug.Log(width);
             
             mainLine.startWidth = width;
             mainLine.endWidth = width;

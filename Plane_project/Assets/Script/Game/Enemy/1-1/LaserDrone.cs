@@ -147,9 +147,19 @@ public class LaserDrone : PlaneBase
                     EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.01f),"Planes/LaserDrone/Laser",false,null,0)
                                                 .SetAngle(MathEx.directionToAngle(_attackDir));
 
-                    EffectManager.GetInstance().AddLineEffect(_position,_position + _attackDir * 20f,0.06f,1f)
+                    EffectManager.GetInstance().AddLineEffect(_position,_position + _attackDir * 20f,0.13f,1f)
                                                 .SetColor(Color.yellow)
-                                                .SetLerpWidth(0.001f,0.2f);
+                                                .SetLerpWidth(0.001f,0.15f);
+
+                    for(int i = 0; i < 20; ++i)
+                    {
+                        Vector3 exp = _position + (_attackDir * 0.1f) + (_attackDir * (0.745f * (float)i));
+                        EffectManager.GetInstance().AddEffect(exp,"Explosion")
+                                .DelayApear(0.04f * (float)i)
+                                .SetApearEvent(()=>{EffectManager.GetInstance().Explosion(exp,8);})
+                                .SetAngle(Random.Range(0f,360f));
+                    }
+
                     _attackTimer = 0f;
                     _attackCooldown = Random.Range(5f,8f);
                 }
