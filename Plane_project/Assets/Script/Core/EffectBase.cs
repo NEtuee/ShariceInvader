@@ -20,6 +20,7 @@ public class EffectBase : Drawable {
 	bool _passiveDeactive = false;
 	bool _singleSprite = false;
 	bool _eventAction = false;
+	bool _animationProgress = false;
 
 	private float timer = 0f;
 	private float _existsTime = 0f;
@@ -45,6 +46,7 @@ public class EffectBase : Drawable {
 		_singleSprite = false;
 
 		_position = pos;
+		_animationProgress = true;
 		ani.SetAnimation(ani.LoadAnimationToPath(path, type));
 		ani.SetAnimationSprite(0);
 		ani.InitValue(loop);
@@ -80,10 +82,8 @@ public class EffectBase : Drawable {
 		_scale = new Vector3(1f,1f,1f);
 
 		_position = pos;
-		// ani.SetAnimation(sprites);
-		// ani.InitValue(loop);
-		// ani.ChangeAni("",false);
 		_sprRenderer.sprite = sprite;
+		_animationProgress = false;
 
 		_realTimeProgress = false;
 		_passiveDeactive = false;
@@ -158,7 +158,8 @@ public class EffectBase : Drawable {
 		}
 
 
-		ani.AnimationProgress(time);
+		if(_animationProgress)
+			ani.AnimationProgress(time);
 		Move(time);
 
 		if(target != null)
@@ -166,10 +167,6 @@ public class EffectBase : Drawable {
 			if(target.deleted)
 				SetActive(false);
 			_position = target.position + _addPoint;
-		}
-		if(ani.isEnd && !_passiveDeactive)
-		{
-			SetActive(false);
 		}
 
 		if(timer != 0f)
@@ -186,6 +183,10 @@ public class EffectBase : Drawable {
 				timer = 0f;
 				SetActive(false);
 			}
+		}
+		else if(ani.isEnd && !_passiveDeactive)
+		{
+			SetActive(false);
 		}
 	}
 

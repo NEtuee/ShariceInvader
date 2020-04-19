@@ -13,6 +13,7 @@ public class RayDrone : PlaneBase
 
     int shotCount = 0;
     int _flareCount = 0;
+    int _flareShotCount = 2;
 
     Vector3 targetDirection;
     float _randomHeight = 3f;
@@ -102,6 +103,8 @@ public class RayDrone : PlaneBase
                     _shotTimer = 0f;
                     shot = false;
                     deact = true;
+
+                    _flareShotCount = 2;
                 }
                 else
                 {
@@ -129,19 +132,36 @@ public class RayDrone : PlaneBase
                 }
                 else if(dist < 3f)
                 {
-                    if(_stayTimer >= 2.3f)
+                    if(_stayTimer >= 2.5f)
                     {
-                        deact = true;
-                        flare = true;
-                        _flareCount = 8;
-                        _flareTimer = 0f;
-                        SetAdditionalSpeed(1.2f,1f,true);
+                        float dot = Mathf.Cos(Mathf.Deg2Rad * 60f);
+
+                        Vector3 dir = (pos - _position).normalized;
+                        if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * angle)) > dot)
+                        {
+                            shotCount = 5;
+                            shot = true;
+                        }
+                        else if(--_flareShotCount >= 0)
+                        {
+                            deact = true;
+                            flare = true;
+                            _flareCount = 6;
+                            _flareTimer = 0f;
+                            SetAdditionalSpeed(1.2f,1f,true);
+                        }
+                        else if(_flareShotCount < 0)
+                        {
+                            deact = true;
+                        }
+                        
                     }
                 }
                 else if(_stayTimer >= 4f)
                 {
                     act = true;
                     _maxSpeed = Random.Range(3f,4f);
+                    SetAdditionalSpeed(3f,0.3f,true);
                 }
             }
             else

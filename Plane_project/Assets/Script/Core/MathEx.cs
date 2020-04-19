@@ -126,4 +126,24 @@ public class MathEx : MonoBehaviour {
 	{
 		return one.x == two.x ? (one.y == two.y ? (one.z == two.z) : false) : false;
 	}
+
+	public static Vector3 RandomVector3(float xmin, float xmax, float ymin, float ymax, float zmin, float zmax)
+	{
+		return new Vector3(Random.Range(xmin,xmax),Random.Range(ymin,ymax),Random.Range(zmin,zmax));
+	}
+
+	public static Vector3 RandomVector3(float xmin, float xmax, float ymin, float ymax)
+	{
+		return new Vector3(Random.Range(xmin,xmax),Random.Range(ymin,ymax),0f);
+	}
+
+	public static Vector3 RandomVector3(float min, float max)
+	{
+		return new Vector3(Random.Range(min,max),Random.Range(min,max),0f);
+	}
+
+	public static int RandomInt(int start, int end)
+	{
+		return Random.Range(start,end + 1);
+	}
 }

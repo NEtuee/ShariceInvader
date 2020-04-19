@@ -17,16 +17,18 @@ public class ShootingDrone : PlaneBase
 
     public ObjectBase standBase = null;
 
-    private Transform gunPoint;
-    private Transform shotPoint;
-    private MeshRenderer leftArm;
-    private MeshRenderer rightArm;
-    
+    private Sprite _baseSprite;
+
+    AnimationControllEx _base;
+    AnimationControllEx _shotPoint;
 
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("ShootingDrone",AnimationType.Vertical);
+		//SetSpriteSet("ShootingDrone",AnimationType.Vertical);
+        _aniType = AnimationType.None;
+        SetSprite("SpriteSet/Planes/ShootingDrone/Shadow");
+        
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
 		_maxSpeed = 1.5f;
@@ -34,9 +36,8 @@ public class ShootingDrone : PlaneBase
         _gravityScale = 0.5f;
 
         //standPos = ObjectManager.GetInstance()._place.mainPlace.leftBottom;
-
-        GunPointSetup();
         
+        SetDeco();
 	}
 
 	public override void initialize()
@@ -45,10 +46,13 @@ public class ShootingDrone : PlaneBase
 		
 		SetNoClip(false);
         _velocityFlip = false;
-        _directionAngle = true;
+        _directionAngle = false;
+        _rotateLock = true;
 		_hp = 5;
         timer = Random.Range(0f,.4f);
         standPos = position;
+
+        _base.ChangeAni("Active",false);
 
         RegisteCollisionList();
 	}
@@ -68,10 +72,15 @@ public class ShootingDrone : PlaneBase
 
 	public override void progress(float deltaTime)
 	{
-        GunPointUpdate();
-
         if(!_fall)
             AirStand();
+
+        _deco.DecoAniProgress(deltaTime);
+        if(_shotPoint.isEnd)
+        { 
+            _shotPoint.Stop();
+            _shotPoint._sprRenderer.enabled = false;
+        }
 
         if(act)
         {
@@ -94,6 +103,9 @@ public class ShootingDrone : PlaneBase
                     else
                     {
                         act = false;
+                        
+                        _base.Stop();
+                        _base._sprRenderer.sprite = _baseSprite;
 
                         if(standBase == null || standBase.deleted)
                         {
@@ -120,6 +132,8 @@ public class ShootingDrone : PlaneBase
             if(d <= 2.5f)
             {
                 act = true;
+
+                _base.ChangeAni("Active",false);
             }
         }
 
@@ -144,6 +158,8 @@ public class ShootingDrone : PlaneBase
             }
         }
 
+        Vector3 dir = (GameManager.instance.player.position - position).normalized;
+
         if(count != 0)
         {
             shotTimer -= deltaTime;
@@ -151,19 +167,14 @@ public class ShootingDrone : PlaneBase
             {
                 --count;
                 shotTimer = .3f;
-                Vector3 dir = (GameManager.instance.player.position - position).normalized;
-                BulletManager.GetInstance().Active(BulletType.enemy,shotPoint.position,dir,3.5f,0,5f).SetAngle(MathEx.directionToAngle(dir));
-                EffectManager.GetInstance().AddEffect(shotPoint.position + dir * 0.1f,"Fire").SetAngle(MathEx.directionToAngle(dir));
+                BulletManager.GetInstance().Active(BulletType.enemy,_position + dir * 0.2f,dir,3.5f,0,5f).SetAngle(MathEx.directionToAngle(dir));
+                //EffectManager.GetInstance().AddEffect(_position + dir * 0.2f,"ShootingDrone/Fire",false,null,2).SetAngle(MathEx.directionToAngle(dir));
+                _shotPoint.ChangeAni("Fire",false);
+                _shotPoint._sprRenderer.enabled = true;
             }
         }
 
-        if(act || count != 0f)
-        {
-            Vector3 dir = (GameManager.instance.player.position - position).normalized;
-            Vector3 ang = gunPoint.transform.localEulerAngles;
-            ang.z = MathEx.directionToAngle(dir);
-            gunPoint.transform.localEulerAngles = ang;
-        }
+        _base._sprRenderer.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(dir));
 
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
         
@@ -175,60 +186,25 @@ public class ShootingDrone : PlaneBase
         _direction = (standPos - position).normalized;
     }
 
-    public override void afterUpdateTransform()
+    public void SetDeco()
     {
-        GunPointUpdate();
+        _base = _deco.AddDeco(Vector2.zero);
 
-        if(!act)
-            return;
+        _base.AddAnimation("Active","ShootingDrone/Open",2);
+        _base.Stop();
 
-        if(_direction.x < 0)
-        {
-            gunPoint.localScale = new Vector3(-1f,1f,1f);
-            Vector3 ang = gunPoint.transform.localEulerAngles;
-            gunPoint.transform.localEulerAngles = -ang;
-        }
-        else
-        {
-            gunPoint.localScale = new Vector3(1f,1f,1f);
-        }
-    }
+        _base._sprRenderer.sprite = _baseSprite = ResourceManager.GetInstance().GetSprite("SpriteSet/Planes/ShootingDrone/Base");
+        _base._sprRenderer.sortingOrder = -1;
+        
+        SpriteRenderer spr = new GameObject("Edge").AddComponent<SpriteRenderer>();
+        spr.sprite = ResourceManager.GetInstance().GetSprite("SpriteSet/Planes/ShootingDrone/Edge");
+        spr.sortingOrder = 1;
+        spr.transform.SetParent(_base._sprRenderer.transform);
 
-    public void GunPointSetup()
-    {
-        gunPoint = Instantiate(ResourceManager.GetInstance().GetPrefab("GunPoint")).transform;
-        gunPoint.SetParent(transform);
-        gunPoint.transform.position = new Vector3(0f,-0.0186f,0f);
+        _shotPoint = _deco.AddDeco(new Vector2(0.2f,0f));
 
-        leftArm = gunPoint.Find("LeftArm").GetComponent<MeshRenderer>();
-        rightArm = gunPoint.Find("RightArm").GetComponent<MeshRenderer>();
-        shotPoint = gunPoint.Find("ShotPoint");
-    }
-
-    public void GunPointUpdate()
-    {
-        Vector3 ang = gunPoint.transform.localEulerAngles;
-        ang.y = (float)_spritePoint * _spriteAngle;
-        gunPoint.transform.localEulerAngles = ang;
-
-        int sortingOrder = _sortingGroup.sortingOrder;
-        int add = _direction.x < 0 ? -1 : 1;
-
-
-        if(ang.y < 90f)
-        {
-            rightArm.sortingOrder = sortingOrder -1;// (1 * add);
-            leftArm.sortingOrder = sortingOrder + 1;//(1 * add);
-        }
-        else if(ang.y < 270f)
-        {
-            rightArm.sortingOrder = sortingOrder + 1;//(1 * add);
-            leftArm.sortingOrder = sortingOrder - 1;//(1 * add);
-        }
-        else if(ang.y < 360f)
-        {
-            rightArm.sortingOrder = sortingOrder - (1 * add);
-            leftArm.sortingOrder = sortingOrder + (1 * add);
-        }
+        _shotPoint.AddAnimation("Fire","ShootingDrone/Fire",2);
+        _shotPoint.Stop();
+        _shotPoint._sprRenderer.transform.SetParent(_base._sprRenderer.transform);
     }
 }

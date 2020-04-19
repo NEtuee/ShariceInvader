@@ -65,6 +65,8 @@ public class CCTV : PlaneBase
 
         miniMapIcon.gameObject.SetActive(false);
 
+        line.enabled = false;
+
         PhysicsDebugSetup();
 	}
 
@@ -99,7 +101,7 @@ public class CCTV : PlaneBase
 
 	public override void progress(float deltaTime)
 	{
-        PointUpdate();
+        //PointUpdate();
 
         if(!_fall)
             AirStand();
@@ -171,9 +173,20 @@ public class CCTV : PlaneBase
                 y += y > 0 ? -3.6f : 3.6f;
                 y += y < 1f ? 3.6f : 0f;
 
-                EnemyCreator.ShootingDrone(1,new Vector3(x,y) + targetPos,targetPos);
+                int enemy = MathEx.RandomInt(0,2);
+                Vector3 pos = new Vector3(x,y) + targetPos;
 
-                spawnTimer = Random.Range(1.2f,1.8f);
+                switch(enemy)
+                {
+                case 0:
+                    EnemyCreator.ShootingDrone(2,pos + MathEx.RandomVector3(-0.1f,0.1f),targetPos);
+                    break;
+                case 1:
+                    EnemyCreator.RayDrone(1, pos);
+                    break;
+                }
+
+                spawnTimer = Random.Range(2f,2.8f);
             }
 
         }
@@ -189,8 +202,8 @@ public class CCTV : PlaneBase
             mainAngle = MathEx.directionToAngle(_direction);
         }
 
-        line.startColor = Color.Lerp(Color.white,maxColor,alertTimer / 15f);
-        line.endColor = line.startColor;
+        // line.startColor = Color.Lerp(Color.white,maxColor,alertTimer / 15f);
+        // line.endColor = line.startColor;
 
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
         

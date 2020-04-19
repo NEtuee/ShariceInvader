@@ -51,6 +51,17 @@ public static class EnemyCreator
         }
     }
 
+    public static void RayDrone(int count, Vector2 worldPos)
+    {
+        ObjectManager _objManager = ObjectManager.GetInstance();
+
+        for(int i = 0; i < count; ++i)
+        {
+			RayDrone ray = _objManager.AddObject<RayDrone>(Define.ObjectType.enemy,"RayDrone" + i);
+			ray.SetPosition(worldPos);
+        }
+    }
+
     public static void ShootingDrone(int count, Vector2 mapPos)
     {
         ObjectManager _objManager = ObjectManager.GetInstance();

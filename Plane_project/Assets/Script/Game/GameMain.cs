@@ -93,7 +93,7 @@ public class GameMain : MonoBehaviour {
 			// 	obj.SetAngle(90f);
 			// 	obj._gravityScale = 5f;
 
-			EnemyCreator.BoostDrone(10,new Vector2(2f,5f));
+			EnemyCreator.CCTV(0,new Vector3(0f,1f));
 		}
 
 		if(Input.GetKeyDown(KeyCode.Q))
@@ -111,10 +111,10 @@ public class GameMain : MonoBehaviour {
 			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
 			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
 
-			var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
-			 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
+			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
 
-			//EnemyCreator.ShootingDrone(1,new Vector3(0f,1f));
+			EnemyCreator.ShootingDrone(1,new Vector3(0f,1f),new Vector3(0f,1f));
 
 			//EnemyCreator.CCTV(0,new Vector3(0f,1f));
 		}

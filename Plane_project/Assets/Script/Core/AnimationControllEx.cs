@@ -90,6 +90,11 @@ public class AnimationControllEx
         animations.Clear();
     }
 
+	public void Stop()
+	{
+		_animationEnd = true;
+	}
+
 	public void CopyAnimation(string copy, string target)
 	{
 		if(!animations.ContainsKey(copy) || !loadedAnimations.ContainsKey(target))
