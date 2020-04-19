@@ -85,7 +85,7 @@ public class GameMain : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.E))
 		{
 			//EffectManager.GetInstance().DrawBezierLine(Vector2.zero,new Vector2(0f,3f),new Vector2(1f,1f),new Vector2(-1f,2f),0.1f);
-			_objManager.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(new Vector3(0f,5f));
+			//_objManager.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(new Vector3(0f,5f));
 
 			// var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
 			// 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
@@ -93,7 +93,7 @@ public class GameMain : MonoBehaviour {
 			// 	obj.SetAngle(90f);
 			// 	obj._gravityScale = 5f;
 
-			//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
+			EnemyCreator.BoostDrone(10,new Vector2(2f,5f));
 		}
 
 		if(Input.GetKeyDown(KeyCode.Q))
@@ -105,7 +105,13 @@ public class GameMain : MonoBehaviour {
 			// 	obj.SetAbsoluteForce(new Vector3(0f,100f));
 			// 	obj._gravityScale = 5f;
 
-			var obj = ObjectManager.GetInstance().AddObject<LaserDrone>(Define.ObjectType.enemy,"laserDrone");
+			// var obj = ObjectManager.GetInstance().AddObject<LaserDrone>(Define.ObjectType.enemy,"laserDrone");
+			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+
+			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
+			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+
+			var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
 			 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
 
 			//EnemyCreator.ShootingDrone(1,new Vector3(0f,1f));

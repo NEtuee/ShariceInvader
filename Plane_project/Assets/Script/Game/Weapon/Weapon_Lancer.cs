@@ -133,7 +133,7 @@ public class Weapon_Lancer : WeaponBase
                 if(Define.SimpleCollider.CircleLineCircle(list[i].position,_dodgeStartPos,_plane.position,
 							_plane.coll.bound.box.x * 4f, list[i].coll.bound.box.x))
 		        {
-                    ((PlaneBase)list[i]).DecreaseHP(15);
+                    ((PlaneBase)list[i]).Hit(15);
 		        }
             }
         }

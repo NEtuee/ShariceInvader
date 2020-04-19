@@ -79,6 +79,10 @@ public class Weapon_Test : WeaponBase
                                 .SetSortingOrder(1);
             //Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
         }
+        else
+        {
+            _plane.BurstActive();
+        }
 
 		//_plane.SetControll(true);
     }

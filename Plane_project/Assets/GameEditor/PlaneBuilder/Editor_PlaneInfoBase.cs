@@ -82,7 +82,8 @@ public class Editor_PlaneInfoBase
 
     public void CreateDataFile(string spr)
     {
-        Sprite[] set = ResourceManager.GetInstance().GetSpriteSet(spr.Replace("\\",string.Empty),2);
+        Debug.Log(spr.Replace("\\",string.Empty));
+        Sprite[] set = ResourceManager.GetInstance().GetSpriteSet(spr,2);
 
         planeName = "None";
         spriteSet = "";

@@ -99,7 +99,7 @@ public class Weapon_PhantomStinger : WeaponBase
         BurstAimDirection(10f,0.08f);
 
         Timer.GetInstance().SetTimeScale(1f);
-        _aimTarget.DecreaseHP(5);
+        _aimTarget.Hit(5);
 
         float dist = Vector2.Distance(_plane.position,_aimTarget.position);
         Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
@@ -210,7 +210,7 @@ public class Weapon_PhantomStinger : WeaponBase
         Vector3 mouse = ControllerEx.GetInstance().centerAxis;
         mouse.z = 0f;
 
-        Vector3 dir = (mouse - _plane.position).normalized;
+        Vector3 dir = mouse;
         Vector3 pos = _plane.position + dir * 0.4f;
         _aimObj.transform.position = pos;
         _aimObj.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(dir.normalized));

@@ -310,8 +310,11 @@ public class Editor_PlaneBuilder : MonoBehaviour
             _trailCursorCount = 0;
             _boostCursorCount = 0;
 
-            string file = path.Substring(path.LastIndexOf('\\'));
-            string name = path + file + "_Plane"  + ".txt";
+            string file = path.Substring(path.LastIndexOf("Planes\\")).Replace("Planes\\",string.Empty);
+            string file2 = path.Substring(path.LastIndexOf("\\"));
+            string name = path + file2 + "_Plane"  + ".txt";
+            Debug.Log(file);
+            Debug.Log(name);
 
             planeInfo.SetPath(name);
 

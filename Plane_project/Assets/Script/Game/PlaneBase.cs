@@ -59,7 +59,7 @@ public abstract class PlaneBase : Collisionable {
 	public float maxSpeed{get{return _maxSpeed;}}
 
 
-	protected WeaponBase mainWeapon;
+	public WeaponBase mainWeapon;
 
 	protected Sprite[] _dirSprites;
 	protected Vector3 _velocity = new Vector2();
@@ -279,7 +279,12 @@ public abstract class PlaneBase : Collisionable {
 	public virtual void Hit(PlaneBase target,bool hit = true)
 	{
 		if(hit && !target._fall)
-			DecreaseHP(target.bodyAttack);
+			Hit(target.bodyAttack);
+	}
+
+	public virtual void Hit(int val)
+	{
+		DecreaseHP(val);
 	}
 
 	public virtual void Hit(BulletBase bullet)
@@ -290,7 +295,7 @@ public abstract class PlaneBase : Collisionable {
 		effect.SetAngle(ang);
 		effect.SetSortingOrder(1);
 
-		DecreaseHP(bullet.attack);
+		Hit(bullet.attack);
 	}
 
 	public void AddDelayAttackList(int attack, float time, DelayItem.hitEventDelegate hitEvent)
@@ -608,12 +613,14 @@ public abstract class PlaneBase : Collisionable {
 
 	public void LoadPlaneData(string n)
 	{
-		string path = "Sprites/SpriteSet/Planes/" + n + "/" + n + "_Plane";
+		string nm = (n.Contains("/") ? n.Substring(n.LastIndexOf("/") + 1) : n);
+		string path = "Sprites/SpriteSet/Planes/" + n + "/" + nm + "_Plane";
 
 		string[] data = ResourceManager.GetInstance().GetSaveData(path);
 		if(data == null)
 		{
 			Debug.Log(n + " plane data does not exist");
+			Debug.Log(path);
 			return;
 		}
 
@@ -797,27 +804,29 @@ public abstract class PlaneBase : Collisionable {
 			}
 		}
 
+		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
+
+		BasicDeleteEvents();
+
+		// for(int i = 0; i < 5; ++i)
+		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
+		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
+		CameraControll.instance.Zoom(1.7f);
+	}
+
+	public void BasicDeleteEvents()
+	{
 		foreach(var item in  _delayHitList)
 		{
 			_delayPool.Enqueue(item);
 		}
 
 		_delayHitList.Clear();
-
-		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
-		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
-
 		_noclip = true;
-
 		miniMapIcon.gameObject.SetActive(false);
-
 		_deco.DestroyAll();
-
-		CameraControll.instance.Zoom(1.7f);
-		// for(int i = 0; i < 5; ++i)
-		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
-		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
-		
+		//CameraControll.instance.Zoom(1.7f);
 	}
 
 	public void MiniMapIconSetup()

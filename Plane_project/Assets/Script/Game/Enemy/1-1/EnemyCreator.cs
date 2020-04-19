@@ -27,6 +27,30 @@ public static class EnemyCreator
         }
     }
 
+    public static void BoostDrone(int count, Vector2 mapPos)
+    {
+        ObjectManager _objManager = ObjectManager.GetInstance();
+        int r = 0;
+        BoostDrone next = null;
+        BoostDrone first = null;
+        for(int i = 0; i < count; ++i)
+        {
+			BoostDrone boost = _objManager.AddObject<BoostDrone>(Define.ObjectType.enemy,"BoostDrone" + i);
+			boost.SetPosition(_objManager._place.MapPosToWorldPos(mapPos));
+            boost.SetMaxSpeed(2.5f + i * 0.025f);
+            boost.TargetPosUpdate();
+            boost.target = next;
+
+            r = Random.Range(0,5);
+
+            if(first == null)
+                first = boost;
+
+            //if(i <= 10)
+            next = next == null ? boost : r == 2 ? next : r == 1 ? first : boost;
+        }
+    }
+
     public static void ShootingDrone(int count, Vector2 mapPos)
     {
         ObjectManager _objManager = ObjectManager.GetInstance();
