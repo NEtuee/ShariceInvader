@@ -63,7 +63,7 @@ public class BoomDrone : PlaneBase
             rangeCircle.SetActive(false);
 	}
 
-    public override void WhenDecreaseHP()
+    public override void WhenDecreaseHP(int i)
     {
         if(empStun && (_fall || deleted))
         {

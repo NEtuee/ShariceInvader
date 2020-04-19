@@ -169,6 +169,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\WeaponChangeWeaponChange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1AttackHit_1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurveCuttingCurve_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\BoostDrone\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Disappear\Disappear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Aim_Ani.txt" />

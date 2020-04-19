@@ -153,11 +153,21 @@ public class Player : PlaneBase {
 		HeightIconUpdate();
 	}
 
-	public override void WhenDecreaseHP()
+	public override void WhenDecreaseHP(int d)
 	{
-		_cam.Zoom(1.5f);
-		_cam.Glitch(0.3f);
-		Timer.GetInstance().SetTimeScaleTimer(0f,0.1f);
+		if(d > 0)
+		{
+			_cam.Zoom(1.5f);
+			_cam.Glitch(0.2f);
+			Timer.GetInstance().SetTimeScaleTimer(0f,0.09f);
+		}
+		else
+		{
+			_cam.Zoom(1.5f);
+			_cam.Glitch(0.05f);
+			Timer.GetInstance().SetTimeScaleTimer(0f,0.05f);
+		}
+		
 		Debug.Log("HIT");
 	}
 

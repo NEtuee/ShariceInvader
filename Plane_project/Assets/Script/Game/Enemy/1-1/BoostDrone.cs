@@ -11,15 +11,22 @@ public class BoostDrone : PlaneBase
     bool act = false;
 
     float _actTimer = 0f;
-
+    float _deleteTimer = 0f;
     float _timer = 0f;
 
     Vector3 _randomPos;
     Vector3 _stickPos;
+
+    Sprite[] _base;
+
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("Enemy",AnimationType.Horizontal);
+		_aniType = AnimationType.None;
+        _base = ResourceManager.GetInstance().GetSpriteSet("BoostDrone/Base",2);
+
+        SetSprite(_base[1]);
+
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
 		_maxSpeed = Random.Range(2f,2.25f);
@@ -43,6 +50,12 @@ public class BoostDrone : PlaneBase
         _timer = 0f;
 	}
 
+    public override void Explosion()
+    {
+		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
+    }
+
 	public override void deleteEvent()
 	{
 		base.deleteEvent();
@@ -64,7 +77,8 @@ public class BoostDrone : PlaneBase
             SetNoClip(true);
             this.target = plane;
 
-            _stickPos = target.position - _position;
+            _stickPos = _position - target.position;
+            SetSprite(_base[0]);
         }
 		
     }
@@ -80,11 +94,14 @@ public class BoostDrone : PlaneBase
             if(_actTimer >= 1.3f)
             {
                 target.SetAdditionalSpeed(10f,0.1f,true);
-                target.AddForce(MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad) * 10f);
+                target.SetAbsoluteForce(MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad) * 10f);
                 target.ControllLock(0.1f);
 
-                Hit(_hp);
-                act = false;
+                EffectManager.GetInstance().AddEffect(_position,"BoostDrone/Boost",false,this,2)
+                                        .SetAngle(_eulerAngle);
+
+                _deleteTimer = 0.7f;
+                _actTimer = -3f;
             }
         }
         else
@@ -107,6 +124,17 @@ public class BoostDrone : PlaneBase
 
             BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
 		    BasicUpdate(deltaTime);
+        }
+
+        if(_deleteTimer != 0f)
+        {
+            _deleteTimer -= deltaTime;
+            if(_deleteTimer <= 0f)
+            {
+                Hit(_hp);
+                act = false;
+                _deleteTimer = 0f;
+            }
         }
 	}
 

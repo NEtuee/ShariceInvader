@@ -398,11 +398,11 @@ public abstract class PlaneBase : Collisionable {
 				// Delete();
 			}
 
-			WhenDecreaseHP();
+			WhenDecreaseHP(value);
 		}
 	}
 
-	public virtual void WhenDecreaseHP(){}
+	public virtual void WhenDecreaseHP(int d){}
 
 	public void BasicUpdate(float deltaTime)
 	{
@@ -779,6 +779,18 @@ public abstract class PlaneBase : Collisionable {
 	{
 		//EffectManager.GetInstance().AddEffect(_position,"Explosion_new").SetAngle(Random.Range(0f,360f));
 		
+		Explosion();
+
+		BasicDeleteEvents();
+
+		// for(int i = 0; i < 5; ++i)
+		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
+		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
+		CameraControll.instance.Zoom(1.7f);
+	}
+
+	public virtual void Explosion()
+	{
 		if(_fall)
 		{
 			Vector3 randDir = new Vector3(Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
@@ -806,13 +818,6 @@ public abstract class PlaneBase : Collisionable {
 
 		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
-
-		BasicDeleteEvents();
-
-		// for(int i = 0; i < 5; ++i)
-		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
-		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
-		CameraControll.instance.Zoom(1.7f);
 	}
 
 	public void BasicDeleteEvents()
