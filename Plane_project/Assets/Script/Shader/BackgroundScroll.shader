@@ -3,7 +3,7 @@
 	Properties
 	{
 		_MainTex("Sprite Texture", 2D) = "white" {}
-		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
+//		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
 		_Color ("Main Color", Color) = (1,1,1,1)
         _MainScaleX("ScreenScaleX",Float) = 1
         _MainScaleY("ScreenScaleY",Float) = 1
@@ -55,9 +55,9 @@
 		OUT.vertex = UnityObjectToClipPos(IN.vertex);
 		OUT.texcoord = IN.texcoord;
 		OUT.color = IN.color;
-#ifdef PIXELSNAP_ON
+//#ifdef PIXELSNAP_ON
 		OUT.vertex = UnityPixelSnap(OUT.vertex);
-#endif
+//#endif
 
 		return OUT;
 	}

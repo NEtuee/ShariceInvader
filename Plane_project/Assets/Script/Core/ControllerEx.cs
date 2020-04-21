@@ -135,6 +135,14 @@ public class ControllerEx : Singleton<ControllerEx>
         return (pos - center).normalized;
     }
 
+    public float GetCenterDistance()
+    {
+        Vector2 pos = Input.mousePosition;
+        Vector2 center = new Vector2(Screen.width / 2f,Screen.height / 2f);
+
+        return Vector2.Distance(pos,center);
+    }
+
     public Vector2 GetJoystickAxis()
     {
         return new Vector2(Input.GetAxis("Vertical"),Input.GetAxis("Horizontal"));

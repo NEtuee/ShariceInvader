@@ -12,7 +12,7 @@ public class CCTV : PlaneBase
 
     float recogDist = 5.5f;
     public float mainAngle = 0f;
-    float plusAngle = 15f;
+    float plusAngle = 30f;
 
     float timer = 0f;
     float alertTimer = 0f;
@@ -65,7 +65,7 @@ public class CCTV : PlaneBase
 
         miniMapIcon.gameObject.SetActive(false);
 
-        line.enabled = false;
+        //line.enabled = false;
 
         PhysicsDebugSetup();
 	}
@@ -77,7 +77,7 @@ public class CCTV : PlaneBase
 		SetNoClip(false);
         _velocityFlip = false;
         _directionAngle = true;
-		_hp = 35;
+		_hp = 45;
 
         spawnTimer = Random.Range(1.5f,2f);
 
@@ -101,7 +101,7 @@ public class CCTV : PlaneBase
 
 	public override void progress(float deltaTime)
 	{
-        //PointUpdate();
+        PointUpdate();
 
         if(!_fall)
             AirStand();
@@ -161,7 +161,7 @@ public class CCTV : PlaneBase
                 }
             }
 
-            mainAngle = Mathf.LerpAngle(mainAngle,ang,deltaTime * 20f);
+            mainAngle = ang;//Mathf.LerpAngle(mainAngle,ang,deltaTime * 20f);
 
             spawnTimer -= deltaTime;
             if(spawnTimer <= 0f)
@@ -172,17 +172,20 @@ public class CCTV : PlaneBase
                 float y = Random.Range(-3f,3f);
                 y += y > 0 ? -3.6f : 3.6f;
                 y += y < 1f ? 3.6f : 0f;
-
+                
                 int enemy = MathEx.RandomInt(0,2);
-                Vector3 pos = new Vector3(x,y) + targetPos;
 
                 switch(enemy)
                 {
                 case 0:
-                    EnemyCreator.ShootingDrone(2,pos + MathEx.RandomVector3(-0.1f,0.1f),targetPos);
+                    EnemyCreator.ShootingDrone(1,GetSpawnPos() + targetPos + MathEx.RandomVector3(-0.1f,0.1f),targetPos);
+                    EnemyCreator.ShootingDrone(1,GetSpawnPos() + targetPos + MathEx.RandomVector3(-0.1f,0.1f),targetPos);
+                    EnemyCreator.ShootingDrone(1,GetSpawnPos() + targetPos + MathEx.RandomVector3(-0.1f,0.1f),targetPos);
                     break;
                 case 1:
-                    EnemyCreator.RayDrone(1, pos);
+                    Vector3 pos = GetSpawnPos() + targetPos;
+                    EnemyCreator.RayDrone(1, pos + MathEx.RandomVector3(-0.1f,0.1f));
+                    EnemyCreator.RayDrone(1, pos + MathEx.RandomVector3(-0.1f,0.1f));
                     break;
                 }
 
@@ -234,6 +237,18 @@ public class CCTV : PlaneBase
         }
 
         return false;
+    }
+
+    public Vector3 GetSpawnPos()
+    {
+        float x = Random.Range(-3f,3f);
+        x += x > 0 ? -7.2f : 7.2f;
+
+        float y = Random.Range(-3f,3f);
+        y += y > 0 ? -3.6f : 3.6f;
+        y += y < 1f ? 3.6f : 0f;
+        
+        return new Vector3(x,y);
     }
 
     public void PointUpdate()

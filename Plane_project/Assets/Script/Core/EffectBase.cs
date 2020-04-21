@@ -44,6 +44,7 @@ public class EffectBase : Drawable {
 		_realTimeProgress = false;
 		_passiveDeactive = false;
 		_singleSprite = false;
+		_eventAction = false;
 
 		_position = pos;
 		_animationProgress = true;

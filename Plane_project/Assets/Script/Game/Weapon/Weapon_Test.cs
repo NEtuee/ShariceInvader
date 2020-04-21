@@ -81,7 +81,7 @@ public class Weapon_Test : WeaponBase
         }
         else
         {
-            _plane.BurstActive();
+            //_plane.BurstActive();
         }
 
 		//_plane.SetControll(true);

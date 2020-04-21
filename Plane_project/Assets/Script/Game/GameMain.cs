@@ -6,6 +6,7 @@ public class GameMain : MonoBehaviour {
 
 	public GameObject player;
 	public BackgroundManager background;
+	public MainHud mainHud;
 
 	private CameraControll cam;
 	private ObjectManager _objManager;
@@ -45,14 +46,17 @@ public class GameMain : MonoBehaviour {
 		_bulletManager.firstSetting();
 		_collisionManager.firstSetting();
 		
-		ObjectBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player").SetPosition(new Vector3(1f,5f));//_objManager.AddObject(Define.ObjectType.one,player);
-		cam.SetTarget(obj.tp);
+		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
+		obj.SetPosition(new Vector3(1f,5f));
+		cam.SetTarget(obj);
 		GameManager.instance.player = obj.GetComponent<Player>();
 		_objManager._place.SetMainObject(obj);
 
 		background.firstSetting();
 
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
+
+		mainHud.Initiailize();
 
 		//_objManager.AddObject<TheMarker>(Define.ObjectType.enemy,"CCTV").SetPosition(_objManager._place.MapPosToWorldPos(new Vector3(0f,5f)));
 
@@ -105,8 +109,8 @@ public class GameMain : MonoBehaviour {
 			// 	obj.SetAbsoluteForce(new Vector3(0f,100f));
 			// 	obj._gravityScale = 5f;
 
-			// var obj = ObjectManager.GetInstance().AddObject<LaserDrone>(Define.ObjectType.enemy,"laserDrone");
-			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
+			var obj = ObjectManager.GetInstance().AddObject<LaserDrone>(Define.ObjectType.enemy,"laserDrone");
+			 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
 
 			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
 			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
@@ -114,14 +118,19 @@ public class GameMain : MonoBehaviour {
 			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
 			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
 
-			EnemyCreator.ShootingDrone(1,new Vector3(0f,1f),new Vector3(0f,1f));
+			//EnemyCreator.ShootingDrone(1,new Vector3(0f,1f),new Vector3(0f,1f));
 
 			//EnemyCreator.CCTV(0,new Vector3(0f,1f));
 		}
 
+		_objManager.UpdateTransform();
+		mainHud.Progress(deltaTime);
+		cam.SyncPosition();
+
 		_objManager.progress(deltaTime);
-		PlayerFollower.instance.CC(deltaTime);
-		follower.instance.CC(deltaTime);
+		//PlayerFollower.instance.CC(deltaTime);
+		//follower.instance.CC(deltaTime);
+
 		_bulletManager.progress(deltaTime);
 		_collisionManager.UpdateCollisionList();
 
@@ -138,13 +147,9 @@ public class GameMain : MonoBehaviour {
 
 		timer.TimeScaleUpdate();
 
+
 		if(Input.GetKeyDown(KeyCode.Escape))
 			SceneManager.LoadScene(0);
-	}
-
-	void LateUpdate()
-	{
-		cam.SyncPosition();
 	}
 
 	public void OnDrawGizmos()

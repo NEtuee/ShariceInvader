@@ -16,7 +16,7 @@ public class follower : SingletonMono<follower>
     {
         if(GameManager.instance.player != null)
         {
-            transform.position = Vector3.Lerp(tp.position,transform.position,gague);
+            transform.position = Vector3.Lerp(tp.position,transform.position,gague * deltaTime);
         }
         else
             this.gameObject.SetActive(false);

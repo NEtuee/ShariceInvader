@@ -7,7 +7,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	public ScreenGlitch screenGlitch;
 
 	public Camera mainCam{get{return _main;}}
-	private Transform _followTarget = null;
+	private PlaneBase _followTarget = null;
 	private float _followSpeed = 10f;
 
 	private Transform _tp;
@@ -46,7 +46,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 							_position.y - camHeight, _position.y + camHeight);
 	}
 
-	public void SetTarget(Transform target)
+	public void SetTarget(PlaneBase target)
 	{
 		_followTarget = target;
 	}
@@ -74,7 +74,15 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 		if(_followTarget != null)
 		{
 			_followSpeed = Mathf.Lerp(_followSpeed,10f,0.05f);
-			_position = Vector2.Lerp(_position,_followTarget.position,Timer.GetInstance().noneScaledDeltaTime * _followSpeed);
+			Vector3 dir = (_followTarget.position - _position).normalized;
+			Vector3 followDir = _followTarget.direction.magnitude > 1f ? _followTarget.direction.normalized : _followTarget.direction;
+			float factor = _followTarget.velocity.magnitude > 3f ? 3f : _followTarget.velocity.magnitude;
+			factor *= 0.33f;
+
+			_position = Vector3.Lerp(_position,_followTarget.tp.position + (followDir * 0.4f) * factor,_followSpeed * Timer.GetInstance().noneScaledDeltaTime);
+
+			//_position += 10 * dir * deltaTime;
+
 			_position.z = _zDist;
 		}
 
@@ -175,6 +183,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	public void SyncPosition()
 	{
+		
 		_tp.SetPositionAndRotation(_position, _tp.rotation);
 	}
 }

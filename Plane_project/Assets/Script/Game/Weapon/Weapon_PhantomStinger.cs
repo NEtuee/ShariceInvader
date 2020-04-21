@@ -74,7 +74,7 @@ public class Weapon_PhantomStinger : WeaponBase
         }
         else
         {
-            _plane.BurstActive();
+            //_plane.BurstActive();
         }
     }
 
@@ -99,7 +99,7 @@ public class Weapon_PhantomStinger : WeaponBase
         BurstAimDirection(10f,0.08f);
 
         Timer.GetInstance().SetTimeScale(1f);
-        _aimTarget.Hit(5);
+        _aimTarget.Hit(3);
 
         float dist = Vector2.Distance(_plane.position,_aimTarget.position);
         Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
@@ -151,7 +151,7 @@ public class Weapon_PhantomStinger : WeaponBase
             for(int i = 0; i < _maxTarget; ++i)
             {
                 count = i >= _multiTarget.Count ? 0 : i;
-                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(5,i * 0.07f,delayEvent);
+                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(3,i * 0.07f,delayEvent);
                 ++count;
             }
         }

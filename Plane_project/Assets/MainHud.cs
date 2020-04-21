@@ -15,6 +15,9 @@ public class MainHud : SingletonMono<MainHud>
     private LineRenderer _distLine;
     private ObjectBase _distTarget;
 
+    private PlaneBase _followTarget;
+
+
     void Awake()
     {
         SetSingleton(this);
@@ -28,6 +31,19 @@ public class MainHud : SingletonMono<MainHud>
         _distLine.material = ResourceManager.GetInstance().GetMaterial("SpriteDefault");
 
         _distLine.enabled = false;
+    }
+
+    public void Initiailize()
+    {
+        _followTarget = GameManager.instance.player;
+    }
+
+    public void Progress(float deltaTime)
+    {
+        Vector3 velo = _followTarget.velocity;
+        Vector3 dir = -(velo.magnitude > 1f ? velo.normalized : velo);
+        transform.position = _followTarget.position + dir * 0.1f;
+        mainUI.transform.position = _followTarget.position + dir * 0.2f;
     }
 
     public void UpdateGague(float g)

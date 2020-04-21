@@ -90,7 +90,8 @@ public class RayDrone : PlaneBase
             if(_shotTimer <= 0f)
             {
                 Vector3 rand = (_direction + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f))).normalized;
-                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,1,5f)
+                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,1,3f)
+                                                .NoneDelete()
                                                 .SetAngle(MathEx.directionToAngle(rand));
 
                 EffectManager.GetInstance().AddEffect(_shotPos.localPosition,"RayDrone/Fire",false,this,2)
@@ -170,7 +171,7 @@ public class RayDrone : PlaneBase
                 Vector3 heightLine = new Vector3(_position.x + dir.x,pos.y < 2f ? 2f : pos.y);
                 targetDirection = (heightLine - _position).normalized;
 
-                if(dist < 3f)
+                if(dist < 2.5f)
                 {
                     float dot = Mathf.Cos(Mathf.Deg2Rad * 25f);
 

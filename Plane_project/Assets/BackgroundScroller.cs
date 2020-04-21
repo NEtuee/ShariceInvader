@@ -26,6 +26,7 @@ public class BackgroundScroller : MonoBehaviour
 
         _mainMat.SetFloat("_MainScaleX",_scale.x);
         _mainMat.SetFloat("_MainScaleY",_scale.y);
+        _mainMat.SetFloat("PixelSnap",1f);
 
         _meshRenderer.sortingLayerID = 0;
         _meshRenderer.sortingOrder = layer;

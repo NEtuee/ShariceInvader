@@ -15,6 +15,8 @@ public class LaserDrone : PlaneBase
 
     float _verticalAngle = 0f;
     float _spinAccel = 0f;
+
+    float explosiveTimer = 0f;
     
 
     bool _move = false;
@@ -47,13 +49,15 @@ public class LaserDrone : PlaneBase
     {
         BasicInitialize();
 
+        _hp = 50;
+
         _direction = Vector3.up;
         _speed = 0f;
         _maxSpeed = 3.2f; 
         _gravityScale = 0f;
         _updateTimer = 0.1f;
         _frictionFactor = 0.1f;
-        _attackCooldown = 5f;
+        _attackCooldown = 3f;
 
         _rotateLock = true;
         _velocityFlip = false;
@@ -100,6 +104,11 @@ public class LaserDrone : PlaneBase
                     _chargeTimer = 3f;
                     _blinkTimer = 1f;
                 }
+
+                if(dist <= 4f)
+                {
+                    _act = false;
+                }
             }
 
             if(_charging)
@@ -143,7 +152,6 @@ public class LaserDrone : PlaneBase
 
                 if(_attackTimer <= 0f)
                 {
-                    Debug.Log("laser shot");
                     EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.01f),"Planes/LaserDrone/Laser",false,null,0)
                                                 .SetAngle(MathEx.directionToAngle(_attackDir));
 
@@ -156,18 +164,42 @@ public class LaserDrone : PlaneBase
                         Vector3 exp = _position + (_attackDir * 0.1f) + (_attackDir * (0.745f * (float)i));
                         EffectManager.GetInstance().AddEffect(exp,"Explosion")
                                 .DelayApear(0.04f * (float)i)
-                                .SetApearEvent(()=>{EffectManager.GetInstance().Explosion(exp,8);})
+                                .SetApearEvent(()=>{
+                                    EffectManager.GetInstance().Explosion(exp,8);
+                                    var list = CollisionManager.GetInstance().GetCollisionList(Define.ObjectType.player);
+
+                                    if(list != null)
+                                    {
+                                        int count = list.Count;
+
+                                        for(int j = 0; j < count; ++j)
+                                        {
+                                            var col = new Define.SimpleCircleCollider(0.3f,0.3f,exp);
+                                            list[j].UpdateCollider();
+                                            if(list[j].coll.CollisionCheck(col))
+                                            {
+                                                EffectManager.GetInstance().AddEffect(list[j].position,"AttackHit_0").SetAngle(Random.Range(0f,360f));
+		    		                            EffectManager.GetInstance().AddEffect(list[j].position,"AttackHit_1").SetAngle(Random.Range(0f,360f));
+
+                                                ((PlaneBase)list[j]).Hit(5);
+                                            }
+                                        }
+                                    }
+                                })
                                 .SetAngle(Random.Range(0f,360f));
                     }
 
                     _attackTimer = 0f;
-                    _attackCooldown = Random.Range(5f,8f);
+                    _attackCooldown = Random.Range(4f,5f);
+
+                    _act = false;
+                    SetMovePoint(GameManager.instance.player.position);
                 }
             }
         }
         else
         {
-            if(dist <= 2f)
+            if(dist <= 4f)
             {
                 _act = true;
             }
@@ -182,13 +214,34 @@ public class LaserDrone : PlaneBase
             _eulerAngle = MathEx.clamp360Degree(_eulerAngle);
         }
 
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            SetMovePoint(GameManager.instance.player.position);
+        // if(Input.GetKeyDown(KeyCode.I))
+        // {
+        //     SetMovePoint(GameManager.instance.player.position);
 
-        }
+        // }
 
         SpinProgress();
+
+        if(_hp < 15)
+		{
+			explosiveTimer -= deltaTime;
+
+			if(explosiveTimer <= 0f)
+			{
+				explosiveTimer = Random.Range(0.3f,0.8f);
+
+				Vector3 randPos = MathEx.RandomVector3(-coll.bound.box.x,coll.bound.box.x);
+
+				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
+				EffectManager.GetInstance().AddEffect(_position + randPos,"Explosion")
+											.SetTarget(this)
+											.SetAddPoint(randPos)
+											.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+			
+				EffectManager.GetInstance().EmitParticles("ExplosionSmoke",_position + randPos,4);
+				//EffectManager.GetInstance().ExplosionSmoke(_position + randPos,_position + randPos + new Vector3(Random.Range(-0.2f,0.2f),Random.Range(-0.2f,0.2f)),0.15f,0.01f,4);
+			}
+		}
 
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
 		BasicUpdate(deltaTime);

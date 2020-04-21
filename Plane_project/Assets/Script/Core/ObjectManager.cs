@@ -157,6 +157,16 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 
 		DelayedRequestsProgress(deltaTime);
 
+		_cache.UpdateCache();
+	}
+	
+	public void lateProgress(float deltaTime)
+	{
+
+	}
+
+	public void UpdateTransform()
+	{
 		foreach(var dic in _objectDic)
 		{
 			if(dic.Value.count > 0)
@@ -164,17 +174,6 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 				dic.Value.UpdateTransform();
 			}
 		}
-
-
-//충돌
-
-//====
-		_cache.UpdateCache();
-	}
-	
-	public void lateProgress(float deltaTime)
-	{
-
 	}
 
 	public void DeleteProgress()

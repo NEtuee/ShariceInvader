@@ -738,7 +738,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 859bb1aa9e1d7b448912a66a9960aa1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -864,7 +864,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 859bb1aa9e1d7b448912a66a9960aa1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -885,7 +885,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5243aa7ccb200704ca84dfe99f97132f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7411765}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -902,13 +902,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564168323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1712a485fa817cb4fb1e6ddf112c4170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tp: {fileID: 476239412}
-  gague: 0.45
+  gague: 450
 --- !u!1 &687881741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1115,7 @@ Transform:
   m_GameObject: {fileID: 865264391}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.72, y: 1, z: 0.36}
+  m_LocalScale: {x: 0.8, y: 1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 1035917282}
   m_RootOrder: 0
@@ -1782,7 +1782,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100
+    maxNumParticles: 1000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -5920,7 +5920,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.8
+  orthographic size: 3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -10714,7 +10714,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.8
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -25398,6 +25398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1407669519860898, guid: 676910e16e17bda43802b546234caa63, type: 3}
   background: {fileID: 1061967206}
+  mainHud: {fileID: 476239414}
 --- !u!114 &1513208950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30276,7 +30277,7 @@ Transform:
   m_GameObject: {fileID: 1823954863}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 10.93}
-  m_LocalScale: {x: 0.72, y: 1, z: 0.36}
+  m_LocalScale: {x: 0.8, y: 1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 1061967202}
   m_RootOrder: 1
@@ -30293,7 +30294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff97352dbb273c0419e9a9a3dd0c355e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenSize: {x: 720, y: 360}
+  screenSize: {x: 800, y: 600}
   layer: -10
 --- !u!1 &1855038834
 GameObject:

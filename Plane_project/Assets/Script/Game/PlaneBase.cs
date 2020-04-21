@@ -786,7 +786,7 @@ public abstract class PlaneBase : Collisionable {
 		// for(int i = 0; i < 5; ++i)
 		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
 		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
-		CameraControll.instance.Zoom(1.7f);
+		CameraControll.instance.Zoom(2.9f);
 	}
 
 	public virtual void Explosion()
@@ -848,8 +848,13 @@ public abstract class PlaneBase : Collisionable {
 	{
 		if(_position.y <= 0f)
 		{
-			DecreaseHP(5);
+			_position.y = 0f;
 			_velocity.y *= -1f;
+
+			if(_velocity.y > 0.5f)
+			{
+				DecreaseHP(5);
+			}
 		}
 	}
 

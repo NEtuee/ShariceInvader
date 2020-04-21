@@ -64,7 +64,7 @@ public class BulletBase : Collisionable {
 	{
 		Move(deltaTime);
 
-		if(!_noneDelete)
+		if(_noneDelete)
 		{
 			_timer -= deltaTime;
 			if(_timer <= 0f)
@@ -72,7 +72,7 @@ public class BulletBase : Collisionable {
 		}
 	}
 
-	public void NoneDelete() {_noneDelete = true;}
+	public BulletBase NoneDelete() {_noneDelete = true; return this;}
 	public void Penetrate() {_penetrate = true;}
 	public void CanCollision(bool value) {_canCollision = value;}
 
