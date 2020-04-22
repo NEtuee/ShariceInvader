@@ -182,6 +182,8 @@ public class Player : PlaneBase {
 	{
 		base.deleteEvent();
 		Timer.GetInstance().SetTimeScale(1f);
+
+		Debug.Log("dead");
 	}
 
 	public override void BurstActive(bool effectActive)

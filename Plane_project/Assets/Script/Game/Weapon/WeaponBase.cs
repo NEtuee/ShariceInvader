@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class WeaponBase
 {
     protected PlaneBase _plane;
-    protected PlaneBase _aimTarget = null;
+    public PlaneBase _aimTarget = null;
     protected Sprite _icon = null;
     protected Sprite _ui = null;
 

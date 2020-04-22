@@ -12,7 +12,12 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	private Transform _tp;
 	private Camera _main;
+
+
 	private Vector3 _position;
+	private Vector3 _velocity;
+
+
 	private float _zDist = -10f;
 	private float _shakeTimer = 0f;
 	private float _shakeTurm = .1f;
@@ -73,17 +78,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	{
 		if(_followTarget != null)
 		{
-			_followSpeed = Mathf.Lerp(_followSpeed,10f,0.05f);
-			Vector3 dir = (_followTarget.position - _position).normalized;
-			Vector3 followDir = _followTarget.direction.magnitude > 1f ? _followTarget.direction.normalized : _followTarget.direction;
-			float factor = _followTarget.velocity.magnitude > 3f ? 3f : _followTarget.velocity.magnitude;
-			factor *= 0.33f;
-
-			_position = Vector3.Lerp(_position,_followTarget.tp.position + (followDir * 0.4f) * factor,_followSpeed * Timer.GetInstance().noneScaledDeltaTime);
-
-			//_position += 10 * dir * deltaTime;
-
-			_position.z = _zDist;
+			Follow();
 		}
 
 		if(_followTarget != null)
@@ -179,6 +174,44 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	public void release()
 	{
 
+	}
+
+	Vector3 targetPos;
+
+	public void Follow()
+	{
+		#region oldstuff
+		// float centerDist = Vector2.Distance(_followTarget.position,_position);
+		// var pos = _position;
+		// pos.z = 0f;
+		// Vector2 centerDir = (_followTarget.position - pos).normalized;
+		// if(centerDist >= .5f)
+		// {
+		// 	targetPos = pos + (Vector3)(centerDir * (centerDist - .5f));
+		// }
+
+		// // _followSpeed = Mathf.Lerp(_followSpeed,10f,0.05f);
+		// // Vector3 dir = (_followTarget.position - _position).normalized;
+		// // Vector3 followDir = _followTarget.direction.magnitude > 1f ? _followTarget.direction.normalized : _followTarget.direction;
+		// // float factor = _followTarget.velocity.magnitude > 3f ? 3f : _followTarget.velocity.magnitude;
+		// // factor *= 0.33f;
+
+		// // _position = Vector3.Lerp(_position,targetPos + (followDir * 0.4f) * factor,_followSpeed * Timer.GetInstance().noneScaledDeltaTime);
+		// _position = Vector3.Lerp(_position,targetPos,_followSpeed * Timer.GetInstance().noneScaledDeltaTime);
+		// //_position += 10 * dir * deltaTime;
+		#endregion
+
+		Vector3 pos = (Vector2)_position;
+		Vector3 followPos = _followTarget.position;
+
+
+		targetPos = followPos + _followTarget.direction.normalized * 0.6f;
+
+		float dist = Vector2.Distance(targetPos,pos);
+		_velocity = (targetPos - pos).normalized * dist * 3f;
+
+		_position += _velocity * Timer.GetInstance().noneScaledDeltaTime;
+		_position.z = _zDist;
 	}
 
 	public void SyncPosition()
