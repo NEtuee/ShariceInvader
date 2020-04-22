@@ -20,7 +20,7 @@ public class BoomDrone : PlaneBase
 	public override void firstSetting()
 	{
 		base.firstSetting();
-        SetVerticalAngledCount(32,4);
+        SetVerticalAngledCount(64,4);
 
 		SetSpriteSet("BoomDrone",AnimationType.Vertical_Angled);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));

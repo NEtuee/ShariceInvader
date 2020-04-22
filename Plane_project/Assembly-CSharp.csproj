@@ -159,6 +159,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\HitHit_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\ElectricElectric_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Disapear\Disapear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\booster\booster_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\BurstBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_NewPlayer_New_Plane.txt" />
@@ -174,7 +175,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\BoostDrone\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Disappear\Disappear_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Aim_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Apear\Apear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Drive\Drive_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Burst\Burst_Ani.txt" />
@@ -190,6 +191,7 @@
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleExplosion\CircleExplosion_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Script\Shader\BezierTrail.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\charge\charge_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Laser\Laser_Ani.txt" />

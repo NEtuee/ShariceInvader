@@ -134,7 +134,7 @@ public class LaserDrone : PlaneBase
 
                     for(int i = 0; i < 20; ++i)
                     {
-                        EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.1f) + (_attackDir * (0.745f * (float)i)),"Planes/LaserDrone/Aim",false,null,0)
+                        EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.1f) + (_attackDir * (0.745f * (float)i)),"Planes/LaserDrone/Aim/Apear",false,null,0)
                                 .PassiveDeactive()
                                 .DelayApear(0.1f * (float)i)
                                 .SetTimer(2f - 0.1f * (float)i)
@@ -154,10 +154,10 @@ public class LaserDrone : PlaneBase
                 {
                     EffectManager.GetInstance().AddEffect(_position + (_attackDir * 0.01f),"Planes/LaserDrone/Laser",false,null,0)
                                                 .SetAngle(MathEx.directionToAngle(_attackDir));
-
-                    EffectManager.GetInstance().AddLineEffect(_position,_position + _attackDir * 20f,0.13f,1f)
-                                                .SetColor(Color.yellow)
-                                                .SetLerpWidth(0.001f,0.15f);
+                                                
+                    // EffectManager.GetInstance().AddLineEffect(_position,_position + _attackDir * 20f,0.13f,1f)
+                    //                             .SetColor(Color.yellow)
+                    //                             .SetLerpWidth(0.001f,0.15f);
 
                     for(int i = 0; i < 20; ++i)
                     {
@@ -165,7 +165,12 @@ public class LaserDrone : PlaneBase
                         EffectManager.GetInstance().AddEffect(exp,"Explosion")
                                 .DelayApear(0.04f * (float)i)
                                 .SetApearEvent(()=>{
-                                    EffectManager.GetInstance().Explosion(exp,8);
+                                    //EffectManager.GetInstance().Explosion(exp,8);
+
+                                    EffectManager.GetInstance().AddEffect(exp,"Planes/LaserDrone/Explosion",false,null,0);
+                                    EffectManager.GetInstance().AddEffect(exp,"Planes/LaserDrone/Aim/Disapear",false,null,0)
+                                                            .SetAngle(MathEx.directionToAngle(_attackDir) - 20f);
+
                                     var list = CollisionManager.GetInstance().GetCollisionList(Define.ObjectType.player);
 
                                     if(list != null)
@@ -214,11 +219,15 @@ public class LaserDrone : PlaneBase
             _eulerAngle = MathEx.clamp360Degree(_eulerAngle);
         }
 
-        // if(Input.GetKeyDown(KeyCode.I))
-        // {
-        //     SetMovePoint(GameManager.instance.player.position);
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            //SetMovePoint(GameManager.instance.player.position);
+            _attackCooldown = 0f;
 
-        // }
+            _charging = true;
+            _chargeTimer = 3f;
+            _blinkTimer = 1f;
+        }
 
         SpinProgress();
 

@@ -178,6 +178,9 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	Vector3 targetPos;
 
+	float cameraAngle = 0f;
+
+
 	public void Follow()
 	{
 		#region oldstuff
@@ -204,8 +207,13 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 		Vector3 pos = (Vector2)_position;
 		Vector3 followPos = _followTarget.position;
 
+		float angleDist = MathEx.abs(cameraAngle - 
+									MathEx.clamp360Degree(_followTarget.angle));
+		cameraAngle = Mathf.LerpAngle(cameraAngle, _followTarget.angle,
+									 360f * Timer.GetInstance().noneScaledDeltaTime / angleDist);
+		cameraAngle = MathEx.clamp360Degree(cameraAngle);
 
-		targetPos = followPos + _followTarget.direction.normalized * 0.6f;
+		targetPos = followPos + /*_followTarget.direction.normalized*/ MathEx.angleToDirection(cameraAngle * Mathf.Deg2Rad) * 0.6f;
 
 		float dist = Vector2.Distance(targetPos,pos);
 		_velocity = (targetPos - pos).normalized * dist * 3f;
