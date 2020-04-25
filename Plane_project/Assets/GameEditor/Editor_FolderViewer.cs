@@ -66,7 +66,7 @@ public class Editor_FolderViewer : MonoBehaviour
         item.rectTp.anchoredPosition = pos;
 
         string[] lists = Directory.GetDirectories(IOManager.PathForDocumentsFile(path));
-        Vector2 subPos = pos;
+
         pos.x = 10;
 
         for(int i = 0; i < lists.Length; ++i)

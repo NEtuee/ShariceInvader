@@ -19,7 +19,6 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 	private ParticleSystem.EmitParams _scaledParam = new ParticleSystem.EmitParams();
 
 	private TrailRenderer _bezierLine;
-	private List<Vector3> _bezierList = new List<Vector3>();
 
 	public void firstSetting()
 	{

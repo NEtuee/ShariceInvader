@@ -26,7 +26,7 @@ public abstract class WeaponBase
     protected bool _hideAimObject = false;
 
     protected SpriteRenderer _aimObject = null;
-	private AnimationControll _aimAni;
+	private AnimationControllEx _aimAni;
 
     public virtual void Initialize()
     {
@@ -45,7 +45,7 @@ public abstract class WeaponBase
             if(_aimTarget != null && !_hideAimObject)
 		    {
 		    	_aimObject.transform.position = _aimTarget.position;
-		    	_aimAni.AnimationProgress(ref _aimObject,deltaTime);
+		    	_aimAni.AnimationProgress(deltaTime);
 		    }
         }
     }
@@ -85,8 +85,6 @@ public abstract class WeaponBase
 			return;
 		}
 
-        Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
-
 		var target = FindSingleTarget(aimDist,aimAngle);
 
         if(_aimTarget != target && target != null)
@@ -123,6 +121,7 @@ public abstract class WeaponBase
         Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
 
 		var link = ObjectManager.GetInstance().GetFirstLink(t);//place.GetLinkToType(Define.ObjectType.enemy);
+        
 		ObjectBase target = null;
 		float dist = aimDist + 1f;
 
@@ -220,9 +219,8 @@ public abstract class WeaponBase
             _aimObject.gameObject.SetActive(true);
         }
 
-        _aimAni = new AnimationControll();
+        _aimAni = new AnimationControllEx(_aimObject);
 		_aimAni.AddAnimation("On","Effects/PhantomString_Aim/Appear");
-		_aimAni.SetFps(18);
 
         _canAim = true;
     }

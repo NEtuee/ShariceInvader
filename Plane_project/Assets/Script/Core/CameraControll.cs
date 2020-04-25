@@ -8,7 +8,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	public Camera mainCam{get{return _main;}}
 	private PlaneBase _followTarget = null;
-	private float _followSpeed = 10f;
+	private float _followSpeed = 3.5f;
 
 	private Transform _tp;
 	private Camera _main;
@@ -76,19 +76,17 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	public void progress(float deltaTime)
 	{
-		if(_followTarget != null)
-		{
-			Follow();
-		}
 
 		if(_followTarget != null)
 		{
+			Follow();
+
 			if(_delayTimer != 0f)
 			{
 				_delayTimer -= Time.deltaTime;
 				if(_delayTimer <= 0f)
 				{
-					Timer.GetInstance().SetTimeScaleTimer(1f,0.3f,true);
+					Timer.SetTimeScaleTimer(1f,0.3f,true);
 					_delayTimer = 0f;
 				}
 			}
@@ -167,8 +165,6 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	public void FollowDelay(float delay)
 	{
 		_delayTimer = delay;
-
-		SetSpeed(1f);
 	}
 
 	public void release()
@@ -199,8 +195,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 		// // float factor = _followTarget.velocity.magnitude > 3f ? 3f : _followTarget.velocity.magnitude;
 		// // factor *= 0.33f;
 
-		// // _position = Vector3.Lerp(_position,targetPos + (followDir * 0.4f) * factor,_followSpeed * Timer.GetInstance().noneScaledDeltaTime);
-		// _position = Vector3.Lerp(_position,targetPos,_followSpeed * Timer.GetInstance().noneScaledDeltaTime);
+		// // _position = Vector3.Lerp(_position,targetPos + (followDir * 0.4f) * factor,_followSpeed * Timer.noneScaledDeltaTime);
+		// _position = Vector3.Lerp(_position,targetPos,_followSpeed * Timer.noneScaledDeltaTime);
 		// //_position += 10 * dir * deltaTime;
 		#endregion
 
@@ -210,15 +206,16 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 		float angleDist = MathEx.abs(cameraAngle - 
 									MathEx.clamp360Degree(_followTarget.angle));
 		cameraAngle = Mathf.LerpAngle(cameraAngle, _followTarget.angle,
-									 360f * Timer.GetInstance().noneScaledDeltaTime / angleDist);
+									 480f * Timer.noneScaledDeltaTime / angleDist);
 		cameraAngle = MathEx.clamp360Degree(cameraAngle);
 
-		targetPos = followPos + /*_followTarget.direction.normalized*/ MathEx.angleToDirection(cameraAngle * Mathf.Deg2Rad) * 0.6f;
+		targetPos = followPos + /*_followTarget.direction.normalized*/ MathEx.angleToDirection(cameraAngle * Mathf.Deg2Rad) * 0.65f;
+
 
 		float dist = Vector2.Distance(targetPos,pos);
-		_velocity = (targetPos - pos).normalized * dist * 3f;
+		_velocity = (targetPos - pos).normalized * dist * _followSpeed;
 
-		_position += _velocity * Timer.GetInstance().noneScaledDeltaTime;
+		_position += _velocity * Timer.noneScaledDeltaTime;
 		_position.z = _zDist;
 	}
 

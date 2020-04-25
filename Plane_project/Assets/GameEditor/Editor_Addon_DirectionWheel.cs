@@ -10,7 +10,7 @@ public class Editor_Addon_DirectionWheel : MonoBehaviour
     public RectTransform wheel;
 
     public Vector2 direction = Vector2.left;
-    private Vector2 _origin;
+//    private Vector2 _origin;
 
     private bool _active = false;
 
@@ -30,7 +30,7 @@ public class Editor_Addon_DirectionWheel : MonoBehaviour
         if(rect == wheel)
         {
 
-            _origin = direction;
+//            _origin = direction;
             _active = true;
         }
     }

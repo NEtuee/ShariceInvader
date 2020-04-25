@@ -18,7 +18,6 @@ public class EffectBase : Drawable {
 	bool _colorLerp = false;
 	bool _realTimeProgress = false;
 	bool _passiveDeactive = false;
-	bool _singleSprite = false;
 	bool _eventAction = false;
 	bool _animationProgress = false;
 
@@ -43,7 +42,6 @@ public class EffectBase : Drawable {
 
 		_realTimeProgress = false;
 		_passiveDeactive = false;
-		_singleSprite = false;
 		_eventAction = false;
 
 		_position = pos;
@@ -89,7 +87,6 @@ public class EffectBase : Drawable {
 		_realTimeProgress = false;
 		_passiveDeactive = false;
 		_eventAction = false;
-		_singleSprite = true;
 
 		SetSortingOrder(-1);
 
@@ -140,7 +137,7 @@ public class EffectBase : Drawable {
 
 	public override void progress(float deltaTime)
 	{
-		float time = _realTimeProgress ? Timer.GetInstance().noneScaledDeltaTime : deltaTime;
+		float time = _realTimeProgress ? Timer.noneScaledDeltaTime : deltaTime;
 		if(_delayApear != 0f)
 		{
 			sprRenderer.sprite = null;

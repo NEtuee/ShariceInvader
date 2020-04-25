@@ -77,11 +77,11 @@ public class Weapon_Test : WeaponBase
             mainAttack = true;
             EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/EnergyBurst",false)
                                 .SetSortingOrder(1);
-            //Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
+            //Timer.SetTimeScaleTimer(0.3f,0.5f,true);
         }
         else
         {
-            //_plane.BurstActive();
+            _plane.BurstActive();
         }
 
 		//_plane.SetControll(true);
@@ -115,7 +115,7 @@ public class Weapon_Test : WeaponBase
 
         specAttack = true;
 
-        Timer.GetInstance().SetTimeScaleTimer(0.1f,0.3f);
+        Timer.SetTimeScaleTimer(0.1f,0.3f);
 
         return false;
     }

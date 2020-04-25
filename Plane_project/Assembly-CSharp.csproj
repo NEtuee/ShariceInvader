@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{05B78962-839F-B5BB-03B3-1F8BFDCFFEB1}</ProjectGuid>
+    <ProjectGuid>{9F58B992-CB4F-6DB2-9225-BCA0D1705470}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,11 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BackgroundManager.cs" />
-     <Compile Include="Assets\BackgroundScroller.cs" />
-     <Compile Include="Assets\ComboCount.cs" />
-     <Compile Include="Assets\follower.cs" />
-     <Compile Include="Assets\FOrTestst.cs" />
+     <Compile Include="Assets\Debugger.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyBase.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyViewer.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_KeyDataModifier.cs" />
@@ -75,14 +71,10 @@
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneBuilder.cs" />
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneInfoBase.cs" />
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_TrailRenderer.cs" />
-     <Compile Include="Assets\MainHud.cs" />
-     <Compile Include="Assets\particleTest.cs" />
-     <Compile Include="Assets\PhysicsTest.cs" />
-     <Compile Include="Assets\PlayerFollower.cs" />
-     <Compile Include="Assets\ScreenGlitch.cs" />
-     <Compile Include="Assets\ScreenPixelization.cs" />
      <Compile Include="Assets\Script\Core\AnimationControll.cs" />
      <Compile Include="Assets\Script\Core\AnimationControllEx.cs" />
+     <Compile Include="Assets\Script\Core\BackgroundManager.cs" />
+     <Compile Include="Assets\Script\Core\BackgroundScroller.cs" />
      <Compile Include="Assets\Script\Core\CameraControll.cs" />
      <Compile Include="Assets\Script\Core\Collisionable.cs" />
      <Compile Include="Assets\Script\Core\CollisionManager.cs" />
@@ -102,6 +94,8 @@
      <Compile Include="Assets\Script\Core\ObjectManager.cs" />
      <Compile Include="Assets\Script\Core\PlaceMapper.cs" />
      <Compile Include="Assets\Script\Core\ResourceManager.cs" />
+     <Compile Include="Assets\Script\Core\ScreenGlitch.cs" />
+     <Compile Include="Assets\Script\Core\ScreenPixelization.cs" />
      <Compile Include="Assets\Script\Core\Singleton.cs" />
      <Compile Include="Assets\Script\Core\SingletonMono.cs" />
      <Compile Include="Assets\Script\Core\Timer.cs" />
@@ -111,67 +105,67 @@
      <Compile Include="Assets\Script\Core\UI\ToggleGroupEx.cs" />
      <Compile Include="Assets\Script\Core\UI\TouchDetection.cs" />
      <Compile Include="Assets\Script\Core\UI\TouchInfo.cs" />
-     <Compile Include="Assets\Script\Game\BulletBase.cs" />
      <Compile Include="Assets\Script\Game\BulletManager.cs" />
-     <Compile Include="Assets\Script\Game\DecoAnimeController.cs" />
-     <Compile Include="Assets\Script\Game\DistanceMarker.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\BoomDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\BoostDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\CCTV.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\EnemyCreator.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\Flare.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\Intercepter.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\LaserDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\MissileDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\NPC.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\PointMarker.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\RayDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\ShootingDrone.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\TheMarker.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\UACV.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Archer.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Defender.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\Wand_Missile.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\1-1\WandsBase.cs" />
-     <Compile Include="Assets\Script\Game\Enemy\AIBase.cs" />
+     <Compile Include="Assets\Script\Game\Entity\BulletBase.cs" />
+     <Compile Include="Assets\Script\Game\Entity\DecoAnimeController.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\BoomDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\BoostDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\CCTV.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\EnemyCreator.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Flare.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Intercepter.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\LaserDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\MissileDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\NPC.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\PointMarker.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\RayDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\ShootingDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\TheMarker.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\UACV.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Wand_Archer.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Wand_Defender.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Wand_Missile.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\WandsBase.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\AIBase.cs" />
+     <Compile Include="Assets\Script\Game\Entity\PlaneBase.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Player.cs" />
+     <Compile Include="Assets\Script\Game\Entity\SupplyShip.cs" />
      <Compile Include="Assets\Script\Game\GameMain.cs" />
-     <Compile Include="Assets\Script\Game\GameManager.cs" />
-     <Compile Include="Assets\Script\Game\PlaneBase.cs" />
-     <Compile Include="Assets\Script\Game\PlanePiece.cs" />
-     <Compile Include="Assets\Script\Game\Player.cs" />
-     <Compile Include="Assets\Script\Game\SupplyShip.cs" />
+     <Compile Include="Assets\Script\Game\UI\ComboCount.cs" />
+     <Compile Include="Assets\Script\Game\UI\MainHud.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_Lancer.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_None.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_PhantomStinger.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_Test.cs" />
      <Compile Include="Assets\Script\Game\Weapon\WeaponBase.cs" />
-     <Compile Include="Assets\testsss.cs" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1\AttackHit_1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Loop\Loop_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurve\CuttingCurve_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\sideLight\sideLight_Ani.txt" />
      <None Include="Assets\Script\Shader\Pixelization.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Loop\Loop_Ani.txt" />
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Hit\Hit_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\explosion\explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\EnergyBurst\EnergyBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Launch\Launch_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\HitHit_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_0\AttackHit_0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\launch\launch_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Bullet_0_Destroy\Bullet_0_Destroy_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\ElectricElectric_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Disapear\Disapear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\booster\booster_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\BurstBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_NewPlayer_New_Plane.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Fire\Fire_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Electric\Electric_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\0\0_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ExplosionExplosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\WeaponChangeWeaponChange_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1AttackHit_1_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurveCuttingCurve_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Open\Open_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\BoostDrone\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Disappear\Disappear_Ani.txt" />
@@ -179,7 +173,6 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Drive\Drive_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Burst\Burst_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\BurstBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Front\Front_Ani.txt" />
      <None Include="Assets\Script\Shader\ColorLerp.shader" />
@@ -198,37 +191,37 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Base\Base_Plane.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\CuttingCurveCuttingCurve_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\WeaponChangeWeaponChange_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleRangeCircleRange_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\FireFire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Disapear\Disapear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Explode\Explode_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineOpening\spineOpening_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Appear\Appear_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Fire\Fire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\WeaponChange\WeaponChange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\spin\spin_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\fin\fin_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Fire\Fire_Ani.txt" />
      <None Include="Assets\Script\Shader\ScreenSoftNoise.shader" />
+     <None Include="Assets\Script\Shader\MinimapSide.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineClosing\spineClosing_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricElectric_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Bullet_0_DestroyBullet_0_Destroy_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\1\1_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_0AttackHit_0_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleRange\CircleRange_Ani.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -432,13 +425,13 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>C:/Users/m/Documents/repack/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

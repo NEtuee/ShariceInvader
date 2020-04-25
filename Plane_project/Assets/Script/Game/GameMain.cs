@@ -13,7 +13,6 @@ public class GameMain : MonoBehaviour {
 	private BulletManager _bulletManager;
 	private EffectManager _effectManager;
 	private CollisionManager _collisionManager;
-	private Timer timer;
 
 	Define.GizmoHelper _gizmoHelper = new Define.GizmoHelper();
 
@@ -23,10 +22,10 @@ public class GameMain : MonoBehaviour {
 		EffectManager.DeleteSingleton();
 		BulletManager.DeleteSingleton();
 		CollisionManager.DeleteSingleton();
-		// Timer.DeleteSingleton();
 
 		cam = Camera.main.GetComponent<CameraControll>();
 		cam.firstSetting();
+		
 		_objManager = ObjectManager.GetInstance();
 		_effectManager = EffectManager.GetInstance();
 		_bulletManager = BulletManager.GetInstance();
@@ -34,9 +33,6 @@ public class GameMain : MonoBehaviour {
 
 		ControllerEx.GetInstance().CreateKeys();
 		ControllerEx.GetInstance().SetMainViewCamera(GameObject.Find("MainScreenCamera").GetComponent<Camera>());
-
-		GetComponent<GameManager>().firstSetting();
-		timer = Timer.GetInstance();
 	}
 
 	void Start ()
@@ -45,14 +41,14 @@ public class GameMain : MonoBehaviour {
 		_effectManager.firstSetting();
 		_bulletManager.firstSetting();
 		_collisionManager.firstSetting();
+		background.firstSetting();
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		obj.SetPosition(new Vector3(1f,5f));
 		cam.SetTarget(obj);
-		GameManager.instance.player = obj.GetComponent<Player>();
+
 		_objManager._place.SetMainObject(obj);
 
-		background.firstSetting();
 
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
 
@@ -83,70 +79,26 @@ public class GameMain : MonoBehaviour {
 
 	void Update ()
 	{
-		float deltaTime = timer.SetDeltaTime(Time.deltaTime);
+		float deltaTime = Timer.SetDeltaTime(Time.deltaTime);
+
 		ControllerEx.GetInstance().UpdateKeyState();
-		
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			//EffectManager.GetInstance().DrawBezierLine(Vector2.zero,new Vector2(0f,3f),new Vector2(1f,1f),new Vector2(-1f,2f),0.1f);
-			//_objManager.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(new Vector3(0f,5f));
-
-			// var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
-			// 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
-			// 	obj.SetAbsoluteForce(new Vector3(0f,1000f));
-			// 	obj.SetAngle(90f);
-			// 	obj._gravityScale = 5f;
-
-			EnemyCreator.CCTV(0,new Vector3(0f,1f));
-		}
-
-		if(Input.GetKeyDown(KeyCode.Q))
-		{
-			//EnemyCreator.BoomDrone(1,new Vector3(0f,1f));
-			// var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
-			// 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
-			// 	obj.SetAngle(90f);
-			// 	obj.SetAbsoluteForce(new Vector3(0f,100f));
-			// 	obj._gravityScale = 5f;
-
-			var obj = ObjectManager.GetInstance().AddObject<LaserDrone>(Define.ObjectType.enemy,"laserDrone");
-			 	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
-
-			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
-			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
-
-			// var obj = ObjectManager.GetInstance().AddObject<RayDrone>(Define.ObjectType.enemy,"laserDrone");
-			//  	obj.SetPosition(new Vector3(0f,1f)).SetDirection(new Vector3(0f,1f));
-
-			//EnemyCreator.ShootingDrone(1,new Vector3(0f,1f),new Vector3(0f,1f));
-
-			//EnemyCreator.CCTV(0,new Vector3(0f,1f));
-		}
 
 		_objManager.UpdateTransform();
-		mainHud.Progress(deltaTime);
+		mainHud.Progress(Timer.deltaTime);
 		cam.SyncPosition();
 
 		_objManager.progress(deltaTime);
-		//PlayerFollower.instance.CC(deltaTime);
-		//follower.instance.CC(deltaTime);
-
 		_bulletManager.progress(deltaTime);
-		_collisionManager.UpdateCollisionList();
-
 		_effectManager.progress(deltaTime);
-
 		background.progress(deltaTime);
+		cam.progress(Timer.deltaTime);
 
-		cam.progress(timer.deltaTime);
-
+		_collisionManager.UpdateCollisionList();
 		_collisionManager.SyncCollisionList();
+
 		_objManager.DeleteProgress();
-
 		Physics2D.SyncTransforms();
-
-		timer.TimeScaleUpdate();
-
+		Timer.TimeScaleUpdate();
 
 		if(Input.GetKeyDown(KeyCode.Escape))
 			SceneManager.LoadScene(0);

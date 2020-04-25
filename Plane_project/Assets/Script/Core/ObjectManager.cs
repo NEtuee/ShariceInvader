@@ -36,8 +36,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		}
 	}
 
-	private Dictionary<Define.ObjectType, LinkedList<ObjectBase>> _objectDic =
-			new Dictionary<Define.ObjectType, LinkedList<ObjectBase>>();
+	private Dictionary<int, LinkedList<ObjectBase>> _objectDic =
+			new Dictionary<int, LinkedList<ObjectBase>>();
 
 	private ObjectCache _cache;
 	public PlaceMapper _place;
@@ -50,6 +50,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	private List<DelayObjectCreateItem> _createRequests = new List<DelayObjectCreateItem>();
 	private Queue<DelayObjectCreateItem> _createPool = new Queue<DelayObjectCreateItem>();
 	
+	private Define.VoidObjectDelegate placeUpdate;
 
 	public void firstSetting()
 	{
@@ -71,11 +72,13 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 					GameObject.Destroy(obj.obj);
 			});
 
-			_objectDic.Add((Define.ObjectType)i, link);
+			_objectDic.Add(i, link);
 		}
+
+		placeUpdate = new Define.VoidObjectDelegate(PlaceUpdateLoop);
 	}
 
-	public LinkBase<ObjectBase> GetFirstLink(Define.ObjectType type) {return _objectDic[type].front;}
+	public LinkBase<ObjectBase> GetFirstLink(Define.ObjectType type) {return _objectDic[(int)type].front;}
 
 	public void progress(float deltaTime)
 	{
@@ -126,32 +129,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		{
 			if(dic.Value.count > 0)
 			{
-				dic.Value.Loop((ObjectBase obj)=>{
-					if(obj.place != _place.GetPlace(obj))
-					{
-						if(obj.place != null)
-							obj.place.ExitPlace(obj);
-						obj.place = _place.GetPlace(obj);
-						if(obj.place != null)
-							obj.place.EnterPlace(obj);
-					}
-
-					if(obj.position.x > _place._right.leftBottom.x + _place._placeWidth)
-					{
-						Vector2 pos = obj.position;
-						pos.x = pos.x - _place._mapWidth;
-						obj.SetPosition(pos);
-						obj.beforeUpdateTransform();
-					}
-					else if(obj.position.x < _place._left.leftBottom.x)
-					{
-						Vector2 pos = obj.position;
-						pos.x = pos.x + _place._mapWidth;
-						obj.SetPosition(pos);
-						obj.beforeUpdateTransform();
-					}
-					
-				});
+				dic.Value.Loop(placeUpdate);
 			}
 		}
 
@@ -160,6 +138,33 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		_cache.UpdateCache();
 	}
 	
+	public void PlaceUpdateLoop(ObjectBase obj)
+	{
+		if(obj.place != _place.GetPlace(obj))
+		{
+			if(obj.place != null && !obj.deleted)
+				obj.place.ExitPlace(obj);
+			obj.place = _place.GetPlace(obj);
+			if(obj.place != null)
+				obj.place.EnterPlace(obj);
+		}
+
+		if(obj.position.x > _place._right.leftBottom.x + _place._placeWidth)
+		{
+			Vector2 pos = obj.position;
+			pos.x = pos.x - _place._mapWidth;
+			obj.SetPosition(pos);
+			obj.beforeUpdateTransform();
+		}
+		else if(obj.position.x < _place._left.leftBottom.x)
+		{
+			Vector2 pos = obj.position;
+			pos.x = pos.x + _place._mapWidth;
+			obj.SetPosition(pos);
+			obj.beforeUpdateTransform();
+		}
+	}
+
 	public void lateProgress(float deltaTime)
 	{
 
@@ -232,9 +237,10 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 
 	public ObjectBase FindObject(Define.ObjectType type, string name)
 	{
-		if(_objectDic.ContainsKey(type))
+		int t = (int)type;
+		if(_objectDic.ContainsKey(t))
 		{
-			var item = _objectDic[type].Find(name);
+			var item = _objectDic[t].Find(name);
 			if(item != null)
 				return item.target;
 		}
@@ -245,7 +251,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	public ObjectBase AddObject(Define.ObjectType type, string name)
 	{
 		ObjectBase obj = _cache.GetCacheObject(type,name);
-		_objectDic[type].Add(obj);
+		_objectDic[(int)type].Add(obj);
 		
 		_created.Add(obj);
 
@@ -256,7 +262,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	public ObjectBase AddObject(Define.ObjectType type, GameObject origin)
 	{
 		ObjectBase obj = CreateObject(type,origin,true,false);
-		_objectDic[type].Add(obj);
+		_objectDic[(int)type].Add(obj);
 
 		_created.Add(obj);
 
@@ -266,7 +272,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	public T AddObject<T> (Define.ObjectType type, string name) where T : ObjectBase
 	{
 		T obj = CreateObject<T>(type,name,true,false);
-		_objectDic[type].Add(obj);
+		_objectDic[(int)type].Add(obj);
 
 		_created.Add(obj);
 

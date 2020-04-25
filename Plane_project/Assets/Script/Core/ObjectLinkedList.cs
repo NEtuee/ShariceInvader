@@ -52,11 +52,6 @@ public class LinkedList<T> where T : ObjectBase
 		{
 			if(link.target.active)
 				link.target.progress(deltaTime);
-			// if(_deleteCondition(link.target))
-			// {
-			// 	_destroy(DisconnectLink(link));
-			// 	//GameObject.Destroy(DisconnectLink(link).gameObject);
-			// }
 
 			link = link.next;
 		}
@@ -83,7 +78,6 @@ public class LinkedList<T> where T : ObjectBase
 			if(_deleteCondition(link.target))
 			{
 				_destroy(DisconnectLink(link));
-				//GameObject.Destroy(DisconnectLink(link).gameObject);
 			}
 
 			link = link.next;

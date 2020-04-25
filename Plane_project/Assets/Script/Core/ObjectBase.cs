@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 
+	public static int uniqueNumberGen = 0;
+	public int uniqueNumber = 0;
+
 	public bool active{get{return _isActive;}}
 	public bool deleted{get{return _isDeleted;}}
 
@@ -25,7 +28,7 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 	[HideInInspector]
 	public Define.ObjectType type;
 
-	public LinkBase<ObjectBase> link;
+
 	public PlaceMapper.Place place;
 
 	protected Vector3 _position = new Vector3();
@@ -95,6 +98,6 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 		SetTransform();
 		SetGameObject();
 
-		
+		uniqueNumber = uniqueNumberGen++;
 	}
 }

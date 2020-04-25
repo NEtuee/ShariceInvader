@@ -238,7 +238,8 @@ public class Editor_AnimationKeyViewer : SingletonMono<Editor_AnimationKeyViewer
 
         Editor_EventSystem.instance.ActiveNotice("Save Complete");
 
-        saveButton.interactable = _changed = false;
+        _changed = false;
+        saveButton.interactable = _changed;
     }
 
     public void SetKeyData(string path, Sprite[] sprites)

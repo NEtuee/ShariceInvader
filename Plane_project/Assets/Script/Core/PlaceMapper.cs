@@ -6,64 +6,50 @@ public class PlaceMapper
 {
     public class Place
     {
-        public Dictionary<Define.ObjectType, LinkedList<ObjectBase>> list;
+        public LinkedList<ObjectBase> list;
+        public Dictionary<int,LinkBase<ObjectBase>> links;
         public Vector2 leftBottom;
 
         public int placeCount;
 
+
         public void EnterPlace(ObjectBase obj)
         {
-            LinkedList<ObjectBase> link;
-            if(!list.TryGetValue(obj.type,out link))
-            {
-                link = new LinkedList<ObjectBase>();
-                list.Add(obj.type,link);
-            }
-            obj.link = link.Add(obj);
+            obj.place = this;
+            links.Add(obj.uniqueNumber, list.Add(obj));
         }
 
         public void ExitPlace(ObjectBase obj)
         {
-            list[obj.type].DisconnectLink(obj.link);
-            obj.link = null;
+            if(links.ContainsKey(obj.uniqueNumber))
+            {
+                list.DisconnectLink(links[obj.uniqueNumber]);
+                links.Remove(obj.uniqueNumber);
+            }
         }
 
         public void UpdatePosition(float leftPoint)
         {
             float l = (leftPoint - leftBottom.x);
 
-            foreach(var lin in list)
+            LinkBase<ObjectBase> link = list.front;
+            while(link != null)
             {
-                LinkBase<ObjectBase> link = lin.Value.front;
-                while(link != null)
-                {
-                    Vector3 pos = link.target.position;
-                    pos.x = pos.x + l;
-                    link.target.SetPosition(pos);
-                    link.target.beforeUpdateTransform();
-                    link = link.next;
-                }
+                Vector3 pos = link.target.position;
+                pos.x = pos.x + l;
+                link.target.SetPosition(pos);
+                link.target.beforeUpdateTransform();
+                link = link.next;
             }
 
             leftBottom.x = leftPoint;
         }
 
-        public LinkBase<ObjectBase> GetLinkToType(Define.ObjectType type)
-        {
-            LinkedList<ObjectBase> link;
-            if(!list.TryGetValue(type,out link))
-            {
-                link = new LinkedList<ObjectBase>();
-                list.Add(type,link);
-            }
-
-            return link.front;
-        }
-
         public Place(int count)
         {
             placeCount = count; 
-            list = new Dictionary<Define.ObjectType, LinkedList<ObjectBase>>();
+            list = new LinkedList<ObjectBase>();
+            links = new Dictionary<int, LinkBase<ObjectBase>>();
         }
     }
 

@@ -142,10 +142,15 @@ public class AnimationControllEx
 				return null;
 
         	string file = path;// path.Substring(path.LastIndexOf('/'));
+			string savePath = path;
 			if(file.Contains("/"))
 				file = file.Substring(path.LastIndexOf('/'));
+			else
+			{
+				savePath += "/";
+			}
 				
-        	string pathName =  "Sprites/SpriteSet/" + ResourceManager.spriteSetFolder[type] + path + file + "_Ani";
+        	string pathName =  "Sprites/SpriteSet/" + ResourceManager.spriteSetFolder[type] + savePath + file + "_Ani";
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 

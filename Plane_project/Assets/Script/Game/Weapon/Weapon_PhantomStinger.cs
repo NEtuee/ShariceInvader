@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon_PhantomStinger : WeaponBase
 {
     private SpriteRenderer _aimObj;
-    private PlaneBase.DelayItem.hitEventDelegate delayEvent;
+    private PlaneBase.hitEventDelegate delayEvent;
 
     private List<EffectBase> _aimEffects = new List<EffectBase>();
 
@@ -67,14 +67,14 @@ public class Weapon_PhantomStinger : WeaponBase
             _plane.SetSpeed(0f);
             _plane.SetAngle(MathEx.directionToAngle(GetAimTargetDirection()));
 
-            Timer.GetInstance().SetTimeScale(0.2f);
+            Timer.SetTimeScale(0.2f);
             mainAttack = true;
 
             _aimObj.gameObject.SetActive(true);
         }
         else
         {
-            //_plane.BurstActive();
+            _plane.BurstActive();
         }
     }
 
@@ -82,11 +82,11 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         if(_aimTarget == null || _aimTarget.deleted)
         {
-            Timer.GetInstance().SetTimeScale(1f);
+            Timer.SetTimeScale(1f);
             mainAttack = false;
             return;
         }
-        _mainTimer = 0.3f;
+        _mainTimer = 0.22f;
         mainAttack = false;
         //_plane._rotateLock = true;
         Vector3 pos = _plane.position + _plane.direction * 0.25f;
@@ -96,10 +96,10 @@ public class Weapon_PhantomStinger : WeaponBase
 
         CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
 
-        BurstAimDirection(10f,0.08f);
+        BurstAimDirection(12f,0.08f);
 
-        Timer.GetInstance().SetTimeScale(1f);
-        _aimTarget.Hit(3);
+        Timer.SetTimeScale(1f);
+        _aimTarget.Hit(3,_plane);
 
         float dist = Vector2.Distance(_plane.position,_aimTarget.position);
         Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
@@ -141,7 +141,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public void SpecialAttackProgress()
     {
-        Timer.GetInstance().SetTimeScale(1f);
+        Timer.SetTimeScale(1f);
         specAttack = false;
 
         int count = 0;
@@ -151,7 +151,7 @@ public class Weapon_PhantomStinger : WeaponBase
             for(int i = 0; i < _maxTarget; ++i)
             {
                 count = i >= _multiTarget.Count ? 0 : i;
-                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(3,i * 0.07f,delayEvent);
+                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(3,i * 0.07f,_plane,delayEvent);
                 ++count;
             }
         }
@@ -165,7 +165,7 @@ public class Weapon_PhantomStinger : WeaponBase
         _aimEffects.Clear();
         _plane.SetControll(false);
 
-        BurstAimDirection(20f,0.1f);
+        BurstAimDirection(24f,0.15f);
     }
 
     public void SpecialTargetHitEvent(PlaneBase target)

@@ -29,32 +29,28 @@ public class Weapon_Lancer : WeaponBase
         InitAimObject();
         _hideAimObject = true;
     }
+
     public override void Progress(float deltaTime)
     {
         base.Progress(deltaTime);
         UpdateAimTarget(4.5f,30f);
 
-        //specAttack = false;
-
         if(_attackTime != 0f)
         {
             _plane.SetAbsoluteForce(_plane.direction * 13f);
-
-			//Vector3 pos = _plane.position + new Vector3(Mathf.Sin(Random.Range(0,360f)),Mathf.Cos(Random.Range(0,360f)),0f) * 0.055f;
-			//EffectManager.GetInstance().EmitParticles("AttackTrail",pos,-_plane.angle,1);
 
             if(CoolDownCheck(ref _attackTime,deltaTime))
             {
                 _attackTime = 0f;
 			    _mainTimer = mainCoolTime;
 			    _plane.SetMaxSpeed(_mainSpeed);
+                _plane.coll.bound.SetRect(.05f,.05f);
 			    mainAttack = false;
 			    if(_plane.controllLockTimer == 0f)
                 {
                     _plane.SetControll(false);
                 }
-                //_plane.SetImmortal(true);
-			    //_plane.SetBodyAttack(0);
+
             }
         }
         else if (CoolDownCheck(ref _mainTimer,deltaTime))
@@ -74,36 +70,18 @@ public class Weapon_Lancer : WeaponBase
         {
             _plane.SetDirection((_aimTarget.position - _plane.position).normalized);
 		    _plane.SetAngle(MathEx.directionToAngle(_plane.direction));
-
-            // if(!_plane._directionAngle)
-            // {
-
-            // }
-		    // if(_plane.direction.x < 0f)
-		    // 	_plane.SetScale(1f,-1f,1f);
-		    // else if(_plane.direction.x > 0f)
-		    // 	_plane.SetScale(1f,1f,1f);
         }
+
+        _plane.coll.bound.SetRect(.1f,.1f);
 
         _plane.BurstActive();
 
-        // Vector3 pos = _plane.position;
-		// pos -= _plane.direction.normalized * 0.25f;
-		// EffectManager.GetInstance().AddEffect(_plane.position + _plane.direction.normalized * 0.2f,"Weapon/Lancer/Trail")
-        //                                 .SetFps(14f)
-		// 								.SetAngle(MathEx.directionToAngle(_plane.direction));
 
-        // EffectManager.GetInstance().AddEffect(pos,"Weapon/Lancer/Chase",false,_plane)
-        //                                 .SetFps(16f)
-        //                                 .SetAddPoint(_plane.direction.normalized * 0.35f)
-		// 								.SetAngle(MathEx.directionToAngle(_plane.direction));
 
         _attackTime = .18f;
         _plane.SetMaxSpeed(_mainSpeed + 5f);
 		mainAttack = true;
 		_plane.SetControll(true);
-
-        //Timer.GetInstance().SetTimeScaleTimer(0.3f,0.5f,true);
     }
     public override bool SpecialAttack(Vector3 dir)
     {
@@ -113,9 +91,8 @@ public class Weapon_Lancer : WeaponBase
 									.SetAngle(MathEx.directionToAngle(dir));
 
         Vector3 pos = _plane.position;
-		Vector3 dirPos = dir / 10f;
 		
-		_plane.SetPosition(pos + dir * _plane._dodgeDist);
+		_plane.SetPosition(pos + dir * (_plane._dodgeDist - .3f));
 
         Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
         var list = CollisionManager.GetInstance().GetCollisionList(t);
@@ -133,10 +110,13 @@ public class Weapon_Lancer : WeaponBase
                 if(Define.SimpleCollider.CircleLineCircle(list[i].position,_dodgeStartPos,_plane.position,
 							_plane.coll.bound.box.x * 4f, list[i].coll.bound.box.x))
 		        {
-                    ((PlaneBase)list[i]).Hit(15);
+                    ((PlaneBase)list[i]).Hit(15,_plane);
 		        }
             }
         }
+
+        _plane.SetAdditionalSpeed(12f,0.2f,true);
+        _plane.AddForce(dir * 100f);
         
         _plane.SpriteDisapear(0.1f);
         CameraControll.instance.FollowDelay(0.5f);
@@ -173,6 +153,7 @@ public class Weapon_Lancer : WeaponBase
 		_plane.SetControll(false);
 		_plane.SetImmortal(false);
 		_plane.SetBodyAttack(5);
+        _plane.coll.bound.SetRect(.05f,.05f);
 
         UnityEngine.GameObject.Destroy(_aimObj.gameObject);
 

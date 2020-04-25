@@ -74,7 +74,6 @@ public class CollisionManager : Singleton<CollisionManager>, Define.IManager
 
                             if(oneObj.CollisionCheck(twoObj))
                             {
-                                Debug.Log("Collision : " + oneObj.name + ", " + twoObj.name);
                                 oneObj.CollisionProgress(twoObj.type,twoObj);
                                 twoObj.CollisionProgress(oneObj.type,oneObj);
                             }

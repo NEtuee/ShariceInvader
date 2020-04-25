@@ -16,7 +16,7 @@ public class LineEffectBase : ObjectBase
     public override void firstSetting()
     {
         mainLine = gameObject.AddComponent<LineRenderer>();
-        mainLine.material = ResourceManager.GetInstance().GetMaterial("SpriteDefault");
+        mainLine.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
         mainLine.SetPosition(0,Vector3.zero);
         mainLine.SetPosition(1,Vector3.zero);
 

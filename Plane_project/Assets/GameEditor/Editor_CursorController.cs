@@ -290,7 +290,7 @@ public class Editor_CursorController : SingletonMono<Editor_CursorController>
             return;
             
         clickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        bool multiSelect = Input.GetKey(KeyCode.LeftShift);
+    //    bool multiSelect = Input.GetKey(KeyCode.LeftShift);
         bool uiLock = false;
         _cursorClicked = false;
         _multipleSelected = false;

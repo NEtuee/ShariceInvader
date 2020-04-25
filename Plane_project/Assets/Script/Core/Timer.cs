@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer : Singleton<Timer> {
+public static class Timer {
 
-	public float deltaTime{get{return _deltaTime * _timeScale;}}
-	public float timeScale{get{return _timeScale;}}
-	public float noneScaledDeltaTime{get{return _deltaTime;}}
+	public static float deltaTime{get{return _deltaTime * _timeScale;}}
+	public static float timeScale{get{return _timeScale;}}
+	public static float noneScaledDeltaTime{get{return _deltaTime;}}
 
-	private float _deltaTime = 0f;
-	private float _timeScale = 1f;
+	private static float _deltaTime = 0f;
+	private static float _timeScale = 1f;
 
-	private float _scaleTimerValue = 0f;
-	private float _scaleTimer = 0f;
-	private float _scaledTimeValue = 0f;
-	private bool _lerp = false;
+	private static float _scaleTimerValue = 0f;
+	private static float _scaleTimer = 0f;
+	private static float _scaledTimeValue = 0f;
+	private static bool _lerp = false;
 
-	public float SetDeltaTime(float value) {_deltaTime = value; return deltaTime;}
-	public float TimeScaling(float time) {return time * (1f / _timeScale);}
-	public void SetTimeScale(float value) 
+	public static float SetDeltaTime(float value) {_deltaTime = value; return deltaTime;}
+	public static float TimeScaling(float time) {return time * (1f / _timeScale);}
+	public static void SetTimeScale(float value) 
 	{
 		if(_scaleTimer != 0f)
 			_scaleTimer = 0f;
@@ -26,7 +26,7 @@ public class Timer : Singleton<Timer> {
 		_timeScale = value;
 	}
 
-	public void TimeScaleUpdate()
+	public static void TimeScaleUpdate()
 	{
 		if(_scaleTimer != 0f)
 		{
@@ -45,7 +45,7 @@ public class Timer : Singleton<Timer> {
 		}
 	}
 
-	public void SetTimeScaleTimer(float timeScale, float time, bool lerp = false)
+	public static void SetTimeScaleTimer(float timeScale, float time, bool lerp = false)
 	{
 		_timeScale = timeScale;
 		_scaledTimeValue = timeScale;

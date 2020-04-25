@@ -34,6 +34,7 @@ public abstract class Drawable : ObjectBase {
 	protected void AddSpriteRenderer()
 	{
 		_sprRenderer = obj.AddComponent<SpriteRenderer>();
+		_sprRenderer.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
 	}
 
 	protected void AddSortingGroup()
