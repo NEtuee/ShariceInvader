@@ -86,9 +86,9 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.3546811
+    - _Offset: 0.34098828
     - _Parallax: 0.02
-    - _Size: 8
+    - _Size: 1
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1

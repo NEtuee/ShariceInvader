@@ -80,6 +80,7 @@
      <Compile Include="Assets\Script\Core\CollisionManager.cs" />
      <Compile Include="Assets\Script\Core\ControllerEx.cs" />
      <Compile Include="Assets\Script\Core\Define.cs" />
+     <Compile Include="Assets\Script\Core\DelayActManager.cs" />
      <Compile Include="Assets\Script\Core\Drawable.cs" />
      <Compile Include="Assets\Script\Core\EffectBase.cs" />
      <Compile Include="Assets\Script\Core\EffectManager.cs" />
@@ -172,6 +173,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Apear\Apear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Drive\Drive_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Front\Front_Ani.txt" />
@@ -187,6 +189,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Script\Shader\BezierTrail.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\charge\charge_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Laser\Laser_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Base\Base_Plane.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\CuttingCurveCuttingCurve_Ani.txt" />
@@ -208,6 +211,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleRange\CircleRange_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\2\2_Ani.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/m/Documents/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

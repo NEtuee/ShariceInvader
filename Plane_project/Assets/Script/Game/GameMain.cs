@@ -13,6 +13,7 @@ public class GameMain : MonoBehaviour {
 	private BulletManager _bulletManager;
 	private EffectManager _effectManager;
 	private CollisionManager _collisionManager;
+	private DelayActManager _delayActManager;
 
 	Define.GizmoHelper _gizmoHelper = new Define.GizmoHelper();
 
@@ -22,6 +23,7 @@ public class GameMain : MonoBehaviour {
 		EffectManager.DeleteSingleton();
 		BulletManager.DeleteSingleton();
 		CollisionManager.DeleteSingleton();
+		DelayActManager.DeleteSingleton();
 
 		cam = Camera.main.GetComponent<CameraControll>();
 		cam.firstSetting();
@@ -30,6 +32,7 @@ public class GameMain : MonoBehaviour {
 		_effectManager = EffectManager.GetInstance();
 		_bulletManager = BulletManager.GetInstance();
 		_collisionManager = CollisionManager.GetInstance();
+		_delayActManager = DelayActManager.GetInstance();
 
 		ControllerEx.GetInstance().CreateKeys();
 		ControllerEx.GetInstance().SetMainViewCamera(GameObject.Find("MainScreenCamera").GetComponent<Camera>());
@@ -42,6 +45,7 @@ public class GameMain : MonoBehaviour {
 		_bulletManager.firstSetting();
 		_collisionManager.firstSetting();
 		background.firstSetting();
+		_delayActManager.firstSetting();
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		obj.SetPosition(new Vector3(1f,5f));
@@ -92,6 +96,8 @@ public class GameMain : MonoBehaviour {
 		_effectManager.progress(deltaTime);
 		background.progress(deltaTime);
 		cam.progress(Timer.deltaTime);
+
+		_delayActManager.progress(deltaTime);
 
 		_collisionManager.UpdateCollisionList();
 		_collisionManager.SyncCollisionList();

@@ -45,7 +45,7 @@ public class Player : PlaneBase {
 		_cam = CameraControll.instance;
 
 		_speed = 0f;
-		_maxSpeed = 2.8f;
+		_maxSpeed = 3.3f;
 
 		_bodyAttack = 5;
 		_dodgeDist = 3f;

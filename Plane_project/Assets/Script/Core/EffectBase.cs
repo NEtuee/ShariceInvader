@@ -14,11 +14,14 @@ public class EffectBase : Drawable {
 	Color _lerpEnd;
 
 	Action _apearEvent;
+	Action _disableEvent;
 
 	bool _colorLerp = false;
 	bool _realTimeProgress = false;
 	bool _passiveDeactive = false;
 	bool _eventAction = false;
+	bool _disableEventAction = false;
+
 	bool _animationProgress = false;
 
 	private float timer = 0f;
@@ -43,6 +46,7 @@ public class EffectBase : Drawable {
 		_realTimeProgress = false;
 		_passiveDeactive = false;
 		_eventAction = false;
+		_disableEventAction = false;
 
 		_position = pos;
 		_animationProgress = true;
@@ -72,6 +76,7 @@ public class EffectBase : Drawable {
 	public EffectBase PassiveDeactive() {_passiveDeactive = true; return this;}
 	public EffectBase DelayApear(float time) {_delayApear = time; return this;}
 	public EffectBase SetApearEvent(Action evt) {_eventAction = true; _apearEvent = evt; return this;}
+	public EffectBase SetDisableEvent(Action evt) {_disableEventAction = true; _disableEvent = evt; return this;}
 
 	public EffectBase Active(Vector2 pos, Sprite sprite, float time, ObjectBase t = null)
 	{
@@ -87,6 +92,7 @@ public class EffectBase : Drawable {
 		_realTimeProgress = false;
 		_passiveDeactive = false;
 		_eventAction = false;
+		_disableEventAction = false;
 
 		SetSortingOrder(-1);
 
@@ -140,7 +146,7 @@ public class EffectBase : Drawable {
 		float time = _realTimeProgress ? Timer.noneScaledDeltaTime : deltaTime;
 		if(_delayApear != 0f)
 		{
-			sprRenderer.sprite = null;
+			sprRenderer.enabled = false;
 			_delayApear -= time;
 
 			if(_delayApear <= 0f)
@@ -148,6 +154,7 @@ public class EffectBase : Drawable {
 				if(_eventAction)
 					_apearEvent();
 				_delayApear = 0f;
+				sprRenderer.enabled = true;
 			}
 			else
 			{
@@ -163,7 +170,12 @@ public class EffectBase : Drawable {
 		if(target != null)
 		{
 			if(target.deleted)
+			{
 				SetActive(false);
+
+				if(_disableEventAction)
+					_disableEvent();
+			}
 			_position = target.position + _addPoint;
 		}
 
@@ -180,11 +192,17 @@ public class EffectBase : Drawable {
 			{
 				timer = 0f;
 				SetActive(false);
+
+				if(_disableEventAction)
+					_disableEvent();
 			}
 		}
 		else if(ani.isEnd && !_passiveDeactive)
 		{
 			SetActive(false);
+
+			if(_disableEventAction)
+				_disableEvent();
 		}
 	}
 
