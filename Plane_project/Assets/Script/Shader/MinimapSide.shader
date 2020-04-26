@@ -83,7 +83,18 @@
         tex.x = (tex.x - _Offset) * _Size;
 
 		fixed4 c = SampleSpriteTexture(tex) * IN.color;
+
+		if(IN.texcoord.x < 0.2)
+		{
+			c.a *= IN.texcoord.x / 0.2;
+		}
+		else if(IN.texcoord.x > 0.8)
+		{
+			c.a *= (1 - IN.texcoord.x) / 0.2 ;
+		}
+
 		c.rgb *= c.a;
+
 		return c;;
 	}
 		ENDCG
