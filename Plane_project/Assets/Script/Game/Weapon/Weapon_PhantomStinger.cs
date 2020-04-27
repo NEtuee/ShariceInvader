@@ -202,7 +202,8 @@ public class Weapon_PhantomStinger : WeaponBase
         base.WhenChanged();
 
         // if(_aimObj != null)
-        UnityEngine.GameObject.Destroy(_aimObj.gameObject);
+        //UnityEngine.GameObject.Destroy(_aimObj.gameObject);
+        _aimObj.gameObject.SetActive(false);
     }
 
     public void UpdateAim()

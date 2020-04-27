@@ -139,6 +139,7 @@
      <Compile Include="Assets\Script\Game\Weapon\Weapon_PhantomStinger.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_Test.cs" />
      <Compile Include="Assets\Script\Game\Weapon\WeaponBase.cs" />
+     <Compile Include="Assets\Script\Game\Weapon\WeaponInventory.cs" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1\AttackHit_1_Ani.txt" />

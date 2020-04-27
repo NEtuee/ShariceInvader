@@ -26,7 +26,7 @@ public class Weapon_Lancer : WeaponBase
             ani.CopyAnimation("Burst","Effects/Weapon/Lancer/Burst");
         }
 
-        InitAimObject();
+        //InitAimObject();
         _hideAimObject = true;
     }
 
@@ -155,7 +155,7 @@ public class Weapon_Lancer : WeaponBase
 		_plane.SetBodyAttack(5);
         _plane.coll.bound.SetRect(.05f,.05f);
 
-        UnityEngine.GameObject.Destroy(_aimObj.gameObject);
+        _aimObj.gameObject.SetActive(false);
 
         foreach(var ani in _plane._boostAni)
         {

@@ -284,10 +284,12 @@ public class LaserDrone : PlaneBase
 
                                                 DelayActManager.GetInstance().RequestAction(()=>{
                                                     EffectManager.GetInstance().Explosion(pos,count,0.07f,0.15f,0.24f);
+
+                                                    if(MathEx.RandomInt(0,5) == 0)
+                                                        EffectManager.GetInstance().CurveSmoke(pos,pos + MathEx.RandomVector3(-0.5f,0.5f,0.3f,-1f),0.1f,0.03f,50);
                                                 },1.1f);
                                                 // float range = UnityEngine.Random.Range(0.6f,1.5f);
-                                                // if(MathEx.RandomInt(0,5) == 0)
-                                                //     EffectManager.GetInstance().ExplosionSmoke(pos,pos + MathEx.RandomVector3(-1f,1f,-1f,1f).normalized * range,0.13f,0.04f,22);
+                                                
                                                 //EffectManager.GetInstance().AddEffect(pos,"Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
                                             })
                                             .DelayApear(delay)

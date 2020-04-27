@@ -4,6 +4,13 @@ using UnityEngine;
 
 public abstract class WeaponBase
 {
+    public enum WeaponList
+    {
+        Lancer,
+        Pulse,
+        PhantomStinger
+    };
+
     protected PlaneBase _plane;
     public PlaneBase _aimTarget = null;
     protected Sprite _icon = null;
@@ -24,6 +31,13 @@ public abstract class WeaponBase
     protected bool _aim = false;
     protected bool _canAim = false;
     protected bool _hideAimObject = false;
+
+    protected float _maxGague;
+    protected float _currGague;
+    protected float _chargeSpeed;
+
+    protected float _mainAttackGague;
+    protected float _driveAttackGague;
 
     protected SpriteRenderer _aimObject = null;
 	private AnimationControllEx _aimAni;
@@ -52,6 +66,35 @@ public abstract class WeaponBase
     public abstract void MainAttack();
     public abstract bool SpecialAttack(Vector3 dir);
     public abstract bool CollisionCheck(PlaneBase target);
+
+    public float GetWeaponGaguePercentage() {return _currGague / _maxGague;}
+
+    public bool DecreaseMainGague()
+    {
+        return DecreaseGague(_mainAttackGague);
+    }
+
+    public bool DecreaseDriveGague()
+    {
+        return DecreaseGague(_driveAttackGague);
+    }
+
+    public bool DecreaseGague(float value)
+    {
+        if(_currGague <= 0f)
+            return false;
+        _currGague -= value;
+        return true;
+    }
+
+    public void GagueCharge(float deltaTime)
+    {
+        _currGague += _chargeSpeed * deltaTime;
+        if(_currGague >= _maxGague)
+        {
+            _currGague = _maxGague;
+        }
+    }
     public void Change()
     {
         MainHud.instance.WeaponChange(_icon,_ui);

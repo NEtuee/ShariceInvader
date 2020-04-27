@@ -29,14 +29,11 @@ public class Intercepter : PlaneBase
         _speed = 0.2f;
         _maxSpeed = 3.2f; 
 
-        WeaponChange(new Weapon_Lancer(this));
-
         RegisteCollisionList();
     }
 
     public override void progress(float deltaTime)
     {
-        mainWeapon.Progress(deltaTime); 
 
 
         _direction = (Player.instance.position - _position).normalized;

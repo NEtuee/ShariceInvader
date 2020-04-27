@@ -29,19 +29,12 @@ public class PointMarker : PlaneBase
 
         //SetAdditionalSpeed(3,1f,true);
 
-        WeaponChange(new Weapon_Lancer(this));
-
         RegisteCollisionList();
     }
 
     public override void progress(float deltaTime)
     {
-        mainWeapon.Progress(deltaTime);
-
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
-        
-        if(Input.GetKeyDown(KeyCode.D))
-            mainWeapon.MainAttack();
 
 		BasicUpdate(deltaTime);
     }

@@ -62,7 +62,7 @@ public abstract class PlaneBase : Collisionable {
 	public float maxSpeed{get{return _maxSpeed;}}
 
 
-	public WeaponBase mainWeapon;
+	public WeaponInventory weaponInven;
 	public Action hpChangeEvent = new Action(()=>{});
 
 	protected Sprite[] _dirSprites;
@@ -130,6 +130,8 @@ public abstract class PlaneBase : Collisionable {
 
 		AddSortingGroup();
 		MiniMapIconSetup();
+
+		weaponInven = new WeaponInventory(this);
 
 		_deco = new DecoAnimeController(tp);
 	}
@@ -216,15 +218,9 @@ public abstract class PlaneBase : Collisionable {
 		_lerpAddSpeed = lerp;
 	}
 
-	public virtual void WeaponChange(WeaponBase weapon)
+	public virtual void WeaponChange(int pos)
 	{
-		if(mainWeapon != null)
-			mainWeapon.WhenChanged();
-		EffectManager.GetInstance().AddEffect(position,"WeaponChange",false,this).SetSortingOrder(1);
-		mainWeapon = weapon;
-		mainWeapon.SetTarget(this);
-		mainWeapon.Initialize();
-		mainWeapon.Change();
+		weaponInven.WeaponChange(pos);
 	}
 
 	public void Dodge(Vector3 dir, bool effectActive = true)
@@ -374,7 +370,7 @@ public abstract class PlaneBase : Collisionable {
 		
 		var plane = (PlaneBase)target;
 
-		bool b = mainWeapon == null ? false : mainWeapon.CollisionCheck(plane);
+		bool b = !weaponInven.CurrWeaponExist() ? false : weaponInven.CollisionCheck(plane);
 
 		if(!b)
 		{
@@ -809,7 +805,10 @@ public abstract class PlaneBase : Collisionable {
 			for(int i = 0; i < 4; ++i)
 			{
 				float range = UnityEngine.Random.Range(0.6f,1.5f);
-				EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.13f,0.04f,22);
+				if(MathEx.RandomInt(0,3) < 3)
+					EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.13f,0.04f,22);
+				else
+					EffectManager.GetInstance().CurveSmoke(_position,_position + randDir * (range * 0.8f),0.13f,0.04f,40);
 				randDir = MathEx.RandomVector3(-1f,1f,-1f,1f).normalized;
 			}
 			
@@ -822,8 +821,13 @@ public abstract class PlaneBase : Collisionable {
 			{
 				float range = UnityEngine.Random.Range(0.6f,1.5f);
 				Vector3 targetDir = (dir + MathEx.RandomVector3(-1f,1f,-1f,1f)).normalized;
-				EffectManager.GetInstance().
-							ExplosionSmoke(_position,_position + targetDir * range,0.13f,0.04f,22);
+				// EffectManager.GetInstance().
+				// 			ExplosionSmoke(_position,_position + targetDir * range,0.13f,0.04f,22);
+
+				if(MathEx.RandomInt(0,3) < 3)
+					EffectManager.GetInstance().ExplosionSmoke(_position,_position + targetDir * range,0.13f,0.04f,22);
+				else
+					EffectManager.GetInstance().CurveSmoke(_position,_position + targetDir * (range * 0.8f),0.13f,0.04f,40);
 			}
 		}
 

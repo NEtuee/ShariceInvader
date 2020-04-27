@@ -137,6 +137,11 @@ public class MathEx : MonoBehaviour {
 		return new Vector3(Random.Range(xmin,xmax),Random.Range(ymin,ymax),0f);
 	}
 
+	public static Vector3 RandomCircle(float radius)
+	{
+		return new Vector3(Random.Range(-radius,radius),Random.Range(-radius,radius),0f);
+	}
+
 	public static Vector3 RandomVector3(float min, float max)
 	{
 		return new Vector3(Random.Range(min,max),Random.Range(min,max),0f);

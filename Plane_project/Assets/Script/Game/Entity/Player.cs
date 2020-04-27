@@ -23,8 +23,6 @@ public class Player : PlaneBase {
 	bool cuttingCurve = true;
 	float cuttingCurveTimer = 0f;
 
-	int weaponGague = 12;
-
 	public override void firstSetting()
 	{
 		instance = this;
@@ -68,8 +66,6 @@ public class Player : PlaneBase {
 
 		_angleCount = CanvasScript.instance.gameObject.transform.Find("AngleCount").GetComponent<TextMesh>();
 		HeightIconUpdate();
-		
-		WeaponChange(new Weapon_PhantomStinger(this));
 	}
 
 	public override void initialize()
@@ -84,16 +80,22 @@ public class Player : PlaneBase {
 
 		_controllPoint = _direction;
 
+		weaponInven.AddWeapon(WeaponBase.WeaponList.Lancer);
+		weaponInven.AddWeapon(WeaponBase.WeaponList.Pulse);
+		weaponInven.AddWeapon(WeaponBase.WeaponList.PhantomStinger);
+
+		weaponInven.WeaponChange();
+
 		RegisteCollisionList();
 	}
 
 	public override void progress(float deltaTime)
 	{
-		mainWeapon.Progress(deltaTime);
+		weaponInven.WeaponProgress(deltaTime);
 		
 		if(!_controllLock)
 		{
-			if(!mainWeapon.mainAttack)
+			if(!weaponInven.mainAttack)
 			{
 				Propel();
 				DodgeCheck();
@@ -103,21 +105,7 @@ public class Player : PlaneBase {
 
 		if(ControllerEx.GetInstance().KeyDown("WeaponChange"))
 		{
-			if(a == 0)
-			{
-				WeaponChange(new Weapon_Lancer(this));
-				a = 1;
-			}
-			else if(a == 1)
-			{
-				WeaponChange(new Weapon_Test(this));
-				a = 2;
-			}
-			else if(a == 2)
-			{
-				WeaponChange(new Weapon_PhantomStinger(this));
-				a = 0;
-			}
+			weaponInven.WeaponChange();
 		}
 	
 
@@ -178,12 +166,6 @@ public class Player : PlaneBase {
 		Debug.Log("HIT");
 	}
 
-	public override void WeaponChange(WeaponBase weapon)
-	{
-		base.WeaponChange(weapon);
-		weaponGague = 12;
-	}
-
 	public override void deleteEvent()
 	{
 		base.deleteEvent();
@@ -206,32 +188,23 @@ public class Player : PlaneBase {
 			Timer.SetTimeScale(0.1f);
 			
 			Vector3 mouse = ControllerEx.GetInstance().centerAxis;
-			if(mainWeapon.immedyActiveSpecAttack)
+			if(weaponInven.immedyActiveSpecAttack)
 			{
-				mainWeapon.SpecialAttack(mouse);
+				weaponInven.DriveAttack(mouse);
 			}
 		}
 		else if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
 		{
 			Vector3 mouse = ControllerEx.GetInstance().centerAxis;
-			if(!mainWeapon.immedyActiveSpecAttack)
+			if(!weaponInven.immedyActiveSpecAttack)
 			{
-				if(mainWeapon.SpecialAttack(mouse))
+				if(weaponInven.DriveAttack(mouse))
 				{
 					Dodge(mouse,false);
 					_dodge = true;
 
 					_cam.Shake(0.2f, _direction / 20f);
 
-					MainHud.instance.UpdateGague((float)weaponGague / 12f);
-
-					if(weaponGague <= 0)
-					{
-						WeaponChange(new Weapon_None(this));
-						weaponGague = 0;
-
-						MainHud.instance.UpdateGague(0f);
-					}
 					Timer.SetTimeScale(1f);
 				}
 			}
@@ -245,19 +218,10 @@ public class Player : PlaneBase {
 		{
 			_speed = .4f;
 
-			if(mainWeapon.mainCoolDown == 0f)
+			if(weaponInven.mainCooldown == 0f)
 			{
-				mainWeapon.MainAttack();
+				weaponInven.MainAttack();
 
-				MainHud.instance.UpdateGague((float)weaponGague / 12f);
-
-				if(weaponGague <= 0)
-				{
-					WeaponChange(new Weapon_None(this));
-					weaponGague = 0;
-
-					MainHud.instance.UpdateGague(0f);
-				}
 			}
 		}
 		else if(!ControllerEx.GetInstance().KeyPress("MainAttack"))

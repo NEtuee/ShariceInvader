@@ -69,7 +69,7 @@ public class BoostDrone : PlaneBase
 		
 		var plane = (PlaneBase)target;
 
-		if(plane.mainWeapon.mainAttack)
+		if(plane.weaponInven.mainAttack)
 			Hit(plane);
         else
         {

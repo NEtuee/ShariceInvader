@@ -151,6 +151,34 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		}
 	}
 
+	public void CurveSmoke(Vector3 start, Vector3 end,float startSize,float endSize, int count)
+	{
+		ParticleSystem sys;
+
+		Vector3 p1 = Vector3.Lerp(start,end,0.3f) + MathEx.RandomVector3(-0.1f,0.1f,0.2f,1.5f);
+		Vector3 p2 = Vector3.Lerp(start,end,0.6f) + MathEx.RandomVector3(-0.1f,0.1f,0.2f,1.5f);
+
+		if(_particles.TryGetValue("ExplosionSmoke",out sys))
+		{
+			Color sc = Color.black;
+			Color ec = new Color(0.6f,0.6f,0.6f);
+			Vector3 dir = (end - start).normalized;
+			for(int i = 0; i < count; ++i)
+			{
+				float timer = (float)i / (float)count;
+				Vector3 pos = MathEx.GetPointOnBezierCurve(start,p1,p2,end,timer);
+
+				_scaledParam.position = pos + MathEx.RandomCircle(0.05f);
+				_scaledParam.startLifetime = Mathf.Lerp(1f,2f,timer);
+				_scaledParam.startColor = Color.Lerp(sc,ec,timer);
+				_scaledParam.startSize = Mathf.Lerp(startSize,endSize,timer);//0.44f - (float)i * 0.01f;
+				_scaledParam.velocity = dir * (0.04f + ((float)i * 0.005f));
+
+				sys.Emit(_scaledParam,1);
+			}
+		}
+	}
+
 	public void Explosion(Vector3 pos,int count,float randFactor = 0.2f,float startSize = 0.1f, float endSize = 0.19f)
 	{
 		ParticleSystem sys;

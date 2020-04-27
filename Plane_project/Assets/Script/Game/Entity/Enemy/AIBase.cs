@@ -33,7 +33,7 @@ public abstract class AIBase : PlaneBase
 
     public override void progress(float deltaTime)
     {
-        mainWeapon.Progress(deltaTime);
+
 
         AIProgress(deltaTime);
 
