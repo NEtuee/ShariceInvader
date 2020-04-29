@@ -101,6 +101,8 @@ public class Player : PlaneBase {
 				DodgeCheck();
 				Look(deltaTime);
 			}
+
+			weaponInven.GagueProgress(deltaTime);
 		}
 
 		if(ControllerEx.GetInstance().KeyDown("WeaponChange"))
@@ -185,27 +187,37 @@ public class Player : PlaneBase {
 	{
 		if(ControllerEx.GetInstance().KeyDown("DriveAttack"))
 		{
-			Timer.SetTimeScale(0.1f);
-			
-			Vector3 mouse = ControllerEx.GetInstance().centerAxis;
-			if(weaponInven.immedyActiveSpecAttack)
+			if(weaponInven.gagueExist)
 			{
-				weaponInven.DriveAttack(mouse);
+				Timer.SetTimeScale(0.1f);
+			
+				Vector3 mouse = ControllerEx.GetInstance().centerAxis;
+				if(weaponInven.immedyActiveSpecAttack)
+				{
+					weaponInven.DriveAttack(mouse);
+				}
+				else
+				{
+					weaponInven.DriveOn();
+				}
 			}
 		}
 		else if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
 		{
-			Vector3 mouse = ControllerEx.GetInstance().centerAxis;
-			if(!weaponInven.immedyActiveSpecAttack)
+			if(weaponInven.gagueExist)
 			{
-				if(weaponInven.DriveAttack(mouse))
+				Vector3 mouse = ControllerEx.GetInstance().centerAxis;
+				if(!weaponInven.immedyActiveSpecAttack)
 				{
-					Dodge(mouse,false);
-					_dodge = true;
+					if(weaponInven.DriveAttack(mouse))
+					{
+						Dodge(mouse,false);
+						_dodge = true;
 
-					_cam.Shake(0.2f, _direction / 20f);
+						_cam.Shake(0.2f, _direction / 20f);
 
-					Timer.SetTimeScale(1f);
+						Timer.SetTimeScale(1f);
+					}
 				}
 			}
 
@@ -245,7 +257,10 @@ public class Player : PlaneBase {
 				{
 					AddForce(-_velocity * 0.65f);
 					
-					Timer.SetTimeScaleTimer(0.3f,0.5f,true);
+					if(Timer.timeScale == 1f)
+						Timer.SetTimeScaleTimer(0.3f,0.5f,true);
+
+
 					_cam.Shake(0.05f, _direction / 20f);
 					EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"CuttingCurve").SetAngle(_eulerAngle);
 					EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));
@@ -268,10 +283,12 @@ public class Player : PlaneBase {
 
 			//_eulerAngle = MathEx.directionToAngle(_direction);
 
-			if(_direction.y < 0f)
+			if(_eulerAngle > 180f)
 				_scale.y = -1f;
-			else if(_direction.y > 0f)
+			else
 				_scale.y = 1f;
+
+			tp.localScale = _scale;
 		}
 
 

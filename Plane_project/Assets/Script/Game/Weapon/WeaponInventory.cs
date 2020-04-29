@@ -19,6 +19,8 @@ public class WeaponInventory
     public bool drievAttack{get{return _currWeapon == null ? false : _currWeapon.specAttack;}}
     public bool immedyActiveSpecAttack{get{return _currWeapon == null ? false : _currWeapon.immedyActiveSpecAttack;}}
 
+    public bool gagueExist{get{return _currWeapon == null ? false : _currWeapon.gague > 0f;}}
+
     public float mainCooldown{get{return _currWeapon == null ? -1f : _currWeapon.mainCoolDown;}}
 
     PlaneBase _plane;
@@ -46,8 +48,10 @@ public class WeaponInventory
 		EffectManager.GetInstance().AddEffect(_plane.position,"WeaponChange",false,_plane).SetSortingOrder(1);
 		_currWeapon = _weaponList[p].weapon;
 		_currWeapon.SetTarget(_plane);
-		_currWeapon.Initialize();
 		_currWeapon.Change();
+
+        MainHud.instance.WeaponChange(_currWeapon._icon,_currWeapon._ui);
+        GagueUpdate();
     }
 
     public void WeaponChange()
@@ -69,8 +73,12 @@ public class WeaponInventory
     {
         if(_currWeapon != null)
         {
-            //if(_currWeapon.DecreaseMainGague())
+            if(_currWeapon.DecreaseMainGague())
+            {
                 _currWeapon.MainAttack();
+                MainHud.instance.MainUIAni("MainAttack");
+                GagueUpdate();
+            }
         }
     }
 
@@ -78,10 +86,24 @@ public class WeaponInventory
     {
         if(_currWeapon != null)
         {
-            //if(_currWeapon.DecreaseDriveGague())
+            if(_currWeapon.DecreaseDriveGague())
+            {
+                GagueUpdate();
+                MainHud.instance.MainUIAni("DriveAttack");
                 return _currWeapon.SpecialAttack(dir);
+            }
         }
         return false;
+    }
+
+    public void DriveOn()
+    {
+        MainHud.instance.MainUIAni("DriveOn");
+    }
+
+    public void GagueUpdate()
+    {
+        MainHud.instance.UpdateGague(_currWeapon.GetWeaponGaguePercentage());
     }
 
     public void GagueProgress(float deltaTime)

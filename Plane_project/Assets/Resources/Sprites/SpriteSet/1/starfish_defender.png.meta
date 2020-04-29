@@ -1,40 +1,39 @@
 fileFormatVersion: 2
-guid: 2739a58a725d4434a96c4591dbf629df
+guid: 228ebf4cf0dd4b045a884e4eb1fced62
 TextureImporter:
   fileIDToRecycleName:
-    21300000: player_0
-    21300002: player_1
-    21300004: player_2
-    21300006: player_3
-    21300008: player_4
-    21300010: player_5
-    21300012: player_6
-    21300014: player_7
-    21300016: player_8
-    21300018: player_9
-    21300020: player_10
-    21300022: player_11
-    21300024: player_12
-    21300026: player_13
-    21300028: player_14
-    21300030: player_15
-    21300032: player_16
-    21300034: player_17
-    21300036: player_18
-    21300038: player_19
-    21300040: player_20
-    21300042: player_21
-    21300044: player_22
-    21300046: player_23
-    21300048: player_24
-    21300050: player_25
-    21300052: player_26
-    21300054: player_27
-    21300056: player_28
-    21300058: player_29
-    21300060: player_30
-    21300062: player_31
-    21300064: player_32
+    21300000: starfish_defender_0
+    21300002: starfish_defender_1
+    21300004: starfish_defender_2
+    21300006: starfish_defender_3
+    21300008: starfish_defender_4
+    21300010: starfish_defender_5
+    21300012: starfish_defender_6
+    21300014: starfish_defender_7
+    21300016: starfish_defender_8
+    21300018: starfish_defender_9
+    21300020: starfish_defender_10
+    21300022: starfish_defender_11
+    21300024: starfish_defender_12
+    21300026: starfish_defender_13
+    21300028: starfish_defender_14
+    21300030: starfish_defender_15
+    21300032: starfish_defender_16
+    21300034: starfish_defender_17
+    21300036: starfish_defender_18
+    21300038: starfish_defender_19
+    21300040: starfish_defender_20
+    21300042: starfish_defender_21
+    21300044: starfish_defender_22
+    21300046: starfish_defender_23
+    21300048: starfish_defender_24
+    21300050: starfish_defender_25
+    21300052: starfish_defender_26
+    21300054: starfish_defender_27
+    21300056: starfish_defender_28
+    21300058: starfish_defender_29
+    21300060: starfish_defender_30
+    21300062: starfish_defender_31
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -113,28 +112,17 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_0
+      name: starfish_defender_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,19 +130,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f472657d4f6cb548ac4c5b7ee82a525
+      spriteID: 34a58a4852c43fc40ba3b1fc58cf2494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_1
+      name: starfish_defender_1
       rect:
         serializedVersion: 2
-        x: 28
+        x: 18
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,19 +150,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfd4aaca15e158640995ea09302a0236
+      spriteID: b62c7cced5457f24c9a2a4fb979e839c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_2
+      name: starfish_defender_2
       rect:
         serializedVersion: 2
-        x: 56
+        x: 36
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,19 +170,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24dfb8bc76697be409725d9bff2e4ea5
+      spriteID: 81135c9d682cf4e45a8094347aa23d6e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_3
+      name: starfish_defender_3
       rect:
         serializedVersion: 2
-        x: 84
+        x: 54
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,19 +190,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bc7f86dbb355ac40829a71bca2d6c1d
+      spriteID: f77728e8774179b46b79db3353aaf287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_4
+      name: starfish_defender_4
       rect:
         serializedVersion: 2
-        x: 112
+        x: 72
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,19 +210,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a770dd651264f543aac15ecd0951f46
+      spriteID: 31213f4544bbba243a499276918823cf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_5
+      name: starfish_defender_5
       rect:
         serializedVersion: 2
-        x: 140
+        x: 90
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,19 +230,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0b3c65b46ca2304899460c72b8d08b0
+      spriteID: 8bd7695e56b69ac46b35dd370e384b51
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_6
+      name: starfish_defender_6
       rect:
         serializedVersion: 2
-        x: 168
+        x: 108
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,19 +250,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 236a152fd1d2f904d81d509cfc3291b4
+      spriteID: a500a326895d590438b811c7560b7052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_7
+      name: starfish_defender_7
       rect:
         serializedVersion: 2
-        x: 196
+        x: 126
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,19 +270,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d53a76c52040ca149bc3776a1dd09eaa
+      spriteID: eb2e92c5e4c9357478c362d714af738d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_8
+      name: starfish_defender_8
       rect:
         serializedVersion: 2
-        x: 224
+        x: 144
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,19 +290,119 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa60500ca73589a40b6c81119cc5b2e7
+      spriteID: 2a9871c4f1588ff46ba08e2972baa8b5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_9
+      name: starfish_defender_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f40e2bc6e47934c9669d129d681a68
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f5b6cbbddde2f4cbd48e68e068782c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_11
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2172c729b921e24c98b143332611ac6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_12
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2733ff35977ff4f88789d4b5095b4f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_13
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8680afa80fdaf74392eb82005ae5641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_14
       rect:
         serializedVersion: 2
         x: 252
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,19 +410,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25d5693e286cb9d4eb9c28488c6aae99
+      spriteID: 5b33999ef5e1d834ea81546c2fca9460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_10
+      name: starfish_defender_15
       rect:
         serializedVersion: 2
-        x: 280
+        x: 270
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,19 +430,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc1e592b7586d0d4b9cf81af82f36392
+      spriteID: fc71ca72929c5be4ca97bc879c149289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_11
+      name: starfish_defender_16
       rect:
         serializedVersion: 2
-        x: 308
+        x: 288
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,19 +450,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 615662d4581dc394d8609c60775446f1
+      spriteID: d92e030afe53a2d40ae0876e33220965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_12
+      name: starfish_defender_17
       rect:
         serializedVersion: 2
-        x: 336
+        x: 306
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,19 +470,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7132ccbf3d45b534ab9cbfacc4261dde
+      spriteID: d245c0a6c16328c41a5645affa8126cd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_13
+      name: starfish_defender_18
       rect:
         serializedVersion: 2
-        x: 364
+        x: 324
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,19 +490,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f30d50b9856faa64ba40b23a1c2d1b14
+      spriteID: a8648272da5c57344bcc1555e11e2fa9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_14
+      name: starfish_defender_19
       rect:
         serializedVersion: 2
-        x: 392
+        x: 342
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -422,19 +510,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b2c2dbebcd0e6b4fa94da6490029dd3
+      spriteID: d82d34bbf2ed83d4d9b906a70bfe96ef
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_15
+      name: starfish_defender_20
       rect:
         serializedVersion: 2
-        x: 420
+        x: 360
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -442,19 +530,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 757b4086981823144966c6ad7608e405
+      spriteID: ae569a027f346474eb80616144421317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_16
+      name: starfish_defender_21
       rect:
         serializedVersion: 2
-        x: 448
+        x: 378
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -462,19 +550,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcd674cc0b9b32442bdb73ba387f011e
+      spriteID: 3360cf297e4c7ea45ad8b79bd9cbded2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_17
+      name: starfish_defender_22
       rect:
         serializedVersion: 2
-        x: 476
+        x: 396
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -482,19 +570,119 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3568ed1d679344479d693ab7d8afe90
+      spriteID: 6ef9179f8ec23e24fb2c7d48f146877b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_18
+      name: starfish_defender_23
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ab15c5e1ab7b849a616d5de598c44b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_24
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d1d01a43fefda4c95dcf92cc5a4aa3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_25
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b00fcb2cc3f8547459566a4444acba8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_26
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e94586dbbb6e540b00e58590750e5c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_27
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 0
+        width: 18
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3d56b17bea706408aab6ed200d26d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_28
       rect:
         serializedVersion: 2
         x: 504
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,19 +690,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 922b4b4ff4888f24d95af9705eab8798
+      spriteID: 781185a29055663488c10515c6970236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_19
+      name: starfish_defender_29
       rect:
         serializedVersion: 2
-        x: 532
+        x: 522
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -522,19 +710,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf9bb208e8748bf4fbd4bb6881a95c8f
+      spriteID: 1a78fdbed6cc8db419ba85c2996984f8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_20
+      name: starfish_defender_30
       rect:
         serializedVersion: 2
-        x: 560
+        x: 540
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -542,19 +730,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71c64011e35772c48b09ac5f97970d87
+      spriteID: 71a22f42a1f5ad5488e6c68d135e81ce
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_21
+      name: starfish_defender_31
       rect:
         serializedVersion: 2
-        x: 588
+        x: 558
         y: 0
-        width: 28
-        height: 30
+        width: 18
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -562,227 +750,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 694ddf0ec8793d445b9b03d67faadbf0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_22
-      rect:
-        serializedVersion: 2
-        x: 616
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 121c23ab477fc02469aa36d75810479f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_23
-      rect:
-        serializedVersion: 2
-        x: 644
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40a9d3d7f6d1025469264459ec75e7c5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_24
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd1b54a2e1ac6934cad0dd2d761917ff
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_25
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e9c8730035d38d48b9a9e75c83fdf72
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_26
-      rect:
-        serializedVersion: 2
-        x: 728
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca5a1ef58ae4fc546b1dd1a9b9967ac7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_27
-      rect:
-        serializedVersion: 2
-        x: 756
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 862e57013795d6f458e2badb837f96c2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_28
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 452ec06adc938fb4c89f4ec03d2de86e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_29
-      rect:
-        serializedVersion: 2
-        x: 812
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97c65deffce18c54bb63b79204a38418
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_30
-      rect:
-        serializedVersion: 2
-        x: 840
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b31ed88e4ef18e04d9ab3ff75bcbdba1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_31
-      rect:
-        serializedVersion: 2
-        x: 868
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d9f78640f6ddea45b30e23fd596d5f7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_32
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d69d7e2bfe99a24db340871681c3205
+      spriteID: 9c47dc7b6a37a9c4e8249f656df82d3a
       vertices: []
       indices: 
       edges: []
@@ -790,7 +758,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: fde2e0cb24a96ca448f2322a8490eaf4
+    spriteID: f45a8e381d0a9f04a8f062f7c24aa92d
     vertices: []
     indices: 
     edges: []

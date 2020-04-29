@@ -110,6 +110,10 @@ public class ControllerEx : Singleton<ControllerEx>
             {
                 k.state = KeyState.Up;
             }
+            else if(!Input.GetKey(k.code) && (k.state == KeyState.Press || k.state == KeyState.Down))
+            {
+                k.state = KeyState.Up;
+            }
             else if(k.state == KeyState.Up)
             {
                 k.state = KeyState.None;

@@ -48,6 +48,129 @@ public enum ObjectType
 	//여기부터 수동
 }
 
+class SimpleSortedThings<T>
+{
+	public class Link
+	{
+		public int level;
+		public T item;
+
+		public Link prev;
+		public Link next;
+
+		public int Compare(int target)
+		{
+			return level >= target ? 0 : 1;
+		}
+
+		public void Set(int l, T i)
+		{
+			level = l;
+			item = i;
+		}
+
+		public Link(int l, T i)
+		{
+			Set(l,i);
+		}
+	}
+
+	public int Count{get{return _count;}}
+
+	private int _count;
+	private Link _head;
+	private Queue<Link> _cache = new Queue<Link>();
+
+	private Link GetItem(int level, T item)
+	{
+		Link link;
+		if(_cache.Count == 0)
+			link = new Link(level,item);
+		else
+		{
+			link = _cache.Dequeue();
+			link.Set(level,item);
+		}
+
+		return link;
+	}
+
+	public Link GetHead() {return _head;}
+
+	public void CutLink(Link link)
+	{
+		if(link == _head)
+		{
+			if(link.next != null)
+				link.next.prev = null;
+			_head = link.next;
+		}
+		else
+		{
+			link.prev.next = link.next;
+
+			if(link.next != null)
+				link.next.prev = link.prev;
+		}
+
+		--_count;
+		_cache.Enqueue(link);
+	}
+
+	public void Insert(int level, T item)
+	{
+		var i = GetItem(level,item);
+
+		if(_count == 0)
+		{
+			_head = i;
+			_head.prev = null;
+			_head.next = null;
+		}
+		else
+		{
+			var link = _head;
+			Link prev = link;
+
+			while(link != null)
+			{
+				if(link.Compare(i.level) == 0)
+				{
+					if(_head == link)
+					{
+						i.next = _head;
+						i.prev = null;
+
+						_head.prev = i;
+						_head = i;
+					}
+					else
+					{
+						prev.next = i;
+						i.prev = prev;
+						i.next = link;
+						link.prev = i;
+					}
+					break;
+				}
+
+				if(link.next == null)
+				{
+					link.next = i;
+					break;
+				}
+
+				prev = link;
+				link = link.next;
+			}
+
+		}
+
+		++_count;
+	}
+
+}
+
 public class SimpleRect
 {
 	public Vector2 center{get{return _pos;}}

@@ -50,16 +50,16 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 
 	public void UpdateTransform()
 	{
+		if(tp.localScale != _scale)
+		{
+			tp.localScale = _scale;
+		}
+
 		if(tp.position != _position || 
 			tp.localEulerAngles.z != _eulerAngle)
 		{
 			tp.SetPositionAndRotation(_position,Quaternion.Euler(0f,0f,_eulerAngle));
 			_eulerAngle = tp.localEulerAngles.z;
-		}
-
-		if(tp.localScale != _scale)
-		{
-			tp.localScale = _scale;
 		}
 	}
 
@@ -68,7 +68,7 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 	public ObjectBase SetObjectType(Define.ObjectType t) {type = t; return this;}
 	public virtual ObjectBase SetPosition(Vector3 pos) 
 	{
-		_position = pos; 
+		_position = pos;
 		return this;
 	}
 	public ObjectBase SetAngle(float z) {_eulerAngle = z; return this;}

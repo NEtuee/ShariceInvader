@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon_PhantomStinger : WeaponBase
 {
-    private SpriteRenderer _aimObj;
     private PlaneBase.hitEventDelegate delayEvent;
 
     private List<EffectBase> _aimEffects = new List<EffectBase>();
@@ -14,6 +13,10 @@ public class Weapon_PhantomStinger : WeaponBase
     public override void Initialize()
     {
         base.Initialize();
+
+        mainCoolTime = 0.22f;
+
+
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_phantomstinger");
         _ui = ResourceManager.GetInstance().GetSprite("UI/ui_phantomstinger");
 
@@ -22,6 +25,8 @@ public class Weapon_PhantomStinger : WeaponBase
         immedyActiveSpecAttack = true;
 
         delayEvent = SpecialTargetHitEvent;
+
+        GagueSetup(1f,5f,15f,5f);
     }
     public override void Progress(float deltaTime)
     {
@@ -34,7 +39,6 @@ public class Weapon_PhantomStinger : WeaponBase
             if(ControllerEx.GetInstance().KeyUp("MainAttack"))
             {
                 MainAttackProgress();
-                _aimObj.gameObject.SetActive(false);
             }
         }
         else if(specAttack)
@@ -45,7 +49,6 @@ public class Weapon_PhantomStinger : WeaponBase
             if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
             {
                 SpecialAttackProgress();
-                _aimObj.gameObject.SetActive(false);
             }
         }
         else
@@ -58,7 +61,7 @@ public class Weapon_PhantomStinger : WeaponBase
             //_plane._rotateLock = true;
         }
 
-        UpdateAim();
+        //UpdateAim();
     }
     public override void MainAttack()
     {
@@ -69,8 +72,6 @@ public class Weapon_PhantomStinger : WeaponBase
 
             Timer.SetTimeScale(0.2f);
             mainAttack = true;
-
-            _aimObj.gameObject.SetActive(true);
         }
         else
         {
@@ -86,7 +87,7 @@ public class Weapon_PhantomStinger : WeaponBase
             mainAttack = false;
             return;
         }
-        _mainTimer = 0.22f;
+        _mainTimer = mainCoolTime;
         mainAttack = false;
         //_plane._rotateLock = true;
         Vector3 pos = _plane.position + _plane.direction * 0.25f;
@@ -109,7 +110,6 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public override bool SpecialAttack(Vector3 dir)
     {
-        _aimObj.gameObject.SetActive(true);
 
         FindMultipleTarget(1.5f,120f);
 
@@ -201,28 +201,25 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         base.WhenChanged();
 
+        _aimObject.gameObject.SetActive(false);
+
         // if(_aimObj != null)
         //UnityEngine.GameObject.Destroy(_aimObj.gameObject);
-        _aimObj.gameObject.SetActive(false);
     }
 
-    public void UpdateAim()
+    public override void Change()
     {
-        Vector3 mouse = ControllerEx.GetInstance().centerAxis;
-        mouse.z = 0f;
+        InitAimObject();
 
-        Vector3 dir = mouse;
-        Vector3 pos = _plane.position + dir * 0.4f;
-        _aimObj.transform.position = pos;
-        _aimObj.transform.eulerAngles = new Vector3(0f,0f,MathEx.directionToAngle(dir.normalized));
+        MainHud.instance.MainUIAniSwap("Change",null);
+        MainHud.instance.MainUIAniSwap("MainAttack",null);
+        MainHud.instance.MainUIAniSwap("DriveOn",null);
+        MainHud.instance.MainUIAniSwap("DriveAttack",null);
     }
+
 
     public Weapon_PhantomStinger(PlaneBase plane) : base(plane)
     {
-        _aimObj = new GameObject("PhantomAim").AddComponent<SpriteRenderer>();
-        _aimObj.sprite = ResourceManager.GetInstance().GetSprite("center_phantomstepaim");
-        _aimObj.gameObject.SetActive(false);
 
-        UpdateAim();
     }
 }

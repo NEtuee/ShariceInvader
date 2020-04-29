@@ -161,6 +161,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\booster\booster_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\BurstBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_NewPlayer_New_Plane.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Fire\Fire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Electric\Electric_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\0\0_Ani.txt" />

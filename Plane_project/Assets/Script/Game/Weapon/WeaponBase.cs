@@ -13,11 +13,12 @@ public abstract class WeaponBase
 
     protected PlaneBase _plane;
     public PlaneBase _aimTarget = null;
-    protected Sprite _icon = null;
-    protected Sprite _ui = null;
+    public Sprite _icon = null;
+    public Sprite _ui = null;
 
     public float mainCoolDown{get{return _mainTimer;}}
     public float specCoolDown{get{return _specTimer;}}
+    public float gague{get{return _currGague;}}
 
     public bool mainAttack;
     public bool specAttack;
@@ -39,8 +40,8 @@ public abstract class WeaponBase
     protected float _mainAttackGague;
     protected float _driveAttackGague;
 
-    protected SpriteRenderer _aimObject = null;
-	private AnimationControllEx _aimAni;
+    protected static SpriteRenderer _aimObject = null;
+	private static AnimationControllEx _aimAni;
 
     public virtual void Initialize()
     {
@@ -66,6 +67,15 @@ public abstract class WeaponBase
     public abstract void MainAttack();
     public abstract bool SpecialAttack(Vector3 dir);
     public abstract bool CollisionCheck(PlaneBase target);
+
+    public void GagueSetup(float main, float drive, float max, float speed)
+    {
+        _mainAttackGague = main;
+        _driveAttackGague = drive;
+        _maxGague = max;
+        _currGague = max;
+        _chargeSpeed = speed;;
+    }
 
     public float GetWeaponGaguePercentage() {return _currGague / _maxGague;}
 
@@ -95,18 +105,13 @@ public abstract class WeaponBase
             _currGague = _maxGague;
         }
     }
-    public void Change()
+    public virtual void Change()
     {
-        MainHud.instance.WeaponChange(_icon,_ui);
+
     }
     public virtual void WhenChanged()
     {
-        if(_aimObject != null)
-        {
-            //_aimObject.gameObject.SetActive(false);
-            GameObject.Destroy(_aimObject);
-            _aimAni = null;
-        }
+
     }
     public void SetTarget(PlaneBase plane) {_plane = plane;}
 
@@ -249,21 +254,18 @@ public abstract class WeaponBase
 
     public void InitAimObject()
     {
-        Transform obj = _plane.transform.Find("Aim");
-        if(obj == null)
+        if(_aimObject == null)
         {
             _aimObject = new GameObject("Aim").AddComponent<SpriteRenderer>();;
 		    _aimObject.sortingOrder = 10;
+            _aimAni = new AnimationControllEx(_aimObject);
+		    _aimAni.AddAnimation("On","Effects/PhantomString_Aim/Appear");
            // _aimObject.transform.SetParent(_plane.transform);
         }
         else
         {
-            _aimObject = obj.GetComponent<SpriteRenderer>();
             _aimObject.gameObject.SetActive(true);
         }
-
-        _aimAni = new AnimationControllEx(_aimObject);
-		_aimAni.AddAnimation("On","Effects/PhantomString_Aim/Appear");
 
         _canAim = true;
     }

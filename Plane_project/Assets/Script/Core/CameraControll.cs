@@ -86,7 +86,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 				_delayTimer -= Time.deltaTime;
 				if(_delayTimer <= 0f)
 				{
-					Timer.SetTimeScaleTimer(1f,0.3f,true);
+					Timer.SetViTimeScaleTimer(1,1f,0.3f,true);
+					//Timer.SetTimeScaleTimer(1f,0.3f,true);
 					_delayTimer = 0f;
 				}
 			}
@@ -176,30 +177,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 	float cameraAngle = 0f;
 
-
 	public void Follow()
 	{
-		#region oldstuff
-		// float centerDist = Vector2.Distance(_followTarget.position,_position);
-		// var pos = _position;
-		// pos.z = 0f;
-		// Vector2 centerDir = (_followTarget.position - pos).normalized;
-		// if(centerDist >= .5f)
-		// {
-		// 	targetPos = pos + (Vector3)(centerDir * (centerDist - .5f));
-		// }
-
-		// // _followSpeed = Mathf.Lerp(_followSpeed,10f,0.05f);
-		// // Vector3 dir = (_followTarget.position - _position).normalized;
-		// // Vector3 followDir = _followTarget.direction.magnitude > 1f ? _followTarget.direction.normalized : _followTarget.direction;
-		// // float factor = _followTarget.velocity.magnitude > 3f ? 3f : _followTarget.velocity.magnitude;
-		// // factor *= 0.33f;
-
-		// // _position = Vector3.Lerp(_position,targetPos + (followDir * 0.4f) * factor,_followSpeed * Timer.noneScaledDeltaTime);
-		// _position = Vector3.Lerp(_position,targetPos,_followSpeed * Timer.noneScaledDeltaTime);
-		// //_position += 10 * dir * deltaTime;
-		#endregion
-
 		Vector3 pos = (Vector2)_position;
 		Vector3 followPos = _followTarget.position;
 

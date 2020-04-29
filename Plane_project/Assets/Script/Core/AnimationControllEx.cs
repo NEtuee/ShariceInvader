@@ -48,6 +48,21 @@ public class AnimationControllEx
 
 	}
 
+	public bool AnimationExist(string name)
+	{
+		if(animations.ContainsKey(name))
+		{
+			if(animations[name] == null)
+				return false;
+			
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	public bool ChangeAni(string name, bool lp)
 	{
 		if(animations.ContainsKey(name))
@@ -117,6 +132,11 @@ public class AnimationControllEx
 		animations[copy] = keys;
 	}
 	
+	public void AddEmptyAnimation(string name)
+	{
+		animations.Add(name,null);
+	}
+
 	public void AddAnimation(string name, string path, int type = 0)
 	{
 		AnimationKey[] key = LoadAnimationToPath(path, type);
@@ -124,6 +144,12 @@ public class AnimationControllEx
 		if (key == null)
 		{
 			Debug.Log("animation Load Error : " + path);
+
+			return;
+		}
+		else if(animations.ContainsKey(name))
+		{
+			Debug.Log("Same Animation already Exist " + name);
 
 			return;
 		}
@@ -207,7 +233,7 @@ public class AnimationControllEx
 
         	for(int i = 0; i < sprites.Length; ++i)
         	{
-        	    float t = 0.08333f;
+        	    float t = 0.063f;
 
         	    if(data != null)
         	    {

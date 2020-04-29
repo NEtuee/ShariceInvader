@@ -295,6 +295,7 @@ public class Editor_AnimationKeyViewer : SingletonMono<Editor_AnimationKeyViewer
         Editor_FolderItemBase item = Editor_FolderItemBase.selected;
 
         string [] p = Directory.GetDirectories(item.filePath);
+        Debug.Log(item.filePath);
         if(p.Length != 0)
         {
             Debug.Log("null");

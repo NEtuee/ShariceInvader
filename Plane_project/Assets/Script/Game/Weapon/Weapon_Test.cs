@@ -15,6 +15,8 @@ public class Weapon_Test : WeaponBase
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_nova");
         _ui = ResourceManager.GetInstance().GetSprite("UI/ui_nova");
 
+        GagueSetup(1f,5f,15f,5f);
+
     }
     public override void Progress(float deltaTime)
     {
@@ -115,7 +117,7 @@ public class Weapon_Test : WeaponBase
 
         specAttack = true;
 
-        Timer.SetTimeScaleTimer(0.1f,0.3f);
+        Timer.SetViTimeScaleTimer(3,0.1f,0.3f);
 
         return false;
     }
@@ -126,6 +128,15 @@ public class Weapon_Test : WeaponBase
         _plane.SetImmortal(false);
 		_plane.SetBodyAttack(5);
     }
+
+    public override void Change()
+    {
+        MainHud.instance.MainUIAniSwap("Change",null);
+        MainHud.instance.MainUIAniSwap("MainAttack",null);
+        MainHud.instance.MainUIAniSwap("DriveOn",null);
+        MainHud.instance.MainUIAniSwap("DriveAttack",null);
+    }
+
     public override bool CollisionCheck(PlaneBase target)
     {
         return false;

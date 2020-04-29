@@ -21,6 +21,8 @@ public class MainHud : SingletonMono<MainHud>
 
     private PlaneBase _followTarget;
 
+    protected AnimationControllEx _uiAni;
+
 
     void Awake()
     {
@@ -32,12 +34,21 @@ public class MainHud : SingletonMono<MainHud>
         hpMat.SetFloat("_Progress",1f);
 
         _distLine = gameObject.AddComponent<LineRenderer>();
+        _uiAni = new AnimationControllEx(mainUI);
 
         _distLine.startWidth = 0.02f;
         _distLine.endWidth = 0.02f;
         _distLine.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
 
         _distLine.enabled = false;
+
+
+        _uiAni.AddEmptyAnimation("MainAttack");
+        _uiAni.AddEmptyAnimation("DriveOn");
+        _uiAni.AddEmptyAnimation("DriveAttack");
+        _uiAni.AddEmptyAnimation("Change");
+
+        _uiAni.Stop();
     }
 
     public void Initiailize()
@@ -53,6 +64,8 @@ public class MainHud : SingletonMono<MainHud>
             return;
         Vector3 velo = _followTarget.velocity;
         Vector3 dir = -(velo.magnitude > 1f ? velo.normalized : velo);
+
+        _uiAni.AnimationProgress(deltaTime);
         
         transform.position = _followTarget.position + dir * 0.1f;
         mainUI.transform.position = _followTarget.position + dir * 0.2f;
@@ -73,11 +86,30 @@ public class MainHud : SingletonMono<MainHud>
         scaleBarMat.SetFloat("_Offset",val + 0.5f);
     }
 
-    public void WeaponChange(Sprite spr, Sprite ui)
+    public void MainUIAni(string name,bool loop = false)
     {
-        wpIcon.sprite = spr;
+        if(_uiAni.AnimationExist(name))
+            _uiAni.ChangeAni(name,loop);
+        else
+            _uiAni.Stop();
+    }
+
+    public void MainUIAniSwap(string name, string path, int type)
+    {
+        _uiAni.CopyAnimation(name,path);
+    }
+
+    public void MainUIAniSwap(string name, AnimationControllEx.AnimationKey[] key)
+    {
+        _uiAni.CopyAnimation(name,key);
+    }
+
+    public void WeaponChange(Sprite icon, Sprite ui)
+    {
+        wpIcon.sprite = icon;
         mainUI.sprite = ui == null ? nullUI : ui;
-        UpdateGague(1f);
+
+        MainUIAni("Change");
     }
 
     public void SetNull()
