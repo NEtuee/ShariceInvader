@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: a99ba6754045ca449b9f33f1a9409892
+guid: 378eca349335be440ad52d982bb57c3d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_attackingui1_0
-    21300002: lance_attackingui1_1
-    21300004: lance_attackingui1_2
-    21300006: lance_attackingui1_3
-    21300008: lance_attackingui1_4
-    21300010: lance_attackingui1_5
+    21300000: stinger_attackdash2_0
+    21300002: stinger_attackdash2_1
+    21300004: stinger_attackdash2_2
+    21300006: stinger_attackdash2_3
+    21300008: stinger_attackdash2_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -101,121 +100,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_attackingui1_0
+      name: stinger_attackdash2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 40
         width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        height: 20
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8314fa8002feba4449b12d16bd35540a
+      spriteID: 3bd9b5a74fd777f45b6bcb48b591babb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_1
+      name: stinger_attackdash2_1
       rect:
         serializedVersion: 2
         x: 20
-        y: 32
+        y: 40
         width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        height: 20
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c888c23363366c40aaef263fd0dbdaa
+      spriteID: a34a66786a37f3148a1194c32c8b975d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_2
+      name: stinger_attackdash2_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 20
         width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        height: 20
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f081e5b9480bf6a46beff9217a1fec55
+      spriteID: d3d98834cc92196448897fd95b332925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_3
+      name: stinger_attackdash2_3
       rect:
         serializedVersion: 2
         x: 20
-        y: 16
+        y: 20
         width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        height: 20
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e5ff646a36b0cb4f9fc83028977741a
+      spriteID: 78da04b506e395543b1d2c61ae251749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_4
+      name: stinger_attackdash2_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        height: 20
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf71077fa71176a4baee035f0a3eb154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attackingui1_5
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e10fb95ede5f9646bc2294b88536aa1
+      spriteID: 06ab1f42d190f16449dc6f85ce1ae6e0
       vertices: []
       indices: 
       edges: []
@@ -223,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7b2421d527509ed419e6f0a5b8af8ed7
+    spriteID: ab773193d632c7c4c84fed0de90d9ffd
     vertices: []
     indices: 
     edges: []

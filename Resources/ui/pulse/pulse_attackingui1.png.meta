@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40dda15e2ccf8cf409d070a405f5ca0c
+guid: b771d845e720b06479dd363871e26d54
 TextureImporter:
   fileIDToRecycleName:
     21300000: pulse_attackingui1_0
@@ -105,9 +105,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 202
-        width: 162
-        height: 202
+        y: 192
+        width: 172
+        height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,7 +115,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b6c54c230e6863439331c30044c5886
+      spriteID: 401b28ee05f5d7949b53c63c53ea076a
       vertices: []
       indices: 
       edges: []
@@ -124,10 +124,10 @@ TextureImporter:
       name: pulse_attackingui1_1
       rect:
         serializedVersion: 2
-        x: 162
-        y: 202
-        width: 162
-        height: 202
+        x: 172
+        y: 192
+        width: 172
+        height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,7 +135,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad8211e4227a5914cac638efe2e176c1
+      spriteID: 75a2a7b120de58749970724fac4adaeb
       vertices: []
       indices: 
       edges: []
@@ -144,10 +144,10 @@ TextureImporter:
       name: pulse_attackingui1_2
       rect:
         serializedVersion: 2
-        x: 324
-        y: 202
-        width: 162
-        height: 202
+        x: 344
+        y: 192
+        width: 172
+        height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,7 +155,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66dd4e9f5b092c44f9cb36d2aa8be414
+      spriteID: 296a74c2c12c87a4c885bd69dcb76984
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 162
-        height: 202
+        width: 172
+        height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,7 +175,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72f2fdc20b705c542baa39b59ea883d3
+      spriteID: 4e339425adbaff74fab8d527f466b703
       vertices: []
       indices: 
       edges: []
@@ -184,10 +184,10 @@ TextureImporter:
       name: pulse_attackingui1_4
       rect:
         serializedVersion: 2
-        x: 162
+        x: 172
         y: 0
-        width: 162
-        height: 202
+        width: 172
+        height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,7 +195,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ebfdd34ee5785345adc02f4ab82cfd4
+      spriteID: 96e769b06df12ed49a571be4cca98b9e
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
       name: pulse_attackingui1_5
       rect:
         serializedVersion: 2
-        x: 324
+        x: 344
         y: 0
-        width: 162
-        height: 202
+        width: 172
+        height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,7 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbf337e126870984b8f7589cd4d35c6b
+      spriteID: 6359d37e487c5f241b667c6e6e533048
       vertices: []
       indices: 
       edges: []
@@ -223,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b7634a9cdd2e90444af59bdac874df21
+    spriteID: a29c0181c2a93d24aba456a5dbfae6f3
     vertices: []
     indices: 
     edges: []

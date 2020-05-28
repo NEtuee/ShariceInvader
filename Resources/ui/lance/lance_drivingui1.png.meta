@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e1ef4571f8d68ca4794ddae1ff7507ca
+guid: 4652051fe79e00c418157a374210ccb2
 TextureImporter:
   fileIDToRecycleName:
     21300000: lance_drivingui1_0
@@ -107,7 +107,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 68
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -116,7 +116,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 061b6631d696605449294aa1d2c078b2
+      spriteID: 550c990c7c49dfc44b46b670156be15a
       vertices: []
       indices: 
       edges: []
@@ -125,9 +125,9 @@ TextureImporter:
       name: lance_drivingui1_1
       rect:
         serializedVersion: 2
-        x: 42
+        x: 44
         y: 68
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -136,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 046439a9c02d45d46984d388410b88cf
+      spriteID: 8bea22d3d5dd04745b812e47dec05905
       vertices: []
       indices: 
       edges: []
@@ -145,9 +145,9 @@ TextureImporter:
       name: lance_drivingui1_2
       rect:
         serializedVersion: 2
-        x: 84
+        x: 88
         y: 68
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -156,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b0ed504a6c610f4da09fd1e100e9e22
+      spriteID: c29da529bc404b44e89ae16b105de303
       vertices: []
       indices: 
       edges: []
@@ -167,7 +167,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 34
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -176,7 +176,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6db881eaa232a8448aa804b01e8b8d17
+      spriteID: 6f71f8a6a0395994fa883922a203a17a
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
       name: lance_drivingui1_4
       rect:
         serializedVersion: 2
-        x: 42
+        x: 44
         y: 34
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -196,7 +196,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 057c30767ebdaa44bacebd352311e13d
+      spriteID: da7c639bf2a91254ca95014644ab9772
       vertices: []
       indices: 
       edges: []
@@ -205,9 +205,9 @@ TextureImporter:
       name: lance_drivingui1_5
       rect:
         serializedVersion: 2
-        x: 84
+        x: 88
         y: 34
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -216,7 +216,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 878bce0519c8c344da4b7944c455004a
+      spriteID: 2490e476b2195094a840cf0a3be96660
       vertices: []
       indices: 
       edges: []
@@ -227,7 +227,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 42
+        width: 44
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -236,7 +236,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e80e5c09c13cb2140bf5a73a6ecb8a4d
+      spriteID: 7bf37861f0e28e3499f1495454e78d7c
       vertices: []
       indices: 
       edges: []
@@ -244,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 41566d596a3ded1459e0245c1144ce81
+    spriteID: 8c3596641c38fec4e990f3481bc971eb
     vertices: []
     indices: 
     edges: []

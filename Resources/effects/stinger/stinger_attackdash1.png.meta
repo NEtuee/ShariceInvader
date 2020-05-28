@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: f76f3d7bfddf6c04eb169e584883de00
+guid: 399fb91d8853cef4f9cef96f6c26b464
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_drivemodeui2_0
-    21300002: lance_drivemodeui2_1
-    21300004: lance_drivemodeui2_2
-    21300006: lance_drivemodeui2_3
+    21300000: stinger_attackdash1_0
+    21300002: stinger_attackdash1_2
+    21300004: stinger_attackdash1_4
+    21300006: stinger_attackdash1_1
+    21300008: stinger_attackdash1_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_drivemodeui2_0
+      name: stinger_attackdash1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 116
-        width: 109
-        height: 116
+        y: 24
+        width: 12
+        height: 12
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,19 +114,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdc215f4d445c3d46b7d895d7d18bc3c
+      spriteID: 7d1712e8008213e41815de36f9e9ca32
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivemodeui2_1
+      name: stinger_attackdash1_2
       rect:
         serializedVersion: 2
-        x: 109
-        y: 116
-        width: 109
-        height: 116
+        x: 0
+        y: 12
+        width: 12
+        height: 12
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,19 +134,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9c11c0f75e450b4fb32c48ce695fe44
+      spriteID: c11fe5846eed2ab4bb10803b563ffb2c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivemodeui2_2
+      name: stinger_attackdash1_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 109
-        height: 116
+        width: 12
+        height: 12
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,27 +154,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf8980543b2ac184d9ac06ce1df2fa37
+      spriteID: 96db064107505a34b925910238925162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivemodeui2_3
+      name: stinger_attackdash1_1
       rect:
         serializedVersion: 2
-        x: 109
-        y: 0
-        width: 109
-        height: 116
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 12
+        y: 24
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f3a765c71855714c8b1dea4ec936f07
+      spriteID: 60b6aed14255ae64095ed4e10e5b9ec2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_attackdash1_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a5001fb8568ad44bab2f17384388af8
       vertices: []
       indices: 
       edges: []
@@ -181,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3077ee3938a95424cb4f50f81b8d4fb8
+    spriteID: 44ed25249b5b53e47a5a539485d7c477
     vertices: []
     indices: 
     edges: []

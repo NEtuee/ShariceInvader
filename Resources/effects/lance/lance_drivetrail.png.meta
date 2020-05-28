@@ -1,13 +1,14 @@
 fileFormatVersion: 2
-guid: a99ba6754045ca449b9f33f1a9409892
+guid: e7b08294c7414224793a7d5bdc95f1dc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_attackingui1_0
-    21300002: lance_attackingui1_1
-    21300004: lance_attackingui1_2
-    21300006: lance_attackingui1_3
-    21300008: lance_attackingui1_4
-    21300010: lance_attackingui1_5
+    21300000: lance_drivetrail_0
+    21300002: lance_drivetrail_1
+    21300004: lance_drivetrail_2
+    21300006: lance_drivetrail_3
+    21300008: lance_drivetrail_4
+    21300010: lance_drivetrail_5
+    21300012: lance_drivetrail_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -101,121 +102,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_attackingui1_0
+      name: lance_drivetrail_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        y: 336
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8314fa8002feba4449b12d16bd35540a
+      spriteID: 426f0d191269f994fa631573f2113f62
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_1
+      name: lance_drivetrail_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 32
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 193
+        y: 336
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c888c23363366c40aaef263fd0dbdaa
+      spriteID: 59a0ddbe5369fb340b336dc92b69d36c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_2
+      name: lance_drivetrail_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        y: 224
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f081e5b9480bf6a46beff9217a1fec55
+      spriteID: c06574de85cbaff458686aeea9f4b8c8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_3
+      name: lance_drivetrail_3
       rect:
         serializedVersion: 2
-        x: 20
-        y: 16
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 193
+        y: 224
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e5ff646a36b0cb4f9fc83028977741a
+      spriteID: bece13d56453f274ca7d3bbc726286b5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_4
+      name: lance_drivetrail_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc1fc3d0f932134fbb4396f9fab6e11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_drivetrail_5
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 112
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8a1bb20f0140442b3cacababbbbe48
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_drivetrail_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        width: 193
+        height: 112
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf71077fa71176a4baee035f0a3eb154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attackingui1_5
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 20
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e10fb95ede5f9646bc2294b88536aa1
+      spriteID: 92be8f851c9088642a38bfb8913d944a
       vertices: []
       indices: 
       edges: []
@@ -223,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7b2421d527509ed419e6f0a5b8af8ed7
+    spriteID: 513007bedfd4e0244a085f956f5c0e9f
     vertices: []
     indices: 
     edges: []
