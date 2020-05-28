@@ -11,21 +11,24 @@ public class Wand_Missile : PlaneBase
 
 	public float actTime = 0f;
 
+	float deleteTime = 0f;
+
     public override void firstSetting()
     {
         base.firstSetting();
 
-        SetSpriteSet("missile",AnimationType.None);
-
+        SetSpriteSet("SpriteSet/Planes/StarFish/starfish_missile",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
+		BoostSetUp("Effects/Boost_New",new Vector2(-0.1f,0f));
+		
+		_boostAniProgress = true;
 
 		_sprRenderer.flipX = true;
 
-		_maxSpeed = Random.Range(3f,4f);
+		_maxSpeed = Random.Range(3.8f,4.5f);
 		_speed = .1f;
 
 		_rotateLock = true;
-
     }
 
     public override void deleteEvent()
@@ -40,6 +43,7 @@ public class Wand_Missile : PlaneBase
 		
 		SetNoClip(false);
 		maxHp = _hp = 1;
+		deleteTime = Random.Range(3.5f,4.5f);
 
 		RegisteCollisionList();
 
@@ -62,6 +66,12 @@ public class Wand_Missile : PlaneBase
 				BasicUpdate(deltaTime);
 				return;
 			}
+		}
+
+		deleteTime -= deltaTime;
+		if(deleteTime <= 0f)
+		{
+			DecreaseHP(_hp + 10);
 		}
 
 

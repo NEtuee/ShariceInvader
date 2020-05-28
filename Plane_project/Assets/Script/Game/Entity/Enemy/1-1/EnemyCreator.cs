@@ -13,7 +13,7 @@ public static class EnemyCreator
         for(int i = 0; i < count; ++i)
         {
 			BoomDrone boom = _objManager.AddObject<BoomDrone>(Define.ObjectType.enemy,"BoomDrone" + i);
-			boom.SetPosition(_objManager._place.MapPosToWorldPos(mapPos));
+			boom.SetPositionEm(_objManager._place.MapPosToWorldPos(mapPos));
             boom.SetMaxSpeed(2.5f + i * 0.025f);
             boom.standPos = next;
 
@@ -36,7 +36,7 @@ public static class EnemyCreator
         for(int i = 0; i < count; ++i)
         {
 			BoostDrone boost = _objManager.AddObject<BoostDrone>(Define.ObjectType.enemy,"BoostDrone" + i);
-			boost.SetPosition(_objManager._place.MapPosToWorldPos(mapPos));
+			boost.SetPositionEm(_objManager._place.MapPosToWorldPos(mapPos));
             boost.SetMaxSpeed(2.5f + i * 0.025f);
             boost.TargetPosUpdate();
             boost.target = next;
@@ -58,7 +58,7 @@ public static class EnemyCreator
         for(int i = 0; i < count; ++i)
         {
 			RayDrone ray = _objManager.AddObject<RayDrone>(Define.ObjectType.enemy,"RayDrone" + i);
-			ray.SetPosition(worldPos);
+			ray.SetPositionEm(worldPos);
         }
     }
 
@@ -69,7 +69,7 @@ public static class EnemyCreator
         for(int i = 0; i < count; ++i)
         {
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
-			boom.SetPosition(_objManager._place.MapPosToWorldPos(mapPos));
+			boom.SetPositionEm(_objManager._place.MapPosToWorldPos(mapPos));
         }
     }
 
@@ -80,7 +80,7 @@ public static class EnemyCreator
         for(int i = 0; i < count; ++i)
         {
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
-			boom.SetPosition(worldPos);
+			boom.SetPositionEm(worldPos);
             boom.standPos = targetPos;
             boom.act = true;
         }
@@ -91,12 +91,12 @@ public static class EnemyCreator
         ObjectManager _objManager = ObjectManager.GetInstance();
 
         PlaneBase cctv = _objManager.AddObject<CCTV>(Define.ObjectType.enemy,"CCTV");
-        cctv.SetPosition(_objManager._place.MapPosToWorldPos(mapPos));
+        cctv.SetPositionEm(_objManager._place.MapPosToWorldPos(mapPos));
 
         for(int i = 0; i < shootingDroneCount; ++i)
         {
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
-			boom.SetPosition(_objManager._place.MapPosToWorldPos(mapPos + new Vector2(Random.Range(-1.5f,1.5f),Random.Range(-1.5f,1.5f))));
+			boom.SetPositionEm(_objManager._place.MapPosToWorldPos(mapPos + new Vector2(Random.Range(-1.5f,1.5f),Random.Range(-1.5f,1.5f))));
         }
     }
 }

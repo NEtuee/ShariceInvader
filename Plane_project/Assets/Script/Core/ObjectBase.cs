@@ -71,6 +71,12 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 		_position = pos;
 		return this;
 	}
+	public ObjectBase SetPositionEm(Vector3 pos) 
+	{
+		_position = pos;
+		UpdateTransform();
+		return this;
+	}
 	public ObjectBase SetAngle(float z) {_eulerAngle = z; return this;}
 	public ObjectBase SetScale(float x,float y, float z) {_scale = new Vector3(x,y,z); return this;}
 	public ObjectBase SetDirection(Vector3 dir) {_direction = dir; return this;}

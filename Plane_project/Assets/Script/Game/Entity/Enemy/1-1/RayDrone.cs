@@ -209,7 +209,7 @@ public class RayDrone : PlaneBase
                     var obj = ObjectManager.GetInstance().AddObject<Flare>(Define.ObjectType.enemy,"Flare");
                     obj.target = this;
                     obj.right = (i % 2 == 0);
-                    obj.SetPosition(_flarePos[i].position);
+                    obj.SetPositionEm(_flarePos[i].position);
                     obj.SetMaxSpeed(_velocity.magnitude - 0.8f);
                     obj.SetAbsoluteForce(_direction * 1000f);
                     obj.SetDirection(_direction);

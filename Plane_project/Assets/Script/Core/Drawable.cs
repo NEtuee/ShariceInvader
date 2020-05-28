@@ -31,6 +31,12 @@ public abstract class Drawable : ObjectBase {
 		return this;
 	}
 
+	public Drawable SetSortingGroupOrder(int index)
+	{
+		_sortingGroup.sortingOrder = index;
+		return this;
+	}
+
 	protected void AddSpriteRenderer()
 	{
 		_sprRenderer = obj.AddComponent<SpriteRenderer>();

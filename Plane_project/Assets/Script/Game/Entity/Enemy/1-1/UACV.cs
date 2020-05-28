@@ -76,7 +76,7 @@ public class UACV : PlaneBase
                 shotTimer -= deltaTime;
                 if(shotTimer <= 0f)
                 {
-                    ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"Missile").SetPosition(_position);
+                    ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"Missile").SetPositionEm(_position);
                     shotTimer = 5f;
                 }
             }

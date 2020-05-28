@@ -50,7 +50,7 @@ public class GameMain : MonoBehaviour {
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
-		obj.SetPosition(new Vector3(1f,5f));
+		obj.SetPositionEm(new Vector3(1f,5f));
 		cam.SetTarget(obj);
 
 		_objManager._place.SetMainObject(obj);

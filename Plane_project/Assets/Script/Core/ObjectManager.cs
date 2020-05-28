@@ -40,6 +40,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 			new Dictionary<int, LinkedList<ObjectBase>>();
 
 	private ObjectCache _cache;
+	private Dictionary<string, ObjectCache> _entityCache = new Dictionary<string, ObjectCache>();
 	public PlaceMapper _place;
 
 	private float _stopTimer = 0f;
@@ -136,6 +137,10 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		DelayedRequestsProgress(deltaTime);
 
 		_cache.UpdateCache();
+		foreach(var item in _entityCache.Values)
+		{
+			item.UpdateCache();
+		}
 	}
 	
 	public void PlaceUpdateLoop(ObjectBase obj)

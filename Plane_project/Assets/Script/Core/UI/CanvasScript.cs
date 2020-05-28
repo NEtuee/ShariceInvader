@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CanvasScript : SingletonMono<CanvasScript>, Define.IProgress {
 
+	public static Queue<SpriteRenderer> minimapIcons = new Queue<SpriteRenderer>();
+
 	public Vector2 canavsSize{get{return new Vector2(canvasWidth / pixelPerUnit,canvasHeight / pixelPerUnit);}}
 
 	//[HideInInspector]
@@ -47,6 +49,24 @@ public class CanvasScript : SingletonMono<CanvasScript>, Define.IProgress {
 	{
 
 	}
+
+	public SpriteRenderer GetMinimapIcon()
+	{
+		if(minimapIcons.Count == 0)
+		{
+			var miniMapIcon = new GameObject("Icon").transform;
+			SpriteRenderer spr = miniMapIcon.gameObject.AddComponent<SpriteRenderer>();
+			miniMapIcon.gameObject.layer = LayerMask.NameToLayer("UI");
+
+			CanvasScript.instance.SetChild(miniMapIcon);
+
+			return spr;
+		}
+
+		return minimapIcons.Dequeue();
+	}
+
+	public void ReturnIcon(SpriteRenderer spr) {spr.gameObject.SetActive(false); minimapIcons.Enqueue(spr);}
 
 	public void SetChild(Transform t)
 	{

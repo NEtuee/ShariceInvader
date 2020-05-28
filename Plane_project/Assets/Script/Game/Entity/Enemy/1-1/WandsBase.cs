@@ -8,13 +8,11 @@ public class WandsBase : PlaneBase
     {
         base.firstSetting();
 
-
-        Debug.Log("one");
-        // LoadPlaneData("Boss_1-1/Marker");
-        // //SetSpriteSet("Boss_1-1/Marker",AnimationType.None);
+        // LoadPlaneData("StarFish/Marker");
+        // //SetSpriteSet("StarFish/Marker",AnimationType.None);
 		// SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
-        // _dirSprites = ResourceManager.GetInstance().GetSpriteSet("Boss_1-1/Marker",2);
+        // _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Marker",2);
         // _spriteAngle = 360f / _dirSprites.Length;
 
         // UpdateSprite();
@@ -70,7 +68,8 @@ public class WandsBase : PlaneBase
             _position = targetPos;// Vector3.Lerp(_position,targetPos,0.2f);
         }
         
-        UpdateSprite();
+        if(_aniType != AnimationType.None)
+            UpdateSprite();
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
 		BasicUpdate(deltaTime);
     }

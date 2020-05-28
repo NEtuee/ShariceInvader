@@ -25,6 +25,7 @@ public class Debugger : MonoBehaviour
         objects.Add(5,"RayDrone");
         objects.Add(6,"ShootingDrone");
         objects.Add(7,"Missile");
+        objects.Add(8,"Marker");
 
         text.text = objects[pos];
     }
@@ -67,11 +68,11 @@ public class Debugger : MonoBehaviour
             break;
             case 3:
             for(int i = 0; i < count; ++i)
-                obj.AddObject<LaserDrone>(Define.ObjectType.enemy,"LaserDrone").SetPosition(MouseWorldPos());
+                obj.AddObject<LaserDrone>(Define.ObjectType.enemy,"LaserDrone").SetPositionEm(MouseWorldPos());
             break;
             case 4:
             for(int i = 0; i < count; ++i)
-                obj.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPosition(MouseWorldPos());
+                obj.AddObject<MissileDrone>(Define.ObjectType.enemy,"MissileDrone").SetPositionEm(MouseWorldPos());
             break;
             case 5:
             EnemyCreator.RayDrone(count,MouseWorldPos());
@@ -81,7 +82,10 @@ public class Debugger : MonoBehaviour
             break;
             case 7:
             for(int i = 0; i < count; ++i)
-                obj.AddObject<NPC>(Define.ObjectType.enemy,"Missile").SetPosition(MouseWorldPos());
+                obj.AddObject<NPC>(Define.ObjectType.enemy,"Missile").SetPositionEm(MouseWorldPos());
+            break;
+            case 8:
+            obj.AddObject<TheMarker>(Define.ObjectType.enemy,"Marker").SetPositionEm(MouseWorldPos());
             break;
         }
     }

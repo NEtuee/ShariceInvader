@@ -1,0 +1,1454 @@
+fileFormatVersion: 2
+guid: 7a226b22e917e5d4aa3058534fa954bb
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: starfish_defender_0
+    21300002: starfish_defender_1
+    21300004: starfish_defender_2
+    21300006: starfish_defender_3
+    21300008: starfish_defender_4
+    21300010: starfish_defender_5
+    21300012: starfish_defender_6
+    21300014: starfish_defender_7
+    21300016: starfish_defender_8
+    21300018: starfish_defender_9
+    21300020: starfish_defender_10
+    21300022: starfish_defender_11
+    21300024: starfish_defender_12
+    21300026: starfish_defender_13
+    21300028: starfish_defender_14
+    21300030: starfish_defender_15
+    21300032: starfish_defender_16
+    21300034: starfish_defender_17
+    21300036: starfish_defender_18
+    21300038: starfish_defender_19
+    21300040: starfish_defender_20
+    21300042: starfish_defender_21
+    21300044: starfish_defender_22
+    21300046: starfish_defender_23
+    21300048: starfish_defender_24
+    21300050: starfish_defender_25
+    21300052: starfish_defender_26
+    21300054: starfish_defender_27
+    21300056: starfish_defender_28
+    21300058: starfish_defender_29
+    21300060: starfish_defender_30
+    21300062: starfish_defender_31
+    21300064: starfish_defender_32
+    21300066: starfish_defender_33
+    21300068: starfish_defender_34
+    21300070: starfish_defender_35
+    21300072: starfish_defender_36
+    21300074: starfish_defender_37
+    21300076: starfish_defender_38
+    21300078: starfish_defender_39
+    21300080: starfish_defender_40
+    21300082: starfish_defender_41
+    21300084: starfish_defender_42
+    21300086: starfish_defender_43
+    21300088: starfish_defender_44
+    21300090: starfish_defender_45
+    21300092: starfish_defender_46
+    21300094: starfish_defender_47
+    21300096: starfish_defender_48
+    21300098: starfish_defender_49
+    21300100: starfish_defender_50
+    21300102: starfish_defender_51
+    21300104: starfish_defender_52
+    21300106: starfish_defender_53
+    21300108: starfish_defender_54
+    21300110: starfish_defender_55
+    21300112: starfish_defender_56
+    21300114: starfish_defender_57
+    21300116: starfish_defender_58
+    21300118: starfish_defender_59
+    21300120: starfish_defender_60
+    21300122: starfish_defender_61
+    21300124: starfish_defender_62
+    21300126: starfish_defender_63
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: starfish_defender_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1260
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4865260d4730245a2dd421a1761baa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1240
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1104c02423ea94a4fa07b98a4a9939da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1220
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9173c7ad039cdab4d9a6d4c8856d899b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a93e874490baa4f93d91f35bbe6585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1180
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60bbbbfa49b6d834dbf6f23f6f106a1d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1160
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9839b3e72ac6049a725b9cad9504d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1140
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110e36fab732ace468c7be7c386e48f3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1120
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4926b48ac937e4a42b313cf2d376331a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8802f56897168574a81da53528073736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1080
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a573a3e6dbf6d43458515b9e1fa55804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1060
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b59d0b627059624f9b4705b89672724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1040
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab849814ad4714548a9153b0ddf258de
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1020
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc07a6761878ef646ac4753606df0dc7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e3386fc92beb4449737812ac5e6818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 980
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b739e71640863124fb5c7bcbecedd39d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a715e80c973afa84a9357c6fb62e3416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 940
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0683708218a674c499c4d32fd381fc5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 920
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b98192db6c9638549bde3ac09133b784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f636e5e72fb6ea458b3118a90b1f8ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 880
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708c209c92b79bc4b986d5bf6808ccbb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 860
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9918b8c007f6c445be018f67e9a95df
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb138f0601f3aee489917638c79d8fd8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 820
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217fbd85028883d4d9b7d76fc10a2679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfdc333836610974aaceb98174a5c024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 780
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60b376ca33cda64b9050e2783a6d5af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 760
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67fc7509ab16d254b9233559114b20bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 740
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6049b7e718b7212488d5baf58775a5cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a10576640501aa4aa4053dd225cebbf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aca50c7b2359cf41a658dea2d276a33
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 680
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d378126868c6a09449a30d30b562dc0e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 660
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8da7143d21558564aa98a39f4d971913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea6179909cffcc0499d1159bd0fc808c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 620
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8976688c1faa32b45822bfd6e7090760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c604fb53f64770a4a8069c70c91c0dd9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 580
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e181f679cc9c71f43b71dfc2975bbc1f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 020278eba35eafb499c07f2889b4a5e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23542743956b9b242bf76b2a293cd530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 520
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e680dd6ad33c4704ea9be0af518ed26e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc0067076545a64aa17756e601b4d4a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 886e780599d52f34a95c5f6a57b94195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 460
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a57c6127631a24f96959f02eb3c1c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 440
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c77f561cedacb439d0969bc9fa7a94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a8ec1aaebc69f4da6cb61662528d0a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef3bf37421ec17c449e16982d522b6eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f51e2e9bb812ac44ae43aab9b1edbc7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5679567f23dd64a948395ae70a0123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7394d7d9a9622a46bed8de69c58156e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a9da0dbd7ff7e458ab0d1af3318973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd216b207ee7684389b8c10a7e0f820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0606c5a8aaa8b234a86d437f7f891f42
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10171ad534269f141b0f49a4f7ea2cc9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9e00117571d164ebe102422de26218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce1ed97e34c8c0d43a07049ef7717a14
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0adb4cd12366ca543a9d82f163bf0eff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa23dd7b3521ed547a32fc62c39d2ed8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c859b7445cbe87c4f981267db221bab9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fe6b29079442e4abed8e19320c0a8f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4d10269d1a144d419f307c3731915ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6825525b89515f94aa5958870f93f193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae4c56f609dc9a4b9fb0e21cb007bac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1877eb5438875524eb66fd9b69f4a50c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a41b762fb26e8c41b0468496656035e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67be65da91a67b4993567f1f4cf5e30
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_defender_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 71
+        height: 20
+      alignment: 9
+      pivot: {x: 0.72, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93dfd3801b066804b8cdd1b5be03709f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 9258738e6f25e984abcfdcbcc91a44a7
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

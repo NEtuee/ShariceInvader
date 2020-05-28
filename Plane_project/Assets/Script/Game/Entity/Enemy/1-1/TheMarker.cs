@@ -50,14 +50,18 @@ public class TheMarker : PlaneBase
 
     private float _spinSpeedTarget = 180f;
     private float _markerSpreadTarget = -5f;
-    private float _wandsPosX = 0.2f;
+    private float _defenderPosX = -0.15f;
+    private float _piercerPosX = 0.65f;
+    private float _defenderlerpPosX = 0f;
 
     private bool _spreading = false;
 
-    private List<WandsBase> _wands = new List<WandsBase>();
+    private List<WandsBase> _defenders = new List<WandsBase>();
+    private List<WandsBase> _piercers = new List<WandsBase>();
 
     private List<Transform> _headPoints = new List<Transform>();
-    private List<Transform> _wandPoints = new List<Transform>();
+    private List<Transform> _defenderPoints = new List<Transform>();
+    private List<Transform> _piercerPoints = new List<Transform>();
 
     private Transform _archerPos;
     private WandsBase _archer;
@@ -67,13 +71,13 @@ public class TheMarker : PlaneBase
         base.firstSetting();
 
 
-        SetSpriteSet("BoomDrone",AnimationType.None);
+        SetSpriteSet("SpriteSet/Planes/StarFish/starfish_axis",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
         for(int i = 0; i < 3; ++i)
         {
             var marker = new MarkerHead();
-            marker.Init(ResourceManager.GetInstance().GetSpriteSet("Boss_1-1/Marker",2),tp);
+            marker.Init(ResourceManager.GetInstance().GetSpriteSet("StarFish/Marker",2),tp);
             marker.SetPosition(_position,new Vector3(Mathf.Sin(_markerAngle * Mathf.Deg2Rad),0f, Mathf.Cos(_markerAngle * Mathf.Deg2Rad)) * _markerSpread);
 
             _heads.Add(marker);
@@ -91,10 +95,17 @@ public class TheMarker : PlaneBase
 		base.deleteEvent();
 		ComboCount.instance.AddComboCount(1);
         
-        for(int i = 0; i < _wands.Count; ++i)
+        for(int i = 0; i < _defenders.Count; ++i)
         {
-            _wands[i].tp.SetParent(null);
+            _defenders[i].DecreaseHP(100);
         }
+
+        for(int i = 0; i < _piercers.Count; ++i)
+        {
+            _piercers[i].DecreaseHP(100);
+        }
+
+        _archer.DecreaseHP(100);
 	}
 
     public override void initialize()
@@ -114,27 +125,42 @@ public class TheMarker : PlaneBase
 
     public override void BeforeCreated()
     {
-        for(int i = 0; i < 5; ++i)
+        for(int i = 0; i < 4; ++i)
         {
             var wand = ObjectManager.GetInstance().AddObject<Wand_Defender>(Define.ObjectType.enemy,"Defender");
             wand.tp.position = _position;
-            wand.SetPosition(_position);
+            wand.SetPositionEm(_position);
             wand.targetPos = _position;
-            _wands.Add(wand);
+            _defenders.Add(wand);
 
             var t = new GameObject("headpoint_" + i).transform;
             t.position = _position;
             t.SetParent(tp);
 
-            _wandPoints.Add(t);
+            _defenderPoints.Add(t);
+        }
+
+        for(int i = 0; i < 3; ++i)
+        {
+            var wand = ObjectManager.GetInstance().AddObject<Wand_Piercer>(Define.ObjectType.enemy,"Piercer");
+            wand.tp.position = _position;
+            wand.SetPositionEm(_position);
+            wand.targetPos = _position;
+            _piercers.Add(wand);
+
+            var t = new GameObject("headpoint_" + i).transform;
+            t.position = _position;
+            t.SetParent(tp);
+
+            _piercerPoints.Add(t);
         }
 
         _archerPos = new GameObject("archerPoint").transform;
         _archerPos.SetParent(tp);
-        _archerPos.localPosition = new Vector2(-0.7f,0f);
+        _archerPos.localPosition = new Vector2(-0.5f,0f);
 
         var archer = ObjectManager.GetInstance().AddObject<Wand_Archer>(Define.ObjectType.enemy,"Wands");
-        archer.SetPosition(_archerPos.position);
+        archer.SetPositionEm(_archerPos.position);
         archer.targetPos = _archerPos.position;
         _archer = archer;
         _archer.UpdateTransform();
@@ -158,27 +184,53 @@ public class TheMarker : PlaneBase
         {
             Fold();
         }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            ShotPiercer();
+        }
+
     }
 
-    public void WandsProgress(float deltaTime)
+    public void ShotPiercer()
     {
-        for(int i = 0; i < _wands.Count;)
+        for(int i = 0; i < _piercers.Count; ++i)
         {
-            if(_wands[i].deleted)
+            _piercers[i].act = true;
+            _piercers[i].transform.SetParent(null);
+            _piercers[i].SetAbsoluteForce(Vector3.zero);
+            
+        }
+    }
+
+    public void WandProgress(ref List<WandsBase> list, ref List<Transform> points, float x, float dist, float spinDir)
+    {
+        for(int i = 0; i < list.Count;)
+        {
+            if(list[i].deleted)
             {
-                _wands.RemoveAt(i);
+                list.RemoveAt(i);
             }
             else
             {
-                float angle = MathEx.clamp360Degree((_markerAngle + ((360f / _wands.Count) * i)));
-                _wandPoints[i].localPosition = new Vector3(_wandsPosX,Mathf.Cos(angle * Mathf.Deg2Rad) * 0.15f,0f);//,new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad),0f, Mathf.Cos(angle * Mathf.Deg2Rad)) * _markerSpread;
-                _wands[i].targetPos = _wandPoints[i].position;
-                _wands[i].mainAngle = MathEx.clamp360Degree(-angle);
-                _wands[i].SetAngle(_eulerAngle);
+                float angle = MathEx.clamp360Degree(((_markerAngle * spinDir) + ((360f / list.Count) * i)));
+                points[i].localPosition = new Vector3(x,Mathf.Cos(angle * Mathf.Deg2Rad) * dist,0f);//,new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad),0f, Mathf.Cos(angle * Mathf.Deg2Rad)) * _markerSpread;
+                list[i].targetPos = points[i].position;
+                list[i].mainAngle = MathEx.clamp360Degree(-angle);
+                list[i].SetAngle(_eulerAngle);
+                list[i].SetSortingGroupOrder(angle >= 180f ? -1 : 1);
 
                 ++i;
             }
         }
+    }
+
+    public void WandsProgress(float deltaTime)
+    {
+        _defenderlerpPosX = Mathf.Lerp(_defenderlerpPosX,_defenderPosX,0.1f);
+
+        WandProgress(ref _defenders,ref _defenderPoints, _defenderlerpPosX, 0.4f, 1f);
+        WandProgress(ref _piercers,ref _piercerPoints, _piercerPosX, 0.4f, -1f);
+
 
         _archer.targetPos = _archerPos.position;
         _archer.SetAngle(MathEx.directionToAngle((_position - _archer.position).normalized));
@@ -195,7 +247,7 @@ public class TheMarker : PlaneBase
             float angle = MathEx.clamp360Degree((_markerAngle + ((360f / _heads.Count) * i)));
 
             _heads[i].UpdateSprite();
-            _headPoints[i].localPosition = new Vector3(0f,Mathf.Cos(angle * Mathf.Deg2Rad) * 0.1f,0f);
+            _headPoints[i].localPosition = new Vector3(0.1f,Mathf.Cos(angle * Mathf.Deg2Rad) * 0.15f,0f);
 
 
             _heads[i].SetPosition(_headPoints[i].localPosition,new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad),0f,Mathf.Cos(angle * Mathf.Deg2Rad) * _markerSpread + _eulerAngle));
@@ -220,7 +272,7 @@ public class TheMarker : PlaneBase
     {
         MarkerSpread(45f);
 
-        _wandsPosX = -0.2f;
+        _defenderPosX = 0f;
     }
 
     public void Fold()
@@ -232,7 +284,7 @@ public class TheMarker : PlaneBase
     {
         _spinSpeedTarget = 1440f;
         _markerSpreadTarget = angle;
-        _wandsPosX = 0.2f;
+        _defenderPosX = -0.15f;
 
         _spreading = true;
     }

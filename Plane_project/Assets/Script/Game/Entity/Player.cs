@@ -43,7 +43,7 @@ public class Player : PlaneBase {
 		_cam = CameraControll.instance;
 
 		_speed = 0f;
-		_maxSpeed = 3.3f;
+		_maxSpeed = 3.5f;
 
 		_bodyAttack = 5;
 		_dodgeDist = 3f;
@@ -54,7 +54,7 @@ public class Player : PlaneBase {
 
 		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("UI/map_arrow");
 		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-		miniMapIcon.localPosition = CanvasScript.instance.
+		miniMapIcon.transform.localPosition = CanvasScript.instance.
 						CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * 0.5f,CanvasScript.instance.canvasHeight));
 
 		_miniMapHeightIcon = new GameObject(name + " HeightIcon").transform;

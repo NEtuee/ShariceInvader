@@ -108,7 +108,7 @@ public abstract class PlaneBase : Collisionable {
 	protected List<TrailRenderer> _trail = new List<TrailRenderer>();
 	public List<AnimationControllEx> _boostAni = new List<AnimationControllEx>();
 	private Material _trailMat;
-	protected Transform miniMapIcon;
+	protected SpriteRenderer miniMapIcon;
 
 	protected AnimationType _aniType;
 
@@ -521,6 +521,7 @@ public abstract class PlaneBase : Collisionable {
 
 		UpdateMiniMapIcon();
 		GroundCheck();
+		SkyCheck(deltaTime);
 	}
 
 	public void SpriteUpdate()
@@ -844,20 +845,17 @@ public abstract class PlaneBase : Collisionable {
 
 		_delayHitList.Clear();
 		_noclip = true;
-		miniMapIcon.gameObject.SetActive(false);
+		CanvasScript.instance.ReturnIcon(miniMapIcon);
 		_deco.DestroyAll();
 		//CameraControll.instance.Zoom(1.7f);
 	}
 
 	public void MiniMapIconSetup()
 	{
-		miniMapIcon = new GameObject(name + " Icon").transform;
-		SpriteRenderer spr = miniMapIcon.gameObject.AddComponent<SpriteRenderer>();
-		spr.sprite = ResourceManager.GetInstance().GetSprite("UI/map_enemyicon");
-		miniMapIcon.gameObject.layer = LayerMask.NameToLayer("UI");
+		miniMapIcon = CanvasScript.instance.GetMinimapIcon();
+		miniMapIcon.sprite = ResourceManager.GetInstance().GetSprite("UI/map_enemyicon");
 
-		CanvasScript.instance.SetChild(miniMapIcon);
-		miniMapIcon.localPosition = CanvasScript.instance.
+		miniMapIcon.transform.localPosition = CanvasScript.instance.
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth,CanvasScript.instance.canvasHeight - 15));
 	}
 
@@ -871,6 +869,20 @@ public abstract class PlaneBase : Collisionable {
 			if(_velocity.y > 0.5f)
 			{
 				DecreaseHP(5);
+			}
+		}
+	}
+
+	public void SkyCheck(float deltaTime)
+	{
+		float height = ObjectManager.GetInstance()._place._mapHeight;
+		if(_position.y > ObjectManager.GetInstance()._place._mapHeight)
+		{
+			AddForce(Vector3.down * 15f * deltaTime);
+
+			if(_position.y > height + 2f)
+			{
+				ControllLock(1f);
 			}
 		}
 	}
@@ -891,12 +903,12 @@ public abstract class PlaneBase : Collisionable {
 
 		ratio = ratio > 1f ? ratio - 1f : ratio < 0 ? ratio + 1f : ratio;
 
-		Vector3 pos = miniMapIcon.localPosition;
+		Vector3 pos = miniMapIcon.transform.localPosition;
 		
 		pos.x = CanvasScript.instance.
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * ratio,CanvasScript.instance.canvasHeight - 20)).x;
 		
-		miniMapIcon.localPosition = pos;
+		miniMapIcon.transform.localPosition = pos;
 	}
 
 	public void TrailSetUp(Vector2 pos, string material, float time, float startWidth, float endWidth)
@@ -929,8 +941,8 @@ public abstract class PlaneBase : Collisionable {
 		ani.AddAnimation("Burst", n + "/Burst");
 		ani.ChangeAni("Loop",true);
 
-		spr.transform.position = pos;
 		spr.transform.SetParent(tp);
+		spr.transform.localPosition = pos;
 
 		_boostAni.Add(ani);
 	}
