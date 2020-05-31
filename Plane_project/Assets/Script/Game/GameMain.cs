@@ -48,6 +48,7 @@ public class GameMain : MonoBehaviour {
 		_delayActManager.firstSetting();
 
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
+		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Loop");
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		obj.SetPositionEm(new Vector3(1f,5f));

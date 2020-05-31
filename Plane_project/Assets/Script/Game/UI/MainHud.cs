@@ -9,6 +9,8 @@ public class MainHud : SingletonMono<MainHud>
     public SpriteRenderer hpBar;
     public SpriteRenderer mainUI;
 
+    public Transform mainUITransform;
+
     public Material scaleBarMat;
 
     public Sprite nullUI;
@@ -68,7 +70,7 @@ public class MainHud : SingletonMono<MainHud>
         _uiAni.AnimationProgress(deltaTime);
         
         transform.position = _followTarget.position + dir * 0.1f;
-        mainUI.transform.position = _followTarget.position + dir * 0.2f;
+        mainUITransform.transform.position = _followTarget.position + dir * 0.12f;
     }
 
     public void UpdateGague(float g)
@@ -107,7 +109,7 @@ public class MainHud : SingletonMono<MainHud>
     public void WeaponChange(Sprite icon, Sprite ui)
     {
         wpIcon.sprite = icon;
-        mainUI.sprite = ui == null ? nullUI : ui;
+        //mainUI.sprite = ui == null ? nullUI : ui;
 
         MainUIAni("Change");
     }

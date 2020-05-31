@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: ca9a3e90bcd8ad34e9bc583b8de11d09
+guid: 399fb91d8853cef4f9cef96f6c26b464
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lancedrive_trail-Sheet_0
-    21300002: lancedrive_trail-Sheet_1
-    21300004: lancedrive_trail-Sheet_2
-    21300006: lancedrive_trail-Sheet_3
+    21300000: stinger_attackdash1_0
+    21300002: stinger_attackdash1_2
+    21300004: stinger_attackdash1_4
+    21300006: stinger_attackdash1_1
+    21300008: stinger_attackdash1_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -84,77 +85,88 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lancedrive_trail-Sheet_0
+      name: stinger_attackdash1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 6
-        width: 253
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 24
+        width: 12
+        height: 12
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3cb21c57ba52c343a9d3583a11828d9
+      spriteID: 7d1712e8008213e41815de36f9e9ca32
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lancedrive_trail-Sheet_1
+      name: stinger_attackdash1_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 253
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 12
+        width: 12
+        height: 12
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbd463e0e19e8f041aabb14a2e6e57be
+      spriteID: c11fe5846eed2ab4bb10803b563ffb2c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lancedrive_trail-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2
-        width: 253
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27bfd0c68f5970c4fa1a90f5e3c0e0c8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lancedrive_trail-Sheet_3
+      name: stinger_attackdash1_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 253
-        height: 2
+        width: 12
+        height: 12
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96db064107505a34b925910238925162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_attackdash1_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 24
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,7 +174,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6c5bf48b2ba9d44999233c4dae8691
+      spriteID: 60b6aed14255ae64095ed4e10e5b9ec2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_attackdash1_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a5001fb8568ad44bab2f17384388af8
       vertices: []
       indices: 
       edges: []
@@ -170,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8dfe1bb4edf601a4a8959beb170f3964
+    spriteID: 44ed25249b5b53e47a5a539485d7c477
     vertices: []
     indices: 
     edges: []

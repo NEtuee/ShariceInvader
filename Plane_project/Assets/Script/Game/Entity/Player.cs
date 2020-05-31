@@ -13,7 +13,6 @@ public class Player : PlaneBase {
 	private CameraControll _cam;
 	private Vector3 _controllPoint;
 	private Vector3 _dodgeStartPos;
-	private Transform[] _checker = new Transform[3];
 
 	private Transform _miniMapHeightIcon;
 	private TextMesh _angleCount;
@@ -31,14 +30,6 @@ public class Player : PlaneBase {
 
 		SetSpriteSet("Player_New",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.05f,.05f,_position));
-
-		for(int i = 0; i < 3; ++i)
-		{
-			
-			_checker[i] = new GameObject("checker"+i).transform;
-			_checker[i].gameObject.AddComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("circle_" + i);
-		}
-
 
 		_cam = CameraControll.instance;
 
@@ -123,11 +114,6 @@ public class Player : PlaneBase {
 			}
 		}
 
-		_checker[0].position = _position + _direction;
-		_checker[1].position = _position + _controllPoint;
-		_checker[2].position = _position + _velocity.normalized;
-
-
 		if(cuttingCurveTimer != 0f)
 		{
 			cuttingCurveTimer -= deltaTime;
@@ -191,7 +177,7 @@ public class Player : PlaneBase {
 			{
 				Timer.SetTimeScale(0.1f);
 			
-				Vector3 mouse = ControllerEx.GetInstance().centerAxis;
+				Vector3 mouse = _direction;
 				if(weaponInven.immedyActiveSpecAttack)
 				{
 					weaponInven.DriveAttack(mouse);
@@ -206,7 +192,7 @@ public class Player : PlaneBase {
 		{
 			if(weaponInven.gagueExist)
 			{
-				Vector3 mouse = ControllerEx.GetInstance().centerAxis;
+				Vector3 mouse = _direction;
 				if(!weaponInven.immedyActiveSpecAttack)
 				{
 					if(weaponInven.DriveAttack(mouse))

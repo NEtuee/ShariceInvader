@@ -113,6 +113,9 @@ public abstract class WeaponBase
     {
 
     }
+
+    public virtual void DriveOn(){}
+
     public void SetTarget(PlaneBase plane) {_plane = plane;}
 
     public virtual void PropelRelase()

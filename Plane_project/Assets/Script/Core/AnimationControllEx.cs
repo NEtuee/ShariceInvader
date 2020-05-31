@@ -63,11 +63,11 @@ public class AnimationControllEx
 		}
 	}
 
-	public bool ChangeAni(string name, bool lp)
+	public bool ChangeAni(string name, bool lp, bool overlapCheck = true)
 	{
 		if(animations.ContainsKey(name))
 		{
-			if(_currAni == animations[name] && lp)
+			if(_currAni == animations[name] && lp && overlapCheck)
 			{
 				return false;
 			}	
@@ -176,7 +176,16 @@ public class AnimationControllEx
 				savePath += "/";
 			}
 				
-        	string pathName =  "Sprites/SpriteSet/" + ResourceManager.spriteSetFolder[type] + savePath + file + "_Ani";
+        	string pathName = "";
+
+			if(type < 3)
+			{
+				pathName =  "Sprites/SpriteSet/" + ResourceManager.spriteSetFolder[type] + savePath + file + "_Ani";
+			}
+			else
+			{
+				pathName =  "Sprites/" + ResourceManager.spriteSetFolder[type] + savePath + file + "_Ani";
+			}
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 

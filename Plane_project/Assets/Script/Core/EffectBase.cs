@@ -31,11 +31,12 @@ public class EffectBase : Drawable {
 	{
 		base.firstSetting();
 		ani = new AnimationControllEx(_sprRenderer);
+		_sprRenderer.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
 
 		SetSortingOrder(-1);
 	}
 
-	public EffectBase Active(Vector2 pos, string path, int type, bool loop = false,ObjectBase t = null)
+	public EffectBase Active(Vector2 pos, string path, int type, bool loop = false,ObjectBase t = null, bool startPlay = true)
 	{
 		_eulerAngle = 0f;
 		_direction = Vector3.zero;
@@ -51,9 +52,14 @@ public class EffectBase : Drawable {
 		_position = pos;
 		_animationProgress = true;
 		ani.SetAnimation(ani.LoadAnimationToPath(path, type));
-		ani.SetAnimationSprite(0);
-		ani.InitValue(loop);
 
+		if(startPlay)
+			Play(loop);
+		else
+		{
+			ani.SetAnimationSprite(0);
+			ani.Stop();
+		}
 		SetSortingOrder(-1);
 
 		UpdateTransform();
@@ -134,6 +140,12 @@ public class EffectBase : Drawable {
 		timer = t;
 
 		return this;
+	}
+
+	public void Play(bool loop)
+	{
+		ani.SetAnimationSprite(0);
+		ani.InitValue(loop);
 	}
 
 	public override void initialize()

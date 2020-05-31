@@ -98,6 +98,7 @@ public class WeaponInventory
 
     public void DriveOn()
     {
+        _currWeapon.DriveOn();
         MainHud.instance.MainUIAni("DriveOn");
     }
 

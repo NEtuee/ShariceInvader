@@ -8,6 +8,10 @@ public class Weapon_Lancer : WeaponBase
     private float _mainSpeed;
     private Vector3 _dodgeStartPos;
 
+    private EffectBase _uiArrow;
+    private EffectBase _backUi;
+    private EffectBase _driveArrow;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -58,6 +62,8 @@ public class Weapon_Lancer : WeaponBase
 			_plane.SetBodyAttack(5);
         }
 
+        UiUpdate();
+
     }
     public override void MainAttack()
     {
@@ -74,6 +80,9 @@ public class Weapon_Lancer : WeaponBase
 
         _plane.BurstActive();
 
+        _uiArrow.Play(false);
+        _backUi.Play(false);
+
 
 
         _attackTime = .18f;
@@ -84,14 +93,21 @@ public class Weapon_Lancer : WeaponBase
     }
     public override bool SpecialAttack(Vector3 dir)
     {
-        _dodgeStartPos = _plane.position;
+        _uiArrow.sprRenderer.enabled = true;
+        _backUi.sprRenderer.enabled = true;
 
-		EffectManager.GetInstance().AddEffect(_dodgeStartPos + dir * (_plane._dodgeDist / 2f),"Weapon/Lancer/Drive")
-									.SetAngle(MathEx.directionToAngle(dir));
+        float da = _driveArrow.angle;
+        _driveArrow.SetActive(false);
+        _driveArrow = null;
+
+        _dodgeStartPos = _plane.position;
 
         Vector3 pos = _plane.position;
 		
-		_plane.SetPosition(pos + dir * (_plane._dodgeDist - .3f));
+		_plane.SetPosition(pos + dir * (_plane._dodgeDist - .2f));
+        EffectManager.GetInstance().AddEffect(_plane.position - dir * 0.3f,"Weapon/Lancer/Drive")
+                                    .RealTimeProgress()
+									.SetAngle(MathEx.directionToAngle(dir));
 
         Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
         var list = CollisionManager.GetInstance().GetCollisionList(t);
@@ -120,8 +136,40 @@ public class Weapon_Lancer : WeaponBase
         _plane.SpriteDisapear(0.1f);
         CameraControll.instance.FollowDelay(0.5f);
 
+        EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DriveArrow/End",false,_plane,1)
+                        .RealTimeProgress()
+                        .SetAddPoint(_plane.direction * 0.25f)
+                        .SetAngle(da);
+
+
         return false;
     }
+
+    public void UiUpdate()
+    {
+        _uiArrow.SetAngle(_plane.angle);
+        _uiArrow.SetPosition(_plane.position + _plane.direction * 0.35f);
+
+        _backUi.SetAngle(_plane.angle);
+        _backUi.SetPosition(_plane.position - _plane.direction * 0.25f);
+
+        if(_driveArrow != null)
+        {
+            _driveArrow.SetAngle(_plane.angle);
+            _driveArrow.SetPosition(_plane.position + _plane.direction * 0.25f);
+        }
+    }
+
+    public override void DriveOn()
+    {
+        _driveArrow = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DriveArrow/Start",false,null,1);
+        _driveArrow.PassiveDeactive();
+        _driveArrow.RealTimeProgress();
+
+        _uiArrow.sprRenderer.enabled = false;
+        _backUi.sprRenderer.enabled = false;
+    }
+
     public override bool CollisionCheck(PlaneBase target)
     {
         if(mainAttack)
@@ -145,7 +193,19 @@ public class Weapon_Lancer : WeaponBase
         foreach(var ani in _plane._boostAni)
         {
             ani.CopyAnimation("Burst","Effects/Weapon/Lancer/Burst");
+            ani.CopyAnimation("Loop","Effects/Weapon/Lancer/Loop");
+
+            if(ani.currAni == "Loop")
+                ani.ChangeAni("Loop",true,false);
         }
+
+        _uiArrow = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DirectionArrow",false,null,1,false);
+        _uiArrow.PassiveDeactive();
+        _uiArrow.RealTimeProgress();
+
+        _backUi = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/Back",false,null,3,false);
+        _backUi.PassiveDeactive();
+        _backUi.RealTimeProgress();
 
         MainHud.instance.MainUIAniSwap("Change",null);
         MainHud.instance.MainUIAniSwap("MainAttack",null);
@@ -165,10 +225,22 @@ public class Weapon_Lancer : WeaponBase
 		_plane.SetImmortal(false);
 		_plane.SetBodyAttack(5);
         _plane.coll.bound.SetRect(.05f,.05f);
+        
+        _uiArrow.SetActive(false);
+        _uiArrow.sprRenderer.enabled = true;
+        _backUi.SetActive(false);
+        _backUi.sprRenderer.enabled = true;
+
+        if(_driveArrow != null)
+            _driveArrow.SetActive(false);
 
         foreach(var ani in _plane._boostAni)
         {
             ani.CopyAnimation("Burst",ani.aniOriginPath["Burst"]);
+            ani.CopyAnimation("Loop",ani.aniOriginPath["Loop"]);
+
+            if(ani.currAni == "Loop")
+                ani.ChangeAni("Loop",true,false);
         }
     }
 

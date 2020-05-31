@@ -49,9 +49,9 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		GetParticleSystems();
 	}
 
-	public EffectBase AddEffect(Vector2 pos, string ef, bool loop = false, ObjectBase target = null, int type = 1)
+	public EffectBase AddEffect(Vector2 pos, string ef, bool loop = false, ObjectBase target = null, int type = 1,bool startPlay = true)
 	{
-		return _cache.ActiveObject().Active(pos,ef,type,loop,target);
+		return _cache.ActiveObject().Active(pos,ef,type,loop,target,startPlay);
 	}
 
 	public EffectBase AddEffect(Vector2 pos, Sprite sprite, float timer, ObjectBase target = null)

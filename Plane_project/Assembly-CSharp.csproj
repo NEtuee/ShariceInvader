@@ -167,6 +167,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Electric\Electric_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\Start\Start_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Open\Open_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Burst\Burst_Ani.txt" />
@@ -175,7 +176,6 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Disappear\Disappear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Apear\Apear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\0\0_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Drive\Drive_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
@@ -186,6 +186,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
      <None Include="Assets\Script\Shader\ComboCount.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\End\End_Ani.txt" />
      <None Include="Assets\Script\Shader\AnalogGlitch.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleExplosion\CircleExplosion_Ani.txt" />
@@ -193,14 +194,17 @@
      <None Include="Assets\Script\Shader\BezierTrail.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\charge\charge_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\1\1_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Drive\Drive_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Laser\Laser_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Base\Base_Plane.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\CuttingCurveCuttingCurve_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\WeaponChangeWeaponChange_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Disapear\Disapear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Explode\Explode_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineOpening\spineOpening_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Appear\Appear_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DirectionArrow\DirectionArrow_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Fire\Fire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\WeaponChange\WeaponChange_Ani.txt" />
@@ -213,6 +217,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\1\1_Ani.txt" />
      <None Include="Assets\Script\Shader\SpriteNormalLight.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Explosion\Explosion_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleRange\CircleRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\2\2_Ani.txt" />
