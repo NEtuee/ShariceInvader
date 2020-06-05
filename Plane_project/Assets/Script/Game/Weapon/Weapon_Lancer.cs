@@ -65,10 +65,10 @@ public class Weapon_Lancer : WeaponBase
         UiUpdate();
 
     }
-    public override void MainAttack()
+    public override bool MainAttack()
     {
         if(mainAttack)
-            return;
+            return true;
 
         if(_aimTarget != null)
         {
@@ -90,10 +90,11 @@ public class Weapon_Lancer : WeaponBase
 		mainAttack = true;
 		_plane.SetControll(true);
         _plane.SetImmortal(true);
+
+        return true;
     }
     public override bool SpecialAttack(Vector3 dir)
     {
-        _uiArrow.sprRenderer.enabled = true;
         _backUi.sprRenderer.enabled = true;
 
         float da = _driveArrow.angle;
@@ -107,6 +108,7 @@ public class Weapon_Lancer : WeaponBase
 		_plane.SetPosition(pos + dir * (_plane._dodgeDist - .2f));
         EffectManager.GetInstance().AddEffect(_plane.position - dir * 0.3f,"Weapon/Lancer/Drive")
                                     .RealTimeProgress()
+                                    .SetDisableEvent(ApearArrow)
 									.SetAngle(MathEx.directionToAngle(dir));
 
         Define.ObjectType t = _plane.type == Define.ObjectType.enemy ? Define.ObjectType.player : Define.ObjectType.enemy;
@@ -143,6 +145,11 @@ public class Weapon_Lancer : WeaponBase
 
 
         return false;
+    }
+
+    public void ApearArrow()
+    {
+        _uiArrow.sprRenderer.enabled = true;
     }
 
     public void UiUpdate()
@@ -209,6 +216,7 @@ public class Weapon_Lancer : WeaponBase
 
         MainHud.instance.MainUIAniSwap("Change",null);
         MainHud.instance.MainUIAniSwap("MainAttack",null);
+        MainHud.instance.MainUIAniSwap("Boost",null);
         MainHud.instance.MainUIAniSwap("DriveOn",null);
         MainHud.instance.MainUIAniSwap("DriveAttack",null);
     }

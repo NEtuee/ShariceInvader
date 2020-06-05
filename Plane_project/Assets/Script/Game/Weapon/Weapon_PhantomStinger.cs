@@ -63,7 +63,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
         //UpdateAim();
     }
-    public override void MainAttack()
+    public override bool MainAttack()
     {
         if(_aim)
         {
@@ -72,10 +72,16 @@ public class Weapon_PhantomStinger : WeaponBase
 
             Timer.SetTimeScale(0.2f);
             mainAttack = true;
+
+            _aimAni.ChangeAni("Lock",false);
+
+            return true;
         }
         else
         {
             _plane.BurstActive();
+
+            return false;
         }
     }
 
@@ -87,6 +93,9 @@ public class Weapon_PhantomStinger : WeaponBase
             mainAttack = false;
             return;
         }
+
+        EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Shot").SetSortingOrder(10);
+
         _mainTimer = mainCoolTime;
         mainAttack = false;
         //_plane._rotateLock = true;
@@ -113,6 +122,8 @@ public class Weapon_PhantomStinger : WeaponBase
 
         FindMultipleTarget(1.5f,120f);
 
+        _aimObject.gameObject.SetActive(false);
+
         int count = 0;
 
         if(_multiTarget.Count != 0)
@@ -121,7 +132,7 @@ public class Weapon_PhantomStinger : WeaponBase
             {
                 count = i >= _multiTarget.Count ? 0 : i;
                 Vector3 pos = _multiTarget[count].position;
-                var effect = EffectManager.GetInstance().AddEffect(pos,"PhantomString_Aim/Appear",false,_multiTarget[count])
+                var effect = EffectManager.GetInstance().AddEffect(pos,"PhantomString_Aim/LockOn",false,_multiTarget[count])
                             .RealTimeProgress()
                             .PassiveDeactive()
                             .DelayApear(i * 0.06f);
@@ -159,7 +170,7 @@ public class Weapon_PhantomStinger : WeaponBase
         foreach(var effect in _aimEffects)
         {
             effect.SetActive(false);
-            EffectManager.GetInstance().AddEffect(effect.position,"PhantomString_Aim/Disappear").SetSortingOrder(10);
+            EffectManager.GetInstance().AddEffect(effect.position,"PhantomString_Aim/Shot").SetSortingOrder(10);
         }
 
         _aimEffects.Clear();
@@ -211,10 +222,11 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         InitAimObject();
 
-        MainHud.instance.MainUIAniSwap("Change",null);
-        MainHud.instance.MainUIAniSwap("MainAttack",null);
-        MainHud.instance.MainUIAniSwap("DriveOn",null);
-        MainHud.instance.MainUIAniSwap("DriveAttack",null);
+        MainHud.instance.MainUIAniSwap("Change","Weapon/PS",3);
+        MainHud.instance.MainUIAniSwap("MainAttack","Weapon/PS",3);
+        MainHud.instance.MainUIAniSwap("Boost","Weapon/PS",3);
+        MainHud.instance.MainUIAniSwap("DriveOn","Weapon/PS",3);
+        MainHud.instance.MainUIAniSwap("DriveAttack","Weapon/PS",3);
     }
 
 

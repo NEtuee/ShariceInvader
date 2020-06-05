@@ -20,7 +20,12 @@ public class Player : PlaneBase {
 	int a = 0;
 
 	bool cuttingCurve = true;
+	bool _hpRegen = false;
+	bool _driveCheck = false;
+
 	float cuttingCurveTimer = 0f;
+
+	float _regenTimer = 0f;
 
 	public override void firstSetting()
 	{
@@ -96,7 +101,7 @@ public class Player : PlaneBase {
 			weaponInven.GagueProgress(deltaTime);
 		}
 
-		if(ControllerEx.GetInstance().KeyDown("WeaponChange"))
+		if(ControllerEx.GetInstance().KeyDown("WeaponChange") && !_driveCheck)
 		{
 			weaponInven.WeaponChange();
 		}
@@ -129,12 +134,35 @@ public class Player : PlaneBase {
 			}
 		}
 
+		if(_regenTimer != 0f)
+		{
+			_regenTimer -= deltaTime;
+			if(_regenTimer <= 0f)
+			{
+				_regenTimer = 0f;
+				_hpRegen = true;
+			}
+		}
+
+		if(_hpRegen)
+		{
+			ChangeHp(1);
+
+			if(_hp == maxHp)
+				_regenTimer = 0f;
+			else
+				_regenTimer = 0.1f;
+
+			_hpRegen = false;
+		}
+
 
 		BulletManager.GetInstance().CollisionCheck(this,BulletType.enemy);
 		HeightIconUpdate();
 		MainHud.instance.UpdateScaleBar(-ObjectManager.GetInstance()._place.GetPosPercentage(_position).x);
 
 	}
+
 
 	public override void WhenDecreaseHP(int d)
 	{
@@ -143,6 +171,9 @@ public class Player : PlaneBase {
 			_cam.Zoom(2.9f);
 			_cam.Glitch(0.2f);
 			Timer.SetTimeScaleTimer(0f,0.09f);
+
+			_regenTimer = 3f;
+			_hpRegen = false;
 		}
 		else
 		{
@@ -173,6 +204,8 @@ public class Player : PlaneBase {
 	{
 		if(ControllerEx.GetInstance().KeyDown("DriveAttack"))
 		{
+			_driveCheck = true;
+
 			if(weaponInven.gagueExist)
 			{
 				Timer.SetTimeScale(0.1f);
@@ -188,8 +221,10 @@ public class Player : PlaneBase {
 				}
 			}
 		}
-		else if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
+		else if(ControllerEx.GetInstance().KeyUp("DriveAttack") && _driveCheck)
 		{
+			_driveCheck = false;
+
 			if(weaponInven.gagueExist)
 			{
 				Vector3 mouse = _direction;
@@ -216,7 +251,7 @@ public class Player : PlaneBase {
 		{
 			_speed = .4f;
 
-			if(weaponInven.mainCooldown == 0f)
+			if(weaponInven.mainCooldown == 0f && !_driveCheck)
 			{
 				weaponInven.MainAttack();
 

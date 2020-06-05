@@ -41,7 +41,7 @@ public abstract class WeaponBase
     protected float _driveAttackGague;
 
     protected static SpriteRenderer _aimObject = null;
-	private static AnimationControllEx _aimAni;
+	protected static AnimationControllEx _aimAni;
 
     public virtual void Initialize()
     {
@@ -60,11 +60,11 @@ public abstract class WeaponBase
             if(_aimTarget != null && !_hideAimObject)
 		    {
 		    	_aimObject.transform.position = _aimTarget.position;
-		    	_aimAni.AnimationProgress(deltaTime);
+		    	_aimAni.AnimationProgress(Timer.noneScaledDeltaTime);
 		    }
         }
     }
-    public abstract void MainAttack();
+    public abstract bool MainAttack();
     public abstract bool SpecialAttack(Vector3 dir);
     public abstract bool CollisionCheck(PlaneBase target);
 
@@ -153,7 +153,7 @@ public abstract class WeaponBase
 
         if(!_hideAimObject && _aimTarget != null && _aimTarget != target)
         {
-            EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Disappear").SetSortingOrder(10);
+            EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Miss").SetSortingOrder(10);
         }
 
 		if(target != null)
@@ -263,11 +263,12 @@ public abstract class WeaponBase
 		    _aimObject.sortingOrder = 10;
             _aimAni = new AnimationControllEx(_aimObject);
 		    _aimAni.AddAnimation("On","Effects/PhantomString_Aim/Appear");
+            _aimAni.AddAnimation("Lock","Effects/PhantomString_Aim/LockOn");
            // _aimObject.transform.SetParent(_plane.transform);
         }
         else
         {
-            _aimObject.gameObject.SetActive(true);
+            _aimObject.gameObject.SetActive(false);
         }
 
         _canAim = true;

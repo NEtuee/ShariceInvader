@@ -37,7 +37,7 @@ public class Weapon_Test : WeaponBase
 			_plane.SetBodyAttack(5);
         }
     }
-    public override void MainAttack()
+    public override bool MainAttack()
     {
         // _plane.BurstActive();
 
@@ -80,12 +80,13 @@ public class Weapon_Test : WeaponBase
             EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/EnergyBurst",false)
                                 .SetSortingOrder(1);
             //Timer.SetTimeScaleTimer(0.3f,0.5f,true);
+            return true;
         }
         else
         {
             _plane.BurstActive();
+            return false;
         }
-
 		//_plane.SetControll(true);
     }
     public override bool SpecialAttack(Vector3 dir)
@@ -131,10 +132,11 @@ public class Weapon_Test : WeaponBase
 
     public override void Change()
     {
-        MainHud.instance.MainUIAniSwap("Change",null);
-        MainHud.instance.MainUIAniSwap("MainAttack",null);
-        MainHud.instance.MainUIAniSwap("DriveOn",null);
-        MainHud.instance.MainUIAniSwap("DriveAttack",null);
+        MainHud.instance.MainUIAniSwap("Change","Weapon/Pulse/Change",3);
+        MainHud.instance.MainUIAniSwap("MainAttack","Weapon/Pulse/Attack",3);
+        MainHud.instance.MainUIAniSwap("Boost","Weapon/Pulse/Boost",3);
+        MainHud.instance.MainUIAniSwap("DriveOn","Weapon/Pulse/DriveOn",3);
+        MainHud.instance.MainUIAniSwap("DriveAttack","Weapon/Pulse/DriveEnd",3);
     }
 
     public override bool CollisionCheck(PlaneBase target)

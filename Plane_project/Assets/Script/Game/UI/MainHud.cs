@@ -5,9 +5,12 @@ using UnityEngine;
 public class MainHud : SingletonMono<MainHud>
 {
     public SpriteRenderer wpIcon;
-    public SpriteRenderer gague;
+    public SpriteRenderer[] weaponGagues;
     public SpriteRenderer hpBar;
     public SpriteRenderer mainUI;
+
+    public GameObject hpContainer;
+    public SpriteRenderer[] weaponGagueContainer;
 
     public Transform mainUITransform;
 
@@ -15,7 +18,7 @@ public class MainHud : SingletonMono<MainHud>
 
     public Sprite nullUI;
 
-    private Material gagueMat;
+    private Material[] gagueMats;
     private Material hpMat;
 
     private LineRenderer _distLine;
@@ -25,12 +28,20 @@ public class MainHud : SingletonMono<MainHud>
 
     protected AnimationControllEx _uiAni;
 
+    private float _hpBarDisapear = 0f;
+    private int _currWeapon;
+
 
     void Awake()
     {
         SetSingleton(this);
-        gagueMat = gague.material;
-        gagueMat.SetFloat("_Progress",1f);
+
+        gagueMats = new Material[weaponGagues.Length];
+        for(int i = 0; i < weaponGagues.Length; ++i)
+        {
+            gagueMats[i] = weaponGagues[i].material;
+            gagueMats[i].SetFloat("_Progress",1f);
+        }
 
         hpMat = hpBar.material;
         hpMat.SetFloat("_Progress",1f);
@@ -46,6 +57,7 @@ public class MainHud : SingletonMono<MainHud>
 
 
         _uiAni.AddEmptyAnimation("MainAttack");
+        _uiAni.AddEmptyAnimation("Boost");
         _uiAni.AddEmptyAnimation("DriveOn");
         _uiAni.AddEmptyAnimation("DriveAttack");
         _uiAni.AddEmptyAnimation("Change");
@@ -67,20 +79,68 @@ public class MainHud : SingletonMono<MainHud>
         Vector3 velo = _followTarget.velocity;
         Vector3 dir = -(velo.magnitude > 1f ? velo.normalized : velo);
 
-        _uiAni.AnimationProgress(deltaTime);
+        _uiAni.AnimationProgress(Timer.noneScaledDeltaTime);
         
         transform.position = _followTarget.position + dir * 0.1f;
         mainUITransform.transform.position = _followTarget.position + dir * 0.12f;
+
+        if(_hpBarDisapear != 0f)
+        {
+            _hpBarDisapear -= deltaTime;
+            if(_hpBarDisapear <= 0f)
+            {
+                _hpBarDisapear = 0f;
+                hpContainer.SetActive(false);
+            }
+        }
+
+        WeaponGaguePositionUpdate(deltaTime);
     }
 
-    public void UpdateGague(float g)
+    public void WeaponGaguePositionUpdate(float deltaTime)
     {
-        gagueMat.SetFloat("_Progress",g);
+        for(int i = 0; i < weaponGagueContainer.Length; ++i)
+        {
+            if(i != _currWeapon)
+            {
+                var scale = weaponGagueContainer[i].transform.localScale;
+                weaponGagueContainer[i].transform.localScale = Vector3.Lerp(scale,new Vector3(1f,0.15f,1f),0.2f);
+            }
+            else
+            {
+                var scale = weaponGagueContainer[i].transform.localScale;
+                weaponGagueContainer[i].transform.localScale = Vector3.Lerp(scale,new Vector3(1f,1f,1f),0.2f);
+            }
+
+            if(i > 0)
+            {
+                float pos = weaponGagueContainer[i - 1].bounds.min.y;
+                pos -= 0.03f;// * weaponGagueContainer[i - 1].transform.localScale.y;
+                weaponGagueContainer[i].transform.position = new Vector3(weaponGagueContainer[i - 1].transform.position.x,pos,0f);
+            }
+        }
+    }
+
+    public void SetCurrWeapon(int val) {_currWeapon = val;}
+
+    public void UpdateGague(float g,int target)
+    {
+        gagueMats[target].SetFloat("_Progress",g);
     }
 
     public void UpdateHpBar()
     {
         hpMat.SetFloat("_Progress",(float)_followTarget._hp / (float)_followTarget.maxHp);
+        if(_followTarget._hp == _followTarget.maxHp)
+        {
+            if(_hpBarDisapear == 0f && hpContainer.activeInHierarchy)
+                _hpBarDisapear = 1f;
+        }
+        else
+        {
+            _hpBarDisapear = 0f;
+            hpContainer.SetActive(true);
+        }
     }
 
     public void UpdateScaleBar(float val)
@@ -91,9 +151,13 @@ public class MainHud : SingletonMono<MainHud>
     public void MainUIAni(string name,bool loop = false)
     {
         if(_uiAni.AnimationExist(name))
+        {
             _uiAni.ChangeAni(name,loop);
+        }
         else
-            _uiAni.Stop();
+        {
+            _uiAni.SetSpriteNull();
+        }
     }
 
     public void MainUIAniSwap(string name, string path, int type)
@@ -110,7 +174,7 @@ public class MainHud : SingletonMono<MainHud>
     {
         wpIcon.sprite = icon;
         //mainUI.sprite = ui == null ? nullUI : ui;
-
+        _uiAni.Stop();
         MainUIAni("Change");
     }
 

@@ -217,24 +217,25 @@ public class AnimationControllEx
 		return key;
 	}
 
-	public static void LoadAnimation(string path)
+	public static void LoadAnimation(string path, int type = 0)
 	{
 		AnimationKey[] key;
 
 		if(!loadedAnimations.ContainsKey(path))
 		{
-			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
+			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path,type);
 			if(sprites == null)
 				return;
 
         	string file = path.Substring(path.LastIndexOf('/'));
-        	string pathName =  "Sprites/SpriteSet/" + path + file + "_Ani";
+        	string pathName =  (type < 3 ? "Sprites/SpriteSet/" : "Sprites/") + ResourceManager.spriteSetFolder[type] + path + file + "_Ani";
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 
         	if(data == null)
         	{
 				Debug.Log(path + " : " + "??");
+				Debug.Log(pathName);
         	    CreateAnimationRef(pathName,0.08333f,sprites.Length);
         	}
 
@@ -294,7 +295,11 @@ public class AnimationControllEx
 	{
 		if(_currAni != null)
 			_sprRenderer.sprite = _currAni[pos].sprite;
+		else
+			_sprRenderer.sprite = null;
 	}
+
+	public void SetSpriteNull() {_sprRenderer.sprite = null;}
 
     public static void CreateAnimationRef(string n, float time, int count)
     {

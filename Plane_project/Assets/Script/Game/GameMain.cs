@@ -49,6 +49,14 @@ public class GameMain : MonoBehaviour {
 
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Loop");
+
+		AnimationControllEx.LoadAnimation("Weapon/Pulse/Attack",3);
+		AnimationControllEx.LoadAnimation("Weapon/Pulse/DriveOn",3);
+		AnimationControllEx.LoadAnimation("Weapon/Pulse/DriveEnd",3);
+		AnimationControllEx.LoadAnimation("Weapon/Pulse/Boost",3);
+		AnimationControllEx.LoadAnimation("Weapon/Pulse/Change",3);
+
+		AnimationControllEx.LoadAnimation("Weapon/PS",3);
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		obj.SetPositionEm(new Vector3(1f,5f));

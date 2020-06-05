@@ -52,6 +52,7 @@ public class EffectBase : Drawable {
 		_position = pos;
 		_animationProgress = true;
 		ani.SetAnimation(ani.LoadAnimationToPath(path, type));
+		_sprRenderer.enabled = true;
 
 		if(startPlay)
 			Play(loop);
@@ -93,6 +94,7 @@ public class EffectBase : Drawable {
 
 		_position = pos;
 		_sprRenderer.sprite = sprite;
+		_sprRenderer.enabled = true;
 		_animationProgress = false;
 
 		_realTimeProgress = false;

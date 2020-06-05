@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: 4d8a70cae6dbc8541970c8dddc285b9e
+guid: eb342fd77622d9840877af445196944b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: center_phantomaim_disappear_0
-    21300002: center_phantomaim_disappear_1
+    21300000: stinger_aimready_0
+    21300002: stinger_aimready_1
+    21300004: stinger_aimready_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -97,41 +98,61 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: center_phantomaim_disappear_0
+      name: stinger_aimready_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 41
-        height: 60
-      alignment: 9
-      pivot: {x: 0.488, y: 0.5}
+        y: 40
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d021c7cac110cc40aeee0c4283e2c13
+      spriteID: 45b53108846f18047806dac6e549da10
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: center_phantomaim_disappear_1
+      name: stinger_aimready_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 0
-        width: 41
-        height: 60
-      alignment: 9
-      pivot: {x: 0.488, y: 0.5}
+        x: 36
+        y: 40
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fffd69eaab6ba154ca76ee3b2a517786
+      spriteID: c22f1f4b367ef614b99257a5638f8d88
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_aimready_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 140082bbac074e841924b6ceffbd5c3f
       vertices: []
       indices: 
       edges: []
@@ -139,7 +160,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 667c85f0266a48049af37adbf4c7994c
+    spriteID: 304ca8fe3000ea24182f6c3b7dae7660
     vertices: []
     indices: 
     edges: []

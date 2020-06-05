@@ -59,6 +59,8 @@ public class WeaponInventory
         ++pos;
         pos = pos >= _weaponList.Count ? 0 : pos;
         WeaponChange(pos);
+
+        MainHud.instance.SetCurrWeapon(pos);
     }
 
     public void WeaponProgress(float deltaTime)
@@ -75,9 +77,10 @@ public class WeaponInventory
         {
             if(_currWeapon.DecreaseMainGague())
             {
-                _currWeapon.MainAttack();
-                MainHud.instance.MainUIAni("MainAttack");
-                GagueUpdate();
+                if(_currWeapon.MainAttack())
+                    MainHud.instance.MainUIAni("MainAttack");
+                else
+                    MainHud.instance.MainUIAni("Boost");
             }
         }
     }
@@ -88,7 +91,6 @@ public class WeaponInventory
         {
             if(_currWeapon.DecreaseDriveGague())
             {
-                GagueUpdate();
                 MainHud.instance.MainUIAni("DriveAttack");
                 return _currWeapon.SpecialAttack(dir);
             }
@@ -104,7 +106,10 @@ public class WeaponInventory
 
     public void GagueUpdate()
     {
-        MainHud.instance.UpdateGague(_currWeapon.GetWeaponGaguePercentage());
+        for(int i = 0; i < _weaponList.Count; ++i)
+        {
+            MainHud.instance.UpdateGague(_weaponList[i].weapon.GetWeaponGaguePercentage(),i);
+        }
     }
 
     public void GagueProgress(float deltaTime)
@@ -114,9 +119,10 @@ public class WeaponInventory
             if(i == pos)
                 continue;
             
-            _weaponList[i].weapon.GagueCharge(deltaTime);
+            _weaponList[i].weapon.GagueCharge(deltaTime * 0.4f);
         }
 
+        GagueUpdate();
     }
 
     public bool CurrWeaponExist() {return _currWeapon != null;}

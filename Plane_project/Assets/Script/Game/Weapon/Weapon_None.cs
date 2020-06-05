@@ -13,9 +13,9 @@ public class Weapon_None : WeaponBase
     {
         
     }
-    public override void MainAttack()
+    public override bool MainAttack()
     {
-        
+        return true;
     }
     public override bool SpecialAttack(Vector3 dir)
     {
