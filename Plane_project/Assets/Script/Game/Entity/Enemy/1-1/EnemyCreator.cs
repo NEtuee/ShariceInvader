@@ -70,6 +70,7 @@ public static class EnemyCreator
         {
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
 			boom.SetPositionEm(_objManager._place.MapPosToWorldPos(mapPos));
+            boom.standPos = boom.position;
         }
     }
 

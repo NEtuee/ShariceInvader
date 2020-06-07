@@ -12,6 +12,8 @@ public class Weapon_Lancer : WeaponBase
     private EffectBase _backUi;
     private EffectBase _driveArrow;
 
+    private EffectBase _attackRange;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -125,7 +127,7 @@ public class Weapon_Lancer : WeaponBase
                 list[i].UpdateCollider();
     
                 if(Define.SimpleCollider.CircleLineCircle(list[i].position,_dodgeStartPos,_plane.position,
-							_plane.coll.bound.box.x * 4f, list[i].coll.bound.box.x))
+							_plane.coll.bound.box.x * 6f, list[i].coll.bound.box.x))
 		        {
                     ((PlaneBase)list[i]).Hit(15,_plane);
 		        }
@@ -142,6 +144,11 @@ public class Weapon_Lancer : WeaponBase
                         .RealTimeProgress()
                         .SetAddPoint(_plane.direction * 0.25f)
                         .SetAngle(da);
+
+        _attackRange.SetActive(false);
+        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/MainRange",false,null,3);
+        _attackRange.PassiveDeactive();
+        _attackRange.RealTimeProgress();
 
 
         return false;
@@ -160,6 +167,9 @@ public class Weapon_Lancer : WeaponBase
         _backUi.SetAngle(_plane.angle);
         _backUi.SetPosition(_plane.position - _plane.direction * 0.25f);
 
+        _attackRange.SetAngle(_plane.angle);
+        _attackRange.SetPosition(_plane.position + _plane.direction * 0.57f);
+
         if(_driveArrow != null)
         {
             _driveArrow.SetAngle(_plane.angle);
@@ -175,6 +185,11 @@ public class Weapon_Lancer : WeaponBase
 
         _uiArrow.sprRenderer.enabled = false;
         _backUi.sprRenderer.enabled = false;
+
+        _attackRange.SetActive(false);
+        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DriveRange",false,null,3);
+        _attackRange.PassiveDeactive();
+        _attackRange.RealTimeProgress();
     }
 
     public override bool CollisionCheck(PlaneBase target)
@@ -214,6 +229,10 @@ public class Weapon_Lancer : WeaponBase
         _backUi.PassiveDeactive();
         _backUi.RealTimeProgress();
 
+        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/MainRange",false,null,3);
+        _attackRange.PassiveDeactive();
+        _attackRange.RealTimeProgress();
+
         MainHud.instance.MainUIAniSwap("Change",null);
         MainHud.instance.MainUIAniSwap("MainAttack",null);
         MainHud.instance.MainUIAniSwap("Boost",null);
@@ -238,6 +257,8 @@ public class Weapon_Lancer : WeaponBase
         _uiArrow.sprRenderer.enabled = true;
         _backUi.SetActive(false);
         _backUi.sprRenderer.enabled = true;
+
+        _attackRange.SetActive(false);
 
         if(_driveArrow != null)
             _driveArrow.SetActive(false);

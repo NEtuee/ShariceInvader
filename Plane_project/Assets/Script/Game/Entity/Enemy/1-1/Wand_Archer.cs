@@ -24,6 +24,8 @@ public class Wand_Archer : WandsBase
 
         _missile = ResourceManager.GetInstance().GetPrefab("Wand_Missile");
         del = ObjectCreateEvent;
+
+        _mass = 5f;
     }
 
     public override void progress(float deltaTime)
@@ -57,7 +59,7 @@ public class Wand_Archer : WandsBase
         _dir = !_dir;
 
         m.actTime = Random.Range(0.2f,0.7f);
-        m.SetPosition(_position);
+        m.SetPositionEm(_position);
         m.SetDirection(dir);
         //m.SetAdditionalSpeed(1f,m.actTime,true);
         m.AddForce(dir * m.actTime * 6f);

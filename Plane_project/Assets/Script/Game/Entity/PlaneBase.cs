@@ -78,6 +78,7 @@ public abstract class PlaneBase : Collisionable {
 	private float _addSpeedTime = 0f;
 
 	public bool _burst = true;
+	public bool _canBurst = true;
 	protected bool _dodge = true;
 	public bool _rotateLock = false;
 	public bool _directionAngle = false;
@@ -249,7 +250,7 @@ public abstract class PlaneBase : Collisionable {
 
 	public virtual void BurstActive(bool effectActive = true)
 	{
-		SetAdditionalSpeed(2f,0.5f,true);
+		SetAdditionalSpeed(3f,0.5f,true);
 		SetAbsoluteForce((_direction * 150f));
 
 		if(_boostAniProgress)
@@ -473,7 +474,7 @@ public abstract class PlaneBase : Collisionable {
 
 		if(_direction.magnitude != 0)
 		{
-			if(_burst)
+			if(_burst && _canBurst)
 			{
 				BurstActive();
 			}
@@ -503,18 +504,18 @@ public abstract class PlaneBase : Collisionable {
 		FrictionCheck();
 		GravityCheck(deltaTime);
 
-		if(_immortal)
-		{
-			Color col = _sprRenderer.color;
-			col.a = 0.5f;
-			_sprRenderer.color = col;
-		}
-		else
-		{
-			Color col = _sprRenderer.color;
-			col.a = 1f;
-			_sprRenderer.color = col;
-		}
+		// if(_immortal)
+		// {
+		// 	Color col = _sprRenderer.color;
+		// 	col.a = 0.5f;
+		// 	_sprRenderer.color = col;
+		// }
+		// else
+		// {
+		// 	Color col = _sprRenderer.color;
+		// 	col.a = 1f;
+		// 	_sprRenderer.color = col;
+		// }
 
 		UpdateTrails();
 		UpdateBoosts();

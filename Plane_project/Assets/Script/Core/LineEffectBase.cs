@@ -34,7 +34,9 @@ public class LineEffectBase : ObjectBase
         mainLine.startWidth = width;
         mainLine.endWidth = width;
 
-        SetMaterial(ResourceManager.GetInstance().GetMaterial("SpriteDefault"));
+        _lerpWidth = false;
+
+        SetMaterial(ResourceManager.GetInstance().GetMaterial("PixelSnap"));
         SetColor(Color.white);
 
         SetActive(true);
@@ -44,6 +46,7 @@ public class LineEffectBase : ObjectBase
 
     public LineEffectBase SetColor(Color color) {mainLine.startColor = color; mainLine.endColor = color; return this;}
     public LineEffectBase SetMaterial(Material mat) {mainLine.material = mat; return this;}
+    public LineEffectBase SetPosition(Vector3 pos, int point) {mainLine.SetPosition(point,pos); return this;}
     public LineEffectBase SetLerpWidth(float target, float time)
     {
         _widthLerpEnd = target;

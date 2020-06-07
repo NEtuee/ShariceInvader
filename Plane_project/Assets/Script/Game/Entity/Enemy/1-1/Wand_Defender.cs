@@ -16,5 +16,9 @@ public class Wand_Defender : WandsBase
         _spriteAngle = 360f / _dirSprites.Length;
 
         UpdateSprite();
+
+        _mass = 5f;
+
+        maxHp = _hp = 50;
     }
 }

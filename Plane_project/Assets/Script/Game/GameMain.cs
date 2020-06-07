@@ -65,28 +65,6 @@ public class GameMain : MonoBehaviour {
 		_objManager._place.SetMainObject(obj);
 
 		mainHud.Initiailize();
-
-		//_objManager.AddObject<TheMarker>(Define.ObjectType.enemy,"CCTV").SetPosition(_objManager._place.MapPosToWorldPos(new Vector3(0f,5f)));
-
-		//EnemyCreator.ShootingDrone(20,new Vector3(0f,5f));
-
-		//EnemyCreator.BoomDrone(100,new Vector2(2f,5f));
-
-
-		// EnemyCreator.CCTV(5,new Vector3(6f,5f));
-
-		// EnemyCreator.CCTV(5,new Vector3(8f,5f));
-		// EnemyCreator.CCTV(5,new Vector3(10f,5f));
-		// EnemyCreator.CCTV(0,new Vector3(6f,5f));
-		// EnemyCreator.CCTV(0,new Vector3(7f,5f));
-
-		//EnemyCreator.CCTV(5,new Vector3(80f,5f));
-
-		//_objManager.AddObject<CCTV>(Define.ObjectType.enemy,"CCTV").SetPosition(_objManager._place.MapPosToWorldPos(new Vector3(0f,5f)));
-		//EnemyCreator.BoomDrone(50,new Vector3(0f,5f));
-		//EnemyCreator.BoomDrone(50,new Vector3(3f,5f));
-
-		//EnemyCreator.ShootingDrone(10,new Vector3(0f,5f));
 	}
 
 	void Update ()

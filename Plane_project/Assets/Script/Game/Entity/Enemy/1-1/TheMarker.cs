@@ -88,6 +88,10 @@ public class TheMarker : PlaneBase
 
             _headPoints.Add(t);
         }
+
+        _mass = 5f;
+
+        maxHp = _hp = 30;
     }
 
     public override void deleteEvent()
@@ -97,15 +101,16 @@ public class TheMarker : PlaneBase
         
         for(int i = 0; i < _defenders.Count; ++i)
         {
-            _defenders[i].DecreaseHP(100);
+            _defenders[i].Delete();
         }
 
         for(int i = 0; i < _piercers.Count; ++i)
         {
-            _piercers[i].DecreaseHP(100);
+            _piercers[i].Delete();
         }
 
-        _archer.DecreaseHP(100);
+        if(!_archer.deleted)
+            _archer.Delete();
 	}
 
     public override void initialize()
@@ -140,7 +145,7 @@ public class TheMarker : PlaneBase
             _defenderPoints.Add(t);
         }
 
-        for(int i = 0; i < 3; ++i)
+        for(int i = 0; i < 4; ++i)
         {
             var wand = ObjectManager.GetInstance().AddObject<Wand_Piercer>(Define.ObjectType.enemy,"Piercer");
             wand.tp.position = _position;
@@ -176,6 +181,8 @@ public class TheMarker : PlaneBase
         BulletManager.GetInstance().CollisionCheck(this,BulletType.player);
 		BasicUpdate(deltaTime);
 
+        _immortal = _defenders.Count != 0;
+
         if(Input.GetKeyDown(KeyCode.Z))
         {
             Spread();
@@ -197,8 +204,9 @@ public class TheMarker : PlaneBase
         {
             _piercers[i].act = true;
             _piercers[i].transform.SetParent(null);
-            _piercers[i].SetAbsoluteForce(Vector3.zero);
-            
+            _piercers[i].SetDirection(_direction);
+            _piercers[i].AddForce(MathEx.RandomCircle(1f).normalized);
+            //_piercers[i].SetAbsoluteForce(direction * 100f);
         }
     }
 
@@ -210,15 +218,22 @@ public class TheMarker : PlaneBase
             {
                 list.RemoveAt(i);
             }
-            else
+            else if(!list[i].act)
             {
                 float angle = MathEx.clamp360Degree(((_markerAngle * spinDir) + ((360f / list.Count) * i)));
                 points[i].localPosition = new Vector3(x,Mathf.Cos(angle * Mathf.Deg2Rad) * dist,0f);//,new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad),0f, Mathf.Cos(angle * Mathf.Deg2Rad)) * _markerSpread;
                 list[i].targetPos = points[i].position;
                 list[i].mainAngle = MathEx.clamp360Degree(-angle);
-                list[i].SetAngle(_eulerAngle);
-                list[i].SetSortingGroupOrder(angle >= 180f ? -1 : 1);
 
+                list[i].SetAngle(_eulerAngle);
+
+                var hide = angle >= 180f;
+                list[i].SetSortingGroupOrder(hide ? -1 : 1);
+
+                ++i;
+            }
+            else
+            {
                 ++i;
             }
         }

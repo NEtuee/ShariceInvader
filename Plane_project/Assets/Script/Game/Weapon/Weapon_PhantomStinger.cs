@@ -8,7 +8,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     private List<EffectBase> _aimEffects = new List<EffectBase>();
 
-    int _maxTarget = 30;
+    int _maxTarget = 7;
 
     public override void Initialize()
     {
@@ -106,7 +106,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
         CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
 
-        BurstAimDirection(12f,0.08f);
+        BurstAimDirection(15f,0.08f);
 
         Timer.SetTimeScale(1f);
         _aimTarget.Hit(3,_plane);
@@ -194,8 +194,21 @@ public class Weapon_PhantomStinger : WeaponBase
         _plane.SetDirection(ControllerEx.GetInstance().centerAxis);
         _plane.SetAdditionalSpeed(addForce,time,true);
         _plane.SetAbsoluteForce(_plane.direction * 1000f);
-        EffectManager.GetInstance().AddEffect(_plane.position,"Burst")
-							.SetAngle(MathEx.directionToAngle(_plane.direction));
+        var ang = MathEx.directionToAngle(_plane.direction);
+        // EffectManager.GetInstance().AddEffect(_plane.position,"Burst")
+		// 					.SetAngle(ang);
+        
+        EffectManager.GetInstance().AddEffect(_plane.position - _plane.direction * 0.05f,"Weapon/PS/Boost1")
+							.SetAngle(ang)
+                            .SetDirection(-_plane.direction)
+                            .SetSpeed(1f);
+
+        for(int i = 0; i < 3; ++i)
+            EffectManager.GetInstance().AddEffect(_plane.position - _plane.direction * 0.05f + MathEx.RandomCircle(0.1f),"Weapon/PS/Boost2")
+                            .DelayApear(i * 0.03f)
+                            .SetDirection(_plane.direction)
+                            .SetSpeed(Random.Range(0.4f,1.3f));
+
     }
 
     public void HitEffects(Vector3 pos)

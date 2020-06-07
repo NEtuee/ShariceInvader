@@ -101,7 +101,7 @@ public class Player : PlaneBase {
 			weaponInven.GagueProgress(deltaTime);
 		}
 
-		if(ControllerEx.GetInstance().KeyDown("WeaponChange") && !_driveCheck)
+		if(ControllerEx.GetInstance().KeyDown("WeaponChange") && !_driveCheck && !weaponInven.mainAttack)
 		{
 			weaponInven.WeaponChange();
 		}

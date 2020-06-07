@@ -41,8 +41,6 @@ public class WandsBase : PlaneBase
         _maxSpeed = 3.2f; 
         _gravityScale = 0f;
 
-        maxHp = _hp = 0;
-
 
         RegisteCollisionList();
 

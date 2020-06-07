@@ -143,6 +143,7 @@
      <Compile Include="Assets\Script\Game\Weapon\WeaponInventory.cs" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
+     <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\MainRange\MainRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1\AttackHit_1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurve\CuttingCurve_Ani.txt" />
@@ -153,6 +154,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Hit\Hit_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\explosion\explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\EnergyBurst\EnergyBurst_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost1\Boost1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Launch\Launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_0\AttackHit_0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\launch\launch_Ani.txt" />
@@ -170,6 +172,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Appear\Appear_Ani.txt" />
+     <None Include="Assets\Script\Shader\TextureSpriteDefault.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\Start\Start_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\DriveOn\DriveOn_Ani.txt" />
@@ -205,6 +208,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Base\Base_Plane.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Change\Change_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\CuttingCurveCuttingCurve_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\DriveRange\DriveRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\WeaponChangeWeaponChange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Disapear\Disapear_Ani.txt" />
@@ -226,9 +230,11 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\LockOn\LockOn_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\Back\Back_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost2\Boost2_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleRange\CircleRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\2\2_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\New\New_Ani.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/LeeUmin/Desktop/Invader/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
