@@ -87,7 +87,7 @@ public class RayDrone : PlaneBase
             if(_shotTimer <= 0f)
             {
                 Vector3 rand = (_direction + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f))).normalized;
-                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,1,3f)
+                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,"Bullets/Ray",false,3f)
                                                 .NoneDelete()
                                                 .SetAngle(MathEx.directionToAngle(rand));
 
@@ -132,7 +132,7 @@ public class RayDrone : PlaneBase
                 {
                     if(_stayTimer >= 2.5f)
                     {
-                        float dot = Mathf.Cos(Mathf.Deg2Rad * 60f);
+                        float dot = Mathf.Cos(Mathf.Deg2Rad * 40f);
 
                         Vector3 dir = (pos - _position).normalized;
                         if(Vector3.Dot(dir,MathEx.angleToDirection(Mathf.Deg2Rad * angle)) > dot)

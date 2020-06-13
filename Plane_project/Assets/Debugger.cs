@@ -26,6 +26,7 @@ public class Debugger : MonoBehaviour
         objects.Add(6,"ShootingDrone");
         objects.Add(7,"Missile");
         objects.Add(8,"Marker");
+        objects.Add(9,"LaserIndicator");
 
         text.text = objects[pos];
     }
@@ -86,6 +87,9 @@ public class Debugger : MonoBehaviour
             break;
             case 8:
             obj.AddObject<TheMarker>(Define.ObjectType.enemy,"Marker").SetPositionEm(MouseWorldPos());
+            break;
+            case 9:
+            obj.AddObject<LaserIndicator>(Define.ObjectType.enemy,"LaserIndicator").SetPositionEm(MouseWorldPos());
             break;
         }
     }

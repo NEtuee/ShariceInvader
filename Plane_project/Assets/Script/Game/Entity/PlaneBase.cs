@@ -292,11 +292,11 @@ public abstract class PlaneBase : Collisionable {
 
 	public virtual void Hit(BulletBase bullet)
 	{
-		float ang = MathEx.directionToAngle((-bullet.direction));
+		// float ang = MathEx.directionToAngle((-bullet.direction));
 
-		EffectBase effect = EffectManager.GetInstance().AddEffect(_position,"Hit");
-		effect.SetAngle(ang);
-		effect.SetSortingOrder(1);
+		// EffectBase effect = EffectManager.GetInstance().AddEffect(_position,"Hit");
+		// effect.SetAngle(ang);
+		// effect.SetSortingOrder(1);
 
 		Hit(bullet.attack,bullet);
 	}
@@ -357,8 +357,7 @@ public abstract class PlaneBase : Collisionable {
 	{
 		if(CollisionCheck(target))
 		{
-			if(!_immortal)
-				Hit(target);
+			Hit(target);
 			return true;
 		}
 		return false;
@@ -406,6 +405,10 @@ public abstract class PlaneBase : Collisionable {
 
 			WhenDecreaseHP(value);
 		}
+		else
+		{
+			EffectManager.GetInstance().AddEffect(_position,"ImmortalHit",false);
+		}
 	}
 
 	public void ChangeHp(int val) {_hp += val; if(_hp > maxHp) _hp = maxHp; hpChangeEvent();}
@@ -425,19 +428,17 @@ public abstract class PlaneBase : Collisionable {
 		foreach(var trail in _trail)
 		{
 			trail.emitting = _speed != 0f;
-			trail.emitting = trail.emitting ? !_controllLock : false;
-			trail.emitting = trail.emitting ? _trailEmmit : false;
+			trail.emitting = trail.emitting ? (_trailEmmit ? !_controllLock : false) : false;
 		}
 
 		foreach(var ani in _boostAni)
 		{
-			
 			if(_boostAniProgress)
 			{
 				if(ani.AnimationProgress(deltaTime) == -1)
 					if(!ani.ChangeAni("Loop",true))
 						_boostAniProgress = false;
-				ani._sprRenderer.enabled = _speed != 0f;
+				ani._sprRenderer.enabled = _speed != 0f ? !_controllLock : false;
 			}
 			else
 			{
@@ -470,7 +471,6 @@ public abstract class PlaneBase : Collisionable {
 			}
 		}
 
-		//_trail.time = Timer.TimeScaling(_trail.time);
 
 		if(_direction.magnitude != 0)
 		{

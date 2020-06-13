@@ -29,11 +29,11 @@ public class AnimationControllEx
     public SpriteRenderer _sprRenderer;
 
 
-	public void InitValue(bool lp)
+	public void InitValue(bool lp, int pos = 0, float timer = 0f)
 	{
 		_loop = lp;
-		_aniPos = 0;
-		_timer = 0f;
+		_aniPos = pos;
+		_timer = timer;
 		_animationEnd = false;
 	}
 
@@ -45,8 +45,12 @@ public class AnimationControllEx
 
 	public void SetAnimation(string path)
 	{
-
+		if(loadedAnimations.ContainsKey(path))
+		{
+			SetAnimation(loadedAnimations[path]);
+		}
 	}
+
 
 	public bool AnimationExist(string name)
 	{
@@ -63,7 +67,12 @@ public class AnimationControllEx
 		}
 	}
 
-	public bool ChangeAni(string name, bool lp, bool overlapCheck = true)
+	public bool ChangeAniSync(string name, bool lp)
+	{
+		return ChangeAni(name,lp,true,_aniPos,_timer);
+	}
+
+	public bool ChangeAni(string name, bool lp, bool overlapCheck = true, int aniPos = 0, float timer = 0f)
 	{
 		if(animations.ContainsKey(name))
 		{
@@ -85,9 +94,9 @@ public class AnimationControllEx
 			return false;
 		}
 
-        _sprRenderer.sprite = _currAni[0].sprite;
+        _sprRenderer.sprite = _currAni[aniPos].sprite;
 
-		InitValue(lp);
+		InitValue(lp,aniPos,timer);
 
 		return true;
 	}

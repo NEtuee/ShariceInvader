@@ -274,6 +274,15 @@ public abstract class WeaponBase
         _canAim = true;
     }
 
+    public virtual void HitEffect(PlaneBase target)
+    {
+        if(!target.immortal)
+        {
+            EffectManager.GetInstance().AddEffect(target.position,"AttackHit_0").SetAngle(Random.Range(0f,360f));
+		    EffectManager.GetInstance().AddEffect(target.position,"AttackHit_1").SetAngle(Random.Range(0f,360f));
+        }
+    }
+
     public virtual bool CoolDownCheck(ref float timer, float deltaTime)
     {
         if(timer > 0f)

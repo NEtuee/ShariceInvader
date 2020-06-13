@@ -21,7 +21,7 @@ public class BulletManager : Singleton<BulletManager>, Define.IManager {
 	{
 		var res = ResourceManager.GetInstance();
 		GameObject obj = res.GetPrefab("BulletBase");
-		_sprites = res.GetSpriteSet("Bullets/");
+		_sprites = res.GetSpriteSet("Bullets/Single/");
 
 		loop = new Action<BulletBase>(Loop);
 		collisionLoop = new Action<BulletBase>(CollisionLoop);
@@ -46,6 +46,15 @@ public class BulletManager : Singleton<BulletManager>, Define.IManager {
 		BulletBase bullet = _cache[(int)type].ActiveObject();
 		bullet.Active(pos,dir,speed,timer);
 		bullet.SetSprite(_sprites[sprite]);
+
+		return bullet;
+	}
+
+	public BulletBase Active(BulletType type, Vector3 pos, Vector3 dir, float speed, string ani, bool loop,float timer = 1f)
+	{
+		var bullet = _cache[((int)type)].ActiveObject();
+		bullet.Active(pos,dir,speed,timer);
+		bullet.SetAnimation(ani,loop);
 
 		return bullet;
 	}

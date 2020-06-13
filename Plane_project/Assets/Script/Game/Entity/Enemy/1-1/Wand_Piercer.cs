@@ -47,7 +47,7 @@ public class Wand_Piercer : WandsBase
         _maxSpeed = 8f;
         _speed = 0f;
 
-        maxHp = _hp = 30;
+        maxHp = _hp = 15;
 
         _actTimer = Random.Range(0.8f,1.2f);
     }
@@ -83,8 +83,10 @@ public class Wand_Piercer : WandsBase
         if(_actTimer <= 0f && _canShot && !_shotReady)
         {
             _speed = 0f;
-            _line = EffectManager.GetInstance().AddLineEffect(_position,(Player.instance.position - _position).normalized * 100f,0.05f,5f)
-                                        .SetLerpWidth(0.2f,.2f);
+            _line = EffectManager.GetInstance().AddLineEffect(_position,(Player.instance.position - _position).normalized * 100f,0f,5f)
+                                        .SetLerpWidth(0.2f,.2f)
+                                        .SetTiling(ResourceManager.GetInstance().GetSprite("SpriteSet/Planes/StarFish/starfish_piercerline"),1f)
+                                        .SetOffsetScrolling(.5f);
             _actTimer = 4f;
             _shotReady = true;
         }
@@ -127,10 +129,11 @@ public class Wand_Piercer : WandsBase
             }
         }
 
-        float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_direction.normalized),.2f);
+        TopDownEdgeCheck();
+
+        float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),.2f);
         _eulerAngle = dirangle;
 
-        TopDownEdgeCheck();
         _direction = Vector3.Lerp(_direction,_targetDirection,13f * deltaTime);
         
         var dist = Vector3.Distance(_position,Player.instance.position);

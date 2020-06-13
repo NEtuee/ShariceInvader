@@ -116,6 +116,7 @@
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Flare.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Intercepter.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\LaserDrone.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\LaserIndicator.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\MissileDrone.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\NPC.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\PointMarker.cs" />
@@ -165,7 +166,9 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\BurstBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_NewPlayer_New_Plane.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\DriveEnd\DriveEnd_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\1\Launch\Launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Boost\Boost_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\0\Launch\Launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Fire\Fire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Electric\Electric_Ani.txt" />
@@ -183,6 +186,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Apear\Apear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\0\0_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Bullets\Ray\Ray_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
@@ -191,6 +195,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\1\1_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\0\FireStand\FireStand_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Miss\Miss_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\PS\PS_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_New\Player_New_Plane.txt" />
@@ -211,10 +216,12 @@
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\DriveRange\DriveRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\WeaponChangeWeaponChange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Loop\Loop_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\1\FireStand\FireStand_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Disapear\Disapear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Explode\Explode_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineOpening\spineOpening_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DirectionArrow\DirectionArrow_Ani.txt" />
+     <None Include="Assets\Script\Shader\TilingShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Fire\Fire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\WeaponChange\WeaponChange_Ani.txt" />
@@ -225,6 +232,7 @@
      <None Include="Assets\Script\Shader\MinimapSide.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\spineClosing\spineClosing_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Shot\Shot_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ImmortalHit\ImmortalHit_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\1\1_Ani.txt" />
      <None Include="Assets\Script\Shader\SpriteNormalLight.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\LockOn\LockOn_Ani.txt" />

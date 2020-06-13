@@ -102,7 +102,7 @@ public class Weapon_PhantomStinger : WeaponBase
         Vector3 pos = _plane.position + _plane.direction * 0.25f;
         EffectManager.GetInstance().AddEffect(pos,"Fire").SetAngle(_plane.angle);
 
-        HitEffects(_aimTarget.position);
+        HitEffect(_aimTarget);
 
         CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
 
@@ -181,7 +181,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public void SpecialTargetHitEvent(PlaneBase target)
     {
-        HitEffects(target.position);
+        HitEffect(target);
 
         float dist = Vector2.Distance(_plane.position,target.position);
         Vector2 one = Vector2.Lerp(_plane.position,target.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
@@ -209,12 +209,6 @@ public class Weapon_PhantomStinger : WeaponBase
                             .SetDirection(_plane.direction)
                             .SetSpeed(Random.Range(0.4f,1.3f));
 
-    }
-
-    public void HitEffects(Vector3 pos)
-    {
-        EffectManager.GetInstance().AddEffect(pos,"AttackHit_0").SetAngle(Random.Range(0f,360f));
-		EffectManager.GetInstance().AddEffect(pos,"AttackHit_1").SetAngle(Random.Range(0f,360f));
     }
 
     public override bool CollisionCheck(PlaneBase target)

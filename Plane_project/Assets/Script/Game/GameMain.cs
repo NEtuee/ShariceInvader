@@ -57,6 +57,9 @@ public class GameMain : MonoBehaviour {
 		AnimationControllEx.LoadAnimation("Weapon/Pulse/Change",3);
 
 		AnimationControllEx.LoadAnimation("Weapon/PS",3);
+
+		AnimationControllEx.LoadAnimation("Bullets/Ray",0);
+
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		obj.SetPositionEm(new Vector3(1f,5f));

@@ -7,6 +7,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	public ScreenGlitch screenGlitch;
 
 	public Camera mainCam{get{return _main;}}
+	public Vector3 position{get{return _position;}}
 	private PlaneBase _followTarget = null;
 	private float _followSpeed = 3.5f;
 

@@ -43,7 +43,7 @@ public class Player : PlaneBase {
 
 		_bodyAttack = 5;
 		_dodgeDist = 3f;
-		maxHp = _hp = 10;
+		maxHp = _hp = 6;
 		_gravityScale = 0.3f;
 
 		_timer = 3f;
@@ -155,7 +155,6 @@ public class Player : PlaneBase {
 
 			_hpRegen = false;
 		}
-
 
 		BulletManager.GetInstance().CollisionCheck(this,BulletType.enemy);
 		HeightIconUpdate();

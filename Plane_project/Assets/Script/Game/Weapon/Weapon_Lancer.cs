@@ -129,7 +129,9 @@ public class Weapon_Lancer : WeaponBase
                 if(Define.SimpleCollider.CircleLineCircle(list[i].position,_dodgeStartPos,_plane.position,
 							_plane.coll.bound.box.x * 6f, list[i].coll.bound.box.x))
 		        {
-                    ((PlaneBase)list[i]).Hit(15,_plane);
+                    var p = ((PlaneBase)list[i]);
+                    p.Hit(15,_plane);
+                    HitEffect(p);
 		        }
             }
         }
@@ -197,8 +199,8 @@ public class Weapon_Lancer : WeaponBase
         if(mainAttack)
 		{
 			ObjectManager.GetInstance().UpdateStop(0.1f);
-			EffectManager.GetInstance().AddEffect(target.position,"AttackHit_0").SetAngle(Random.Range(0f,360f));
-			EffectManager.GetInstance().AddEffect(target.position,"AttackHit_1").SetAngle(Random.Range(0f,360f));
+
+            HitEffect(target);
             _plane.Hit(target);
 
             CameraControll.instance.Shake(0.2f, _plane.direction / 15f);

@@ -22,10 +22,14 @@ public class BulletBase : Collisionable {
 	private bool _penetrate = false;
 	private bool _canCollision = false;
 	private bool _noneDelete = false;
+	private bool _animation = false;
+
+	private AnimationControllEx _ani;
 
 	public override void firstSetting()
 	{
 		base.firstSetting();
+		_ani = new AnimationControllEx(_sprRenderer);
 
 		SetCollider(new Define.SimpleCircleCollider(.0725f,.0725f,_position));
 		//SetSprite("Bullet");
@@ -42,6 +46,7 @@ public class BulletBase : Collisionable {
 		_penetrate = false;
 		_canCollision = true;
 		_noneDelete = false;
+		_animation = false;
 
 		SetActive(true);
 	}
@@ -64,6 +69,11 @@ public class BulletBase : Collisionable {
 	{
 		Move(deltaTime);
 
+		if(_animation)
+		{
+			_ani.AnimationProgress(deltaTime);
+		}
+
 		if(_noneDelete)
 		{
 			_timer -= deltaTime;
@@ -73,6 +83,15 @@ public class BulletBase : Collisionable {
 	}
 
 	public BulletBase NoneDelete() {_noneDelete = true; return this;}
+	public void SetAnimation(string path,bool loop)
+	{
+		_ani.SetAnimation(path);
+		_ani.InitValue(loop);
+		_ani.SetAnimationSprite(0);
+
+		_animation = true;
+	}
+
 	public void Penetrate() {_penetrate = true;}
 	public void CanCollision(bool value) {_canCollision = value;}
 

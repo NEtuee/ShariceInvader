@@ -105,7 +105,7 @@ public class Weapon_Test : WeaponBase
                     Vector3 d = (obj.position - _plane.position).normalized;
 
                     obj.SetAbsoluteForce(d * 3f);
-                    obj.ControllLock(1f);
+                    obj.ControllLock(2f);
     
                     EffectManager.GetInstance().AddEffect(obj.position,"Electric",false,obj).SetSortingOrder(1).SetAngle(Random.Range(0f,360f));
                     EffectManager.GetInstance().AddEffect(obj.position,"Burst",false)

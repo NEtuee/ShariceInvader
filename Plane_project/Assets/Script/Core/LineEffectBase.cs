@@ -9,9 +9,15 @@ public class LineEffectBase : ObjectBase
     private float _mainTimer = 0f;
     private float _widthLerpEnd = 0f;
     private float _widthLerpTimer = 0f;
+    private float _offsetScrollSpeed = 0f;
+    private float _offsetScrollValue = 0f;
 
     private bool _lerpWidth = false;
     private bool _lerpColor = false;
+    private bool _offsetScroll = false;
+
+    private Material pixelSnapMat;
+    private Material tilingMat;
 
     public override void firstSetting()
     {
@@ -21,6 +27,9 @@ public class LineEffectBase : ObjectBase
         mainLine.SetPosition(1,Vector3.zero);
 
         mainLine.sortingOrder = -1;
+
+        pixelSnapMat = ResourceManager.GetInstance().GetMaterial("PixelSnap");
+        tilingMat = new Material(Shader.Find("Custom/TilingShader"));
     }
 
     public LineEffectBase Active(Vector3 start, Vector3 end, float width, float timer)
@@ -33,10 +42,12 @@ public class LineEffectBase : ObjectBase
         mainLine.sortingOrder = -1;
         mainLine.startWidth = width;
         mainLine.endWidth = width;
+        mainLine.textureMode = LineTextureMode.Stretch;
 
         _lerpWidth = false;
+        _offsetScroll = false;
 
-        SetMaterial(ResourceManager.GetInstance().GetMaterial("PixelSnap"));
+        SetMaterial(pixelSnapMat);
         SetColor(Color.white);
 
         SetActive(true);
@@ -47,6 +58,25 @@ public class LineEffectBase : ObjectBase
     public LineEffectBase SetColor(Color color) {mainLine.startColor = color; mainLine.endColor = color; return this;}
     public LineEffectBase SetMaterial(Material mat) {mainLine.material = mat; return this;}
     public LineEffectBase SetPosition(Vector3 pos, int point) {mainLine.SetPosition(point,pos); return this;}
+    public LineEffectBase SetTextureMode(LineTextureMode mode){mainLine.textureMode = mode; return this;}
+    public LineEffectBase SetTiling(Sprite spr,float tiling)
+    {
+        tilingMat.SetTexture("_MainTex",spr.texture);
+        tilingMat.SetFloat("_Tiling",tiling);
+        tilingMat.SetFloat("_Offset",0f);
+        SetTextureMode(LineTextureMode.Tile);
+
+        mainLine.material = tilingMat;
+        return this;
+    }
+    public LineEffectBase SetOffsetScrolling(float speed)
+    {
+        _offsetScroll = true;
+        _offsetScrollSpeed = speed;
+        _offsetScrollValue = 0f;
+
+        return this;
+    }
     public LineEffectBase SetLerpWidth(float target, float time)
     {
         _widthLerpEnd = target;
@@ -77,6 +107,12 @@ public class LineEffectBase : ObjectBase
             
             mainLine.startWidth = width;
             mainLine.endWidth = width;
+        }
+
+        if(_offsetScroll)
+        {
+            _offsetScrollValue += _offsetScrollSpeed * deltaTime;
+            mainLine.material.SetFloat("_Offset",_offsetScrollValue);
         }
     }
 
