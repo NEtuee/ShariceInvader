@@ -18,10 +18,19 @@ public class Wand_Piercer : WandsBase
     {
         base.firstSetting();
 
-        LoadPlaneData("StarFish/Defender");
         //SetSpriteSet("StarFish/Marker",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
-        SetSpriteSet("SpriteSet/Planes/StarFish/starfish_piercer",AnimationType.None);
+        LoadPlaneData("StarFish/Piercer");
+
+        _aniType = AnimationType.None;
+
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Piercer",2);
+        _spriteAngle = 360f / _dirSprites.Length;
+
+        UpdateSprite();
+
+        var deco = _deco.AddDeco(new Vector2(0.1f,0f));
+        deco._sprRenderer.sprite = ResourceManager.GetInstance().GetSprite("SpriteSet/Planes/StarFish/starfish_piercer");
 
         // _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Defender",2);
         // _spriteAngle = 360f / _dirSprites.Length;
@@ -55,6 +64,9 @@ public class Wand_Piercer : WandsBase
     public override void progress(float deltaTime)
     {
         base.progress(deltaTime);
+        mainAngle += 120f * deltaTime;
+        mainAngle = MathEx.clamp360Degree(mainAngle);
+        _sprRenderer.sprite = _dirSprites[(int)(mainAngle / _spriteAngle)];
 
         if(!_act)
         {
@@ -128,6 +140,8 @@ public class Wand_Piercer : WandsBase
                 RandomSpread();
             }
         }
+
+        _trailEmmit = _shot;
 
         TopDownEdgeCheck();
 

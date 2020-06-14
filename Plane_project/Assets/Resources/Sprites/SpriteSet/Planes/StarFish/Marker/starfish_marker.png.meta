@@ -1,71 +1,71 @@
 fileFormatVersion: 2
-guid: fc4a87846a1af7045a43fbc5395d157e
+guid: edecf8f571673704eae5175163ab3cd7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: starfish_archer_0
-    21300002: starfish_archer_1
-    21300004: starfish_archer_2
-    21300006: starfish_archer_3
-    21300008: starfish_archer_4
-    21300010: starfish_archer_5
-    21300012: starfish_archer_6
-    21300014: starfish_archer_7
-    21300016: starfish_archer_8
-    21300018: starfish_archer_9
-    21300020: starfish_archer_10
-    21300022: starfish_archer_11
-    21300024: starfish_archer_12
-    21300026: starfish_archer_13
-    21300028: starfish_archer_14
-    21300030: starfish_archer_15
-    21300032: starfish_archer_16
-    21300034: starfish_archer_17
-    21300036: starfish_archer_18
-    21300038: starfish_archer_19
-    21300040: starfish_archer_20
-    21300042: starfish_archer_21
-    21300044: starfish_archer_22
-    21300046: starfish_archer_23
-    21300048: starfish_archer_24
-    21300050: starfish_archer_25
-    21300052: starfish_archer_26
-    21300054: starfish_archer_27
-    21300056: starfish_archer_28
-    21300058: starfish_archer_29
-    21300060: starfish_archer_30
-    21300062: starfish_archer_31
-    21300064: starfish_archer_32
-    21300066: starfish_archer_33
-    21300068: starfish_archer_34
-    21300070: starfish_archer_35
-    21300072: starfish_archer_36
-    21300074: starfish_archer_37
-    21300076: starfish_archer_38
-    21300078: starfish_archer_39
-    21300080: starfish_archer_40
-    21300082: starfish_archer_41
-    21300084: starfish_archer_42
-    21300086: starfish_archer_43
-    21300088: starfish_archer_44
-    21300090: starfish_archer_45
-    21300092: starfish_archer_46
-    21300094: starfish_archer_47
-    21300096: starfish_archer_48
-    21300098: starfish_archer_49
-    21300100: starfish_archer_50
-    21300102: starfish_archer_51
-    21300104: starfish_archer_52
-    21300106: starfish_archer_53
-    21300108: starfish_archer_54
-    21300110: starfish_archer_55
-    21300112: starfish_archer_56
-    21300114: starfish_archer_57
-    21300116: starfish_archer_58
-    21300118: starfish_archer_59
-    21300120: starfish_archer_60
-    21300122: starfish_archer_61
-    21300124: starfish_archer_62
-    21300126: starfish_archer_63
+    21300000: starfish_marker_0
+    21300002: starfish_marker_1
+    21300004: starfish_marker_2
+    21300006: starfish_marker_3
+    21300008: starfish_marker_4
+    21300010: starfish_marker_5
+    21300012: starfish_marker_6
+    21300014: starfish_marker_7
+    21300016: starfish_marker_8
+    21300018: starfish_marker_9
+    21300020: starfish_marker_10
+    21300022: starfish_marker_11
+    21300024: starfish_marker_12
+    21300026: starfish_marker_13
+    21300028: starfish_marker_14
+    21300030: starfish_marker_15
+    21300032: starfish_marker_16
+    21300034: starfish_marker_17
+    21300036: starfish_marker_18
+    21300038: starfish_marker_19
+    21300040: starfish_marker_20
+    21300042: starfish_marker_21
+    21300044: starfish_marker_22
+    21300046: starfish_marker_23
+    21300048: starfish_marker_24
+    21300050: starfish_marker_25
+    21300052: starfish_marker_26
+    21300054: starfish_marker_27
+    21300056: starfish_marker_28
+    21300058: starfish_marker_29
+    21300060: starfish_marker_30
+    21300062: starfish_marker_31
+    21300064: starfish_marker_32
+    21300066: starfish_marker_33
+    21300068: starfish_marker_34
+    21300070: starfish_marker_35
+    21300072: starfish_marker_36
+    21300074: starfish_marker_37
+    21300076: starfish_marker_38
+    21300078: starfish_marker_39
+    21300080: starfish_marker_40
+    21300082: starfish_marker_41
+    21300084: starfish_marker_42
+    21300086: starfish_marker_43
+    21300088: starfish_marker_44
+    21300090: starfish_marker_45
+    21300092: starfish_marker_46
+    21300094: starfish_marker_47
+    21300096: starfish_marker_48
+    21300098: starfish_marker_49
+    21300100: starfish_marker_50
+    21300102: starfish_marker_51
+    21300104: starfish_marker_52
+    21300106: starfish_marker_53
+    21300108: starfish_marker_54
+    21300110: starfish_marker_55
+    21300112: starfish_marker_56
+    21300114: starfish_marker_57
+    21300116: starfish_marker_58
+    21300118: starfish_marker_59
+    21300120: starfish_marker_60
+    21300122: starfish_marker_61
+    21300124: starfish_marker_62
+    21300126: starfish_marker_63
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -159,1281 +159,1281 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: starfish_archer_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 956697194f34d194ab13d58cc811c9f9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_1
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af02f54699f36ff43991a7c6676df81f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_2
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e535e03efb2cae244857a55d2dcceef1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_3
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 655ef2d4f9fadad46a72235d2f01581c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 168
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c597010e87fb3b048853949fff6633ba
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_5
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 168
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac11133d1643c1d4e90ded85e4fb6f8a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_6
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 168
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e947d1bd0ce771a4fb0716e5b32a3648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_7
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 168
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7da361daa8ae7e54cbf8beae0152c352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 156
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bfeae42ddc3c34940946c0eed298a295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_9
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 156
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e167f14928d6ac1488016a023b31b2ee
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_10
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 156
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb7d6cdb8e7e9364c85542e279e6dad3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_11
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 156
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 225dd4d9ae149054daccff4eb630d312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 144
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63948e53e1613e249ade70cb658f9bea
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_13
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 144
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2014230e80d0ea4486d060865555fa0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_14
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 144
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2da5a41ca7ff87746a85490fd4bfd6a0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_15
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 144
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8ceaa15c80147f49973ee0d04359c19
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_16
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 132
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3052ffb15f3e824ea1605282ef11ada
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_17
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 132
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f2dea189f4f53f46b8e7204e8c5b637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_18
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 132
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb3571a750400194a847619410b85bbb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_19
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 132
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f991793ba4d3eb84c9a4a9ebc294feeb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_20
+      name: starfish_marker_0
       rect:
         serializedVersion: 2
         x: 0
         y: 120
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03a6afea85d6ecf4bbe345e9d42eaa19
+      spriteID: 6084ec46e65b1084ab1800f7f31f1d7b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_21
+      name: starfish_marker_1
       rect:
         serializedVersion: 2
-        x: 26
+        x: 32
         y: 120
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0110809feb62794e8e7e01df9cd167b
+      spriteID: 7a1e63678dd03724097888f28ffd87e4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_22
+      name: starfish_marker_2
       rect:
         serializedVersion: 2
-        x: 52
+        x: 64
         y: 120
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d7fbd0cb5f45e1419c199ca819b81a6
+      spriteID: 8a1f1af04897fc8409419820a668c683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_23
+      name: starfish_marker_3
       rect:
         serializedVersion: 2
-        x: 78
+        x: 96
         y: 120
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8adc172de06240b4283475fa9c5a28f0
+      spriteID: 8f6102e90c77f1346ada5f6aea163857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_24
+      name: starfish_marker_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 108
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 112
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0870bacc669974499fae77dc29e7d21
+      spriteID: 8bdc323460c8adf44ad7a511174a00c8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_25
+      name: starfish_marker_5
       rect:
         serializedVersion: 2
-        x: 26
-        y: 108
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 112
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fc699dd84286f94d9f0c2dc87edc359
+      spriteID: 4d432dc9e9d7934419f3a22bab9257b3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_26
+      name: starfish_marker_6
       rect:
         serializedVersion: 2
-        x: 52
-        y: 108
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 112
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81ee7efe2a40a044593772220d8cec6e
+      spriteID: 38e730212170b104b9acd3e68ec4b59b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_27
+      name: starfish_marker_7
       rect:
         serializedVersion: 2
-        x: 78
-        y: 108
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 112
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ea57efba7579bf4b8922cafa3afea09
+      spriteID: e96026a416224fd4b94d64881bd08583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_28
+      name: starfish_marker_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 104
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca389e70309e6d45b6b59cb37036bad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 104
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f709350e6d4e24bb60704f65cde652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 104
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bfcb7f26e763dd46b223f7492064565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 104
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1dd91f10554f6a44a659fa8cf583a49
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_12
       rect:
         serializedVersion: 2
         x: 0
         y: 96
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 130279ec009bbd946b6a1ac8a1b88826
+      spriteID: 7f44a9592011e5143bddb2ea7b4d392e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_29
+      name: starfish_marker_13
       rect:
         serializedVersion: 2
-        x: 26
+        x: 32
         y: 96
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f280c803c1b4c4741b5590539e3e5aee
+      spriteID: 52173dd303aecff49b0f6b9819ce5079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_30
+      name: starfish_marker_14
       rect:
         serializedVersion: 2
-        x: 52
+        x: 64
         y: 96
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7219c6bf139e7c4ea3dd338b365811b
+      spriteID: 2e1fac3ee3da55947a7a103f7eec2c85
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_31
+      name: starfish_marker_15
       rect:
         serializedVersion: 2
-        x: 78
+        x: 96
         y: 96
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47143b2bc8910b84cb030ada8d55ab43
+      spriteID: 699f89d3e0100014ba540109dbe3c59c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_32
+      name: starfish_marker_16
       rect:
         serializedVersion: 2
         x: 0
-        y: 84
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 88
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46f4b19e50b5a5e42a5ebc32862a7bee
+      spriteID: 4255c44f437136c4bbdad1805fdc717c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_33
+      name: starfish_marker_17
       rect:
         serializedVersion: 2
-        x: 26
-        y: 84
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 88
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 911401a941bc2ed41badeb104cb039fa
+      spriteID: 4bc0c9a4cc6d8fd4abe424eb8a4e7329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_34
+      name: starfish_marker_18
       rect:
         serializedVersion: 2
-        x: 52
-        y: 84
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 88
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d15ccdf5bd82f6e4e95e055245087b8e
+      spriteID: c3089993faa798b4a816d7eb12f0535d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_35
+      name: starfish_marker_19
       rect:
         serializedVersion: 2
-        x: 78
-        y: 84
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 88
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 322e726db5496884b86df501bee9ced0
+      spriteID: 0f1aca4cfd4f7944cab8d3bb55fe37ca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_36
+      name: starfish_marker_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4ab42072fc38e43909a9a610a0af8e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072eeee2da5f5054fac2798fd4f436e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13db5c45d747eb844bccb82059ae1a9e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d5ccf49145f8541bc4357e79f88f51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_24
       rect:
         serializedVersion: 2
         x: 0
         y: 72
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 447aee0db9a425e42b29f92ee13bee1c
+      spriteID: f6dd95df13d64ca448eb359cba8e7cad
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_37
+      name: starfish_marker_25
       rect:
         serializedVersion: 2
-        x: 26
+        x: 32
         y: 72
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4975389c38ef3ee45812004c764f6159
+      spriteID: d51e7f3acb422db4bb27578cc5e42b98
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_38
+      name: starfish_marker_26
       rect:
         serializedVersion: 2
-        x: 52
+        x: 64
         y: 72
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7f57e3efe2cef54fb34edd54d879620
+      spriteID: 40056acfced0abe4fa69b707425da6e9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_39
+      name: starfish_marker_27
       rect:
         serializedVersion: 2
-        x: 78
+        x: 96
         y: 72
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68eee17a68d05c46b7e3a5b875d89b1
+      spriteID: 41d15e2b9d539134b8ce28a03765ce06
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_40
+      name: starfish_marker_28
       rect:
         serializedVersion: 2
         x: 0
-        y: 60
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 64
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a1d71213d8270f4ca6ffe49e4f5aac1
+      spriteID: aadd86aee62a721449c47c752af63530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_41
+      name: starfish_marker_29
       rect:
         serializedVersion: 2
-        x: 26
-        y: 60
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 64
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc99a4a42a40f04f9d7b5720fca24f4
+      spriteID: 4d02e39bfc5b568488bf8b57832bd6f0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_42
+      name: starfish_marker_30
       rect:
         serializedVersion: 2
-        x: 52
-        y: 60
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 64
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be8aa5b08f8d5b7408351a7a8929169b
+      spriteID: 653a19424553a8041ade453296742974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_43
+      name: starfish_marker_31
       rect:
         serializedVersion: 2
-        x: 78
-        y: 60
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 64
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53c54b207abb6f143acb0377aea5bd08
+      spriteID: 7409b03b7ad0ff94095b359898dd779c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_44
+      name: starfish_marker_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9226eabefddaa1545b890cc7f38bf530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_33
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 56
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef9ec4f585843948aa53178972b2db1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_34
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 56
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73f2c2d3c075341498ef929d11f3886a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_35
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 56
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baaa88dc034c33749a1e5de07a08fd7e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_36
       rect:
         serializedVersion: 2
         x: 0
         y: 48
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 826787ef8ecb63b438fffc439936f6d6
+      spriteID: e0678ab9ae2063946905aa19770c41da
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_45
+      name: starfish_marker_37
       rect:
         serializedVersion: 2
-        x: 26
+        x: 32
         y: 48
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1747be1653a6f1441a62dc9443ec0c8d
+      spriteID: 8b7427322be5b1e44a1c27346f0e3370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_46
+      name: starfish_marker_38
       rect:
         serializedVersion: 2
-        x: 52
+        x: 64
         y: 48
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f452710470ca0214181145ecf24f0d61
+      spriteID: ec8e37e6b58e28f4a9eb1bf1d83ec5dd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_47
+      name: starfish_marker_39
       rect:
         serializedVersion: 2
-        x: 78
+        x: 96
         y: 48
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 683300b4076d4db4dabc0bbec911a8a3
+      spriteID: 6df0fba09a9826a4b9299eafb7f8a99e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_48
+      name: starfish_marker_40
       rect:
         serializedVersion: 2
         x: 0
-        y: 36
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 40
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1a6983b475114243ac082f6dfca4739
+      spriteID: dc9b1b6c69f523348807c4773237b65f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_49
+      name: starfish_marker_41
       rect:
         serializedVersion: 2
-        x: 26
-        y: 36
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 40
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68d93ebb7a48bff4a85e219f92a265f0
+      spriteID: 4a346f0e03f08854888bc4a1bb39f96d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_50
+      name: starfish_marker_42
       rect:
         serializedVersion: 2
-        x: 52
-        y: 36
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 40
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bb1937599a9b9c4280ddafe01c46b86
+      spriteID: 0f157d3dc8c66cb49a2cff63f5fb45f1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_51
+      name: starfish_marker_43
       rect:
         serializedVersion: 2
-        x: 78
-        y: 36
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 40
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa6844a6775694544b7f1c30d1e29c58
+      spriteID: d45a2c7b9bc76ca44bba77566a691ebf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_52
+      name: starfish_marker_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8826a60da2fd19948b1a58c891058e9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_45
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cbd375c64a987641aa3d74dfbeb0ecd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_46
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828c6e4b4fe84d545a8932ca9d93eb3a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_47
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bd1c5878a2adb4591a33d6475d1055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_48
       rect:
         serializedVersion: 2
         x: 0
         y: 24
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02b91ae839229824ea09a9f8eed3ba92
+      spriteID: 0b0f704e3f15ba14cbf6cbdbe1d2c046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_53
+      name: starfish_marker_49
       rect:
         serializedVersion: 2
-        x: 26
+        x: 32
         y: 24
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d11a863b7330c094aa8c599f6decd15b
+      spriteID: 900e0092d8de7614fa4324dba58919f7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_54
+      name: starfish_marker_50
       rect:
         serializedVersion: 2
-        x: 52
+        x: 64
         y: 24
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06e2e6599e74d2742a6a1f438b39f6d8
+      spriteID: 8096916888fa74844be2267f1ce25c6e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_55
+      name: starfish_marker_51
       rect:
         serializedVersion: 2
-        x: 78
+        x: 96
         y: 24
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7c2badfab4cfc64ca74bd859cdfa57f
+      spriteID: f2b47a56003726142892494fcdc45d4b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_56
+      name: starfish_marker_52
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 16
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02b5861741cef9b4d872f4a37ae95d71
+      spriteID: e64e447349ccf414ca30c974c145e5bd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_57
+      name: starfish_marker_53
       rect:
         serializedVersion: 2
-        x: 26
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 16
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ffb6d7e68363cb4083c3fece2e82ae5
+      spriteID: a2af90308c0081e429000f28917b3aae
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_58
+      name: starfish_marker_54
       rect:
         serializedVersion: 2
-        x: 52
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 16
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a87c649c5b897f40b3e48f4930d71cc
+      spriteID: dee613a3600bc654383ffb2751953c4b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_59
+      name: starfish_marker_55
       rect:
         serializedVersion: 2
-        x: 78
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 16
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dd3c7cad8c0d7440aaa65f33afba5b5
+      spriteID: 1c6a70d1020d8e340b89235ef8eee900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_60
+      name: starfish_marker_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74484a231f8f67d489aebda05d3ed354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_57
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 8
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7989fd68db1c7a4cb94ff2110ec1be0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_58
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 8
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c78bab31486458448ffeb90271f1f9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_59
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 8
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce9e425bcae81d4f9d0bf536effad9a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_marker_60
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2152f86d8f4428c4b92258c0702af503
+      spriteID: 1ab24731763985b4c9119ac61827b48c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_61
+      name: starfish_marker_61
       rect:
         serializedVersion: 2
-        x: 26
+        x: 32
         y: 0
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fab120442b552d47a7b95a7095fb02b
+      spriteID: 8163c8e0a61738c42af381834fae39e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_62
+      name: starfish_marker_62
       rect:
         serializedVersion: 2
-        x: 52
+        x: 64
         y: 0
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4a39dff5f5e016409b62c0929f31033
+      spriteID: c2012df90d6845849bbe0b3ef8920853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_63
+      name: starfish_marker_63
       rect:
         serializedVersion: 2
-        x: 78
+        x: 96
         y: 0
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62983bb1f30d9e643bfc2db5fe3c07b8
+      spriteID: dde351442d1dc7c48a52b0a7efd3c54c
       vertices: []
       indices: 
       edges: []
@@ -1441,7 +1441,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ac89df288086076418452c0fb9074775
+    spriteID: 9a7d3406f4b4045428fce47e8e29004d
     vertices: []
     indices: 
     edges: []

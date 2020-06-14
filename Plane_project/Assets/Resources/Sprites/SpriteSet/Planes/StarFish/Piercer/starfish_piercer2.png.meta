@@ -1,71 +1,71 @@
 fileFormatVersion: 2
-guid: fc4a87846a1af7045a43fbc5395d157e
+guid: 6d288ebb02298cf4d8e828b90b3f10f7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: starfish_archer_0
-    21300002: starfish_archer_1
-    21300004: starfish_archer_2
-    21300006: starfish_archer_3
-    21300008: starfish_archer_4
-    21300010: starfish_archer_5
-    21300012: starfish_archer_6
-    21300014: starfish_archer_7
-    21300016: starfish_archer_8
-    21300018: starfish_archer_9
-    21300020: starfish_archer_10
-    21300022: starfish_archer_11
-    21300024: starfish_archer_12
-    21300026: starfish_archer_13
-    21300028: starfish_archer_14
-    21300030: starfish_archer_15
-    21300032: starfish_archer_16
-    21300034: starfish_archer_17
-    21300036: starfish_archer_18
-    21300038: starfish_archer_19
-    21300040: starfish_archer_20
-    21300042: starfish_archer_21
-    21300044: starfish_archer_22
-    21300046: starfish_archer_23
-    21300048: starfish_archer_24
-    21300050: starfish_archer_25
-    21300052: starfish_archer_26
-    21300054: starfish_archer_27
-    21300056: starfish_archer_28
-    21300058: starfish_archer_29
-    21300060: starfish_archer_30
-    21300062: starfish_archer_31
-    21300064: starfish_archer_32
-    21300066: starfish_archer_33
-    21300068: starfish_archer_34
-    21300070: starfish_archer_35
-    21300072: starfish_archer_36
-    21300074: starfish_archer_37
-    21300076: starfish_archer_38
-    21300078: starfish_archer_39
-    21300080: starfish_archer_40
-    21300082: starfish_archer_41
-    21300084: starfish_archer_42
-    21300086: starfish_archer_43
-    21300088: starfish_archer_44
-    21300090: starfish_archer_45
-    21300092: starfish_archer_46
-    21300094: starfish_archer_47
-    21300096: starfish_archer_48
-    21300098: starfish_archer_49
-    21300100: starfish_archer_50
-    21300102: starfish_archer_51
-    21300104: starfish_archer_52
-    21300106: starfish_archer_53
-    21300108: starfish_archer_54
-    21300110: starfish_archer_55
-    21300112: starfish_archer_56
-    21300114: starfish_archer_57
-    21300116: starfish_archer_58
-    21300118: starfish_archer_59
-    21300120: starfish_archer_60
-    21300122: starfish_archer_61
-    21300124: starfish_archer_62
-    21300126: starfish_archer_63
+    21300000: starfish_piercer2_0
+    21300002: starfish_piercer2_1
+    21300004: starfish_piercer2_2
+    21300006: starfish_piercer2_3
+    21300008: starfish_piercer2_4
+    21300010: starfish_piercer2_5
+    21300012: starfish_piercer2_6
+    21300014: starfish_piercer2_7
+    21300016: starfish_piercer2_8
+    21300018: starfish_piercer2_9
+    21300020: starfish_piercer2_10
+    21300022: starfish_piercer2_11
+    21300024: starfish_piercer2_12
+    21300026: starfish_piercer2_13
+    21300028: starfish_piercer2_14
+    21300030: starfish_piercer2_15
+    21300032: starfish_piercer2_16
+    21300034: starfish_piercer2_17
+    21300036: starfish_piercer2_18
+    21300038: starfish_piercer2_19
+    21300040: starfish_piercer2_20
+    21300042: starfish_piercer2_21
+    21300044: starfish_piercer2_22
+    21300046: starfish_piercer2_23
+    21300048: starfish_piercer2_24
+    21300050: starfish_piercer2_25
+    21300052: starfish_piercer2_26
+    21300054: starfish_piercer2_27
+    21300056: starfish_piercer2_28
+    21300058: starfish_piercer2_29
+    21300060: starfish_piercer2_30
+    21300062: starfish_piercer2_31
+    21300064: starfish_piercer2_32
+    21300066: starfish_piercer2_33
+    21300068: starfish_piercer2_34
+    21300070: starfish_piercer2_35
+    21300072: starfish_piercer2_36
+    21300074: starfish_piercer2_37
+    21300076: starfish_piercer2_38
+    21300078: starfish_piercer2_39
+    21300080: starfish_piercer2_40
+    21300082: starfish_piercer2_41
+    21300084: starfish_piercer2_42
+    21300086: starfish_piercer2_43
+    21300088: starfish_piercer2_44
+    21300090: starfish_piercer2_45
+    21300092: starfish_piercer2_46
+    21300094: starfish_piercer2_47
+    21300096: starfish_piercer2_48
+    21300098: starfish_piercer2_49
+    21300100: starfish_piercer2_50
+    21300102: starfish_piercer2_51
+    21300104: starfish_piercer2_52
+    21300106: starfish_piercer2_53
+    21300108: starfish_piercer2_54
+    21300110: starfish_piercer2_55
+    21300112: starfish_piercer2_56
+    21300114: starfish_piercer2_57
+    21300116: starfish_piercer2_58
+    21300118: starfish_piercer2_59
+    21300120: starfish_piercer2_60
+    21300122: starfish_piercer2_61
+    21300124: starfish_piercer2_62
+    21300126: starfish_piercer2_63
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -111,7 +111,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -159,1281 +159,1281 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: starfish_archer_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 956697194f34d194ab13d58cc811c9f9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_1
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af02f54699f36ff43991a7c6676df81f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_2
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e535e03efb2cae244857a55d2dcceef1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_3
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 180
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 655ef2d4f9fadad46a72235d2f01581c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_4
+      name: starfish_piercer2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 168
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c597010e87fb3b048853949fff6633ba
+      spriteID: f89422f048fa57547830e2b1a80db4ee
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_5
+      name: starfish_piercer2_1
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 168
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac11133d1643c1d4e90ded85e4fb6f8a
+      spriteID: 652abed00c628534c956eb95869e0703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_6
+      name: starfish_piercer2_2
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 168
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e947d1bd0ce771a4fb0716e5b32a3648
+      spriteID: 0f3c45fdd769a414593dec84e2556376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_7
+      name: starfish_piercer2_3
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 168
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7da361daa8ae7e54cbf8beae0152c352
+      spriteID: 3f9dcbe8ba9d17942b7da569e900d835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_8
+      name: starfish_piercer2_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 156
-        width: 26
-        height: 12
+        x: 84
+        y: 168
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfeae42ddc3c34940946c0eed298a295
+      spriteID: b7ad9001d4133854aa035dd47da1c40a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_9
+      name: starfish_piercer2_5
       rect:
         serializedVersion: 2
-        x: 26
-        y: 156
-        width: 26
-        height: 12
+        x: 105
+        y: 168
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e167f14928d6ac1488016a023b31b2ee
+      spriteID: 1da0a4102bdda014b9dba9303e12fb47
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_10
+      name: starfish_piercer2_6
       rect:
         serializedVersion: 2
-        x: 52
-        y: 156
-        width: 26
-        height: 12
+        x: 126
+        y: 168
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb7d6cdb8e7e9364c85542e279e6dad3
+      spriteID: 2a96bcd9b9174c9469a179b2c77dcd3a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_11
+      name: starfish_piercer2_7
       rect:
         serializedVersion: 2
-        x: 78
-        y: 156
-        width: 26
-        height: 12
+        x: 147
+        y: 168
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 225dd4d9ae149054daccff4eb630d312
+      spriteID: 6a449b24b0860924588b7c6a45fd1bf1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_12
+      name: starfish_piercer2_8
       rect:
         serializedVersion: 2
         x: 0
         y: 144
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63948e53e1613e249ade70cb658f9bea
+      spriteID: 92c58cb55dd9a044d8a08f012cc6d005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_13
+      name: starfish_piercer2_9
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 144
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2014230e80d0ea4486d060865555fa0
+      spriteID: 913c1fe504aafbb499c1973274a69c43
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_14
+      name: starfish_piercer2_10
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 144
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2da5a41ca7ff87746a85490fd4bfd6a0
+      spriteID: 3ad2fb85b11df764b8f65310690a7ec8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_15
+      name: starfish_piercer2_11
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 144
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8ceaa15c80147f49973ee0d04359c19
+      spriteID: 291009507ea7178448b1633a9df6aa96
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_16
+      name: starfish_piercer2_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 132
-        width: 26
-        height: 12
+        x: 84
+        y: 144
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3052ffb15f3e824ea1605282ef11ada
+      spriteID: b06137ff7aa315b49be698c76e8d9675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_17
+      name: starfish_piercer2_13
       rect:
         serializedVersion: 2
-        x: 26
-        y: 132
-        width: 26
-        height: 12
+        x: 105
+        y: 144
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f2dea189f4f53f46b8e7204e8c5b637
+      spriteID: a9b02fc92624ff5419a04864f1529bf3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_18
+      name: starfish_piercer2_14
       rect:
         serializedVersion: 2
-        x: 52
-        y: 132
-        width: 26
-        height: 12
+        x: 126
+        y: 144
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb3571a750400194a847619410b85bbb
+      spriteID: 66643929f60a4564881c3d4e9eb1c0a0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_19
+      name: starfish_piercer2_15
       rect:
         serializedVersion: 2
-        x: 78
-        y: 132
-        width: 26
-        height: 12
+        x: 147
+        y: 144
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f991793ba4d3eb84c9a4a9ebc294feeb
+      spriteID: 5c5144cf337d1b84ebee111b7f7a139b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_20
+      name: starfish_piercer2_16
       rect:
         serializedVersion: 2
         x: 0
         y: 120
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03a6afea85d6ecf4bbe345e9d42eaa19
+      spriteID: b40ab98c0bdb696439654314d7d0bce1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_21
+      name: starfish_piercer2_17
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 120
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0110809feb62794e8e7e01df9cd167b
+      spriteID: 7e76994814bc34544b3c7f067bf117f5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_22
+      name: starfish_piercer2_18
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 120
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d7fbd0cb5f45e1419c199ca819b81a6
+      spriteID: 92e2e4a3adf9d3a448bcada5e659c120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_23
+      name: starfish_piercer2_19
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 120
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8adc172de06240b4283475fa9c5a28f0
+      spriteID: c0c69fa7baee4ba459fa3f35568f10bf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_24
+      name: starfish_piercer2_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 108
-        width: 26
-        height: 12
+        x: 84
+        y: 120
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0870bacc669974499fae77dc29e7d21
+      spriteID: 32f5a391b6beb4e4a8f419a627982186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_25
+      name: starfish_piercer2_21
       rect:
         serializedVersion: 2
-        x: 26
-        y: 108
-        width: 26
-        height: 12
+        x: 105
+        y: 120
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fc699dd84286f94d9f0c2dc87edc359
+      spriteID: f5f205bc497042a48a8b815859fd2f57
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_26
+      name: starfish_piercer2_22
       rect:
         serializedVersion: 2
-        x: 52
-        y: 108
-        width: 26
-        height: 12
+        x: 126
+        y: 120
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81ee7efe2a40a044593772220d8cec6e
+      spriteID: 79b621aa6d471364b85e6b2d637614e4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_27
+      name: starfish_piercer2_23
       rect:
         serializedVersion: 2
-        x: 78
-        y: 108
-        width: 26
-        height: 12
+        x: 147
+        y: 120
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ea57efba7579bf4b8922cafa3afea09
+      spriteID: 86966f5c8bd1b1a44ba4e923c7bb40d8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_28
+      name: starfish_piercer2_24
       rect:
         serializedVersion: 2
         x: 0
         y: 96
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 130279ec009bbd946b6a1ac8a1b88826
+      spriteID: d263263f23c560b418a4cada30b37526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_29
+      name: starfish_piercer2_25
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 96
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f280c803c1b4c4741b5590539e3e5aee
+      spriteID: d65155138c08f5e44bc27ab1a6878c0a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_30
+      name: starfish_piercer2_26
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 96
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7219c6bf139e7c4ea3dd338b365811b
+      spriteID: 650cb50b48d74de43aea78026a1c1971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_31
+      name: starfish_piercer2_27
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 96
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47143b2bc8910b84cb030ada8d55ab43
+      spriteID: 3a60f32a9ebcf484abe536fc394dffc2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_32
+      name: starfish_piercer2_28
       rect:
         serializedVersion: 2
-        x: 0
-        y: 84
-        width: 26
-        height: 12
+        x: 84
+        y: 96
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46f4b19e50b5a5e42a5ebc32862a7bee
+      spriteID: 539e989ef2ec91943853a467c68dfab2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_33
+      name: starfish_piercer2_29
       rect:
         serializedVersion: 2
-        x: 26
-        y: 84
-        width: 26
-        height: 12
+        x: 105
+        y: 96
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 911401a941bc2ed41badeb104cb039fa
+      spriteID: 82c5bba3692ccce4e8253aa03a671b06
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_34
+      name: starfish_piercer2_30
       rect:
         serializedVersion: 2
-        x: 52
-        y: 84
-        width: 26
-        height: 12
+        x: 126
+        y: 96
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d15ccdf5bd82f6e4e95e055245087b8e
+      spriteID: 7c517b6fa74b67f488a3c4a895556896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_35
+      name: starfish_piercer2_31
       rect:
         serializedVersion: 2
-        x: 78
-        y: 84
-        width: 26
-        height: 12
+        x: 147
+        y: 96
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 322e726db5496884b86df501bee9ced0
+      spriteID: 89104b19f53057c44adf002a20a6bdcc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_36
+      name: starfish_piercer2_32
       rect:
         serializedVersion: 2
         x: 0
         y: 72
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 447aee0db9a425e42b29f92ee13bee1c
+      spriteID: d4b20dde442a37e4ea94168bab8bcdd3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_37
+      name: starfish_piercer2_33
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 72
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4975389c38ef3ee45812004c764f6159
+      spriteID: 112b64b4c9fb09c4785d495b4bb42b27
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_38
+      name: starfish_piercer2_34
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 72
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7f57e3efe2cef54fb34edd54d879620
+      spriteID: 13664a0690eaab943815d9a3248d6875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_39
+      name: starfish_piercer2_35
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 72
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68eee17a68d05c46b7e3a5b875d89b1
+      spriteID: 5dee635a3c45afe43975ef4d30b3abdf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_40
+      name: starfish_piercer2_36
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 26
-        height: 12
+        x: 84
+        y: 72
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a1d71213d8270f4ca6ffe49e4f5aac1
+      spriteID: 686be9c2ac9a7be43833d9ced9a84e6b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_41
+      name: starfish_piercer2_37
       rect:
         serializedVersion: 2
-        x: 26
-        y: 60
-        width: 26
-        height: 12
+        x: 105
+        y: 72
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc99a4a42a40f04f9d7b5720fca24f4
+      spriteID: 38dc5aec037a12c4ba7db6fc62671c3e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_42
+      name: starfish_piercer2_38
       rect:
         serializedVersion: 2
-        x: 52
-        y: 60
-        width: 26
-        height: 12
+        x: 126
+        y: 72
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be8aa5b08f8d5b7408351a7a8929169b
+      spriteID: 3a7cdd278af48914e8153c2db5ed8156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_43
+      name: starfish_piercer2_39
       rect:
         serializedVersion: 2
-        x: 78
-        y: 60
-        width: 26
-        height: 12
+        x: 147
+        y: 72
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53c54b207abb6f143acb0377aea5bd08
+      spriteID: 98a92142084932245ae6744974e11ac8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_44
+      name: starfish_piercer2_40
       rect:
         serializedVersion: 2
         x: 0
         y: 48
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 826787ef8ecb63b438fffc439936f6d6
+      spriteID: e11eef64cba65cb4f8270f44faea0e45
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_45
+      name: starfish_piercer2_41
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 48
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1747be1653a6f1441a62dc9443ec0c8d
+      spriteID: 7a59e01c308b3a747892d2019c20d2be
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_46
+      name: starfish_piercer2_42
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 48
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f452710470ca0214181145ecf24f0d61
+      spriteID: 9d18de29dc17c424386b8ed0ddae5390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_47
+      name: starfish_piercer2_43
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 48
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 683300b4076d4db4dabc0bbec911a8a3
+      spriteID: e7565aecf582d684e9e8addae9ce33aa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_48
+      name: starfish_piercer2_44
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 26
-        height: 12
+        x: 84
+        y: 48
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1a6983b475114243ac082f6dfca4739
+      spriteID: ce5e345c67e9a744eba3fd889669834b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_49
+      name: starfish_piercer2_45
       rect:
         serializedVersion: 2
-        x: 26
-        y: 36
-        width: 26
-        height: 12
+        x: 105
+        y: 48
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68d93ebb7a48bff4a85e219f92a265f0
+      spriteID: 31b7689bcae6c7a44a737846ab91ae56
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_50
+      name: starfish_piercer2_46
       rect:
         serializedVersion: 2
-        x: 52
-        y: 36
-        width: 26
-        height: 12
+        x: 126
+        y: 48
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bb1937599a9b9c4280ddafe01c46b86
+      spriteID: eaa5d56ca0f77f24db4b2db6bc7e78cd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_51
+      name: starfish_piercer2_47
       rect:
         serializedVersion: 2
-        x: 78
-        y: 36
-        width: 26
-        height: 12
+        x: 147
+        y: 48
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa6844a6775694544b7f1c30d1e29c58
+      spriteID: d06ad83615db61741991cbfd77598ac1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_52
+      name: starfish_piercer2_48
       rect:
         serializedVersion: 2
         x: 0
         y: 24
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02b91ae839229824ea09a9f8eed3ba92
+      spriteID: dabd8e3ec3b4c0141946c524d02d0d79
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_53
+      name: starfish_piercer2_49
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 24
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d11a863b7330c094aa8c599f6decd15b
+      spriteID: 764cb42c4d68534478588fd01a8d2046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_54
+      name: starfish_piercer2_50
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 24
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06e2e6599e74d2742a6a1f438b39f6d8
+      spriteID: c533ffd7bd381c84d97ba4c190def4fb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_55
+      name: starfish_piercer2_51
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 24
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7c2badfab4cfc64ca74bd859cdfa57f
+      spriteID: 7cfe6834e63c20743b343f14b7d2c3a0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_56
+      name: starfish_piercer2_52
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 24
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9f3ac1968fff64cb65ff390d8f6e4c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_53
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 24
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac9ed3ac5c017f45bcf5fa07f8808e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_54
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 24
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478c4f662eda4dc408dada94bac1d8d5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_55
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 24
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53931e6b6568a34c9217f039e01bd90
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_56
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02b5861741cef9b4d872f4a37ae95d71
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_57
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ffb6d7e68363cb4083c3fece2e82ae5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_58
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a87c649c5b897f40b3e48f4930d71cc
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_59
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 12
-        width: 26
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7dd3c7cad8c0d7440aaa65f33afba5b5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: starfish_archer_60
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2152f86d8f4428c4b92258c0702af503
+      spriteID: 4d0734c513930a44bb7507924387d8e8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_61
+      name: starfish_piercer2_57
       rect:
         serializedVersion: 2
-        x: 26
+        x: 21
         y: 0
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fab120442b552d47a7b95a7095fb02b
+      spriteID: 215e1138666ca85429f210cb5bc38a72
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_62
+      name: starfish_piercer2_58
       rect:
         serializedVersion: 2
-        x: 52
+        x: 42
         y: 0
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4a39dff5f5e016409b62c0929f31033
+      spriteID: 21e8ce6382a225d4faf6ae579b85d9ec
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starfish_archer_63
+      name: starfish_piercer2_59
       rect:
         serializedVersion: 2
-        x: 78
+        x: 63
         y: 0
-        width: 26
-        height: 12
+        width: 21
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62983bb1f30d9e643bfc2db5fe3c07b8
+      spriteID: 0bd6ab389aa724049a87b08edd235e2b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_60
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ee6470dd8af68478964cf15f4e1e9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_61
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 0
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee08438568442741b2fa4cfa11a98df
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_62
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e90c5d9f1d7114c85ce2739d804fec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starfish_piercer2_63
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f600cf512690ad948bb782a7e674a709
       vertices: []
       indices: 
       edges: []
@@ -1441,7 +1441,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ac89df288086076418452c0fb9074775
+    spriteID: 4c650f5f53b24384c8fbf52eec91d007
     vertices: []
     indices: 
     edges: []

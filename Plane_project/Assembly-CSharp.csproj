@@ -236,6 +236,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\1\1_Ani.txt" />
      <None Include="Assets\Script\Shader\SpriteNormalLight.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\LockOn\LockOn_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Planes\StarFish\Piercer\Piercer_Plane.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost2\Boost2_Ani.txt" />
