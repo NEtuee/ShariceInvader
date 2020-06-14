@@ -50,6 +50,9 @@ public class GameMain : MonoBehaviour {
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
 		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Loop");
 
+		AnimationControllEx.LoadAnimation("Effects/Weapon/Pulse/Burst");
+		AnimationControllEx.LoadAnimation("Effects/Weapon/Pulse/Loop");
+
 		AnimationControllEx.LoadAnimation("Weapon/Pulse/Attack",3);
 		AnimationControllEx.LoadAnimation("Weapon/Pulse/DriveOn",3);
 		AnimationControllEx.LoadAnimation("Weapon/Pulse/DriveEnd",3);

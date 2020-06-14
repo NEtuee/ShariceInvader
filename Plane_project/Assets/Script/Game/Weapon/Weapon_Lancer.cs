@@ -216,8 +216,8 @@ public class Weapon_Lancer : WeaponBase
     {
         foreach(var ani in _plane._boostAni)
         {
-            ani.CopyAnimation("Burst","Effects/Weapon/Lancer/Burst");
-            ani.CopyAnimation("Loop","Effects/Weapon/Lancer/Loop");
+            ani.CopyAnimation("Burst","Weapon/Pulse/Burst");
+            ani.CopyAnimation("Loop","Weapon/Pulse/Loop");
 
             if(ani.currAni == "Loop")
                 ani.ChangeAni("Loop",true,false);

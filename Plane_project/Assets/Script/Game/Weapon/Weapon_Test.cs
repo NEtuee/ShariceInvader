@@ -62,12 +62,12 @@ public class Weapon_Test : WeaponBase
                 if(_collider.CollisionCheck(list[i].coll))
                 {
                     ObjectManager.GetInstance().UpdateStop(0.1f);
-		    		EffectManager.GetInstance().AddEffect(list[i].position,"AttackHit_0").SetAngle(Random.Range(0f,360f));
-		    		EffectManager.GetInstance().AddEffect(list[i].position,"AttackHit_1").SetAngle(Random.Range(0f,360f));
+                    var target = ((PlaneBase)list[i]);
+		    		HitEffect(target);
     
                     CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
     
-                    ((PlaneBase)list[i]).Hit(_plane);
+                    target.Hit(_plane);
 
                     atk = true;
                 }
@@ -77,7 +77,7 @@ public class Weapon_Test : WeaponBase
         if(atk)
         {
             mainAttack = true;
-            EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/EnergyBurst",false)
+            EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Pulse/Attack",false)
                                 .SetSortingOrder(1);
             //Timer.SetTimeScaleTimer(0.3f,0.5f,true);
             return true;
@@ -128,10 +128,28 @@ public class Weapon_Test : WeaponBase
 
         _plane.SetImmortal(false);
 		_plane.SetBodyAttack(5);
+
+        foreach(var ani in _plane._boostAni)
+        {
+            ani.CopyAnimation("Burst",ani.aniOriginPath["Burst"]);
+            ani.CopyAnimation("Loop",ani.aniOriginPath["Loop"]);
+
+            if(ani.currAni == "Loop")
+                ani.ChangeAni("Loop",true,false);
+        }
     }
 
     public override void Change()
     {
+        foreach(var ani in _plane._boostAni)
+        {
+            ani.CopyAnimation("Burst","Effects/Weapon/Pulse/Burst");
+            ani.CopyAnimation("Loop","Effects/Weapon/Pulse/Loop");
+
+            if(ani.currAni == "Loop")
+                ani.ChangeAni("Loop",true,false);
+        }
+
         MainHud.instance.MainUIAniSwap("Change","Weapon/Pulse/Change",3);
         MainHud.instance.MainUIAniSwap("MainAttack","Weapon/Pulse/Attack",3);
         MainHud.instance.MainUIAniSwap("Boost","Weapon/Pulse/Boost",3);

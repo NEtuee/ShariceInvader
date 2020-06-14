@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 16e1e017944b7764482e12c8ad21ad34
+guid: cc0fc3c5adc3dc7428f6fd0d16e4bef2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_boostingui1_0
-    21300002: pulse_boostingui1_1
-    21300004: pulse_boostingui1_2
+    21300000: pulse_boostloop_0
+    21300002: pulse_boostloop_1
+    21300004: pulse_boostloop_2
+    21300006: pulse_boostloop_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -98,61 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_boostingui1_0
+      name: pulse_boostloop_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 212
-        width: 212
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 8
+        width: 5
+        height: 8
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcd9f3dad6f2c6f4ebcfa26ef79deedf
+      spriteID: 800a23e84411f134fbb4dc5d1573136b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_boostingui1_1
+      name: pulse_boostloop_1
       rect:
         serializedVersion: 2
-        x: 212
-        y: 212
-        width: 212
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5
+        y: 8
+        width: 5
+        height: 8
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f27c32b0adf57648ba7fefcf237a57f
+      spriteID: f74826f99eede7f429cf7d69ecc0cc14
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_boostingui1_2
+      name: pulse_boostloop_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 212
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 5
+        height: 8
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9feb8f44044bbbb498bf8ab4640e40c2
+      spriteID: c812bf4af53cb7142998ceff3c5dadbf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_boostloop_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 5
+        height: 8
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5035f33530a6ecb4083c4dc71125626f
       vertices: []
       indices: 
       edges: []
@@ -160,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 315f5b6b6fd9fa54da84d45de1ab37cd
+    spriteID: 4bf7f697433305d4eaf1924caaa929ce
     vertices: []
     indices: 
     edges: []
