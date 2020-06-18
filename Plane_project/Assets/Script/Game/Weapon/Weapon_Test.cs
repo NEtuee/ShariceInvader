@@ -9,7 +9,7 @@ public class Weapon_Test : WeaponBase
     public override void Initialize()
     {
         base.Initialize();
-        _collider = new Define.SimpleCircleCollider(0.76f,0.76f,Vector2.zero);
+        _collider = new Define.SimpleCircleCollider(1f,1.1f,Vector2.zero);
         _plane.SetImmortal(false);
 
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_nova");
@@ -77,7 +77,7 @@ public class Weapon_Test : WeaponBase
         if(atk)
         {
             mainAttack = true;
-            EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Pulse/Attack",false)
+            EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Pulse/Attack",false)
                                 .SetSortingOrder(1);
             //Timer.SetTimeScaleTimer(0.3f,0.5f,true);
             return true;
@@ -107,8 +107,8 @@ public class Weapon_Test : WeaponBase
                     obj.SetAbsoluteForce(d * 3f);
                     obj.ControllLock(2f);
     
-                    EffectManager.GetInstance().AddEffect(obj.position,"Electric",false,obj).SetSortingOrder(1).SetAngle(Random.Range(0f,360f));
-                    EffectManager.GetInstance().AddEffect(obj.position,"Burst",false)
+                    EffectManager.GetInstance().AddEffect(obj.position,"SpriteSet/Effects/Electric",false,obj).SetSortingOrder(1).SetAngle(Random.Range(0f,360f));
+                    EffectManager.GetInstance().AddEffect(obj.position,"SpriteSet/Effects/Burst",false)
                                             .SetAngle(MathEx.directionToAngle(d));
                 }
             }
@@ -143,18 +143,18 @@ public class Weapon_Test : WeaponBase
     {
         foreach(var ani in _plane._boostAni)
         {
-            ani.CopyAnimation("Burst","Effects/Weapon/Pulse/Burst");
-            ani.CopyAnimation("Loop","Effects/Weapon/Pulse/Loop");
+            ani.CopyAnimation("Burst","SpriteSet/Effects/Weapon/Pulse/Burst");
+            ani.CopyAnimation("Loop","SpriteSet/Effects/Weapon/Pulse/Loop");
 
             if(ani.currAni == "Loop")
                 ani.ChangeAni("Loop",true,false);
         }
 
-        MainHud.instance.MainUIAniSwap("Change","Weapon/Pulse/Change",3);
-        MainHud.instance.MainUIAniSwap("MainAttack","Weapon/Pulse/Attack",3);
-        MainHud.instance.MainUIAniSwap("Boost","Weapon/Pulse/Boost",3);
-        MainHud.instance.MainUIAniSwap("DriveOn","Weapon/Pulse/DriveOn",3);
-        MainHud.instance.MainUIAniSwap("DriveAttack","Weapon/Pulse/DriveEnd",3);
+        MainHud.instance.MainUIAniSwap("Change","UI/Weapon/Pulse/Change");
+        MainHud.instance.MainUIAniSwap("MainAttack","UI/Weapon/Pulse/Attack");
+        MainHud.instance.MainUIAniSwap("Boost","UI/Weapon/Pulse/Boost");
+        MainHud.instance.MainUIAniSwap("DriveOn","UI/Weapon/Pulse/DriveOn");
+        MainHud.instance.MainUIAniSwap("DriveAttack","UI/Weapon/Pulse/DriveEnd");
     }
 
     public override bool CollisionCheck(PlaneBase target)

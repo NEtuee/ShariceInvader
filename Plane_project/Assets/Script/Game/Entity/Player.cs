@@ -33,7 +33,7 @@ public class Player : PlaneBase {
 
 		base.firstSetting();
 
-		SetSpriteSet("Player_New",AnimationType.Horizontal);
+		SetSpriteSet("SpriteSet/Planes/Player_New",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.05f,.05f,_position));
 
 		_cam = CameraControll.instance;
@@ -282,7 +282,7 @@ public class Player : PlaneBase {
 
 
 					_cam.Shake(0.05f, _direction / 20f);
-					EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"CuttingCurve").SetAngle(_eulerAngle);
+					EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"SpriteSet/Effects/CuttingCurve").SetAngle(_eulerAngle);
 					EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));
 					_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,0.5f);
 					cuttingCurve = false;

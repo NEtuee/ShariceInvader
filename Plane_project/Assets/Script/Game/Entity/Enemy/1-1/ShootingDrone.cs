@@ -190,7 +190,7 @@ public class ShootingDrone : PlaneBase
     {
         _base = _deco.AddDeco(Vector2.zero);
 
-        _base.AddAnimation("Active","ShootingDrone/Open",2);
+        _base.AddAnimation("Active","SpriteSet/Planes/ShootingDrone/Open");
         _base.Stop();
 
         _base._sprRenderer.sprite = _baseSprite = ResourceManager.GetInstance().GetSprite("SpriteSet/Planes/ShootingDrone/Base");
@@ -203,7 +203,7 @@ public class ShootingDrone : PlaneBase
 
         _shotPoint = _deco.AddDeco(new Vector2(0.2f,0f));
 
-        _shotPoint.AddAnimation("Fire","ShootingDrone/Fire",2);
+        _shotPoint.AddAnimation("Fire","SpriteSet/Planes/ShootingDrone/Fire");
         _shotPoint.Stop();
         _shotPoint._sprRenderer.transform.SetParent(_base._sprRenderer.transform);
     }

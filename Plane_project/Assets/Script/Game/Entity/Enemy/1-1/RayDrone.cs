@@ -29,7 +29,7 @@ public class RayDrone : PlaneBase
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("RayDrone/Base",AnimationType.Horizontal);
+		SetSpriteSet("SpriteSet/Planes/RayDrone/Base",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
 		_maxSpeed = Random.Range(2.8f,3f);
@@ -87,11 +87,11 @@ public class RayDrone : PlaneBase
             if(_shotTimer <= 0f)
             {
                 Vector3 rand = (_direction + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f))).normalized;
-                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,"Bullets/Ray",false,3f)
+                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,"SpriteSet/Bullets/Ray",false,3f)
                                                 .NoneDelete()
                                                 .SetAngle(MathEx.directionToAngle(rand));
 
-                EffectManager.GetInstance().AddEffect(_shotPos.localPosition,"RayDrone/Fire",false,this,2)
+                EffectManager.GetInstance().AddEffect(_shotPos.localPosition,"SpriteSet/Planes/RayDrone/Fire",false,this)
                                             .SetAddPoint(new Vector3(0.06f,0f))
                                             .SetAngle(_eulerAngle);
 

@@ -1,8 +1,8 @@
 animationType:None
 objectType:enemy
 planeName:None
-spriteSet:RayDrone\Base
-boostAni:Effects/Boost
+spriteSet:SpriteSet\Planes\RayDrone\Base
+boostAni:SpriteSet/Effects/Boost
 mass:1
 frictionFactor:0.01
 gravityScale:0.7

@@ -94,19 +94,19 @@ public class Weapon_PhantomStinger : WeaponBase
             return;
         }
 
-        EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Shot").SetSortingOrder(10);
+        EffectManager.GetInstance().AddEffect(_aimTarget.position,"SpriteSet/Effects/PhantomString_Aim/Shot").SetSortingOrder(10);
 
         _mainTimer = mainCoolTime;
         mainAttack = false;
         //_plane._rotateLock = true;
         Vector3 pos = _plane.position + _plane.direction * 0.25f;
-        EffectManager.GetInstance().AddEffect(pos,"Fire").SetAngle(_plane.angle);
+        EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Effects/Fire").SetAngle(_plane.angle);
 
         HitEffect(_aimTarget);
 
         CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
 
-        BurstAimDirection(15f,0.08f);
+        BurstAimDirection(15f,0.15f);
 
         Timer.SetTimeScale(1f);
         _aimTarget.Hit(3,_plane);
@@ -132,7 +132,7 @@ public class Weapon_PhantomStinger : WeaponBase
             {
                 count = i >= _multiTarget.Count ? 0 : i;
                 Vector3 pos = _multiTarget[count].position;
-                var effect = EffectManager.GetInstance().AddEffect(pos,"PhantomString_Aim/LockOn",false,_multiTarget[count])
+                var effect = EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Effects/PhantomString_Aim/LockOn",false,_multiTarget[count])
                             .RealTimeProgress()
                             .PassiveDeactive()
                             .DelayApear(i * 0.06f);
@@ -170,7 +170,7 @@ public class Weapon_PhantomStinger : WeaponBase
         foreach(var effect in _aimEffects)
         {
             effect.SetActive(false);
-            EffectManager.GetInstance().AddEffect(effect.position,"PhantomString_Aim/Shot").SetSortingOrder(10);
+            EffectManager.GetInstance().AddEffect(effect.position,"SpriteSet/Effects/PhantomString_Aim/Shot").SetSortingOrder(10);
         }
 
         _aimEffects.Clear();
@@ -198,13 +198,13 @@ public class Weapon_PhantomStinger : WeaponBase
         // EffectManager.GetInstance().AddEffect(_plane.position,"Burst")
 		// 					.SetAngle(ang);
         
-        EffectManager.GetInstance().AddEffect(_plane.position - _plane.direction * 0.05f,"Weapon/PS/Boost1")
+        EffectManager.GetInstance().AddEffect(_plane.position - _plane.direction * 0.05f,"SpriteSet/Effects/Weapon/PS/Boost1")
 							.SetAngle(ang)
                             .SetDirection(-_plane.direction)
                             .SetSpeed(1f);
 
         for(int i = 0; i < 3; ++i)
-            EffectManager.GetInstance().AddEffect(_plane.position - _plane.direction * 0.05f + MathEx.RandomCircle(0.1f),"Weapon/PS/Boost2")
+            EffectManager.GetInstance().AddEffect(_plane.position - _plane.direction * 0.05f + MathEx.RandomCircle(0.1f),"SpriteSet/Effects/Weapon/PS/Boost2")
                             .DelayApear(i * 0.03f)
                             .SetDirection(_plane.direction)
                             .SetSpeed(Random.Range(0.4f,1.3f));
@@ -229,11 +229,11 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         InitAimObject();
 
-        MainHud.instance.MainUIAniSwap("Change","Weapon/PS",3);
-        MainHud.instance.MainUIAniSwap("MainAttack","Weapon/PS",3);
-        MainHud.instance.MainUIAniSwap("Boost","Weapon/PS",3);
-        MainHud.instance.MainUIAniSwap("DriveOn","Weapon/PS",3);
-        MainHud.instance.MainUIAniSwap("DriveAttack","Weapon/PS",3);
+        MainHud.instance.MainUIAniSwap("Change","UI/Weapon/PS");
+        MainHud.instance.MainUIAniSwap("MainAttack","UI/Weapon/PS");
+        MainHud.instance.MainUIAniSwap("Boost","UI/Weapon/PS");
+        MainHud.instance.MainUIAniSwap("DriveOn","UI/Weapon/PS");
+        MainHud.instance.MainUIAniSwap("DriveAttack","UI/Weapon/PS");
     }
 
 

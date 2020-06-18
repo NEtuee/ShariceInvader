@@ -11,7 +11,7 @@ public class Intercepter : PlaneBase
         base.firstSetting();
 
 
-        SetSpriteSet("Enemy",AnimationType.Horizontal);
+        SetSpriteSet("SpriteSet/Planes/Enemy",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
     }
 

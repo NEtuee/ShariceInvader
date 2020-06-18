@@ -9,7 +9,7 @@ public class SupplyShip : PlaneBase
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("SupplyShip",AnimationType.Horizontal);
+		SetSpriteSet("SpriteSet/Planes/SupplyShip",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.4f,.4f,_position));
 
 		_maxSpeed = 5f;

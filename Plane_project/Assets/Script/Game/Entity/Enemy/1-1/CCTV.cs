@@ -32,7 +32,7 @@ public class CCTV : PlaneBase
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("CCTVDrone",AnimationType.Vertical_Velocity);
+		SetSpriteSet("SpriteSet/Planes/CCTVDrone",AnimationType.Vertical_Velocity);
 	
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 

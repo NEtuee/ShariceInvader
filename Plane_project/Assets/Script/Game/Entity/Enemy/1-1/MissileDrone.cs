@@ -84,7 +84,7 @@ public class MissileDrone : PlaneBase
 				close = 1.5f;
 
 				spine.ChangeAni("open",false);
-				EffectManager.GetInstance().AddEffect(_position + new Vector3(0.01f * _scale.x,0.495f),"Planes/MissileDrone/launch",false,this,0)
+				EffectManager.GetInstance().AddEffect(_position + new Vector3(0.01f * _scale.x,0.495f),"SpriteSet/Planes/MissileDrone/launch",false,this)
 											.SetAddPoint(new Vector3(-0.01f * _scale.x,0.495f))
 											.SetScale(-_scale.x,1f,1f);
 
@@ -128,7 +128,7 @@ public class MissileDrone : PlaneBase
 				Vector3 randPos = new Vector3(Random.Range(-1.15f,1.15f),Random.Range(-.2f,.2f));
 
 				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
-				EffectManager.GetInstance().AddEffect(_position + randPos,"Explosion")
+				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/Explosion")
 											.SetTarget(this)
 											.SetAddPoint(randPos)
 											.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
@@ -149,14 +149,14 @@ public class MissileDrone : PlaneBase
 		var boost = _deco.AddDeco(new Vector2(-0.76f,0.22f));
 		var sideLight = _deco.AddDeco(new Vector2(0.23f,0.11f));
 
-		spine.AddAnimation("close","Planes/MissileDrone/spineClosing");
-		spine.AddAnimation("open","Planes/MissileDrone/spineOpening");
+		spine.AddAnimation("close","SpriteSet/Planes/MissileDrone/spineClosing");
+		spine.AddAnimation("open","SpriteSet/Planes/MissileDrone/spineOpening");
 
-		fin.AddAnimation("loop","Planes/MissileDrone/fin");
+		fin.AddAnimation("loop","SpriteSet/Planes/MissileDrone/fin");
 
-		boost.AddAnimation("loop","Planes/MissileDrone/booster");
+		boost.AddAnimation("loop","SpriteSet/Planes/MissileDrone/booster");
 
-		sideLight.AddAnimation("loop","Planes/MissileDrone/sideLight");
+		sideLight.AddAnimation("loop","SpriteSet/Planes/MissileDrone/sideLight");
 
 		spine.ChangeAni("close",false);
 		fin.ChangeAni("loop",true);

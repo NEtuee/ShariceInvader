@@ -61,7 +61,7 @@ public class BulletBase : Collisionable {
 		base.SetActive(value);
 		if(!value)
 		{
-			EffectManager.GetInstance().AddEffect(_position,"Bullet_0_Destroy");
+			EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Bullet_0_Destroy");
 		}
 	}
 

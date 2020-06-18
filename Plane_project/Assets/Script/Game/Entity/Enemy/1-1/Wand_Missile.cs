@@ -19,7 +19,7 @@ public class Wand_Missile : PlaneBase
 
         SetSpriteSet("SpriteSet/Planes/StarFish/starfish_missile",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
-		BoostSetUp("Effects/Boost_New",new Vector2(-0.1f,0f));
+		BoostSetUp("SpriteSet/Effects/Boost_New",new Vector2(-0.1f,0f));
 		
 		_boostAniProgress = true;
 

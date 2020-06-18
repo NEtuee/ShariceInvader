@@ -23,7 +23,7 @@ public class BoostDrone : PlaneBase
 	{
 		base.firstSetting();
 		_aniType = AnimationType.None;
-        _base = ResourceManager.GetInstance().GetSpriteSet("BoostDrone/Base",2);
+        _base = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/BoostDrone/Base");
 
         SetSprite(_base[1]);
 
@@ -52,7 +52,7 @@ public class BoostDrone : PlaneBase
 
     public override void Explosion()
     {
-		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
     }
 
@@ -97,7 +97,7 @@ public class BoostDrone : PlaneBase
                 target.SetAbsoluteForce(MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad) * 10f);
                 target.ControllLock(0.1f);
 
-                EffectManager.GetInstance().AddEffect(_position,"BoostDrone/Boost",false,this,2)
+                EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Planes/BoostDrone/Boost",false,this)
                                         .SetAngle(_eulerAngle);
 
                 _deleteTimer = 0.7f;

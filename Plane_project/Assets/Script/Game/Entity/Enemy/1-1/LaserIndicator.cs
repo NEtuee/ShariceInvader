@@ -22,10 +22,10 @@ public class LaserIndicator : PlaneBase
 
         _speed = 0.1f;
 
-        _ani.AddAnimation("Launch_0","LaserIndicator/0/Launch",1);
-        _ani.AddAnimation("Launch_1","LaserIndicator/1/Launch",1);
-        _ani.AddAnimation("FireStand_0","LaserIndicator/0/FireStand",1);
-        _ani.AddAnimation("FireStand_1","LaserIndicator/1/FireStand",1);
+        _ani.AddAnimation("Launch_0","SpriteSet/Effects/LaserIndicator/0/Launch");
+        _ani.AddAnimation("Launch_1","SpriteSet/Effects/LaserIndicator/1/Launch");
+        _ani.AddAnimation("FireStand_0","SpriteSet/Effects/LaserIndicator/0/FireStand");
+        _ani.AddAnimation("FireStand_1","SpriteSet/Effects/LaserIndicator/1/FireStand");
 
         SetCollider(new Define.SimpleBoxCollider(.4f,10f,_position));
     }

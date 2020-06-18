@@ -17,7 +17,7 @@ public class Wand_Archer : WandsBase
         //SetSpriteSet("StarFish/Marker",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
-        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Archer",2);
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/StarFish/Archer");
         _spriteAngle = 360f / _dirSprites.Length;
 
         UpdateSprite();

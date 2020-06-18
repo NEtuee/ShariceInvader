@@ -9,7 +9,7 @@ public class PointMarker : PlaneBase
         base.firstSetting();
 
 
-        SetSpriteSet("SupplyShip",AnimationType.Horizontal);
+        SetSpriteSet("SpriteSet/Planes/SupplyShip",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
     }
 

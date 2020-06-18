@@ -12,13 +12,13 @@ public class ResourceManager : Singleton<ResourceManager> {
 	private Dictionary<string, string[]> saveData = new Dictionary<string, string[]>();
 
 	private static string spritesFilePath = "Sprites/";
-	private static string[] spriteSetFilePath = 
-	{"Sprites/SpriteSet/", "Sprites/SpriteSet/Effects/",
-	"Sprites/SpriteSet/Planes/","Sprites/UI/"};
-	public static string[] spriteSetFolder =
-	{
-		"", "Effects/", "Planes/", "UI/"
-	};
+	// private static string[] spriteSetFilePath = 
+	// {"Sprites/SpriteSet/", "Sprites/SpriteSet/Effects/",
+	// "Sprites/SpriteSet/Planes/","Sprites/UI/"};
+	// public static string[] spriteSetFolder =
+	// {
+	// 	"", "Effects/", "Planes/", "UI/"
+	// };
 	private static string prefabFilePath = "Prefab/";
 	private static string audioFilePath = "Audio/";
 	private static string materialPath = "Material/";
@@ -113,12 +113,12 @@ public class ResourceManager : Singleton<ResourceManager> {
 		return sprites;
 	}
 
-	public Sprite[] GetSpriteSet(string folderName, int type = 0)
+	public Sprite[] GetSpriteSet(string folderName)
 	{
 		if(spriteSet.ContainsKey(folderName))
 			return spriteSet[folderName];
 
-		string path = spriteSetFilePath[type] + folderName;
+		string path = spritesFilePath + folderName;
 		UnityEngine.Object[] obj = LoadAll(path, spriteType);
 		if(obj.Length == 0)
 		{
@@ -165,7 +165,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 		Material obj = Load(path,MaterialType) as Material;
 		if(obj == null)
 		{
-			Debug.Log("file does not exist");
+			Debug.Log("material does not exist : " + fileName);
 			return null;
 		}
 		material.Add(fileName,obj);
@@ -181,7 +181,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 		TextAsset text = Load(fileName,textType) as TextAsset;
 		if(text == null)
 		{
-			Debug.Log("file does not exist");
+			Debug.Log("saveData does not exist : " + fileName);
 			return null;
 		}
 

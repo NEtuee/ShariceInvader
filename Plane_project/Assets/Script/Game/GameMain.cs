@@ -6,6 +6,7 @@ public class GameMain : MonoBehaviour {
 
 	public GameObject player;
 	public BackgroundManager background;
+	public StageManager stage;
 	public MainHud mainHud;
 
 	private CameraControll cam;
@@ -46,22 +47,23 @@ public class GameMain : MonoBehaviour {
 		_collisionManager.firstSetting();
 		background.firstSetting();
 		_delayActManager.firstSetting();
+		stage.firstSetting();
 
-		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Burst");
-		AnimationControllEx.LoadAnimation("Effects/Weapon/Lancer/Loop");
+		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Lancer/Burst");
+		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Lancer/Loop");
 
-		AnimationControllEx.LoadAnimation("Effects/Weapon/Pulse/Burst");
-		AnimationControllEx.LoadAnimation("Effects/Weapon/Pulse/Loop");
+		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Pulse/Burst");
+		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Pulse/Loop");
 
-		AnimationControllEx.LoadAnimation("Weapon/Pulse/Attack",3);
-		AnimationControllEx.LoadAnimation("Weapon/Pulse/DriveOn",3);
-		AnimationControllEx.LoadAnimation("Weapon/Pulse/DriveEnd",3);
-		AnimationControllEx.LoadAnimation("Weapon/Pulse/Boost",3);
-		AnimationControllEx.LoadAnimation("Weapon/Pulse/Change",3);
+		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/Attack");
+		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/DriveOn");
+		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/DriveEnd");
+		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/Boost");
+		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/Change");
 
-		AnimationControllEx.LoadAnimation("Weapon/PS",3);
+		AnimationControllEx.LoadAnimation("UI/Weapon/PS");
 
-		AnimationControllEx.LoadAnimation("Bullets/Ray",0);
+		AnimationControllEx.LoadAnimation("SpriteSet/Bullets/Ray");
 
 		
 		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
@@ -93,6 +95,8 @@ public class GameMain : MonoBehaviour {
 
 		_collisionManager.UpdateCollisionList();
 		_collisionManager.SyncCollisionList();
+
+		stage.progress(deltaTime);
 
 		_objManager.DeleteProgress();
 		Physics2D.SyncTransforms();

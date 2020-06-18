@@ -1,8 +1,8 @@
 animationType:None
 objectType:enemy
 planeName:None
-spriteSet:Player_New
-boostAni:Effects/Boost_New
+spriteSet:SpriteSet/Planes/Player_New
+boostAni:SpriteSet/Effects/Boost_New
 mass:1
 frictionFactor:0.01
 gravityScale:0.7

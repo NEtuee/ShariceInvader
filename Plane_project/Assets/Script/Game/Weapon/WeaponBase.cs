@@ -153,7 +153,7 @@ public abstract class WeaponBase
 
         if(!_hideAimObject && _aimTarget != null && _aimTarget != target)
         {
-            EffectManager.GetInstance().AddEffect(_aimTarget.position,"PhantomString_Aim/Miss").SetSortingOrder(10);
+            EffectManager.GetInstance().AddEffect(_aimTarget.position,"SpriteSet/Effects/PhantomString_Aim/Miss").SetSortingOrder(10);
         }
 
 		if(target != null)
@@ -262,8 +262,8 @@ public abstract class WeaponBase
             _aimObject = new GameObject("Aim").AddComponent<SpriteRenderer>();;
 		    _aimObject.sortingOrder = 10;
             _aimAni = new AnimationControllEx(_aimObject);
-		    _aimAni.AddAnimation("On","Effects/PhantomString_Aim/Appear");
-            _aimAni.AddAnimation("Lock","Effects/PhantomString_Aim/LockOn");
+		    _aimAni.AddAnimation("On","SpriteSet/Effects/PhantomString_Aim/Appear");
+            _aimAni.AddAnimation("Lock","SpriteSet/Effects/PhantomString_Aim/LockOn");
            // _aimObject.transform.SetParent(_plane.transform);
         }
         else
@@ -278,8 +278,8 @@ public abstract class WeaponBase
     {
         if(!target.immortal)
         {
-            EffectManager.GetInstance().AddEffect(target.position,"AttackHit_0").SetAngle(Random.Range(0f,360f));
-		    EffectManager.GetInstance().AddEffect(target.position,"AttackHit_1").SetAngle(Random.Range(0f,360f));
+            EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/AttackHit_0").SetAngle(Random.Range(0f,360f));
+		    EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/AttackHit_1").SetAngle(Random.Range(0f,360f));
         }
     }
 

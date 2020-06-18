@@ -77,7 +77,7 @@ public class TheMarker : PlaneBase
         for(int i = 0; i < 3; ++i)
         {
             var marker = new MarkerHead();
-            marker.Init(ResourceManager.GetInstance().GetSpriteSet("StarFish/Marker",2),tp);
+            marker.Init(ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/StarFish/Marker"),tp);
             marker.SetPosition(_position,new Vector3(Mathf.Sin(_markerAngle * Mathf.Deg2Rad),0f, Mathf.Cos(_markerAngle * Mathf.Deg2Rad)) * _markerSpread);
 
             _heads.Add(marker);

@@ -33,7 +33,7 @@ public class LaserDrone : PlaneBase
 
         //SetSpriteSet("Planes/LaserDrone/",AnimationType.None);
         _aniType = AnimationType.None;
-        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("LaserDrone/Center",2);
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/LaserDrone/Center");
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
         miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
@@ -254,7 +254,7 @@ public class LaserDrone : PlaneBase
 				Vector3 randPos = MathEx.RandomVector3(-coll.bound.box.x,coll.bound.box.x);
 
 				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
-				EffectManager.GetInstance().AddEffect(_position + randPos,"Explosion")
+				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/Explosion")
 											.SetTarget(this)
 											.SetAddPoint(randPos)
 											.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
@@ -279,7 +279,7 @@ public class LaserDrone : PlaneBase
     public void ExplosionSprkle(int count,float delay,Vector3 pos)
     {
         int rand = MathEx.RandomInt(0,2);
-        EffectManager.GetInstance().AddEffect(pos,"Planes/LaserDrone/Sparkle/" + rand,false,null,0)
+        EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Planes/LaserDrone/Sparkle/" + rand,false,null)
                                             .SetDisableEvent(()=> {
 
                                                 DelayActManager.GetInstance().RequestAction(()=>{
@@ -331,8 +331,8 @@ public class LaserDrone : PlaneBase
         _back = _deco.AddDeco(new Vector2(-0.21f,0f));
         _front = _deco.AddDeco(new Vector2(0.2f,0f));
 
-        _back.AddAnimation("progress","Planes/LaserDrone/Back");
-        _front.AddAnimation("progress","Planes/LaserDrone/Front");
+        _back.AddAnimation("progress","SpriteSet/Planes/LaserDrone/Back");
+        _front.AddAnimation("progress","SpriteSet/Planes/LaserDrone/Front");
 
         _back.ChangeAni("progress",false);
         _front.ChangeAni("progress",false);

@@ -41,9 +41,9 @@ public class Flare : PlaneBase
 
         _aniCon = new AnimationControllEx(_sprRenderer);
 
-        _aniCon.AddAnimation("Launch","RayDrone/Flare/Launch",2);
-        _aniCon.AddAnimation("Disapear","RayDrone/Flare/Disapear",2);
-        _aniCon.AddAnimation("Loop","RayDrone/Flare/Loop",2);
+        _aniCon.AddAnimation("Launch","SpriteSet/Planes/RayDrone/Flare/Launch");
+        _aniCon.AddAnimation("Disapear","SpriteSet/Planes/RayDrone/Flare/Disapear");
+        _aniCon.AddAnimation("Loop","SpriteSet/Planes/RayDrone/Flare/Loop");
     }
 
     public override void initialize()
@@ -107,17 +107,17 @@ public class Flare : PlaneBase
 
     public void Explode()
     {
-        EffectManager.GetInstance().AddEffect(_position,"RayDrone/Flare/Explode",false,null,2);
+        EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Planes/RayDrone/Flare/Explode",false,null);
         for(int i = 0; i < 8; ++i)
         {
             Vector3 pos = new Vector3(Random.Range(-0.18f,0.18f),Random.Range(-0.02f,0.18f));
-            EffectManager.GetInstance().AddEffect(pos + _position,"RayDrone/Flare/Exparticle/" + Random.Range(0,2).ToString(),false,null,2)
+            EffectManager.GetInstance().AddEffect(pos + _position,"SpriteSet/Planes/RayDrone/Flare/Exparticle/" + Random.Range(0,2).ToString(),false,null)
                                         .DelayApear(Random.Range(0f,0.1f));
         }
 
         for(int i = 0; i < 4; ++i)
         {
-            EffectManager.GetInstance().AddEffect(_position,"RayDrone/Flare/Spark/" + Random.Range(0,2).ToString(),false,null,2)
+            EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Planes/RayDrone/Flare/Spark/" + Random.Range(0,2).ToString(),false,null)
                                         .DelayApear(Random.Range(0f,0.05f))
                                         .SetAngle(Random.Range(0f,360f));
         }

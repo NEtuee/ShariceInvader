@@ -20,11 +20,11 @@ public class Wand_Piercer : WandsBase
 
         //SetSpriteSet("StarFish/Marker",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
-        LoadPlaneData("StarFish/Piercer");
+        LoadPlaneData("SpriteSet/Planes/StarFish/Piercer");
 
         _aniType = AnimationType.None;
 
-        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Piercer",2);
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/StarFish/Piercer");
         _spriteAngle = 360f / _dirSprites.Length;
 
         UpdateSprite();
@@ -64,7 +64,7 @@ public class Wand_Piercer : WandsBase
     public override void progress(float deltaTime)
     {
         base.progress(deltaTime);
-        mainAngle += 120f * deltaTime;
+        mainAngle += 300f * deltaTime;
         mainAngle = MathEx.clamp360Degree(mainAngle);
         _sprRenderer.sprite = _dirSprites[(int)(mainAngle / _spriteAngle)];
 
@@ -98,17 +98,22 @@ public class Wand_Piercer : WandsBase
             _line = EffectManager.GetInstance().AddLineEffect(_position,(Player.instance.position - _position).normalized * 100f,0f,5f)
                                         .SetLerpWidth(0.2f,.2f)
                                         .SetTiling(ResourceManager.GetInstance().GetSprite("SpriteSet/Planes/StarFish/starfish_piercerline"),1f)
-                                        .SetOffsetScrolling(.5f);
+                                        .SetOffsetScrolling(.5f)
+                                        .SetLerpColor(Color.yellow,4f);
             _actTimer = 4f;
             _shotReady = true;
+
+            _targetDirection = Player.instance.position - _position;
+            _eulerAngle = MathEx.directionToAngle(_targetDirection);
+            _direction = _targetDirection;
         }
 
         if(_shotReady && !_shot)
         {
             var pos = Player.instance.position;
             _targetDirection = pos - _position;
-            _line.SetPosition(_position,0);
-            _line.SetPosition(_targetDirection * 100f,1);
+            _line.SetPosition(_position + _direction,0);
+            _line.SetPosition(_position + _direction * 100f,1);
 
             if(_actTimer <= 0f)
             {
@@ -116,15 +121,17 @@ public class Wand_Piercer : WandsBase
                 _line = null;
                 _shot = true;
                 _actTimer = 3f;
-                _speed = 0.2f;
-                _direction = _targetDirection;
 
-                _bodyAttack = 4;
+                Shot(_direction);
+                // _speed = 0.2f;
+                // _direction = _targetDirection;
 
-                SetImmortal(true);
+                // _bodyAttack = 4;
 
-                BurstActive();
-                SetAdditionalSpeed(8f,3f);
+                // SetImmortal(true);
+
+                // BurstActive();
+                // SetAdditionalSpeed(8f,3f);
             }
         }
         else if(_shot)
@@ -133,27 +140,56 @@ public class Wand_Piercer : WandsBase
             {
                 _shot = false;
                 _shotReady = false;
+                _speed = 0.2f;
 
-                _bodyAttack = 1;
-                SetImmortal(false);
+                // _bodyAttack = 1;
+                // SetImmortal(false);
 
                 RandomSpread();
             }
         }
 
-        _trailEmmit = _shot;
-
         TopDownEdgeCheck();
 
-        float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),.2f);
-        _eulerAngle = dirangle;
+        if(!_shot)
+        {
+            float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),(_shotReady ? 3f : 13f) * deltaTime);
+            _eulerAngle = dirangle;
 
-        _direction = Vector3.Lerp(_direction,_targetDirection,13f * deltaTime);
+            _direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);//Vector3.Lerp(_direction,_targetDirection,(_shotReady ? 3f : 13f) * deltaTime).normalized;
+        }
         
         var dist = Vector3.Distance(_position,Player.instance.position);
         if(dist < 5f)
         {
             _canShot = false;
+        }
+    }
+
+    public void Shot(Vector3 dir)
+    {
+        EffectManager.GetInstance().AddLineEffect(_position ,_position + dir * 100f,.4f,.8f)
+                                        .SetLerpWidth(0.001f,.1f);
+
+        var list = CollisionManager.GetInstance().GetCollisionList(Define.ObjectType.player);
+
+        if(list != null)
+        {
+            int count = list.Count;
+
+
+            for(int i = 0 ; i < count; ++i)
+            {
+                list[i].UpdateCollider();
+    
+                if(Define.SimpleCollider.CircleLineCircle(list[i].position,_position,_position + dir * 100f,
+							.2f, list[i].coll.bound.box.x))
+		        {
+                    var p = ((PlaneBase)list[i]);
+                    p.Hit(15,this);
+                    Debug.Log("LaserHit");
+		        }
+            }
         }
     }
 

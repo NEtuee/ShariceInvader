@@ -21,7 +21,7 @@ public class BulletManager : Singleton<BulletManager>, Define.IManager {
 	{
 		var res = ResourceManager.GetInstance();
 		GameObject obj = res.GetPrefab("BulletBase");
-		_sprites = res.GetSpriteSet("Bullets/Single/");
+		_sprites = res.GetSpriteSet("SpriteSet/Bullets/Single/");
 
 		loop = new Action<BulletBase>(Loop);
 		collisionLoop = new Action<BulletBase>(CollisionLoop);

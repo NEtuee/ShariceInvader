@@ -45,7 +45,7 @@ public class WeaponInventory
 
         if(_currWeapon != null)
 			_currWeapon.WhenChanged();
-		EffectManager.GetInstance().AddEffect(_plane.position,"WeaponChange",false,_plane).SetSortingOrder(1);
+		EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/WeaponChange",false,_plane).SetSortingOrder(1);
 		_currWeapon = _weaponList[p].weapon;
 		_currWeapon.SetTarget(_plane);
 		_currWeapon.Change();

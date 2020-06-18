@@ -108,7 +108,7 @@ public class Weapon_Lancer : WeaponBase
         Vector3 pos = _plane.position;
 		
 		_plane.SetPosition(pos + dir * (_plane._dodgeDist - .2f));
-        EffectManager.GetInstance().AddEffect(_plane.position - dir * 0.3f,"Weapon/Lancer/Drive")
+        EffectManager.GetInstance().AddEffect(_plane.position - dir * 0.3f,"SpriteSet/Effects/Weapon/Lancer/Drive")
                                     .RealTimeProgress()
                                     .SetDisableEvent(ApearArrow)
 									.SetAngle(MathEx.directionToAngle(dir));
@@ -142,13 +142,13 @@ public class Weapon_Lancer : WeaponBase
         _plane.SpriteDisapear(0.1f);
         CameraControll.instance.FollowDelay(0.5f);
 
-        EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DriveArrow/End",false,_plane,1)
+        EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DriveArrow/End",false,_plane)
                         .RealTimeProgress()
                         .SetAddPoint(_plane.direction * 0.25f)
                         .SetAngle(da);
 
         _attackRange.SetActive(false);
-        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/MainRange",false,null,3);
+        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/MainRange",false,null);
         _attackRange.PassiveDeactive();
         _attackRange.RealTimeProgress();
 
@@ -181,7 +181,7 @@ public class Weapon_Lancer : WeaponBase
 
     public override void DriveOn()
     {
-        _driveArrow = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DriveArrow/Start",false,null,1);
+        _driveArrow = EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DriveArrow/Start",false,null);
         _driveArrow.PassiveDeactive();
         _driveArrow.RealTimeProgress();
 
@@ -189,7 +189,7 @@ public class Weapon_Lancer : WeaponBase
         _backUi.sprRenderer.enabled = false;
 
         _attackRange.SetActive(false);
-        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DriveRange",false,null,3);
+        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/DriveRange",false,null);
         _attackRange.PassiveDeactive();
         _attackRange.RealTimeProgress();
     }
@@ -216,30 +216,30 @@ public class Weapon_Lancer : WeaponBase
     {
         foreach(var ani in _plane._boostAni)
         {
-            ani.CopyAnimation("Burst","Weapon/Pulse/Burst");
-            ani.CopyAnimation("Loop","Weapon/Pulse/Loop");
+            ani.CopyAnimation("Burst","SpriteSet/Effects/Weapon/Lancer/Burst");
+            ani.CopyAnimation("Loop","SpriteSet/Effects/Weapon/Lancer/Loop");
 
             if(ani.currAni == "Loop")
                 ani.ChangeAni("Loop",true,false);
         }
 
-        _uiArrow = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/DirectionArrow",false,null,1,false);
+        _uiArrow = EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DirectionArrow",false,null,false);
         _uiArrow.PassiveDeactive();
         _uiArrow.RealTimeProgress();
 
-        _backUi = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/Back",false,null,3,false);
+        _backUi = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/Back",false,null,false);
         _backUi.PassiveDeactive();
         _backUi.RealTimeProgress();
 
-        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"Weapon/Lancer/MainRange",false,null,3);
+        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/MainRange",false,null);
         _attackRange.PassiveDeactive();
         _attackRange.RealTimeProgress();
 
-        MainHud.instance.MainUIAniSwap("Change",null);
-        MainHud.instance.MainUIAniSwap("MainAttack",null);
-        MainHud.instance.MainUIAniSwap("Boost",null);
-        MainHud.instance.MainUIAniSwap("DriveOn",null);
-        MainHud.instance.MainUIAniSwap("DriveAttack",null);
+        MainHud.instance.MainUIAniSwap("Change","");
+        MainHud.instance.MainUIAniSwap("MainAttack","");
+        MainHud.instance.MainUIAniSwap("Boost","");
+        MainHud.instance.MainUIAniSwap("DriveOn","");
+        MainHud.instance.MainUIAniSwap("DriveAttack","");
     }
 
     public override void WhenChanged()

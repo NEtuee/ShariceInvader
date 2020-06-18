@@ -21,7 +21,7 @@ public class NPC : PlaneBase {
 		SetSpriteSet("SpriteSet/Planes/commonMissile/missile",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
-		BoostSetUp("Effects/commonMissileBoost",new Vector2(-0.1f,0f));
+		BoostSetUp("SpriteSet/Effects/commonMissileBoost",new Vector2(-0.1f,0f));
 
 		_sprRenderer.flipX = true;
 
@@ -29,8 +29,8 @@ public class NPC : PlaneBase {
 		_speed = .1f;
 
 		_ani = new AnimationControllEx(_sprRenderer);
-		_ani.AddAnimation("open","Planes/commonMissile/launch");
-		_ani.AddAnimation("loop","Planes/commonMissile/spin");
+		_ani.AddAnimation("open","SpriteSet/Planes/commonMissile/launch");
+		_ani.AddAnimation("loop","SpriteSet/Planes/commonMissile/spin");
 
 		//_sprRenderer.sprite = _ani.animations["open"][0].sprite;
 		_ani.ChangeAni("open",false);

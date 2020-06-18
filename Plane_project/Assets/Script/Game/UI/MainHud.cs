@@ -160,7 +160,7 @@ public class MainHud : SingletonMono<MainHud>
         }
     }
 
-    public void MainUIAniSwap(string name, string path, int type)
+    public void MainUIAniSwap(string name, string path)
     {
         _uiAni.CopyAnimation(name,path);
     }

@@ -234,7 +234,7 @@ public abstract class PlaneBase : Collisionable {
 
 		if(effectActive)
 		{
-			EffectManager.GetInstance().AddEffect(pos + dir * (_dodgeDist / 2f),"DodgeSlash")
+			EffectManager.GetInstance().AddEffect(pos + dir * (_dodgeDist / 2f),"SpriteSet/Effects/DodgeSlash")
 									.SetAngle(MathEx.directionToAngle(dir));
 
 			int t = (int)_dodgeDist * 10;
@@ -267,12 +267,12 @@ public abstract class PlaneBase : Collisionable {
 		{
 			Vector3 pos = _position;
 			pos += _direction.normalized * 0.1f;
-			EffectManager.GetInstance().AddEffect(pos,"Burst")
+			EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Effects/Burst")
 										.SetAngle(MathEx.directionToAngle(_direction));
 										// .SetDirection(-_direction)
 										// .SetSpeed(_velocity.magnitude * .5f);
 
-			EffectBase effect = EffectManager.GetInstance().AddEffect(_position,"Electric");
+			EffectBase effect = EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Electric");
 			effect.SetAngle(MathEx.directionToAngle(_direction));
 			effect.SetSortingOrder(1);
 		}
@@ -407,7 +407,7 @@ public abstract class PlaneBase : Collisionable {
 		}
 		else
 		{
-			EffectManager.GetInstance().AddEffect(_position,"ImmortalHit",false);
+			EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ImmortalHit",false);
 		}
 	}
 
@@ -438,7 +438,7 @@ public abstract class PlaneBase : Collisionable {
 				if(ani.AnimationProgress(deltaTime) == -1)
 					if(!ani.ChangeAni("Loop",true))
 						_boostAniProgress = false;
-				ani._sprRenderer.enabled = _speed != 0f ? !_controllLock : false;
+				ani._sprRenderer.enabled = _speed != 0f;// ? !_controllLock : false;
 			}
 			else
 			{
@@ -466,7 +466,7 @@ public abstract class PlaneBase : Collisionable {
 				_spriteDisapearTimer = 0f;
 				_sprRenderer.enabled = true;
 
-				EffectManager.GetInstance().AddEffect(_position,"Burst")
+				EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Burst")
 										.SetAngle(MathEx.directionToAngle(_direction));
 			}
 		}
@@ -493,7 +493,7 @@ public abstract class PlaneBase : Collisionable {
 				else if(_fallTimer <= 0.7f && !_fallExplosion)
 				{
 					_fallExplosion = true;
-					EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
+					EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
 					EffectManager.GetInstance().Explosion(_position,15,0.2f);
 				}
 			}
@@ -594,22 +594,22 @@ public abstract class PlaneBase : Collisionable {
 		if(_aniType == AnimationType.Horizontal)
 		{
 			name = name.Replace("\\",string.Empty);
-			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name,2);
+			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name);
 			_spriteAngle = 90f / ((float)_dirSprites.Length / 2f);
 		}
 		else if(_aniType == AnimationType.Vertical)
 		{
-			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name,2);
+			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name);
 			_spriteAngle = 360f / (float)(_dirSprites.Length - 1);
 		}
 		else if(_aniType == AnimationType.Vertical_Angled)
 		{
-			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name,2);
+			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name);
 			_spriteAngle = 360f / (float)(_Ani_verticalCount - 1);
 		}
 		else if(_aniType == AnimationType.Vertical_Velocity)
 		{
-			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name,2);
+			_dirSprites = ResourceManager.GetInstance().GetSpriteSet(name);
 			_spriteAngle = _dirSprites.Length;
 		}
 		else if(_aniType == AnimationType.None)
@@ -623,7 +623,7 @@ public abstract class PlaneBase : Collisionable {
 	public void LoadPlaneData(string n)
 	{
 		string nm = (n.Contains("/") ? n.Substring(n.LastIndexOf("/") + 1) : n);
-		string path = "Sprites/SpriteSet/Planes/" + n + "/" + nm + "_Plane";
+		string path = "Sprites/" + n + "/" + nm + "_Plane";
 
 		string[] data = ResourceManager.GetInstance().GetSaveData(path);
 		if(data == null)
@@ -833,7 +833,7 @@ public abstract class PlaneBase : Collisionable {
 			}
 		}
 
-		EffectManager.GetInstance().AddEffect(_position,"Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
 	}
 

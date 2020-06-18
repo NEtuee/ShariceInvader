@@ -36,7 +36,7 @@ public class EffectBase : Drawable {
 		SetSortingOrder(-1);
 	}
 
-	public EffectBase Active(Vector2 pos, string path, int type, bool loop = false,ObjectBase t = null, bool startPlay = true)
+	public EffectBase Active(Vector2 pos, string path, bool loop = false,ObjectBase t = null, bool startPlay = true)
 	{
 		_eulerAngle = 0f;
 		_direction = Vector3.zero;
@@ -51,7 +51,7 @@ public class EffectBase : Drawable {
 
 		_position = pos;
 		_animationProgress = true;
-		ani.SetAnimation(ani.LoadAnimationToPath(path, type));
+		ani.SetAnimation(ani.LoadAnimationToPath(path));
 		_sprRenderer.enabled = true;
 
 		if(startPlay)

@@ -121,13 +121,16 @@ public class AnimationControllEx
 
 	public void CopyAnimation(string copy, string target)
 	{
-		if(!animations.ContainsKey(copy) || !loadedAnimations.ContainsKey(target))
+		if(!animations.ContainsKey(copy) || (!loadedAnimations.ContainsKey(target) && target != ""))
 		{
-			Debug.Log("animation does not loaded!!!");
+			Debug.Log(" : animation does not loaded!!! : " + target);
 			return;
 		}
 
-		animations[copy] = loadedAnimations[target];
+		if(target == "")
+			animations[copy] = null;
+		else
+			animations[copy] = loadedAnimations[target];
 	}
 
 	public void CopyAnimation(string copy, AnimationKey[] keys)
@@ -146,9 +149,9 @@ public class AnimationControllEx
 		animations.Add(name,null);
 	}
 
-	public void AddAnimation(string name, string path, int type = 0)
+	public void AddAnimation(string name, string path)
 	{
-		AnimationKey[] key = LoadAnimationToPath(path, type);
+		AnimationKey[] key = LoadAnimationToPath(path);
 
 		if (key == null)
 		{
@@ -167,12 +170,12 @@ public class AnimationControllEx
         animations.Add(name, key);
 	}
 
-	public AnimationKey[] LoadAnimationToPath(string path,int type)
+	public AnimationKey[] LoadAnimationToPath(string path)
 	{
 		AnimationKey[] key;
 		if(!loadedAnimations.ContainsKey(path))
 		{
-			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path,type);
+			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
 			if(sprites == null)
 				return null;
 
@@ -187,14 +190,7 @@ public class AnimationControllEx
 				
         	string pathName = "";
 
-			if(type < 3)
-			{
-				pathName =  "Sprites/SpriteSet/" + ResourceManager.spriteSetFolder[type] + savePath + file + "_Ani";
-			}
-			else
-			{
-				pathName =  "Sprites/" + ResourceManager.spriteSetFolder[type] + savePath + file + "_Ani";
-			}
+			pathName =  "Sprites/" + savePath + file + "_Ani";
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 
@@ -226,18 +222,18 @@ public class AnimationControllEx
 		return key;
 	}
 
-	public static void LoadAnimation(string path, int type = 0)
+	public static void LoadAnimation(string path)
 	{
 		AnimationKey[] key;
 
 		if(!loadedAnimations.ContainsKey(path))
 		{
-			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path,type);
+			Sprite[] sprites = ResourceManager.GetInstance().GetSpriteSet(path);
 			if(sprites == null)
 				return;
 
         	string file = path.Substring(path.LastIndexOf('/'));
-        	string pathName =  (type < 3 ? "Sprites/SpriteSet/" : "Sprites/") + ResourceManager.spriteSetFolder[type] + path + file + "_Ani";
+        	string pathName =  "Sprites/" + path + file + "_Ani";
 
         	string[] data = ResourceManager.GetInstance().GetSaveData(pathName);
 

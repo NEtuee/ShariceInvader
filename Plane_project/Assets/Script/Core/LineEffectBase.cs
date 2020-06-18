@@ -16,6 +16,12 @@ public class LineEffectBase : ObjectBase
     private bool _lerpColor = false;
     private bool _offsetScroll = false;
 
+    private float _lerpColorTime = 0f;
+    private float _lerpColorTimer = 0f;
+
+    private Color _mainColor;
+    private Color _endColor;
+
     private Material pixelSnapMat;
     private Material tilingMat;
 
@@ -46,6 +52,7 @@ public class LineEffectBase : ObjectBase
 
         _lerpWidth = false;
         _offsetScroll = false;
+        _lerpColor = false;
 
         SetMaterial(pixelSnapMat);
         SetColor(Color.white);
@@ -56,6 +63,16 @@ public class LineEffectBase : ObjectBase
     }
 
     public LineEffectBase SetColor(Color color) {mainLine.startColor = color; mainLine.endColor = color; return this;}
+    public LineEffectBase SetLerpColor(Color targetColor, float time)
+    {
+        _mainColor = mainLine.endColor;
+        _lerpColor = true;
+        _endColor = targetColor;
+        _lerpColorTime = time;
+        _lerpColorTimer = 0f;
+
+        return this;
+    }
     public LineEffectBase SetMaterial(Material mat) {mainLine.material = mat; return this;}
     public LineEffectBase SetPosition(Vector3 pos, int point) {mainLine.SetPosition(point,pos); return this;}
     public LineEffectBase SetTextureMode(LineTextureMode mode){mainLine.textureMode = mode; return this;}
@@ -107,6 +124,15 @@ public class LineEffectBase : ObjectBase
             
             mainLine.startWidth = width;
             mainLine.endWidth = width;
+        }
+
+        if(_lerpColor)
+        {
+            _lerpColorTimer += deltaTime;
+            var color = Color.Lerp(_mainColor,_endColor,_lerpColorTimer / _lerpColorTime);
+
+            mainLine.startColor = color;
+            mainLine.endColor = color;
         }
 
         if(_offsetScroll)

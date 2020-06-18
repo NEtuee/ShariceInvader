@@ -1,8 +1,8 @@
 animationType:None
 objectType:enemy
 planeName:None
-spriteSet:StarFish\Piercer
-boostAni:Effects/Boost
+spriteSet:SpriteSet\Planes\StarFish\Piercer
+boostAni:SpriteSet/Effects/Boost
 mass:1
 frictionFactor:0.01
 gravityScale:0.7

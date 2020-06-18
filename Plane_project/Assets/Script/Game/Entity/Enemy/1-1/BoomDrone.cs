@@ -22,7 +22,7 @@ public class BoomDrone : PlaneBase
 		base.firstSetting();
         SetVerticalAngledCount(64,4);
 
-		SetSpriteSet("BoomDrone",AnimationType.Vertical_Angled);
+		SetSpriteSet("SpriteSet/Planes/BoomDrone",AnimationType.Vertical_Angled);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
 
@@ -94,7 +94,7 @@ public class BoomDrone : PlaneBase
             _maxSpeed = Random.Range(3f,3.5f);
 		    _speed = Random.Range(.2f,.25f);
 
-            rangeCircle = EffectManager.GetInstance().AddEffect(_position,"CircleRange",true,this);
+            rangeCircle = EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/CircleRange",true,this);
             rangeCircle.sprRenderer.color = startColor;
         }
 
@@ -112,7 +112,7 @@ public class BoomDrone : PlaneBase
                     timer = 0f;
                     empStun = true;
 
-                    EffectManager.GetInstance().AddEffect(_position,"ElectricBoom/New",false,this);
+                    EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ElectricBoom/New",false,this);
                 }
             }
 

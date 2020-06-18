@@ -12,7 +12,7 @@ public class UACV : PlaneBase
 	public override void firstSetting()
 	{
 		base.firstSetting();
-		SetSpriteSet("Enemy",AnimationType.Horizontal);
+		SetSpriteSet("SpriteSet/Planes/Enemy",AnimationType.Horizontal);
 		SetCollider(new Define.SimpleCircleCollider(.11f,.11f,_position));
 
 		_maxSpeed = Random.Range(2f,2.25f);

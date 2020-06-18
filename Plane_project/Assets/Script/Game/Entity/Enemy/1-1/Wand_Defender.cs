@@ -12,7 +12,7 @@ public class Wand_Defender : WandsBase
         //SetSpriteSet("StarFish/Marker",AnimationType.None);
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
-        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Defender",2);
+        _dirSprites = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/StarFish/Defender");
         _spriteAngle = 360f / _dirSprites.Length;
 
         UpdateSprite();

@@ -324,7 +324,7 @@ public class Editor_PlaneBuilder : MonoBehaviour
             }
             else
             {
-                planeInfo.CreateDataFile(file);
+                planeInfo.CreateDataFile("SpriteSet\\Planes\\" + file);
             }
 
             cursorController.DisableAllCursor();

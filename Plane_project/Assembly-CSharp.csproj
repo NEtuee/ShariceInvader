@@ -134,6 +134,7 @@
      <Compile Include="Assets\Script\Game\Entity\Player.cs" />
      <Compile Include="Assets\Script\Game\Entity\SupplyShip.cs" />
      <Compile Include="Assets\Script\Game\GameMain.cs" />
+     <Compile Include="Assets\Script\Game\StageManager.cs" />
      <Compile Include="Assets\Script\Game\UI\ComboCount.cs" />
      <Compile Include="Assets\Script\Game\UI\MainHud.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_Lancer.cs" />
