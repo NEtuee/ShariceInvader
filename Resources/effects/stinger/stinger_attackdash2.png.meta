@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: c3a6612cd0e511644a084295157324dc
+guid: 4bda23a8d51076b488e58406d2b12937
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_driveopeningui_0
-    21300002: pulse_driveopeningui_1
-    21300004: pulse_driveopeningui_2
-    21300006: pulse_driveopeningui_3
+    21300000: stinger_attackdash2_0
+    21300002: stinger_attackdash2_1
+    21300004: stinger_attackdash2_2
+    21300006: stinger_attackdash2_3
+    21300008: stinger_attackdash2_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,81 +100,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_driveopeningui_0
+      name: stinger_attackdash2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 20
+        width: 31
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d547c3803aa0fd04e923d52b65155e5f
+      spriteID: 1ab98491f86fc4f48afad94cf0b72efc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_1
+      name: stinger_attackdash2_1
       rect:
         serializedVersion: 2
-        x: 670
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 31
+        y: 20
+        width: 31
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d3b583ce66714f4382181d2eb210e3d
+      spriteID: 08a9d8c64032d5b45ac8df97d8ef5908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_2
+      name: stinger_attackdash2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 31
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e25236a354d554f8e568d8e6906281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_attackdash2_3
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 10
+        width: 31
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1855feae8397844881e64863302d420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_attackdash2_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 31
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73aadc72de5b38347a327c85ce2c3339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_driveopeningui_3
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2bd26606c0e972448adb448e341d795
+      spriteID: c97012ae4caa49f4087f73513c475a8c
       vertices: []
       indices: 
       edges: []
@@ -181,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 05523683b31ae884c8a9519fd3a3cda5
+    spriteID: 2addead55257f224b999300895a71b4b
     vertices: []
     indices: 
     edges: []

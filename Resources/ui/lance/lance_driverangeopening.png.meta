@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c3a6612cd0e511644a084295157324dc
+guid: 1d5f13e2400f12a47a608a61300fb809
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_driveopeningui_0
-    21300002: pulse_driveopeningui_1
-    21300004: pulse_driveopeningui_2
-    21300006: pulse_driveopeningui_3
+    21300000: lance_driverangeopening_0
+    21300002: lance_driverangeopening_1
+    21300004: lance_driverangeopening_2
+    21300006: lance_driverangeopening_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,81 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_driveopeningui_0
+      name: lance_driverangeopening_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 24
+        width: 212
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d547c3803aa0fd04e923d52b65155e5f
+      spriteID: a29e1a0b8ca38d34191789583fe155da
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_1
+      name: lance_driverangeopening_1
       rect:
         serializedVersion: 2
-        x: 670
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 16
+        width: 212
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d3b583ce66714f4382181d2eb210e3d
+      spriteID: 748342ad4389caa4cbab3a464642ccab
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_2
+      name: lance_driverangeopening_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 212
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892c1fa6c8dbe0344b2eee795435566c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_driverangeopening_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 212
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73aadc72de5b38347a327c85ce2c3339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_driveopeningui_3
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2bd26606c0e972448adb448e341d795
+      spriteID: 5bf78007064276646ba3d0e653a61509
       vertices: []
       indices: 
       edges: []
@@ -181,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 05523683b31ae884c8a9519fd3a3cda5
+    spriteID: a7e140fae3974d84ab7d59cd3893de4b
     vertices: []
     indices: 
     edges: []

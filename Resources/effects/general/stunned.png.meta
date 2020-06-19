@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c3a6612cd0e511644a084295157324dc
+guid: a041f9f8517e8714f80bdc64c186f853
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_driveopeningui_0
-    21300002: pulse_driveopeningui_1
-    21300004: pulse_driveopeningui_2
-    21300006: pulse_driveopeningui_3
+    21300000: stunned_0
+    21300002: stunned_1
+    21300004: stunned_2
+    21300006: stunned_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,81 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_driveopeningui_0
+      name: stunned_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 656
-        width: 670
-        height: 656
+        y: 18
+        width: 20
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d547c3803aa0fd04e923d52b65155e5f
+      spriteID: 3ac9c861af1873547a6ce32a340cba8e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_1
+      name: stunned_1
       rect:
         serializedVersion: 2
-        x: 670
-        y: 656
-        width: 670
-        height: 656
+        x: 20
+        y: 18
+        width: 20
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d3b583ce66714f4382181d2eb210e3d
+      spriteID: 877b417bc7eb30c4fae870438334ee66
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_2
+      name: stunned_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 670
-        height: 656
+        width: 20
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73aadc72de5b38347a327c85ce2c3339
+      spriteID: 5f106102cadb04840b5935fee5c3be44
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_3
+      name: stunned_3
       rect:
         serializedVersion: 2
-        x: 670
+        x: 20
         y: 0
-        width: 670
-        height: 656
+        width: 20
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2bd26606c0e972448adb448e341d795
+      spriteID: f4c00a497b825224d9a89aff8270c319
       vertices: []
       indices: 
       edges: []
@@ -181,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 05523683b31ae884c8a9519fd3a3cda5
+    spriteID: b353054202f237140bd20f6eeadeef23
     vertices: []
     indices: 
     edges: []

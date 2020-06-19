@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c3a6612cd0e511644a084295157324dc
+guid: 3ef1d1461d2b0964181f11947707004d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_driveopeningui_0
-    21300002: pulse_driveopeningui_1
-    21300004: pulse_driveopeningui_2
-    21300006: pulse_driveopeningui_3
+    21300000: stinger_dashaim_0
+    21300002: stinger_dashaim_1
+    21300004: stinger_dashaim_2
+    21300006: stinger_dashaim_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,81 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_driveopeningui_0
+      name: stinger_dashaim_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 24
+        width: 20
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d547c3803aa0fd04e923d52b65155e5f
+      spriteID: df63c0a811d2d5449994ce8731882882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_1
+      name: stinger_dashaim_1
       rect:
         serializedVersion: 2
-        x: 670
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 16
+        width: 20
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d3b583ce66714f4382181d2eb210e3d
+      spriteID: b55a3c9f92934ba4fbba7f20a8faa1ad
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_2
+      name: stinger_dashaim_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 20
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315908f8d07b91940bfca8d8ef28fb94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_dashaim_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 20
+        height: 8
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73aadc72de5b38347a327c85ce2c3339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_driveopeningui_3
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2bd26606c0e972448adb448e341d795
+      spriteID: 1fb9b700471aec24b85e970dde15c9b2
       vertices: []
       indices: 
       edges: []
@@ -181,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 05523683b31ae884c8a9519fd3a3cda5
+    spriteID: 1fece40152c5e6742a7b9c0705c53426
     vertices: []
     indices: 
     edges: []

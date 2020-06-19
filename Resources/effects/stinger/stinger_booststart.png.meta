@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c3a6612cd0e511644a084295157324dc
+guid: fa2ca3870bc3b7e4fb733f768ea0e224
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_driveopeningui_0
-    21300002: pulse_driveopeningui_1
-    21300004: pulse_driveopeningui_2
-    21300006: pulse_driveopeningui_3
+    21300000: stinger_booststart_0
+    21300002: stinger_booststart_1
+    21300004: stinger_booststart_2
+    21300006: stinger_booststart_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,81 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_driveopeningui_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d547c3803aa0fd04e923d52b65155e5f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_driveopeningui_1
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d3b583ce66714f4382181d2eb210e3d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_driveopeningui_2
+      name: stinger_booststart_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 9
+        height: 16
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73aadc72de5b38347a327c85ce2c3339
+      spriteID: 19cab922607e44d4dac67a5ccba2cfd0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_3
+      name: stinger_booststart_1
       rect:
         serializedVersion: 2
-        x: 670
+        x: 9
         y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 9
+        height: 16
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2bd26606c0e972448adb448e341d795
+      spriteID: e22556728c9d5ad4095d0b2ed6f7757d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_booststart_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 9
+        height: 16
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eca96fe7ed831e4aba438a5bb3fefdd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stinger_booststart_3
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 0
+        width: 9
+        height: 16
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740d9ec18a95a6f42acf9aa3123d9d47
       vertices: []
       indices: 
       edges: []
@@ -181,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 05523683b31ae884c8a9519fd3a3cda5
+    spriteID: 75ae2496fbcf2d04d8382f9c8a4499c6
     vertices: []
     indices: 
     edges: []

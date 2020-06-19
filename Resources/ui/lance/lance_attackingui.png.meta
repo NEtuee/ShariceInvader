@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: c3a6612cd0e511644a084295157324dc
+guid: 9b4616db0d254764bb75bb2fd6bab1dd
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_driveopeningui_0
-    21300002: pulse_driveopeningui_1
-    21300004: pulse_driveopeningui_2
-    21300006: pulse_driveopeningui_3
+    21300000: lance_attackingui_0
+    21300002: lance_attackingui_1
+    21300004: lance_attackingui_2
+    21300006: lance_attackingui_3
+    21300008: lance_attackingui_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,81 +100,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_driveopeningui_0
+      name: lance_attackingui_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 28
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d547c3803aa0fd04e923d52b65155e5f
+      spriteID: e047efe782f4843408ec14ed33d7f9cb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_1
+      name: lance_attackingui_1
       rect:
         serializedVersion: 2
-        x: 670
-        y: 656
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 19
+        y: 28
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d3b583ce66714f4382181d2eb210e3d
+      spriteID: 1939b5dd4d681f949b79c60dc6801f01
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_driveopeningui_2
+      name: lance_attackingui_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110080c950deb7c44878f75dbc3d8deb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_attackingui_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 14
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e89804712a61e349a72343bb44a9451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_attackingui_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73aadc72de5b38347a327c85ce2c3339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_driveopeningui_3
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 0
-        width: 670
-        height: 656
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2bd26606c0e972448adb448e341d795
+      spriteID: 37835dba03f649b4d8f7a741de07fd1d
       vertices: []
       indices: 
       edges: []
@@ -181,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 05523683b31ae884c8a9519fd3a3cda5
+    spriteID: 49b92305f79a678438d7a0efcd983250
     vertices: []
     indices: 
     edges: []
