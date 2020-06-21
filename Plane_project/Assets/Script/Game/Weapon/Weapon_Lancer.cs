@@ -170,12 +170,17 @@ public class Weapon_Lancer : WeaponBase
         _backUi.SetPosition(_plane.position - _plane.direction * 0.25f);
 
         _attackRange.SetAngle(_plane.angle);
-        _attackRange.SetPosition(_plane.position + _plane.direction * 0.57f);
+
 
         if(_driveArrow != null)
         {
             _driveArrow.SetAngle(_plane.angle);
             _driveArrow.SetPosition(_plane.position + _plane.direction * 0.25f);
+            _attackRange.SetPosition(_plane.position + _plane.direction * 0.35f);
+        }
+        else
+        {
+            _attackRange.SetPosition(_plane.position + _plane.direction * 2.34f);
         }
     }
 
@@ -223,11 +228,11 @@ public class Weapon_Lancer : WeaponBase
                 ani.ChangeAni("Loop",true,false);
         }
 
-        _uiArrow = EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DirectionArrow",false,null,false);
+        _uiArrow = EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DirectionArrow",false,null,true);
         _uiArrow.PassiveDeactive();
         _uiArrow.RealTimeProgress();
 
-        _backUi = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/Back",false,null,false);
+        _backUi = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/Back",false,null,true);
         _backUi.PassiveDeactive();
         _backUi.RealTimeProgress();
 

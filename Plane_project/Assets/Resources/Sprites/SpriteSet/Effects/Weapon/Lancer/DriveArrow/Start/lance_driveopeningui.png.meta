@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 4652051fe79e00c418157a374210ccb2
+guid: adfbda8c4c606524ea249c510fc1baaf
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_drivingui1_0
-    21300002: lance_drivingui1_1
-    21300004: lance_drivingui1_2
-    21300006: lance_drivingui1_3
-    21300008: lance_drivingui1_4
-    21300010: lance_drivingui1_5
-    21300012: lance_drivingui1_6
+    21300000: lance_driveopeningui_0
+    21300002: lance_driveopeningui_1
+    21300004: lance_driveopeningui_2
+    21300006: lance_driveopeningui_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -102,72 +99,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_drivingui1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 68
-        width: 44
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 550c990c7c49dfc44b46b670156be15a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivingui1_1
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 68
-        width: 44
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8bea22d3d5dd04745b812e47dec05905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivingui1_2
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 68
-        width: 44
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c29da529bc404b44e89ae16b105de303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivingui1_3
+      name: lance_driveopeningui_0
       rect:
         serializedVersion: 2
         x: 0
         y: 34
-        width: 44
+        width: 39
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -176,18 +113,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f71f8a6a0395994fa883922a203a17a
+      spriteID: bae55718c86b4794490320a701172399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivingui1_4
+      name: lance_driveopeningui_1
       rect:
         serializedVersion: 2
-        x: 44
+        x: 39
         y: 34
-        width: 44
+        width: 39
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -196,38 +133,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da7c639bf2a91254ca95014644ab9772
+      spriteID: b90b5b02d9abd9d47b78e908520d8f5c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivingui1_5
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 34
-        width: 44
-        height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2490e476b2195094a840cf0a3be96660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivingui1_6
+      name: lance_driveopeningui_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 44
+        width: 39
         height: 34
       alignment: 4
       pivot: {x: 0, y: 0.5}
@@ -236,7 +153,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bf37861f0e28e3499f1495454e78d7c
+      spriteID: 2c9721dc93daf50489126496da2e7fbe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_driveopeningui_3
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 0
+        width: 39
+        height: 34
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2f89151d53a0a4b942e4cfa048ef78
       vertices: []
       indices: 
       edges: []
@@ -244,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8c3596641c38fec4e990f3481bc971eb
+    spriteID: e177d29f48fa50444a7835e4298e01f9
     vertices: []
     indices: 
     edges: []

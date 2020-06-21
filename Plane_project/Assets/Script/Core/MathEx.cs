@@ -113,6 +113,27 @@ public class MathEx : MonoBehaviour {
 		a = 180 + a;
 		return a;
 	}
+	public static bool LineIntersection(out Vector2 intersection, Vector2 linePoint1, Vector2 lineVec1, Vector2 linePoint2, Vector2 lineVec2)
+	{
+	        Vector3 lineVec3 = linePoint2 - linePoint1;
+	        Vector3 crossVec1and2 = Vector3.Cross(lineVec1, lineVec2);
+	        Vector3 crossVec3and2 = Vector3.Cross(lineVec3, lineVec2);
+	
+	        float planarFactor = Vector3.Dot(lineVec3, crossVec1and2);
+	
+	        //is coplanar, and not parrallel
+	        if (Mathf.Abs(planarFactor) < 0.0001f && crossVec1and2.sqrMagnitude > 0.0001f)
+	        {
+	            float s = Vector3.Dot(crossVec3and2, crossVec1and2) / crossVec1and2.sqrMagnitude;
+	            intersection = linePoint1 + (lineVec1 * s);
+	            return true;
+	        }
+	        else
+	        {
+	            intersection = Vector3.zero;
+	            return false;
+	        }
+	}
 	public static void nearZero(ref Vector3 value) {value.x = nearZero(value.x); value.y = nearZero(value.y);}
 	public static bool halfCompare(float one,float two) {return abs((one - two)) <= 0.0001f;}
 	public static int Vector3Compare(Vector3 one, Vector3 two)

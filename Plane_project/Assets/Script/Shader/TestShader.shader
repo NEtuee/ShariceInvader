@@ -55,8 +55,8 @@
             fixed4 frag(v2f i) : SV_Target
             {
                 float4 col = _Color;
-                if (nrand(i.vertex,_random) > .8 - (i.uv.x * i.uv.x * i.uv.x))
-                    return float4(0, 0, 0, 0);
+                // if (nrand(i.vertex,_random) > .8 - (i.uv.x * i.uv.x * i.uv.x))
+                //     return float4(0, 0, 0, 0);
 
                 float distY = abs(i.uv.y - .5) * 2;
 
@@ -73,8 +73,10 @@
                     return float4(0, 0, 0, 0);
                 }
 
-
-                col.w = 1 - i.uv.x;
+                if(i.uv.x > 0.4)
+                {
+                    col.w = 1 - ((i.uv.x - 0.4) / 0.6);
+                }
 
                 return col;
             }

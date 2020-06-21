@@ -51,6 +51,7 @@ public class Debugger : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Space))
             Create(pos);
+
     }
 
     public void Create(int pos)
@@ -58,14 +59,14 @@ public class Debugger : MonoBehaviour
         switch(pos)
         {
             case 0:
-            EnemyCreator.BoomDrone(count,MouseMapPos());
+            EnemyCreator.BoomDrone(count,MouseWorldPos());
             break;
             case 1:
             for(int i = 0; i < count; ++i)
-                EnemyCreator.CCTV(0,MouseMapPos());
+                EnemyCreator.CCTV(0,MouseWorldPos());
             break;
             case 2:
-            EnemyCreator.BoostDrone(count,MouseMapPos());
+            EnemyCreator.BoostDrone(count,MouseWorldPos());
             break;
             case 3:
             for(int i = 0; i < count; ++i)
@@ -79,7 +80,7 @@ public class Debugger : MonoBehaviour
             EnemyCreator.RayDrone(count,MouseWorldPos());
             break;
             case 6:
-            EnemyCreator.ShootingDrone(count,MouseMapPos());
+            EnemyCreator.ShootingDrone(count,MouseWorldPos());
             break;
             case 7:
             for(int i = 0; i < count; ++i)

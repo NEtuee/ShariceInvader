@@ -71,17 +71,8 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
 
         public Vector3 GetSpawnPos(float yDist)
         {
-            float x = Random.Range(-3f,3f);
-            x += x > 0 ? -7.2f : 7.2f;
-
-            float y = Random.Range(-yDist,yDist);
-
-            var vec = Player.instance.position + new Vector3(x,y);
-
-            if(vec.y < 0f)
-                vec.y += 4f;
-            else if(vec.y > ObjectManager.GetInstance()._place._mapHeight)
-                vec.y -= 4f;
+            var vec = new Vector3(0f,Random.Range(-4f,4f),0f);
+            vec.x = (Random.Range(0,2) == 0 ? 1f : -1f) * Random.Range(3.3f,6f);
 
             return vec;
         }
@@ -123,7 +114,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         int point;
         public override bool Progress(float delatTime)
         {
-            if(--loopCount > 0)
+            if(--loopCount >= 0)
             {
                 StageManager.instance.SetEventPos(point);
                 return false;
@@ -148,55 +139,57 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
 
     public void firstSetting()
     {
-        // SetSingleton(this);
+        SetSingleton(this);
+
+        _eventEnd = events.Length == 0;
     
-        // for(int i = 0; i < events.Length; ++i)
-        // {
-        //     string s = events[i].data;
+        for(int i = 0; i < events.Length; ++i)
+        {
+            string s = events[i].data;
 
-        //     switch(events[i].type)
-        //     {
-        //         case EventType.ChangeTimer:
-        //         break;
-        //         case EventType.Dialog:
-        //         break;
-        //         case EventType.EnemySpawn:
-        //         events[i] = new Event_EnemySpawn();
-        //         events[i].Set(EventType.EnemySpawn,s);
-        //         break;
-        //         case EventType.Loop:
-        //         events[i] = new Event_Loop();
-        //         events[i].Set(EventType.Loop,s);
-        //         break;
-        //         case EventType.SetTimer:
-        //         break;
-        //         case EventType.StageClear:
-        //         break;
-        //         case EventType.WaitForAnnihilation:
-        //         break;
-        //         case EventType.WaitForSeconds:
-        //         events[i] = new Event_WaitForSeconds();
-        //         events[i].Set(EventType.WaitForSeconds,s);
-        //         break;
-        //     }
-        //     events[i].DataSet();
-        // }
+            switch(events[i].type)
+            {
+                case EventType.ChangeTimer:
+                break;
+                case EventType.Dialog:
+                break;
+                case EventType.EnemySpawn:
+                events[i] = new Event_EnemySpawn();
+                events[i].Set(EventType.EnemySpawn,s);
+                break;
+                case EventType.Loop:
+                events[i] = new Event_Loop();
+                events[i].Set(EventType.Loop,s);
+                break;
+                case EventType.SetTimer:
+                break;
+                case EventType.StageClear:
+                break;
+                case EventType.WaitForAnnihilation:
+                break;
+                case EventType.WaitForSeconds:
+                events[i] = new Event_WaitForSeconds();
+                events[i].Set(EventType.WaitForSeconds,s);
+                break;
+            }
+            events[i].DataSet();
+        }
 
-        // eventEndPos = events.Length;
+        eventEndPos = events.Length;
     }
 
     public void progress(float deltaTime)
     {
-        // if(!_eventEnd)
-        // {
-        //     if(events[eventPos].Progress(deltaTime))
-        //     {
-        //         if(++eventPos >= eventEndPos)
-        //         {
-        //             _eventEnd = true;
-        //         }
-        //     }
-        // }
+        if(!_eventEnd)
+        {
+            if(events[eventPos].Progress(deltaTime))
+            {
+                if(++eventPos >= eventEndPos)
+                {
+                    _eventEnd = true;
+                }
+            }
+        }
     }
 
     public void lateProgress(float deltaTime)

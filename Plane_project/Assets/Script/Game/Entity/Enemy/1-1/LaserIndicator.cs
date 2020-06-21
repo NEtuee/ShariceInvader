@@ -20,8 +20,6 @@ public class LaserIndicator : PlaneBase
         _player = Player.instance;
         _cam = CameraControll.instance;
 
-        _speed = 0.1f;
-
         _ani.AddAnimation("Launch_0","SpriteSet/Effects/LaserIndicator/0/Launch");
         _ani.AddAnimation("Launch_1","SpriteSet/Effects/LaserIndicator/1/Launch");
         _ani.AddAnimation("FireStand_0","SpriteSet/Effects/LaserIndicator/0/FireStand");
@@ -32,13 +30,13 @@ public class LaserIndicator : PlaneBase
 
     public override void initialize()
     {
+        _speed = 0.1f;
+        _maxSpeed = 5f;
         _ani.ChangeAni("Launch_0",false);
     }
 
     public override void progress(float deltaTime)
     {
-        _direction = _cam.position.x > _position.x ? Vector3.right : Vector3.left;
-        
         _ani.AnimationProgress(deltaTime);
         Move(deltaTime);
 
@@ -46,6 +44,13 @@ public class LaserIndicator : PlaneBase
         _player.coll.UpdateBound(_player.position);
         _collider.UpdateBound(_position);
         CollCheck(_player.coll.CollisionCheck(_collider));
+
+        _direction = _player.position.x > _position.x ? Vector3.right : Vector3.left;
+        _speed += 0.05f * (Vector2.Distance(_player.position,position)) * deltaTime;
+        _speed =  _speed >= _maxSpeed ? maxSpeed : _speed;
+
+
+
 
         if(_timer != 0)
         {

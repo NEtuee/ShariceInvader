@@ -47,6 +47,7 @@ public class TheMarker : PlaneBase
     private float _spinSpeed = 180f;
     private float _markerAngle = 0f;
     private float _markerSpread = 1f;
+    private float _spreadTimer = 0f;
 
     private float _spinSpeedTarget = 180f;
     private float _markerSpreadTarget = -5f;
@@ -65,6 +66,21 @@ public class TheMarker : PlaneBase
 
     private Transform _archerPos;
     private WandsBase _archer;
+
+
+
+
+
+    private bool _act = false;
+    private bool _shot = true;
+    private float _shotTimer = 0f;
+
+
+
+
+
+
+
 
     public override void firstSetting()
     {
@@ -183,6 +199,43 @@ public class TheMarker : PlaneBase
 
         _immortal = _defenders.Count != 0;
 
+
+        if(!_act)
+        {
+            var dist = Vector3.Distance(Player.instance.position, position);
+            if(dist <= 4f)
+            {
+                _act = true;
+            }
+        }
+        else
+        {
+            if(_shot)
+            {
+                _shotTimer -= deltaTime;
+                if(_shotTimer <= 0f)
+                {
+                    _shot = false;
+                    _shotTimer = Random.Range(5f,8f);
+                    EnemyCreator.LaserIndicator(Player.instance.position,3f);
+                    Fold();
+                }
+
+                var angle = MathEx.directionToAngle((Player.instance.position - position).normalized);
+                _eulerAngle = Mathf.LerpAngle(_eulerAngle,angle,0.05f);
+            }
+            else
+            {
+                _shotTimer -= deltaTime;
+                if(_shotTimer <= 0f)
+                {
+                    _shot = true;
+                    _shotTimer = Random.Range(2f,4f);
+                    Spread();
+                }
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.Z))
         {
             Spread();
@@ -228,7 +281,7 @@ public class TheMarker : PlaneBase
                 list[i].SetAngle(_eulerAngle);
 
                 var hide = angle >= 180f;
-                list[i].SetSortingGroupOrder(hide ? -1 : 1);
+                list[i].SetSortingGroupOrder(hide ? 1 : -1);
 
                 ++i;
             }
@@ -274,9 +327,9 @@ public class TheMarker : PlaneBase
 
         if(_spreading)
         {
-            if(_spinSpeed >= (1440f - spinSpeed) / 2f)
+            _spreadTimer -= deltaTime;
+            if(_spreadTimer <= 0f)
             {
-                _spinSpeedTarget = spinSpeed;
                 _spreading = false;
             }
         }
@@ -285,22 +338,24 @@ public class TheMarker : PlaneBase
 
     public void Spread()
     {
-        MarkerSpread(45f);
+        MarkerSpread(45f,800f);
 
         _defenderPosX = 0f;
     }
 
     public void Fold()
     {
-        MarkerSpread(-5f);
+        MarkerSpread(-5f,180f);
     }
 
-    public void MarkerSpread(float angle)
+    public void MarkerSpread(float angle, float speed)
     {
-        _spinSpeedTarget = 1440f;
+        _spinSpeedTarget = speed;
         _markerSpreadTarget = angle;
         _defenderPosX = -0.15f;
 
         _spreading = true;
+
+        _spreadTimer = 2f;
     }
 }

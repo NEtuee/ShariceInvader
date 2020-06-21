@@ -8,6 +8,9 @@ public class Weapon_PhantomStinger : WeaponBase
 
     private List<EffectBase> _aimEffects = new List<EffectBase>();
 
+    private EffectBase _aimRange;
+    private EffectBase _dashAim;
+
     int _maxTarget = 7;
 
     public override void Initialize()
@@ -32,12 +35,17 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         base.Progress(deltaTime);
 
+        _aimRange.SetAngle(_plane.angle);
+
         if(mainAttack)
         {
             _plane.SetAngle(MathEx.directionToAngle(GetAimTargetDirection()));
-            
+
+            _dashAim.SetPositionEm(_plane.position + (Vector3)ControllerEx.GetInstance().centerAxis);
+            _dashAim.SetAngle(MathEx.directionToAngle(ControllerEx.GetInstance().centerAxis));
             if(ControllerEx.GetInstance().KeyUp("MainAttack"))
             {
+                _dashAim.SetActive(false);
                 MainAttackProgress();
             }
         }
@@ -53,7 +61,7 @@ public class Weapon_PhantomStinger : WeaponBase
         }
         else
         {
-            UpdateAimTarget(1.5f,80f);
+            UpdateAimTarget(1.5f,40f);
         }
 
         if(CoolDownCheck(ref _mainTimer,deltaTime))
@@ -74,6 +82,10 @@ public class Weapon_PhantomStinger : WeaponBase
             mainAttack = true;
 
             _aimAni.ChangeAni("Lock",false);
+
+            _dashAim = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/DashAim",false);
+            _dashAim.PassiveDeactive();
+            _dashAim.RealTimeProgress();
 
             return true;
         }
@@ -221,6 +233,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
         _aimObject.gameObject.SetActive(false);
 
+        _aimRange.gameObject.SetActive(false);
         // if(_aimObj != null)
         //UnityEngine.GameObject.Destroy(_aimObj.gameObject);
     }
@@ -229,11 +242,15 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         InitAimObject();
 
-        MainHud.instance.MainUIAniSwap("Change","UI/Weapon/PS");
-        MainHud.instance.MainUIAniSwap("MainAttack","UI/Weapon/PS");
-        MainHud.instance.MainUIAniSwap("Boost","UI/Weapon/PS");
-        MainHud.instance.MainUIAniSwap("DriveOn","UI/Weapon/PS");
-        MainHud.instance.MainUIAniSwap("DriveAttack","UI/Weapon/PS");
+        _aimRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/Change",false,_plane);
+        _aimRange.PassiveDeactive();
+        _aimRange.SetAngle(_plane.angle);
+
+        MainHud.instance.MainUIAniSwap("Change","");
+        MainHud.instance.MainUIAniSwap("MainAttack","");
+        MainHud.instance.MainUIAniSwap("Boost","");
+        MainHud.instance.MainUIAniSwap("DriveOn","");
+        MainHud.instance.MainUIAniSwap("DriveAttack","");
     }
 
 

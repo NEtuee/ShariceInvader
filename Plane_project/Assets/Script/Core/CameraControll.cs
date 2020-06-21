@@ -147,8 +147,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 
 		screenGlitch.progress = true;
 
-		screenGlitch._colorDrift = .4f;
-		screenGlitch._scanLineJitter = .4f;
+		screenGlitch._colorDrift = .5f;
+		screenGlitch._scanLineJitter = .5f;
 	}
 
 	public void Shake(float time, Vector2 factor)

@@ -423,7 +423,7 @@ public abstract class PlaneBase : Collisionable {
 		
 		if(_trailEmmit)
 		{
-			_trailMat.SetFloat("_random",UnityEngine.Random.Range(40000f,50000f));
+			//_trailMat.SetFloat("_random",UnityEngine.Random.Range(40000f,50000f));
 		}
 		foreach(var trail in _trail)
 		{

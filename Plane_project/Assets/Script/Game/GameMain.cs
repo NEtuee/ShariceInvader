@@ -61,7 +61,7 @@ public class GameMain : MonoBehaviour {
 		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/Boost");
 		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/Change");
 
-		AnimationControllEx.LoadAnimation("UI/Weapon/PS");
+		AnimationControllEx.LoadAnimation("UI/Weapon/PS/Change");
 
 		AnimationControllEx.LoadAnimation("SpriteSet/Bullets/Ray");
 

@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 5de3f8a330710744fa5b761395dd28b7
+guid: 9b4616db0d254764bb75bb2fd6bab1dd
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_attackingui1_0
-    21300002: lance_attackingui1_1
-    21300004: lance_attackingui1_2
-    21300006: lance_attackingui1_3
-    21300008: lance_attackingui1_4
-    21300010: lance_attackingui1_5
+    21300000: lance_attackingui_0
+    21300002: lance_attackingui_1
+    21300004: lance_attackingui_2
+    21300006: lance_attackingui_3
+    21300008: lance_attackingui_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -101,121 +100,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_attackingui1_0
+      name: lance_attackingui_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 28
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b99030572bcdf594f98decd94d596f1d
+      spriteID: e047efe782f4843408ec14ed33d7f9cb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_1
+      name: lance_attackingui_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 16
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 19
+        y: 28
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 138ec83264eb8084897c909d9a19045c
+      spriteID: 1939b5dd4d681f949b79c60dc6801f01
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_2
+      name: lance_attackingui_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 16
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 14
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfbb74efc28bc03469a5011df13c1a98
+      spriteID: 110080c950deb7c44878f75dbc3d8deb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attackingui1_3
+      name: lance_attackingui_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 14
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e89804712a61e349a72343bb44a9451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_attackingui_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 19
+        height: 14
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8906ff431cef664583402e3a1f73e7a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attackingui1_4
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67003fe5bf9e1a0449ad6665fe3ff61b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attackingui1_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 20
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3640259b67db35f4a8b70923cbeb3bc5
+      spriteID: 37835dba03f649b4d8f7a741de07fd1d
       vertices: []
       indices: 
       edges: []
@@ -223,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 04093641f64ea074f9059e57b0c5ac02
+    spriteID: 49b92305f79a678438d7a0efcd983250
     vertices: []
     indices: 
     edges: []

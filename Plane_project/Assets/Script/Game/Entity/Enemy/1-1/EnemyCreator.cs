@@ -133,4 +133,13 @@ public static class EnemyCreator
 			boom.SetPositionEm(worldPos + new Vector2(Random.Range(-1.5f,1.5f),Random.Range(-1.5f,1.5f)));
         }
     }
+
+    public static void LaserIndicator(Vector2 worldPos, float maxSpeed)
+    {
+        ObjectManager _objManager = ObjectManager.GetInstance();
+
+		LaserIndicator laser = _objManager.AddObject<LaserIndicator>(Define.ObjectType.enemy,"LaserIndicator");
+		laser.SetPositionEm(worldPos);
+        laser.SetMaxSpeed(maxSpeed);
+    }
 }

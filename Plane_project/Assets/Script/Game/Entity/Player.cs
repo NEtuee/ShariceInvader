@@ -17,6 +17,9 @@ public class Player : PlaneBase {
 	private Transform _miniMapHeightIcon;
 	private TextMesh _angleCount;
 
+	private SpriteRenderer _outline;
+	private Sprite[] _outlineSprite;
+
 	int a = 0;
 
 	bool cuttingCurve = true;
@@ -62,6 +65,11 @@ public class Player : PlaneBase {
 
 		_angleCount = CanvasScript.instance.gameObject.transform.Find("AngleCount").GetComponent<TextMesh>();
 		HeightIconUpdate();
+
+		_outline = _deco.AddDeco(Vector2.zero)._sprRenderer;
+		_outline.sortingOrder = -1;
+		_outline.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
+		_outlineSprite = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Outlines/Player");
 	}
 
 	public override void initialize()
@@ -88,6 +96,12 @@ public class Player : PlaneBase {
 	public override void progress(float deltaTime)
 	{
 		weaponInven.WeaponProgress(deltaTime);
+
+		_outline.enabled = _immortal;
+		if(_immortal)
+		{
+			_outline.sprite = _outlineSprite[_spritePoint];
+		}
 		
 		if(!_controllLock)
 		{
@@ -168,7 +182,7 @@ public class Player : PlaneBase {
 		if(d > 0)
 		{
 			_cam.Zoom(2.9f);
-			_cam.Glitch(0.2f);
+			_cam.Glitch(0.3f);
 			Timer.SetTimeScaleTimer(0f,0.09f);
 
 			_regenTimer = 3f;
@@ -275,16 +289,17 @@ public class Player : PlaneBase {
 				float f= Vector3.Dot(_direction,_controllPoint);
 				if(f < -0.8f && cuttingCurve)
 				{
-					AddForce(-_velocity * 0.65f);
+					SetAdditionalSpeed(3f,1f,true);
+					AddForce(_velocity * .5f);
 					
 					if(Timer.timeScale == 1f)
 						Timer.SetTimeScaleTimer(0.3f,0.5f,true);
 
 
 					_cam.Shake(0.05f, _direction / 20f);
-					EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"SpriteSet/Effects/CuttingCurve").SetAngle(_eulerAngle);
+					//EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"SpriteSet/Effects/CuttingCurve").SetAngle(_eulerAngle);
 					EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));
-					_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,0.5f);
+					_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,0.9f);
 					cuttingCurve = false;
 					cuttingCurveTimer = 0.5f;
 				}

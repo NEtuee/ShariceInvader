@@ -13,6 +13,7 @@ public class MainHud : SingletonMono<MainHud>
     public SpriteRenderer[] weaponGagueContainer;
 
     public Transform mainUITransform;
+    public Transform minimapScreenIndicator;
 
     public Material scaleBarMat;
 
@@ -70,6 +71,7 @@ public class MainHud : SingletonMono<MainHud>
         _followTarget = Player.instance;
         _followTarget.hpChangeEvent += UpdateHpBar;
 
+        UpdateMinimapScreenIndicator();
     }
 
     public void Progress(float deltaTime)
@@ -95,6 +97,14 @@ public class MainHud : SingletonMono<MainHud>
         }
 
         WeaponGaguePositionUpdate(deltaTime);
+    }
+
+    public void UpdateMinimapScreenIndicator()
+    {
+        var scale = minimapScreenIndicator.localScale;
+        scale.x = .8f * (.8f / (ObjectManager.GetInstance()._place._mapWidth * 0.1f));
+
+        minimapScreenIndicator.localScale = scale;
     }
 
     public void WeaponGaguePositionUpdate(float deltaTime)
