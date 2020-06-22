@@ -55,6 +55,26 @@ public class MissileDrone : PlaneBase
 	{
 		base.deleteEvent();
 		ComboCount.instance.AddComboCount(1);
+
+		coll.UpdateBound(_position);
+		for(int i = 0; i < 5; ++i)
+		{
+			var pos = _position;
+			var con = coll.bound.right - coll.bound.left;
+			con = con * .2f;
+			pos.x = coll.bound.left;
+			pos.x += con * i;
+
+			Vector3 randPos = new Vector3(Random.Range(-.05f,.05f),Random.Range(-.05f,.05f));
+
+			EffectManager.GetInstance().Explosion(pos + randPos,5,0.2f,0.25f,0.3f);
+			EffectManager.GetInstance().AddEffect(pos + randPos,"SpriteSet/Effects/Explosion")
+										.SetTarget(this)
+										.SetAddPoint(randPos)
+										.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+
+			EffectManager.GetInstance().EmitParticles("ExplosionSmoke",pos + randPos,4);
+		}
 	}
 
 	public override void progress(float deltaTime)

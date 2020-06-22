@@ -101,6 +101,7 @@ public abstract class PlaneBase : Collisionable {
 	protected bool _fallExplosion = false;
 	protected bool _trailEmmit = false;
 	protected bool _boostAniProgress = false;
+
 	private float _fallTimer = 1f;
 	protected float _controllLockTimer = 0f;
 	protected float _spriteDisapearTimer = 0f;

@@ -134,12 +134,13 @@ public static class EnemyCreator
         }
     }
 
-    public static void LaserIndicator(Vector2 worldPos, float maxSpeed)
+    public static void LaserIndicator(Vector2 worldPos, float maxSpeed, float apearTime)
     {
         ObjectManager _objManager = ObjectManager.GetInstance();
 
 		LaserIndicator laser = _objManager.AddObject<LaserIndicator>(Define.ObjectType.enemy,"LaserIndicator");
 		laser.SetPositionEm(worldPos);
         laser.SetMaxSpeed(maxSpeed);
+        laser.apearTimer = apearTime;
     }
 }

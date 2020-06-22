@@ -10,7 +10,8 @@ public class LaserIndicator : PlaneBase
 
     private bool _isColl = false;
     private bool _act = false;
-    private float _timer = 4f;
+    private float _timer = 3f;
+    public float apearTimer = 0f;
 
     public override void firstSetting()
     {
@@ -33,10 +34,27 @@ public class LaserIndicator : PlaneBase
         _speed = 0.1f;
         _maxSpeed = 5f;
         _ani.ChangeAni("Launch_0",false);
+
+        noneTarget = true;
+
+        miniMapIcon.gameObject.SetActive(true);
     }
 
     public override void progress(float deltaTime)
     {
+        if(apearTimer != 0f)
+        {
+            apearTimer -= deltaTime;
+            _sprRenderer.enabled = false;
+
+            if(apearTimer <= 0f)
+            {
+                apearTimer = 0f;
+                _sprRenderer.enabled = true;
+            }
+
+            return;
+        }
         _ani.AnimationProgress(deltaTime);
         Move(deltaTime);
 
@@ -81,17 +99,20 @@ public class LaserIndicator : PlaneBase
                         _ani.ChangeAni("FireStand_0",false);
                     }
 
-                    _timer = 1f;
+                    _timer = .7f;
                     _act = true;
                 }
             }
 
         }
+
+        UpdateMiniMapIcon();
     }
 
     public override void deleteEvent()
     {
         //Debug.Log("delete");
+        BasicDeleteEvents();
     }
 
     public void CollCheck(bool b)

@@ -72,8 +72,13 @@ public class TheMarker : PlaneBase
 
 
     private bool _act = false;
-    private bool _shot = true;
-    private float _shotTimer = 0f;
+    private bool _shot = false;
+    private bool _piercerShot = false;
+    private float _shotTimer = 2f;
+    private float _actTimer = 0f;
+    private float _explosiveTimer = 0f;
+
+    private Vector3 _targetDirection;
 
 
 
@@ -135,11 +140,13 @@ public class TheMarker : PlaneBase
 
         _directionAngle = false;
         _velocityFlip = false;
+        _rotateLock = true;
 
         _direction = Vector3.left;
-        _speed = 0.1f;
-        _maxSpeed = 1f; 
+        _speed = .35f;
+        _maxSpeed = 4.3f; 
         _gravityScale = 0f;
+        _frictionFactor = 0.03f;
 
         RegisteCollisionList();
     }
@@ -203,10 +210,15 @@ public class TheMarker : PlaneBase
         if(!_act)
         {
             var dist = Vector3.Distance(Player.instance.position, position);
-            if(dist <= 4f)
+            if(dist <= 3f)
             {
                 _act = true;
             }
+
+            var angle = MathEx.directionToAngle((Player.instance.position - position).normalized);
+            _eulerAngle = Mathf.LerpAngle(_eulerAngle,angle,0.05f);
+
+            _direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
         }
         else
         {
@@ -215,14 +227,39 @@ public class TheMarker : PlaneBase
                 _shotTimer -= deltaTime;
                 if(_shotTimer <= 0f)
                 {
+                    _speed = .35f;
+
                     _shot = false;
-                    _shotTimer = Random.Range(5f,8f);
-                    EnemyCreator.LaserIndicator(Player.instance.position,3f);
+                    _shotTimer = Random.Range(3.5f,4.5f);
+
+                    var playerPos = Player.instance.position;
+                    var randFactor = 7f * (1f - (_hp / maxHp)) + 4f * (1f - (_defenders.Count / 4f));
+                    for(int i = 4; i >= _defenders.Count; --i)
+                    {
+                        var randomPos = MathEx.RandomVector3(-randFactor,randFactor,0f,0f,0f,0f);
+                        EnemyCreator.LaserIndicator(Player.instance.position + randomPos,3f,Random.Range(0f,1f * (1.5f - (_defenders.Count / 4f))));
+                    }
                     Fold();
+                    RandomSpread();
                 }
 
                 var angle = MathEx.directionToAngle((Player.instance.position - position).normalized);
-                _eulerAngle = Mathf.LerpAngle(_eulerAngle,angle,0.05f);
+                _eulerAngle = Mathf.LerpAngle(_eulerAngle,angle,0.2f);
+            }
+            else if(_actTimer != 0f)
+            {
+                _actTimer -= deltaTime;
+                if(_actTimer <= 0f)
+                {
+                    _actTimer = 0f;
+
+                    _act = false;
+                }
+
+                float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),3f * deltaTime);
+                _eulerAngle = dirangle;
+
+                _direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
             }
             else
             {
@@ -230,11 +267,72 @@ public class TheMarker : PlaneBase
                 if(_shotTimer <= 0f)
                 {
                     _shot = true;
-                    _shotTimer = Random.Range(2f,4f);
+                    _shotTimer = Random.Range(1.5f,2.5f);
+
+                    _speed = 0f;
+                    _targetDirection = Vector3.left;
                     Spread();
+
+                    if(!_piercerShot)
+                    {
+                        ShotPiercer();
+                    }
                 }
+
+                var dist = Vector3.Distance(Player.instance.position, position);
+
+                if(_position.y <= 2f)
+                {
+                    _targetDirection.y += 1f;
+                    _targetDirection = _targetDirection.normalized;
+
+                    float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),3f * deltaTime);
+                    _eulerAngle = dirangle;
+
+                    _direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
+                }
+                // else if(dist <= 1.5f)
+                // {
+                //     _targetDirection = (_position - Player.instance.position).normalized;
+
+                //     float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),3f * deltaTime);
+
+                //     _direction = MathEx.angleToDirection(dirangle * Mathf.Deg2Rad);
+                // }
+                else if(dist > 1f)
+                {
+                    _targetDirection = (Player.instance.position - _position).normalized;
+
+                    float dirangle = Mathf.LerpAngle(_eulerAngle,MathEx.directionToAngle(_targetDirection.normalized),3f * deltaTime);
+                    _eulerAngle = dirangle;
+
+                    _direction = MathEx.angleToDirection(_eulerAngle * Mathf.Deg2Rad);
+                }
+
+                
             }
         }
+
+        if(_hp < 15)
+		{
+			_explosiveTimer -= deltaTime;
+
+			if(_explosiveTimer <= 0f)
+			{
+				_explosiveTimer = Random.Range(0.1f,0.5f);
+
+				Vector3 randPos = new Vector3(Random.Range(-.05f,.05f),Random.Range(-.05f,.05f));
+
+				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
+				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/Explosion")
+											.SetTarget(this)
+											.SetAddPoint(randPos)
+											.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+			
+				EffectManager.GetInstance().EmitParticles("ExplosionSmoke",_position + randPos,4);
+				//EffectManager.GetInstance().ExplosionSmoke(_position + randPos,_position + randPos + new Vector3(Random.Range(-0.2f,0.2f),Random.Range(-0.2f,0.2f)),0.15f,0.01f,4);
+			}
+		}
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
@@ -251,6 +349,17 @@ public class TheMarker : PlaneBase
 
     }
 
+
+    public void RandomSpread()
+    {
+        _targetDirection = new Vector3(Random.Range(0,2) == 0 ? -1f : 1f, Random.Range(-0.5f,0.5f)).normalized;
+
+        _actTimer = Random.Range(2f,5f);
+
+        //BurstActive();
+        //SetAbsoluteForce(_direction * 10f);
+    }
+
     public void ShotPiercer()
     {
         for(int i = 0; i < _piercers.Count; ++i)
@@ -261,6 +370,8 @@ public class TheMarker : PlaneBase
             _piercers[i].AddForce(MathEx.RandomCircle(1f).normalized);
             //_piercers[i].SetAbsoluteForce(direction * 100f);
         }
+
+        _piercerShot = true;
     }
 
     public void WandProgress(ref List<WandsBase> list, ref List<Transform> points, float x, float dist, float spinDir)
@@ -299,7 +410,16 @@ public class TheMarker : PlaneBase
         WandProgress(ref _defenders,ref _defenderPoints, _defenderlerpPosX, 0.4f, 1f);
         WandProgress(ref _piercers,ref _piercerPoints, _piercerPosX, 0.4f, -1f);
 
-
+        if(Wand_Defender.guardTimer != 0f)
+        {
+            Wand_Defender.guardTimer -= deltaTime;
+            if(Wand_Defender.guardTimer <= 0f)
+            {
+                Wand_Defender.guardTimer = 0f;
+                Wand_Defender.guardFactor = 0;
+            }
+        }
+        
         _archer.targetPos = _archerPos.position;
         _archer.SetAngle(MathEx.directionToAngle((_position - _archer.position).normalized));
         _archer.mainAngle = MathEx.clamp360Degree(_markerAngle);

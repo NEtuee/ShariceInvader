@@ -17,6 +17,7 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 
 	[HideInInspector]
 	public bool cacheObject = false;
+	public bool noneTarget = false;
 
 	private bool _isActive = true;
 	private bool _isDeleted = false;

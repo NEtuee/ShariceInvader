@@ -46,7 +46,7 @@ public class NPC : PlaneBase {
 		_speed = .1f;
 		maxHp = _hp = 1;
 
-		actTime = 1f;
+		actTime = .8f;
 		_burst = false;
 		_rotateLock = true;
 

@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class LineEffectBase : ObjectBase
 {
+    public struct ColorInfo
+    {
+        public Color color;
+        public float percentage;
+    }
+
+    private static Queue<ColorInfo> _colorInfos = new Queue<ColorInfo>();
+
     public LineRenderer mainLine;
+
+    private int _intervalPos = 0;
 
     private float _mainTimer = 0f;
     private float _widthLerpEnd = 0f;
     private float _widthLerpTimer = 0f;
     private float _offsetScrollSpeed = 0f;
     private float _offsetScrollValue = 0f;
+    private float _timeOrigin = 0f;
 
     private bool _lerpWidth = false;
     private bool _lerpColor = false;
+    private bool _intervalColor = false;
     private bool _offsetScroll = false;
 
     private float _lerpColorTime = 0f;
@@ -24,6 +36,8 @@ public class LineEffectBase : ObjectBase
 
     private Material pixelSnapMat;
     private Material tilingMat;
+
+    private List<ColorInfo> _intervalColorList = new List<ColorInfo>();
 
     public override void firstSetting()
     {
@@ -43,7 +57,7 @@ public class LineEffectBase : ObjectBase
         mainLine.SetPosition(0,start);
         mainLine.SetPosition(1,end);
 
-        _mainTimer = timer;
+        _mainTimer = _timeOrigin = timer;
 
         mainLine.sortingOrder = -1;
         mainLine.startWidth = width;
@@ -53,6 +67,7 @@ public class LineEffectBase : ObjectBase
         _lerpWidth = false;
         _offsetScroll = false;
         _lerpColor = false;
+        _intervalColor = false;
 
         SetMaterial(pixelSnapMat);
         SetColor(Color.white);
@@ -76,6 +91,27 @@ public class LineEffectBase : ObjectBase
     public LineEffectBase SetMaterial(Material mat) {mainLine.material = mat; return this;}
     public LineEffectBase SetPosition(Vector3 pos, int point) {mainLine.SetPosition(point,pos); return this;}
     public LineEffectBase SetTextureMode(LineTextureMode mode){mainLine.textureMode = mode; return this;}
+    public LineEffectBase SetIntervalColor(Color color,float interval)
+    {
+        ColorInfo info;
+        if(_colorInfos.Count != 0)
+        {
+            info = _colorInfos.Dequeue();
+        }
+        else
+        {
+            info = new ColorInfo();
+        }
+
+        info.color = color;
+        info.percentage = interval;
+
+        _intervalPos = 0;
+
+        _intervalColor = true;
+
+        return this;
+    }
     public LineEffectBase SetTiling(Sprite spr,float tiling)
     {
         tilingMat.SetTexture("_MainTex",spr.texture);
@@ -139,6 +175,23 @@ public class LineEffectBase : ObjectBase
         {
             _offsetScrollValue += _offsetScrollSpeed * deltaTime;
             mainLine.material.SetFloat("_Offset",_offsetScrollValue);
+        }
+
+        if(_intervalColor)
+        {
+            float interval = 1f - (_mainTimer / _timeOrigin);
+            if(_intervalColorList[_intervalPos].percentage >= interval)
+            {
+                mainLine.startColor = _intervalColorList[_intervalPos].color;
+                mainLine.endColor = mainLine.startColor;
+
+                ++_intervalPos;
+            }
+
+            if(_intervalPos >= _intervalColorList.Count)
+            {
+                _intervalColor = false;
+            }
         }
     }
 

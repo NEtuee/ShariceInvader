@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Wand_Defender : WandsBase
 {
+    public static int guardFactor = 0;
+    public static float guardTimer = 0f;
     public override void firstSetting()
     {
         base.firstSetting();
@@ -19,6 +21,16 @@ public class Wand_Defender : WandsBase
 
         _mass = 5f;
 
-        maxHp = _hp = 50;
+        maxHp = _hp = 30;
+
+        hpChangeEvent += HitEvent;
+    }
+
+    public void HitEvent()
+    {
+        _hp += guardFactor;
+        guardFactor += 2;
+        guardFactor = guardFactor >= 4 ? 4 : guardFactor;
+        guardTimer = .5f;
     }
 }

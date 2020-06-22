@@ -56,7 +56,7 @@ public class Wand_Piercer : WandsBase
         _maxSpeed = 8f;
         _speed = 0f;
 
-        maxHp = _hp = 15;
+        maxHp = _hp = 20;
 
         _actTimer = Random.Range(0.8f,1.2f);
     }
@@ -75,7 +75,6 @@ public class Wand_Piercer : WandsBase
                 _actTimer -= deltaTime;
                 if(_actTimer <= 0f)
                 {
-                    _actTimer = 0f;
                     _gravityScale = 0f;
                     _frictionFactor = 0.1f;
                     _speed = 0.2f;
@@ -218,7 +217,7 @@ public class Wand_Piercer : WandsBase
     {
         _targetDirection = new Vector3(Random.Range(0,2) == 0 ? -1f : 1f, Random.Range(-0.5f,0.5f)).normalized;
 
-        _actTimer = Random.Range(2f,5f);
+        _actTimer = Random.Range(1f,6f);
 
         //BurstActive();
         //SetAbsoluteForce(_direction * 10f);

@@ -17,7 +17,7 @@ public class Weapon_PhantomStinger : WeaponBase
     {
         base.Initialize();
 
-        mainCoolTime = 0.22f;
+        mainCoolTime = 0.15f;
 
 
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_phantomstinger");

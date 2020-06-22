@@ -178,6 +178,12 @@ public abstract class WeaponBase
 
         while(link != null)
 		{
+            if(link.target.noneTarget)
+            {
+                link = link.next;
+                continue;
+            }
+            
             float dot = Mathf.Cos(Mathf.Deg2Rad * aimAngle);
             Vector3 dir = (link.target.position - _plane.position).normalized;
 

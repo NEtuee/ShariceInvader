@@ -99,6 +99,7 @@
      <Compile Include="Assets\Script\Core\ScreenPixelization.cs" />
      <Compile Include="Assets\Script\Core\Singleton.cs" />
      <Compile Include="Assets\Script\Core\SingletonMono.cs" />
+     <Compile Include="Assets\Script\Core\SpriteFontTextMesh.cs" />
      <Compile Include="Assets\Script\Core\Timer.cs" />
      <Compile Include="Assets\Script\Core\UI\ButtonBase.cs" />
      <Compile Include="Assets\Script\Core\UI\ButtonGroup.cs" />
