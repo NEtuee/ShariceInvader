@@ -27,8 +27,10 @@ public class ScreenGlitch : MonoBehaviour
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {  
         if(!progress)
+        {
             Graphics.Blit(source, destination, _analogMat);
-            
+        }   
+        
         /* #region  Analog Shader Setup */
         var sl_thresh = Mathf.Clamp01(1.0f - _scanLineJitter * 1.2f);
         var sl_disp = 0.002f + Mathf.Pow(_scanLineJitter, 3) * 0.05f;

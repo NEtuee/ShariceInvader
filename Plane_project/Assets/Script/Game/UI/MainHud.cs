@@ -14,6 +14,7 @@ public class MainHud : SingletonMono<MainHud>
 
     public Transform mainUITransform;
     public Transform minimapScreenIndicator;
+    public Transform groundLine;
 
     public Material scaleBarMat;
 
@@ -64,6 +65,9 @@ public class MainHud : SingletonMono<MainHud>
         _uiAni.AddEmptyAnimation("Change");
 
         _uiAni.Stop();
+
+        mainUITransform.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void Initiailize()
@@ -72,6 +76,9 @@ public class MainHud : SingletonMono<MainHud>
         _followTarget.hpChangeEvent += UpdateHpBar;
 
         UpdateMinimapScreenIndicator();
+
+        mainUITransform.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void Progress(float deltaTime)
@@ -95,6 +102,11 @@ public class MainHud : SingletonMono<MainHud>
                 hpContainer.SetActive(false);
             }
         }
+
+        var pos = CameraControll.instance.position;
+        pos.y = 0f;
+        pos.z = 0f;
+        groundLine.transform.position = pos;
 
         WeaponGaguePositionUpdate(deltaTime);
     }

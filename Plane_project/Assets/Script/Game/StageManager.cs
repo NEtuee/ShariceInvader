@@ -7,6 +7,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
 
     public enum EventType
     {
+        PlayerSpawn,
         EnemySpawn,
         SetTimer,
         ChangeTimer,
@@ -26,6 +27,29 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         public virtual void DataSet(){}
 
         public void Set(EventType t, string d) {type = t; data = d;}
+    }
+
+    public class Event_PlayerSpawn : EventBase
+    {
+        Vector3 pos;
+        public override bool Progress(float delatTime)
+        {
+            PlaneBase obj = ObjectManager.GetInstance().AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
+		    obj.SetPositionEm(pos);
+		    CameraControll.instance.SetTarget(obj);
+
+		    ObjectManager.GetInstance()._place.SetMainObject(obj);
+
+		    MainHud.instance.Initiailize();
+
+            return true;
+        }
+
+        public override void DataSet()
+        {
+            var s = data.Split(',');
+            pos = new Vector3(float.Parse(s[0]),float.Parse(s[1]));
+        }
     }
 
     public class Event_EnemySpawn : EventBase
@@ -131,6 +155,20 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         }
     }
 
+    public class Event_Dialog : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            DialogManager.instance.ShowDialog(data);
+            return true;
+        }
+
+        public override void DataSet()
+        {
+            
+        }
+    }
+
     public EventBase[] events;
     public int eventPos = 0;
     public int eventEndPos;
@@ -149,9 +187,15 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
 
             switch(events[i].type)
             {
+                case EventType.PlayerSpawn:
+                events[i] = new Event_PlayerSpawn();
+                events[i].Set(EventType.PlayerSpawn,s);
+                break;
                 case EventType.ChangeTimer:
                 break;
                 case EventType.Dialog:
+                events[i] = new Event_Dialog();
+                events[i].Set(EventType.Dialog,s);
                 break;
                 case EventType.EnemySpawn:
                 events[i] = new Event_EnemySpawn();

@@ -210,7 +210,7 @@ public class Player : PlaneBase {
 	{
 		
 		base.BurstActive(false);
-		_cam.Shake(0.2f, _direction / 20f);
+		_cam.Shake(0.2f, _direction / 15f);
 	}
 
 	public void DodgeCheck()

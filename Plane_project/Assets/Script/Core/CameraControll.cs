@@ -134,6 +134,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 				screenGlitch._scanLineJitter = 0f;
 
 				screenGlitch.progress = false;
+				screenGlitch.enabled = false;
 				_glitchTimer = 0f;
 			}
 		}
@@ -146,6 +147,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 		_timeSaver = _glitchTimer = time;
 
 		screenGlitch.progress = true;
+		screenGlitch.enabled = true;
 
 		screenGlitch._colorDrift = .5f;
 		screenGlitch._scanLineJitter = .5f;

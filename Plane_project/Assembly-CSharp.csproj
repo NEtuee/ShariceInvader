@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Debugger.cs" />
+     <Compile Include="Assets\DialogManager.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyBase.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyViewer.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_KeyDataModifier.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneBuilder.cs" />
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneInfoBase.cs" />
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_TrailRenderer.cs" />
+     <Compile Include="Assets\GroundAlert.cs" />
      <Compile Include="Assets\Script\Core\AnimationControll.cs" />
      <Compile Include="Assets\Script\Core\AnimationControllEx.cs" />
      <Compile Include="Assets\Script\Core\BackgroundManager.cs" />
@@ -161,6 +163,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost1\Boost1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Launch\Launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_0\AttackHit_0_Ani.txt" />
+     <None Include="Assets\Resources\Dialogs\TestCharacter.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\End\End_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\launch\launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Bullet_0_Destroy\Bullet_0_Destroy_Ani.txt" />
@@ -233,6 +236,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\WeaponChange\WeaponChange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\commonMissile\spin\spin_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\fin\fin_Ani.txt" />
+     <None Include="Assets\Resources\Dialogs\TestDialog.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Fire\Fire_Ani.txt" />
      <None Include="Assets\Script\Shader\ScreenSoftNoise.shader" />
      <None Include="Assets\Script\Shader\MinimapSide.shader" />

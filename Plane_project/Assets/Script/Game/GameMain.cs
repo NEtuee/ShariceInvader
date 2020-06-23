@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class GameMain : MonoBehaviour {
+public class GameMain : SingletonMono<GameMain> {
 
 	public GameObject player;
 	public BackgroundManager background;
 	public StageManager stage;
 	public MainHud mainHud;
+
+	public bool update = true;
 
 	private CameraControll cam;
 	private ObjectManager _objManager;
@@ -20,6 +22,9 @@ public class GameMain : MonoBehaviour {
 
 	void Awake()
 	{
+		SetSingleton(this);
+
+		
 		ObjectManager.DeleteSingleton();
 		EffectManager.DeleteSingleton();
 		BulletManager.DeleteSingleton();
@@ -66,13 +71,13 @@ public class GameMain : MonoBehaviour {
 		AnimationControllEx.LoadAnimation("SpriteSet/Bullets/Ray");
 
 		
-		PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
-		obj.SetPositionEm(new Vector3(1f,5f));
-		cam.SetTarget(obj);
+		// PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
+		// obj.SetPositionEm(new Vector3(1f,5f));
+		// cam.SetTarget(obj);
 
-		_objManager._place.SetMainObject(obj);
+		//_objManager._place.SetMainObject(obj);
 
-		mainHud.Initiailize();
+		//mainHud.Initiailize();
 	}
 
 	void Update ()
@@ -80,6 +85,9 @@ public class GameMain : MonoBehaviour {
 		float deltaTime = Timer.SetDeltaTime(Time.deltaTime);
 
 		ControllerEx.GetInstance().UpdateKeyState();
+
+		if(!update)
+			return;
 
 		_objManager.UpdateTransform();
 		mainHud.Progress(Timer.deltaTime);
