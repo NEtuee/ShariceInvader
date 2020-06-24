@@ -63,6 +63,7 @@ public class Weapon_Test : WeaponBase
                     ObjectManager.GetInstance().UpdateStop(0.1f);
                     var target = ((PlaneBase)list[i]);
 		    		HitEffect(target);
+                    AddHitEffect(target.position);
     
                     CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
     
@@ -117,10 +118,46 @@ public class Weapon_Test : WeaponBase
 
         specAttack = true;
 
+        EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Pulse/Drive",false)
+                                .RealTimeProgress();
+
         Timer.SetViTimeScaleTimer(3,0.1f,0.3f);
 
         return false;
     }
+
+    public void AddHitEffect(Vector3 pos)
+    {
+        float d = Vector3.Distance(pos,_plane.position);
+        float rand = 0f;
+        string s = "";
+
+        if(d <= 0.33f)
+        {
+            s = "SpriteSet/Effects/Weapon/Pulse/Hit/0";
+            rand = 0.39f;
+        }
+        else if(d <= 0.66f)
+        {
+            s = "SpriteSet/Effects/Weapon/Pulse/Hit/1";
+            rand = 0.27f;
+        }
+        else
+        {
+            s = "SpriteSet/Effects/Weapon/Pulse/Hit/2";
+            rand = 0.19f;
+        }
+
+        EffectManager.GetInstance().AddEffect(pos,s,false).SetSortingOrder(3);
+
+        for(int i = 0; i < 7; ++i)
+        {
+            EffectManager.GetInstance().AddEffect(pos + MathEx.RandomCircle(rand),"SpriteSet/Effects/Weapon/Pulse/Particle",false)
+                                    .SetSortingOrder(2);
+        }
+        
+    }
+
     public override void WhenChanged()
     {
         base.WhenChanged();

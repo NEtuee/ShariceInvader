@@ -78,7 +78,11 @@ public class EffectBase : Drawable {
 	}
 
 	//public EffectBase SetFps(float fps){ani.SetFps(fps); return this;}
-	public EffectBase SetAddPoint(Vector3 value) {_addPoint = value; return this;}
+	public EffectBase SetAddPoint(Vector3 value) 
+	{
+		_position = target.position + _addPoint;
+		_addPoint = value; return this;
+	}
 	public EffectBase RealTimeProgress() {_realTimeProgress = true; return this;}
 	public EffectBase PassiveDeactive() {_passiveDeactive = true; return this;}
 	public EffectBase DelayApear(float time) {_delayApear = time; return this;}

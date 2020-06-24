@@ -60,6 +60,9 @@ public class GameMain : SingletonMono<GameMain> {
 		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Pulse/Burst");
 		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Pulse/Loop");
 
+		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/PS/Burst");
+		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/PS/Loop");
+
 		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/Attack");
 		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/DriveOn");
 		AnimationControllEx.LoadAnimation("UI/Weapon/Pulse/DriveEnd");
@@ -93,9 +96,9 @@ public class GameMain : SingletonMono<GameMain> {
 		mainHud.Progress(Timer.deltaTime);
 		cam.SyncPosition();
 
+		_effectManager.progress(deltaTime);
 		_objManager.progress(deltaTime);
 		_bulletManager.progress(deltaTime);
-		_effectManager.progress(deltaTime);
 		background.progress(deltaTime);
 		cam.progress(Timer.deltaTime);
 

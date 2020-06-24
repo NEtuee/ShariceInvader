@@ -124,6 +124,7 @@ public abstract class PlaneBase : Collisionable {
 	protected LineRenderer directionViewer;
 	protected LineRenderer velocityViewer;
 
+	protected EffectBase _stunEffect;
 
 	private List<DelayItem> _delayHitList = new List<DelayItem>();
 	private static Queue<DelayItem> _delayPool = new Queue<DelayItem>();
@@ -392,7 +393,6 @@ public abstract class PlaneBase : Collisionable {
 	{
 		if(!_immortal)
 		{
-			Debug.Log(name + "," + value);
 			ChangeHp(-value);
 			if(_hp <= -15)
 				Delete();
@@ -462,6 +462,8 @@ public abstract class PlaneBase : Collisionable {
 			if(_controllLockTimer <= 0f)
 			{
 				_controllLockTimer = 0f;
+				_stunEffect.SetActive(false);
+				_stunEffect = null;
 				_controllLock = false;
 			}
 		}
@@ -716,6 +718,15 @@ public abstract class PlaneBase : Collisionable {
 
 	public void ControllLock(float time)
 	{
+		if(_stunEffect == null)
+		{
+			_collider.bound.UpdateRect(_position);
+			var addPos = new Vector3(_collider.bound.box.x + 0.12f,_collider.bound.box.y + 0.12f);
+			_stunEffect = EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/StunEffect",false,this)
+						.SetAddPoint(addPos)
+						.PassiveDeactive();
+		}
+
 		_controllLockTimer = time;
 		_controllLock = true;
 	}
@@ -796,6 +807,9 @@ public abstract class PlaneBase : Collisionable {
 	public override void deleteEvent()
 	{
 		//EffectManager.GetInstance().AddEffect(_position,"Explosion_new").SetAngle(Random.Range(0f,360f));
+		
+		if(_stunEffect != null)
+			_stunEffect.SetActive(false);
 		
 		Explosion();
 

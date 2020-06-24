@@ -36,6 +36,7 @@ public class Weapon_PhantomStinger : WeaponBase
         base.Progress(deltaTime);
 
         _aimRange.SetAngle(_plane.angle);
+        _aimRange.SetPosition(_plane.position);
 
         if(mainAttack)
         {
@@ -244,13 +245,31 @@ public class Weapon_PhantomStinger : WeaponBase
         _aimRange.gameObject.SetActive(false);
         // if(_aimObj != null)
         //UnityEngine.GameObject.Destroy(_aimObj.gameObject);
+
+        foreach(var ani in _plane._boostAni)
+        {
+            ani.CopyAnimation("Burst",ani.aniOriginPath["Burst"]);
+            ani.CopyAnimation("Loop",ani.aniOriginPath["Loop"]);
+
+            if(ani.currAni == "Loop")
+                ani.ChangeAni("Loop",true,false);
+        }
     }
 
     public override void Change()
     {
+        foreach(var ani in _plane._boostAni)
+        {
+            ani.CopyAnimation("Burst","SpriteSet/Effects/Weapon/PS/Burst");
+            ani.CopyAnimation("Loop","SpriteSet/Effects/Weapon/PS/Loop");
+
+            if(ani.currAni == "Loop")
+                ani.ChangeAni("Loop",true,false);
+        }
+
         InitAimObject();
 
-        _aimRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/Change",false,_plane);
+        _aimRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/Change",false,null);
         _aimRange.PassiveDeactive();
         _aimRange.SetAngle(_plane.angle);
 
