@@ -34,7 +34,6 @@ public class Weapon_Test : WeaponBase
         else if (CoolDownCheck(ref _mainTimer,deltaTime))
         {
             _plane.SetImmortal(false);
-			_plane.SetBodyAttack(5);
         }
     }
     public override bool MainAttack()
@@ -127,7 +126,6 @@ public class Weapon_Test : WeaponBase
         base.WhenChanged();
 
         _plane.SetImmortal(false);
-		_plane.SetBodyAttack(5);
 
         foreach(var ani in _plane._boostAni)
         {
@@ -150,7 +148,7 @@ public class Weapon_Test : WeaponBase
                 ani.ChangeAni("Loop",true,false);
         }
 
-        MainHud.instance.MainUIAniSwap("Change","UI/Weapon/Pulse/Change");
+        MainHud.instance.MainUIAniSwap("Change","UI/Weapon/Pulse/Attack");
         MainHud.instance.MainUIAniSwap("MainAttack","UI/Weapon/Pulse/Attack");
         MainHud.instance.MainUIAniSwap("Boost","UI/Weapon/Pulse/Boost");
         MainHud.instance.MainUIAniSwap("DriveOn","UI/Weapon/Pulse/DriveOn");

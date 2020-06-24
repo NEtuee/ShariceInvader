@@ -34,6 +34,10 @@ public class Wand_Piercer : WandsBase
 
         // _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Defender",2);
         // _spriteAngle = 360f / _dirSprites.Length;
+
+        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
     }
 
     public override void deleteEvent()
@@ -56,7 +60,7 @@ public class Wand_Piercer : WandsBase
         _maxSpeed = 8f;
         _speed = 0f;
 
-        maxHp = _hp = 20;
+        maxHp = _hp = 200;
 
         _actTimer = Random.Range(0.8f,1.2f);
     }
@@ -185,8 +189,32 @@ public class Wand_Piercer : WandsBase
 							.2f, list[i].coll.bound.box.x))
 		        {
                     var p = ((PlaneBase)list[i]);
-                    p.Hit(15,this);
+                    p.Hit(50,this);
                     Debug.Log("LaserHit");
+		        }
+            }
+        }
+
+        list = CollisionManager.GetInstance().GetCollisionList(Define.ObjectType.enemy);
+
+        if(list != null)
+        {
+            int count = list.Count;
+
+
+            for(int i = 0 ; i < count; ++i)
+            {
+                if(list[i] == this)
+                    continue;
+
+                list[i].UpdateCollider();
+    
+                if(Define.SimpleCollider.CircleLineCircle(list[i].position,_position,_position + dir * 100f,
+							.2f, list[i].coll.bound.box.x))
+		        {
+                    var p = ((PlaneBase)list[i]);
+                    p.Hit(50,this);
+                    Debug.Log(list[i].name + ", laser Hit");
 		        }
             }
         }

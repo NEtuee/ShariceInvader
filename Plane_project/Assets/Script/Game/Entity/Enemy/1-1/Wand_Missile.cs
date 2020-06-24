@@ -42,7 +42,7 @@ public class Wand_Missile : PlaneBase
         BasicInitialize();
 		
 		SetNoClip(false);
-		maxHp = _hp = 1;
+		maxHp = _hp = 10;
 		deleteTime = Random.Range(3.5f,4.5f);
 
 		RegisteCollisionList();

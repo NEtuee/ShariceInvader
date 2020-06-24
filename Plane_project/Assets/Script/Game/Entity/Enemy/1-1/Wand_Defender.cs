@@ -21,7 +21,7 @@ public class Wand_Defender : WandsBase
 
         _mass = 5f;
 
-        maxHp = _hp = 30;
+        maxHp = _hp = 300;
 
         hpChangeEvent += HitEvent;
     }
@@ -29,8 +29,8 @@ public class Wand_Defender : WandsBase
     public void HitEvent()
     {
         _hp += guardFactor;
-        guardFactor += 2;
-        guardFactor = guardFactor >= 4 ? 4 : guardFactor;
+        guardFactor += 20;
+        guardFactor = guardFactor >= 50 ? 50 : guardFactor;
         guardTimer = .5f;
     }
 }

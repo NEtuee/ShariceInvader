@@ -37,7 +37,9 @@ public class MissileDrone : PlaneBase
         _trailEmmit = false;
 		_bounceOff = true;
 		
-		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+		_minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
 	}
 
 	public override void initialize()
@@ -46,7 +48,7 @@ public class MissileDrone : PlaneBase
 		
 		SetNoClip(false);
 
-		maxHp = _hp = 50;
+		maxHp = _hp = 500;
 
         RegisteCollisionList();
 	}

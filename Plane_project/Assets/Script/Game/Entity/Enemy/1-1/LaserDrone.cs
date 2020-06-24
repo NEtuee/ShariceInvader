@@ -36,8 +36,9 @@ public class LaserDrone : PlaneBase
         _dirSprites = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Planes/LaserDrone/Center");
 		SetCollider(new Define.SimpleCircleCollider(.22f,.22f,_position));
 
-        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
-
+        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
         AddDeco();
     }
 
@@ -51,7 +52,7 @@ public class LaserDrone : PlaneBase
     {
         BasicInitialize();
 
-        maxHp = _hp = 50;
+        maxHp = _hp = 500;
 
         _direction = Vector3.up;
         _speed = 0f;

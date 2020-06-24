@@ -41,12 +41,14 @@ public class Player : PlaneBase {
 
 		_cam = CameraControll.instance;
 
+		_minimapIconHeight = false;
+
 		_speed = 0f;
 		_maxSpeed = 3.5f;
 
-		_bodyAttack = 5;
+		_bodyAttack = 50;
 		_dodgeDist = 3f;
-		maxHp = _hp = 6;
+		maxHp = _hp = 100;
 		_gravityScale = 0.3f;
 
 		_timer = 3f;
@@ -79,7 +81,6 @@ public class Player : PlaneBase {
 		_burst = true;
 		_rotateLock = true;
 		_velocityFlip = false;
-		_noclip = true;
 		//_immortal = true;
 
 		_controllPoint = _direction;
@@ -155,6 +156,8 @@ public class Player : PlaneBase {
 			{
 				_regenTimer = 0f;
 				_hpRegen = true;
+
+				MainHud.instance.ShieldRecover();
 			}
 		}
 
@@ -165,7 +168,7 @@ public class Player : PlaneBase {
 			if(_hp == maxHp)
 				_regenTimer = 0f;
 			else
-				_regenTimer = 0.1f;
+				_regenTimer = 0.05f;
 
 			_hpRegen = false;
 		}
@@ -185,8 +188,7 @@ public class Player : PlaneBase {
 			_cam.Glitch(0.3f);
 			Timer.SetTimeScaleTimer(0f,0.09f);
 			MainHud.instance.ActiveUIGlitch(.774f,.994f,.862f,.0253f,.5f);
-
-			_regenTimer = 3f;
+			MainHud.instance.ShieldDamage();
 			_hpRegen = false;
 		}
 		else
@@ -195,6 +197,8 @@ public class Player : PlaneBase {
 			_cam.Glitch(0.05f);
 			Timer.SetTimeScaleTimer(0f,0.05f);
 		}
+
+		_regenTimer = 3.5f;
 		
 		Debug.Log("HIT");
 	}

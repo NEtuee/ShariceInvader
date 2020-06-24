@@ -51,7 +51,6 @@ public class GlitchEffect : MonoBehaviour
 	void Start()
 	{
 		_material = new Material(Shader);
-		enabled = false;
 	}
 
 	public void Update()
@@ -67,8 +66,7 @@ public class GlitchEffect : MonoBehaviour
 
 		if(_timer >= _time)
 		{
-
-			enabled = false;
+			this.enabled = false;
 		}
 	}
 
@@ -79,10 +77,15 @@ public class GlitchEffect : MonoBehaviour
         colorIntensity = _glitchColor = col;
         flickerTime = _glitchFlickerTime = flic;
 
-        _time = time;
-        _timer = 0f;
+		if(time > _time - _timer)
+		{
+			_time = time;
+        	_timer = 0f;
+		}
 
-        enabled = true;
+        this.enabled = true;
+
+		Debug.Log(this.enabled);
     }
 
 	// Called by camera to apply image effect

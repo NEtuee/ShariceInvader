@@ -112,7 +112,7 @@ public class TheMarker : PlaneBase
 
         _mass = 5f;
 
-        maxHp = _hp = 30;
+        maxHp = _hp = 350;
     }
 
     public override void deleteEvent()

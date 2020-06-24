@@ -66,6 +66,7 @@ public abstract class PlaneBase : Collisionable {
 	public Action hpChangeEvent = new Action(()=>{});
 
 	protected Sprite[] _dirSprites;
+	protected Sprite[] _minimapIcons = new Sprite[2];
 	protected Vector3 _velocity = new Vector2();
 	protected Vector3 _friction = new Vector2();
 	public float _mass = 1f;
@@ -87,10 +88,11 @@ public abstract class PlaneBase : Collisionable {
 	protected bool _immortal = false;
 	private bool _lerpAddSpeed = false;
 	public bool _bounceOff = false;
+	protected bool _minimapIconHeight = true;
 
-	public int maxHp = 1;
-	public int _hp = 1;
-	protected int _bodyAttack = 1;
+	public int maxHp = 10;
+	public int _hp = 10;
+	protected int _bodyAttack = 25;
 	protected int _spritePoint = 0;
 
 	protected int _Ani_angleCount = 0;
@@ -390,8 +392,9 @@ public abstract class PlaneBase : Collisionable {
 	{
 		if(!_immortal)
 		{
+			Debug.Log(name + "," + value);
 			ChangeHp(-value);
-			if(_hp <= -2)
+			if(_hp <= -15)
 				Delete();
 
 			if(_hp <= 0 && !_fall && !deleted)
@@ -855,7 +858,9 @@ public abstract class PlaneBase : Collisionable {
 	public void MiniMapIconSetup()
 	{
 		miniMapIcon = CanvasScript.instance.GetMinimapIcon();
-		miniMapIcon.sprite = ResourceManager.GetInstance().GetSprite("UI/map_enemyicon");
+		_minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_enemyicon");
+		_minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_enemyiconarrow");
+		miniMapIcon.sprite = _minimapIcons[0];
 
 		miniMapIcon.transform.localPosition = CanvasScript.instance.
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth,CanvasScript.instance.canvasHeight - 15));
@@ -911,6 +916,21 @@ public abstract class PlaneBase : Collisionable {
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * ratio,CanvasScript.instance.canvasHeight - 20)).x;
 		
 		miniMapIcon.transform.localPosition = pos;
+
+		if(_minimapIconHeight)
+		{
+			float camY = CameraControll.instance.position.y;
+			if(MathEx.distance(camY,_position.y) >= 1.5f)
+			{
+				miniMapIcon.sprite = _minimapIcons[1];
+				miniMapIcon.transform.localScale = new Vector3(1f,camY > _position.y ? -1f : 1f,1f);
+			}
+			else
+			{
+				miniMapIcon.sprite = _minimapIcons[0];
+				miniMapIcon.transform.localScale = new Vector3(1f,1f,1f);
+			}
+		}
 	}
 
 	public void TrailSetUp(Vector2 pos, string material, float time, float startWidth, float endWidth)

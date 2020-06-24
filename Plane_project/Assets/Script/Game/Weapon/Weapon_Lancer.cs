@@ -61,7 +61,7 @@ public class Weapon_Lancer : WeaponBase
         else if (CoolDownCheck(ref _mainTimer,deltaTime))
         {
             _plane.SetImmortal(false);
-			_plane.SetBodyAttack(5);
+			_plane.SetBodyAttack(50);
         }
 
         UiUpdate();
@@ -130,7 +130,7 @@ public class Weapon_Lancer : WeaponBase
 							_plane.coll.bound.box.x * 6f, list[i].coll.bound.box.x))
 		        {
                     var p = ((PlaneBase)list[i]);
-                    p.Hit(15,_plane);
+                    p.Hit(150,_plane);
                     HitEffect(p);
 		        }
             }
@@ -257,7 +257,7 @@ public class Weapon_Lancer : WeaponBase
 		mainAttack = false;
 		_plane.SetControll(false);
 		_plane.SetImmortal(false);
-		_plane.SetBodyAttack(5);
+		_plane.SetBodyAttack(50);
         _plane.coll.bound.SetRect(.05f,.05f);
         
         _uiArrow.SetActive(false);

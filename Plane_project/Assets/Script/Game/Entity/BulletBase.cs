@@ -42,7 +42,7 @@ public class BulletBase : Collisionable {
 		_speed = speed;
 		_timer = timer;
 
-		_attack = 1;
+		_attack = 18;
 		_penetrate = false;
 		_canCollision = true;
 		_noneDelete = false;

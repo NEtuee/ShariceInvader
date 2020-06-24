@@ -54,8 +54,11 @@ public class Weapon_PhantomStinger : WeaponBase
             if(_multiTarget.Count > 0)
                 _plane.SetAngle(MathEx.directionToAngle(GetAimTargetDirection()));
 
+            _dashAim.SetPositionEm(_plane.position + (Vector3)ControllerEx.GetInstance().centerAxis);
+            _dashAim.SetAngle(MathEx.directionToAngle(ControllerEx.GetInstance().centerAxis));
             if(ControllerEx.GetInstance().KeyUp("DriveAttack"))
             {
+                _dashAim.SetActive(false);
                 SpecialAttackProgress();
             }
         }
@@ -106,6 +109,8 @@ public class Weapon_PhantomStinger : WeaponBase
             return;
         }
 
+        _aimRange.Play(false);
+
         EffectManager.GetInstance().AddEffect(_aimTarget.position,"SpriteSet/Effects/PhantomString_Aim/Shot").SetSortingOrder(10);
 
         _mainTimer = mainCoolTime;
@@ -121,7 +126,7 @@ public class Weapon_PhantomStinger : WeaponBase
         BurstAimDirection(15f,0.15f);
 
         Timer.SetTimeScale(1f);
-        _aimTarget.Hit(3,_plane);
+        _aimTarget.Hit(35,_plane);
 
         float dist = Vector2.Distance(_plane.position,_aimTarget.position);
         Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
@@ -131,7 +136,6 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public override bool SpecialAttack(Vector3 dir)
     {
-
         FindMultipleTarget(1.5f,120f);
 
         _aimObject.gameObject.SetActive(false);
@@ -155,6 +159,10 @@ public class Weapon_PhantomStinger : WeaponBase
             }
         }
 
+        _dashAim = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/DashAim",false);
+        _dashAim.PassiveDeactive();
+        _dashAim.RealTimeProgress();
+
         specAttack = true;
         _plane.SetControll(true);
         _plane.SetSpeed(0f);
@@ -174,7 +182,7 @@ public class Weapon_PhantomStinger : WeaponBase
             for(int i = 0; i < _maxTarget; ++i)
             {
                 count = i >= _multiTarget.Count ? 0 : i;
-                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(3,i * 0.07f,_plane,delayEvent);
+                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(35,i * 0.07f,_plane,delayEvent);
                 ++count;
             }
         }

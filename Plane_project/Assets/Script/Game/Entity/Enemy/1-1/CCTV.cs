@@ -60,7 +60,9 @@ public class CCTV : PlaneBase
         _camPos = new Vector3(0f,-0.1f,0f);
 
         miniMapIcon.gameObject.SetActive(false);
-        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
 
         //line.enabled = false;
 
@@ -74,7 +76,7 @@ public class CCTV : PlaneBase
 		SetNoClip(false);
         _velocityFlip = false;
         _directionAngle = true;
-		maxHp = _hp = 45;
+		maxHp = _hp = 450;
 
         spawnTimer = Random.Range(1.5f,2f);
 

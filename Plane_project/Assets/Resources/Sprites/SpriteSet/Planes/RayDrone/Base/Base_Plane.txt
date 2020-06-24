@@ -14,7 +14,7 @@ velocityFlip:True
 directionAngle:False
 trailEmmit:True
 boostAniProgress:True
-hp:5
+hp:50
 bodyAttack:1
 boostCount:0
 trailCount:1

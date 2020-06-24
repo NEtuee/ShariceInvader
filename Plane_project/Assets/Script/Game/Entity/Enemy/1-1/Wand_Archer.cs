@@ -26,6 +26,10 @@ public class Wand_Archer : WandsBase
         del = ObjectCreateEvent;
 
         _mass = 5f;
+
+        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
     }
 
     public override void progress(float deltaTime)

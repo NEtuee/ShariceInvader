@@ -48,7 +48,7 @@ public class ShootingDrone : PlaneBase
         _velocityFlip = false;
         _directionAngle = false;
         _rotateLock = true;
-		maxHp = _hp = 5;
+		maxHp = _hp = 50;
         timer = Random.Range(0f,.4f);
         standPos = position;
 

@@ -43,7 +43,7 @@ public class BoomDrone : PlaneBase
 		SetNoClip(false);
         _velocityFlip = false;
         _directionAngle = true;
-		maxHp = _hp = 1;
+		maxHp = _hp = 20;
 
         standPos = this;
         master = false;

@@ -209,6 +209,7 @@
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\0\FireStand\FireStand_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\UI\MainHud\ShieldRecovering\ShieldRecovering_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Miss\Miss_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\PS\Change\Change_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\PS\PS_Ani.txt" />

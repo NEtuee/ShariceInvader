@@ -44,7 +44,7 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     private Dictionary<int, int> _charInfos = new Dictionary<int, int>();
 
-    public void Start()
+    public void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _meshFilter = GetComponent<MeshFilter>();
@@ -75,12 +75,10 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     }
 
-    public void Update()
+    public void SetText(string s)
     {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            SetTextAlignment();
-        }
+        text = s;
+        Convert();
     }
 
     public void Convert()
@@ -159,8 +157,15 @@ public class SpriteFontTextMesh : MonoBehaviour
             _textMesh.SetUVs(0,_uvs);
 
             SetTextAlignment();
+
+            UpdateColor();
         }
 
+    }
+
+    public void UpdateColor()
+    {
+        _textMat.SetColor("_MainColor",textColor);
     }
 
     public void SetTextAlignment()
@@ -306,6 +311,9 @@ public class SpriteFontTextMesh : MonoBehaviour
         _charInfos.Add((int)'\'',42);
         _charInfos.Add((int)'\"',43);
         _charInfos.Add((int)':',44);
+        _charInfos.Add((int)'-',45);
+        _charInfos.Add((int)'#',46);
+        _charInfos.Add((int)'%',47);
 
         _charInfos.Add((int)'a',10);
         _charInfos.Add((int)'b',11);

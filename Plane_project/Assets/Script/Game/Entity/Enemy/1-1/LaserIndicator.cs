@@ -84,7 +84,7 @@ public class LaserIndicator : PlaneBase
 
                     if(_isColl)
                     {
-                        _player.Hit(5,null);
+                        _player.Hit(75,null);
                     }
                     Delete();
                 }

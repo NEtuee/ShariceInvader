@@ -7,9 +7,12 @@ public class MainHud : SingletonMono<MainHud>
     public SpriteRenderer wpIcon;
     public SpriteRenderer[] weaponGagues;
     public SpriteRenderer shieldDamange;
-    public SpriteRenderer hpBar;
+    public SpriteFontTextMesh hpBar;
     public SpriteRenderer mainUI;
-    public GameObject waveText;
+    public GameObject waveIcon;
+
+    public SpriteRenderer wave_0;
+    public SpriteFontTextMesh wave_1;
 
     public GameObject hpContainer;
     public SpriteRenderer[] weaponGagueContainer;
@@ -26,7 +29,6 @@ public class MainHud : SingletonMono<MainHud>
     public GlitchEffect uiGlitch;
 
     private Material[] gagueMats;
-    private Material hpMat;
 
     private LineRenderer _distLine;
     private ObjectBase _distTarget;
@@ -37,6 +39,8 @@ public class MainHud : SingletonMono<MainHud>
     protected AnimationControllEx _shieldAni;
 
     private float _hpBarDisapear = 0f;
+    private float _waveTimer = 0f;
+    private float _waveTime = 0f;
 
     private int _currWeapon;
 
@@ -51,9 +55,6 @@ public class MainHud : SingletonMono<MainHud>
             gagueMats[i] = weaponGagues[i].material;
             gagueMats[i].SetFloat("_Progress",1f);
         }
-
-        hpMat = hpBar.material;
-        hpMat.SetFloat("_Progress",1f);
 
         _distLine = gameObject.AddComponent<LineRenderer>();
         _uiAni = new AnimationControllEx(mainUI);
@@ -75,6 +76,7 @@ public class MainHud : SingletonMono<MainHud>
 
         _shieldAni = new AnimationControllEx(shieldDamange);
         _shieldAni.AddAnimation("Active","UI/MainHud/ShieldDamage");
+        _shieldAni.AddAnimation("Recover","UI/MainHud/ShieldRecovering");
 
         mainUITransform.gameObject.SetActive(false);
         gameObject.SetActive(false);
@@ -112,6 +114,32 @@ public class MainHud : SingletonMono<MainHud>
                 _hpBarDisapear = 0f;
                 hpContainer.SetActive(false);
             }
+        }
+
+        if(_waveTimer != 0f)
+        {
+            float a = Mathf.Lerp(0,1,_waveTimer / (_waveTime * .15f));
+
+            var c = wave_0.color;
+            c.a = a;
+            wave_0.color = c;
+            c = wave_1.textColor;
+            c.a = a;
+            wave_1.textColor = c;
+            wave_1.UpdateColor();
+
+
+            _waveTimer -= deltaTime;
+            if(_waveTimer <= 0f)
+            {
+                _waveTimer = 0f;
+                waveIcon.SetActive(false);
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            ShowWaveIcon(3f);
         }
 
         var pos = CameraControll.instance.position;
@@ -173,7 +201,7 @@ public class MainHud : SingletonMono<MainHud>
 
     public void UpdateHpBar()
     {
-        hpMat.SetFloat("_Progress",(float)_followTarget._hp / (float)_followTarget.maxHp);
+        //hpMat.SetFloat("_Progress",(float)_followTarget._hp / (float)_followTarget.maxHp);
         if(_followTarget._hp == _followTarget.maxHp)
         {
             if(_hpBarDisapear == 0f && hpContainer.activeInHierarchy)
@@ -185,10 +213,39 @@ public class MainHud : SingletonMono<MainHud>
             if(!hpContainer.activeInHierarchy)
             {
                 hpContainer.SetActive(true);
-                _shieldAni.ChangeAni("Active",false);
             }
             
         }
+
+        var hp = (int)(((float)_followTarget._hp / (float)_followTarget.maxHp) * 100f);
+        
+        hpBar.SetText(hp + "%");
+    }
+
+    public void ShowWaveIcon(float time)
+    {
+        waveIcon.SetActive(true);
+
+        var c = wave_0.color;
+        c.a = 1f;
+        wave_0.color = c;
+        c = wave_1.textColor;
+        c.a = 1f;
+        wave_1.textColor = c;
+        wave_1.UpdateColor();
+
+        _waveTimer = _waveTime = time;
+        ActiveUIGlitch(.774f,.994f,.862f,.0253f,time + .5f);
+    }
+
+    public void ShieldDamage()
+    {
+        _shieldAni.ChangeAni("Active",false);
+    }
+
+    public void ShieldRecover()
+    {
+        _shieldAni.ChangeAni("Recover",true);
     }
 
     public void UpdateScaleBar(float val)
