@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 8a80beb3fda711244a2edd9c55c0c8bc
+guid: 22f9ce35b2347dd4994a4b9644e38092
 TextureImporter:
   fileIDToRecycleName:
-    21300000: CuttingCurveEffect_0
-    21300002: CuttingCurveEffect_1
-    21300004: CuttingCurveEffect_2
-    21300006: CuttingCurveEffect_3
-    21300008: CuttingCurveEffect_4
+    21300000: lance_shield1_0
+    21300002: lance_shield1_1
+    21300004: lance_shield1_2
+    21300006: lance_shield1_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -50,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 140
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -85,105 +84,96 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CuttingCurveEffect_0
+      name: lance_shield1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f9377e0d7d9ba4f9fa5ce66e3c3489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_shield1_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 84
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2620a261a6139094582997eb9f02aaf6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lance_shield1_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 81
-        height: 115
-      alignment: 9
-      pivot: {x: 0, y: 0.46}
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a293bd47ca645e4f935ba68a32ed6d0
+      spriteID: c753708b8a753594993541c1cae74c94
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CuttingCurveEffect_1
+      name: lance_shield1_3
       rect:
         serializedVersion: 2
-        x: 81
+        x: 84
         y: 0
-        width: 81
-        height: 115
-      alignment: 9
-      pivot: {x: 0, y: 0.46}
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc64388df5f0234ea6a84ce0ed6162a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CuttingCurveEffect_2
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 0
-        width: 81
-        height: 115
-      alignment: 9
-      pivot: {x: 0, y: 0.46}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94448ecfa769f1740a96f15101eaeefa
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CuttingCurveEffect_3
-      rect:
-        serializedVersion: 2
-        x: 243
-        y: 0
-        width: 81
-        height: 115
-      alignment: 9
-      pivot: {x: 0, y: 0.46}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7bd0054bd1219ab44bbc5ca670a4070f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CuttingCurveEffect_4
-      rect:
-        serializedVersion: 2
-        x: 324
-        y: 0
-        width: 81
-        height: 115
-      alignment: 9
-      pivot: {x: 0, y: 0.46}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 328ce7d111257fa458053867befcfa08
+      spriteID: a90e7cd7219fd3b4b8174b2fdd494dbc
       vertices: []
       indices: 
       edges: []
@@ -191,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ed757412ccce9144daee9deada4b8b0c
+    spriteID: f8746e49ace0e744bbe52685698b9e6a
     vertices: []
     indices: 
     edges: []

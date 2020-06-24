@@ -411,8 +411,13 @@ public abstract class PlaneBase : Collisionable {
 		}
 		else
 		{
-			EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ImmortalHit",false);
+			ImmortalEffect();
 		}
+	}
+
+	public virtual void ImmortalEffect()
+	{
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ImmortalHit",false);
 	}
 
 	public void ChangeHp(int val) {_hp += val; if(_hp > maxHp) _hp = maxHp; hpChangeEvent();}
@@ -875,7 +880,7 @@ public abstract class PlaneBase : Collisionable {
 
 			if(_velocity.y > 0.5f)
 			{
-				DecreaseHP(5);
+				DecreaseHP(50);
 			}
 		}
 	}

@@ -72,6 +72,11 @@ public class Player : PlaneBase {
 		_outline.sortingOrder = -1;
 		_outline.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
 		_outlineSprite = ResourceManager.GetInstance().GetSpriteSet("SpriteSet/Outlines/Player");
+
+		foreach(var ani in _boostAni)
+        {
+			ani.AddAnimation("CuttingCurve","SpriteSet/Effects/CuttingCurve");
+        }
 	}
 
 	public override void initialize()
@@ -179,6 +184,19 @@ public class Player : PlaneBase {
 
 	}
 
+	public override void ImmortalEffect()
+	{
+		string s = "";
+		int rand = UnityEngine.Random.Range(0,3);
+		if(rand == 0)
+			s = "0";
+		else if(rand == 1)
+			s = "1";
+		else if(rand == 2)
+			s = "2";
+
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Weapon/Lancer/Shield/" + s,false);
+	}
 
 	public override void WhenDecreaseHP(int d)
 	{
@@ -302,6 +320,12 @@ public class Player : PlaneBase {
 
 
 					_cam.Shake(0.05f, _direction / 20f);
+
+					foreach(var ani in _boostAni)
+        			{
+						ani.ChangeAni("CuttingCurve",false);
+        			}
+
 					//EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"SpriteSet/Effects/CuttingCurve").SetAngle(_eulerAngle);
 					EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));
 					_eulerAngle = Mathf.LerpAngle(_eulerAngle,controllAngle,0.9f);
