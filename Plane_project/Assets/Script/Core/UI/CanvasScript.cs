@@ -75,16 +75,16 @@ public class CanvasScript : SingletonMono<CanvasScript>, Define.IProgress {
 
 	public void CamSetting()
 	{
-		_mainCam = gameObject.AddComponent<Camera>();
-		_mainCam.clearFlags = CameraClearFlags.Nothing;
-		_mainCam.cullingMask = 1 << LayerMask.NameToLayer("UI");
-		_mainCam.orthographic = true;
-		_mainCam.orthographicSize = canvasHeight / (float)pixelPerUnit * 0.5f;
-		_mainCam.nearClipPlane = 0f;
+		_mainCam = gameObject.GetComponent<Camera>();
+		// _mainCam.clearFlags = CameraClearFlags.Nothing;
+		// _mainCam.cullingMask = 1 << LayerMask.NameToLayer("UI");
+		// _mainCam.orthographic = true;
+		// _mainCam.orthographicSize = canvasHeight / (float)pixelPerUnit * 0.5f;
+		// _mainCam.nearClipPlane = 0f;
 
-		Vector3 pos = transform.position;
-		pos.z = -10f;
-		transform.position = pos;
+		// Vector3 pos = transform.position;
+		// pos.z = -10f;
+		// transform.position = pos;
 
 		worldWidth = canvasWidth / pixelPerUnit;
 		worldHeight = canvasHeight / pixelPerUnit;

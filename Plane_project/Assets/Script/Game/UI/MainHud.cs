@@ -6,8 +6,10 @@ public class MainHud : SingletonMono<MainHud>
 {
     public SpriteRenderer wpIcon;
     public SpriteRenderer[] weaponGagues;
+    public SpriteRenderer shieldDamange;
     public SpriteRenderer hpBar;
     public SpriteRenderer mainUI;
+    public GameObject waveText;
 
     public GameObject hpContainer;
     public SpriteRenderer[] weaponGagueContainer;
@@ -20,6 +22,9 @@ public class MainHud : SingletonMono<MainHud>
 
     public Sprite nullUI;
 
+
+    public GlitchEffect uiGlitch;
+
     private Material[] gagueMats;
     private Material hpMat;
 
@@ -29,8 +34,10 @@ public class MainHud : SingletonMono<MainHud>
     private PlaneBase _followTarget;
 
     protected AnimationControllEx _uiAni;
+    protected AnimationControllEx _shieldAni;
 
     private float _hpBarDisapear = 0f;
+
     private int _currWeapon;
 
 
@@ -66,6 +73,9 @@ public class MainHud : SingletonMono<MainHud>
 
         _uiAni.Stop();
 
+        _shieldAni = new AnimationControllEx(shieldDamange);
+        _shieldAni.AddAnimation("Active","UI/MainHud/ShieldDamage");
+
         mainUITransform.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
@@ -89,6 +99,7 @@ public class MainHud : SingletonMono<MainHud>
         Vector3 dir = -(velo.magnitude > 1f ? velo.normalized : velo);
 
         _uiAni.AnimationProgress(Timer.noneScaledDeltaTime);
+        _shieldAni.AnimationProgress(Timer.noneScaledDeltaTime);
         
         transform.position = _followTarget.position + dir * 0.1f;
         mainUITransform.transform.position = _followTarget.position + dir * 0.12f;
@@ -109,6 +120,16 @@ public class MainHud : SingletonMono<MainHud>
         groundLine.transform.position = pos;
 
         WeaponGaguePositionUpdate(deltaTime);
+    }
+
+    public void ActiveUIGlitch(float time)
+    {
+        ActiveUIGlitch(.474f,.694f,.562f,.0453f,time);
+    }
+
+    public void ActiveUIGlitch(float inten, float flip, float col, float flic, float time)
+    {
+        uiGlitch.Active(inten,flip,col,flic,time);
     }
 
     public void UpdateMinimapScreenIndicator()
@@ -161,7 +182,12 @@ public class MainHud : SingletonMono<MainHud>
         else
         {
             _hpBarDisapear = 0f;
-            hpContainer.SetActive(true);
+            if(!hpContainer.activeInHierarchy)
+            {
+                hpContainer.SetActive(true);
+                _shieldAni.ChangeAni("Active",false);
+            }
+            
         }
     }
 

@@ -184,6 +184,7 @@ public class Player : PlaneBase {
 			_cam.Zoom(2.9f);
 			_cam.Glitch(0.3f);
 			Timer.SetTimeScaleTimer(0f,0.09f);
+			MainHud.instance.ActiveUIGlitch(.774f,.994f,.862f,.0253f,.5f);
 
 			_regenTimer = 3f;
 			_hpRegen = false;

@@ -6,9 +6,25 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class SpriteFontTextMesh : MonoBehaviour
 {
+    public enum SpriteTextAlignment
+    {
+        LeftTop,
+        LeftCenter,
+        LeftBottom,
+        CenterTop,
+        Center,
+        CenterBottom,
+        RightTop,
+        RightCenter,
+        RightBottom
+    };
+
     public string fontPath;
     public string text;
     
+    public SpriteTextAlignment alignment;
+    public Color textColor;
+
     public float latterSpace = 0.01f;
     public float spaceDist = 0.1f;
 
@@ -32,7 +48,7 @@ public class SpriteFontTextMesh : MonoBehaviour
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _meshFilter = GetComponent<MeshFilter>();
-        _textMat = new Material(Shader.Find("Custom/SpriteDefault"));
+        _textMat = new Material(Shader.Find("Custom/SpriteTextMesh"));
         _textMat.SetTexture("_MainTex",sprite);
         _textMat.SetFloat("PixelSnap",1f);
 
@@ -63,7 +79,7 @@ public class SpriteFontTextMesh : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.H))
         {
-            Convert();
+            SetTextAlignment();
         }
     }
 
@@ -141,8 +157,56 @@ public class SpriteFontTextMesh : MonoBehaviour
             _textMesh.SetVertices(_vertices);
             _textMesh.SetIndices(_indices.ToArray(),MeshTopology.Triangles,0);
             _textMesh.SetUVs(0,_uvs);
+
+            SetTextAlignment();
         }
 
+    }
+
+    public void SetTextAlignment()
+    {
+        float x = 0f;
+        float y = 0f;
+
+        float boundX = _textMesh.bounds.extents.x;
+        float boundY = _textMesh.bounds.extents.y;
+
+        switch(alignment)
+        {
+            case SpriteTextAlignment.Center:
+            x = -boundX;
+            y = -boundY;
+            break;
+            case SpriteTextAlignment.CenterTop:
+            x = -boundX;
+            y = -boundY * 2f;
+            break;
+            case SpriteTextAlignment.CenterBottom:
+            x = -boundX;
+            break;
+            case SpriteTextAlignment.LeftTop:
+            y = -boundY * 2f;
+            break;
+            case SpriteTextAlignment.LeftCenter:
+            y = -boundY;
+            break;
+            case SpriteTextAlignment.LeftBottom:
+            break;
+            case SpriteTextAlignment.RightTop:
+            x = -boundX * 2f;
+            y = -boundY * 2f;
+            break;
+            case SpriteTextAlignment.RightCenter:
+            x = -boundX * 2f;
+            y = -boundY;
+            break;
+            case SpriteTextAlignment.RightBottom:
+            x = -boundX * 2f;
+            break;
+        }
+
+        _textMat.SetFloat("_AlignmentX",x);
+        _textMat.SetFloat("_AlignmentY",y);
     }
 
     public float SpaceCalc(int pos)

@@ -72,6 +72,7 @@
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneBuilder.cs" />
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_PlaneInfoBase.cs" />
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_TrailRenderer.cs" />
+     <Compile Include="Assets\GlitchEffect.cs" />
      <Compile Include="Assets\GroundAlert.cs" />
      <Compile Include="Assets\Script\Core\AnimationControll.cs" />
      <Compile Include="Assets\Script\Core\AnimationControllEx.cs" />
@@ -185,6 +186,7 @@
      <None Include="Assets\Script\Shader\TextureSpriteDefault.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\Start\Start_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
+     <None Include="Assets\Script\Shader\GlitchShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Attack\Attack_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Open\Open_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Burst\Burst_Ani.txt" />
@@ -201,6 +203,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost_New\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Front\Front_Ani.txt" />
      <None Include="Assets\Script\Shader\ColorLerp.shader" />
+     <None Include="Assets\Resources\Sprites\UI\MainHud\ShieldDamage\ShieldDamage_Ani.txt" />
      <None Include="Assets\Script\Shader\SpriteOutline.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />
      <None Include="Assets\Script\Shader\Default_ProgressBar.shader" />
@@ -249,6 +252,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\StarFish\Piercer\Piercer_Plane.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Explosion\Explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\Back\Back_Ani.txt" />
+     <None Include="Assets\Script\Shader\SpriteTextMesh.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost2\Boost2_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\MainRange\MainRange_Ani.txt" />

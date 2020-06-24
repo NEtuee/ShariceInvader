@@ -38,6 +38,7 @@ public class DialogManager : SingletonMono<DialogManager>
     public bool dialog = false;
     public bool scrollEnd = false;
     public int speachSide = -1;
+    public int newLineLength = 1;
     public float textScrollTime;
     
 
@@ -247,6 +248,31 @@ public class DialogManager : SingletonMono<DialogManager>
         }
     }
 
+    public string SetNewLine(string s)
+    {
+        for(int i = newLineLength - 1; i < s.Length; i += newLineLength)
+        {
+            bool cut = false;
+            for(int j = i; j >= 0; --j)
+            {
+                if(s[j] == ' ')
+                {
+                    s = s.Insert(j + 1,"\n");
+                    cut = true;
+
+                    break;
+                }
+            }
+
+            if(!cut)
+            {
+                s = s.Insert(i + 2,"\n");
+            }
+        }
+
+        return s;
+    }
+
     public void ReadDialog()
     {
         List<ConversationInfo> info = new List<ConversationInfo>();
@@ -272,7 +298,7 @@ public class DialogManager : SingletonMono<DialogManager>
                     int scriptLen = line.Length;
                     for(int l = 3; l < scriptLen; ++l)
                     {
-                        langague.Add(line[l]);
+                        langague.Add(SetNewLine(line[l]));
                     }
 
                     scripts.Add(langague.ToArray());
