@@ -87,13 +87,61 @@ public class ControllerEx : Singleton<ControllerEx>
         AddKey("Cancel");
     }
 
-    public void BindKeys()
+    public void BindKeys(string n, KeyCode k)
     {
-
+        keyBindList[n].code = k;
+        keyBindList[n].state = KeyState.None;
     }
 
     public void UpdateKeyState()
     {
+        float leftAxisX = Input.GetAxis("Horizontal");
+        float leftAxisY = Input.GetAxis("Vertical");
+        string s = "left : " + leftAxisX + ", right : " + leftAxisY;
+        Debugger.instance.SetDebugText(s);
+
+        if(Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            Debugger.instance.AddDebugText("A");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            Debugger.instance.AddDebugText("B");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button2))
+        {
+            Debugger.instance.AddDebugText("X");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button3))
+        {
+            Debugger.instance.AddDebugText("Y");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button4))
+        {
+            Debugger.instance.AddDebugText("LeftBumper");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button5))
+        {
+            Debugger.instance.AddDebugText("RightBumper");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button6))
+        {
+            Debugger.instance.AddDebugText("Back");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button7))
+        {
+            Debugger.instance.AddDebugText("Start");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button8))
+        {
+            Debugger.instance.AddDebugText("LeftStickButton");
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick1Button9))
+        {
+            Debugger.instance.AddDebugText("RightStickButton");
+        }
+
+
         foreach(var key in keyBindList)
         {
             var k = key.Value;

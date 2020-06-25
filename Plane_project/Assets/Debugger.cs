@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Debugger : MonoBehaviour
+public class Debugger : SingletonMono<Debugger>
 {
     ObjectManager obj;
     PlaceMapper place;
     public TextMesh text;
 
+    public TextMesh fixedText;
+    public TextMesh variableText;
+
+    public int maxLine = 5;
+
     Dictionary<int,string> objects = new Dictionary<int, string>();
+    Queue<string> textStack = new Queue<string>();
     int pos = 0;
     int count = 1;
 
     void Start()
     {
+        SetSingleton(this);
+        
         obj = ObjectManager.GetInstance();
         place = obj._place;
 
@@ -34,6 +42,31 @@ public class Debugger : MonoBehaviour
     void Update()
     {
         Progress();
+    }
+
+    public void UpdateVariableText()
+    {
+        string s = "";
+        foreach(var t in textStack)
+        {
+            s += t + "\n";
+        }
+
+        variableText.text = s;
+    }
+
+    public void AddDebugText(string s)
+    {
+        textStack.Enqueue(s);
+        if(textStack.Count >= maxLine)
+            textStack.Dequeue();
+
+        UpdateVariableText();
+    }
+
+    public void SetDebugText(string s)
+    {
+        fixedText.text = s;
     }
 
     public void Progress()

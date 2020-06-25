@@ -46,6 +46,11 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     public void Awake()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
         _meshRenderer = GetComponent<MeshRenderer>();
         _meshFilter = GetComponent<MeshFilter>();
         _textMat = new Material(Shader.Find("Custom/SpriteTextMesh"));
@@ -72,7 +77,6 @@ public class SpriteFontTextMesh : MonoBehaviour
         _meshFilter.mesh = _textMesh;
 
         Convert();
-
     }
 
     public void SetText(string s)
@@ -83,6 +87,10 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     public void Convert()
     {
+        if(_meshRenderer == null)
+        {
+            Initialize();
+        }
         if(text == _prevText)
         {
             return;
