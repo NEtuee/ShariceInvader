@@ -11,8 +11,6 @@ to make commercial use of the work
 
 using UnityEngine;
 
-[ExecuteInEditMode]
-[AddComponentMenu("Image Effects/GlitchEffect")]
 [RequireComponent(typeof(Camera))]
 public class GlitchEffect : MonoBehaviour
 {
@@ -84,8 +82,6 @@ public class GlitchEffect : MonoBehaviour
 		}
 
         this.enabled = true;
-
-		Debug.Log(this.enabled);
     }
 
 	// Called by camera to apply image effect

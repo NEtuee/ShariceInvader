@@ -5,13 +5,13 @@ using UnityEngine;
 public class ComboCount : SingletonMono<ComboCount>
 {
     public GameObject comboUI;
-    TextMesh text;
+    SpriteFontTextMesh text;
     int combo;
     float comboCount;
     void Start()
     {
         SetSingleton(this);
-        text = GetComponent<TextMesh>();
+        text = GetComponent<SpriteFontTextMesh>();
         combo = 0;
         comboCount = 0f;
     }
@@ -41,14 +41,14 @@ public class ComboCount : SingletonMono<ComboCount>
 
         if(combo == 0)
         {
-            text.text = "";
+            text.SetText("");
             comboUI.SetActive(false);
             comboCount = 0f;
         }
         else  
         {
             comboUI.SetActive(true);
-            text.text = combo.ToString();
+            text.SetText(combo.ToString());
         }
     }
 

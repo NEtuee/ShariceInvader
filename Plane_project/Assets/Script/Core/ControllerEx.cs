@@ -65,6 +65,8 @@ public class ControllerEx : Singleton<ControllerEx>
     private Dictionary<string,Key> _xboxBind = new Dictionary<string, Key>();
     private Dictionary<string,Key> _psBind = new Dictionary<string, Key>();
 
+    private string _controllerLists = "";
+
     private float _axisPushStr = 0.4f;
     private float _deviceCheckTimer = 1f;
 
@@ -159,19 +161,51 @@ public class ControllerEx : Singleton<ControllerEx>
         }
     }
 
+    public void CheckCurrentInputDevice()
+    {
+        if(Input.anyKey)
+        {
+            bool joy = false;
+            for(int i = 0; i < 14; ++i)
+            {
+                if(Input.GetKey(KeyCode.JoystickButton0 + i))
+                {
+                    joy = true;
+                    break;
+                }
+            }
+
+            if(controller != ControllerType.KeyboardMouse && !joy)
+            {
+                controller = ControllerType.KeyboardMouse;
+                InputDevieKeyBind();
+            }
+            else if(controller == ControllerType.KeyboardMouse && joy)
+            {
+                _controllerLists = "";
+                InputDeviceCheck();
+                InputDevieKeyBind();
+            }
+            
+        }
+    }
+
     public void InputDeviceCheck()
     {
-        ControllerType type = ControllerType.KeyboardMouse;
         string[] con = Input.GetJoystickNames();
-        if(con != null)
+        if(con != null && con[0] != _controllerLists)
         {
+            ControllerType type = ControllerType.KeyboardMouse;
+
             if(con[0].Contains("Xbox"))
                 type = ControllerType.XboxController;
-            else
+            else// if(con[0].Contains("Controller"))
                 type = ControllerType.PSController;
-        }
 
-        controller = type;
+            _controllerLists = con[0];
+
+            controller = type;
+        }
     }
 
     public void BindKeys(string n, KeyCode k)
@@ -192,7 +226,9 @@ public class ControllerEx : Singleton<ControllerEx>
             
             _deviceCheckTimer = 1f;
         }
-        
+
+        CheckCurrentInputDevice();
+        Debugger.instance.SetDebugText(controller.ToString());
 
         foreach(var key in keyBindList)
         {
@@ -240,6 +276,8 @@ public class ControllerEx : Singleton<ControllerEx>
         
 
         centerAxis = controller == ControllerType.KeyboardMouse ? GetScreenCenterAxis() : GetJoystickAxis();
+
+        //Debugger.instance.SetDebugText(centerAxis.ToString());
     }
 
     public Vector2 GetWorldScreenCenterAxis(Vector3 c)

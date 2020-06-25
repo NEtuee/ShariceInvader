@@ -15,7 +15,6 @@ public class Player : PlaneBase {
 	private Vector3 _dodgeStartPos;
 
 	private Transform _miniMapHeightIcon;
-	private TextMesh _angleCount;
 
 	private SpriteRenderer _outline;
 	private Sprite[] _outlineSprite;
@@ -65,7 +64,6 @@ public class Player : PlaneBase {
 
 		CanvasScript.instance.SetChild(_miniMapHeightIcon);
 
-		_angleCount = CanvasScript.instance.gameObject.transform.Find("AngleCount").GetComponent<TextMesh>();
 		HeightIconUpdate();
 
 		_outline = _deco.AddDeco(Vector2.zero)._sprRenderer;

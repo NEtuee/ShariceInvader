@@ -891,11 +891,7 @@ public abstract class PlaneBase : Collisionable {
 		{
 			_position.y = 0f;
 			_velocity.y *= -1f;
-
-			if(_velocity.y > 0.5f)
-			{
-				DecreaseHP(50);
-			}
+			DecreaseHP(50);
 		}
 	}
 

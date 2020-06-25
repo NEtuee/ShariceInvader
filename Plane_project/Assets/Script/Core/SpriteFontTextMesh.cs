@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 public class SpriteFontTextMesh : MonoBehaviour
@@ -19,11 +21,12 @@ public class SpriteFontTextMesh : MonoBehaviour
         RightBottom
     };
 
-    public string fontPath;
-    public string text;
+    public string fontPath = "Font/NewFont";
+
+    public string text = "Hello World";
     
     public SpriteTextAlignment alignment;
-    public Color textColor;
+    public Color textColor = Color.white;
 
     public float latterSpace = 0.01f;
     public float spaceDist = 0.1f;
@@ -46,20 +49,22 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     public void Awake()
     {
-        Initialize();
+        if(_meshRenderer == null)
+            Initialize();
     }
 
     public void Initialize()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _meshFilter = GetComponent<MeshFilter>();
+        var texture = ResourceManager.GetInstance().LoadAll(fontPath,typeof(Texture2D));
+        sprite = texture[0] as Texture2D;
         _textMat = new Material(Shader.Find("Custom/SpriteTextMesh"));
         _textMat.SetTexture("_MainTex",sprite);
         _textMat.SetFloat("PixelSnap",1f);
 
         SetCharacterInfo();
 
-        _charTextures = ResourceManager.GetInstance().LoadAll(fontPath,typeof(Sprite)) as Sprite[];
         UnityEngine.Object[] obj = ResourceManager.GetInstance().LoadAll(fontPath, typeof(Sprite));
 		if(obj.Length == 0)
 		{
@@ -95,18 +100,19 @@ public class SpriteFontTextMesh : MonoBehaviour
         {
             return;
         }
-        int pos = StringCompare(text,_prevText) + 1;
+        // int pos = StringCompare(text,_prevText) + 1;
 
-        if(pos != 0)
-            MeshCut(pos - 1);
-        else
+        // Debug.Log(pos);
+        // if(pos != 0)
+        //     MeshCut(pos - 1);
+        // else
         {
             _vertices.Clear();
             _indices.Clear();
             _uvs.Clear();
         }
 
-        for(int i = pos; i < text.Length; ++i)
+        for(int i = 0; i < text.Length; ++i)
         {
             int ascii = (int)text[i];
             if(_charInfos.ContainsKey(ascii))
@@ -154,11 +160,11 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     public void UpdateMesh()
     {
-        if(text.Length == 0)
-            _meshRenderer.enabled = false;
-        else
-        {
-            _meshRenderer.enabled = true;
+        // if(text.Length == 0)
+        //     _meshRenderer.enabled = false;
+        // else
+//        {
+//            _meshRenderer.enabled = true;
             _textMesh.Clear();
             _textMesh.SetVertices(_vertices);
             _textMesh.SetIndices(_indices.ToArray(),MeshTopology.Triangles,0);
@@ -167,7 +173,7 @@ public class SpriteFontTextMesh : MonoBehaviour
             SetTextAlignment();
 
             UpdateColor();
-        }
+//        }
 
     }
 
@@ -220,6 +226,18 @@ public class SpriteFontTextMesh : MonoBehaviour
 
         _textMat.SetFloat("_AlignmentX",x);
         _textMat.SetFloat("_AlignmentY",y);
+    }
+
+    public int CountSpace(string s)
+    {
+        int count = 0;
+        for(int i = 0; i < s.Length; ++i)
+        {
+            if(s[i] == ' ')
+                ++count;
+        }
+
+        return count;
     }
 
     public float SpaceCalc(int pos)
@@ -363,5 +381,11 @@ public class SpriteFontTextMesh : MonoBehaviour
         //     var h = (float)sprites[i].texture.height / (float)height;
         //     st.Add(sprites[i].texture.w)
         // }
+    }
+
+    void OnValidate()
+    {
+        Convert();
+        UpdateColor();
     }
 }

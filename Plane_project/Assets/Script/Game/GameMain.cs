@@ -24,7 +24,7 @@ public class GameMain : SingletonMono<GameMain> {
 	{
 		SetSingleton(this);
 
-		
+		ControllerEx.DeleteSingleton();
 		ObjectManager.DeleteSingleton();
 		EffectManager.DeleteSingleton();
 		BulletManager.DeleteSingleton();

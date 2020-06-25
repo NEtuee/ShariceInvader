@@ -25,6 +25,7 @@ public class CanvasScript : SingletonMono<CanvasScript>, Define.IProgress {
 
 	public void Awake()
 	{
+		minimapIcons.Clear();
 		CamSetting();
 		SetSingleton(this); 
 	}

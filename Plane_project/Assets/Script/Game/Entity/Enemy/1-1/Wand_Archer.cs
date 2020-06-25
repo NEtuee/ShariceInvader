@@ -41,6 +41,8 @@ public class Wand_Archer : WandsBase
             timer = 0f;
         }
 
+        maxHp = _hp = 250;
+
         base.progress(deltaTime);
     }
 

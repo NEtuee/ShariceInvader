@@ -187,6 +187,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Appear\Appear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurve\CuttingCurve_Ani.txt" />
      <None Include="Assets\Script\Shader\TextureSpriteDefault.shader" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Sparkle_small\Sparkle_small_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\Start\Start_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />
      <None Include="Assets\Script\Shader\GlitchShader.shader" />
@@ -265,6 +266,7 @@
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\Back\Back_Ani.txt" />
      <None Include="Assets\Script\Shader\SpriteTextMesh.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost2\Boost2_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Sparkle_big\Sparkle_big_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\MainRange\MainRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Attack\Attack_Ani.txt" />

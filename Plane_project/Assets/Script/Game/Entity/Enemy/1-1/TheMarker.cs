@@ -48,6 +48,7 @@ public class TheMarker : PlaneBase
     private float _markerAngle = 0f;
     private float _markerSpread = 1f;
     private float _spreadTimer = 0f;
+    private float _sparkleTimer = 0f;
 
     private float _spinSpeedTarget = 180f;
     private float _markerSpreadTarget = -5f;
@@ -225,6 +226,14 @@ public class TheMarker : PlaneBase
             if(_shot)
             {
                 _shotTimer -= deltaTime;
+                _sparkleTimer -= deltaTime;
+
+                if(_sparkleTimer <= 0f)
+                {
+                    EffectManager.GetInstance().AddEffect(_position + MathEx.RandomCircle(0.08f),"SpriteSet/Effects/Sparkle_small").SetSortingOrder(3);
+                    _sparkleTimer = _shotTimer * 0.2f;
+                }
+
                 if(_shotTimer <= 0f)
                 {
                     _speed = .35f;
@@ -239,6 +248,9 @@ public class TheMarker : PlaneBase
                         var randomPos = MathEx.RandomVector3(-randFactor,randFactor,0f,0f,0f,0f);
                         EnemyCreator.LaserIndicator(Player.instance.position + randomPos,3f,Random.Range(0f,1f * (1.5f - (_defenders.Count / 4f))));
                     }
+
+                    EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Sparkle_big").SetSortingOrder(3);
+
                     Fold();
                     RandomSpread();
                 }
@@ -269,8 +281,14 @@ public class TheMarker : PlaneBase
                     _shot = true;
                     _shotTimer = Random.Range(1.5f,2.5f);
 
+                    _sparkleTimer = 0f;
                     _speed = 0f;
-                    _targetDirection = Vector3.left;
+
+                    if(_position.y <= 2.5f)
+                    {
+                        ChangeDirection(Vector3.up);
+                    }
+                    
                     Spread();
 
                     if(!_piercerShot)
@@ -334,25 +352,18 @@ public class TheMarker : PlaneBase
 			}
 		}
 
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            Spread();
-        }
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Fold();
-        }
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            ShotPiercer();
-        }
-
     }
 
 
     public void RandomSpread()
     {
-        _targetDirection = new Vector3(Random.Range(0,2) == 0 ? -1f : 1f, Random.Range(-0.5f,0.5f)).normalized;
+        _targetDirection = new Vector3(Random.Range(0,2) == 0 ? -1f : 1f, Random.Range(-0.5f,0.5f));
+        if(position.y <= 2f)
+        {
+            _targetDirection.y += 1f;
+        }
+
+        _targetDirection = _targetDirection.normalized;
 
         _actTimer = Random.Range(2f,5f);
 
