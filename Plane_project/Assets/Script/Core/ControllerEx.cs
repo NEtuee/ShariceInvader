@@ -97,12 +97,20 @@ public class ControllerEx : Singleton<ControllerEx>
     {
         float leftAxisX = Input.GetAxis("Horizontal");
         float leftAxisY = Input.GetAxis("Vertical");
-        string s = "left : " + leftAxisX + ", right : " + leftAxisY;
+        float leftTrigger = Input.GetAxis("XBoxLeftTrigger");
+        float rightTrigger = Input.GetAxis("XBoxRightTrigger");
+        string s = "left : " + leftAxisX + ", right : " + leftAxisY + ", left Trigger : " + leftTrigger + ", right Trigger : " + rightTrigger;
         Debugger.instance.SetDebugText(s);
 
         if(Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             Debugger.instance.AddDebugText("A");
+
+            string[] names = Input.GetJoystickNames();
+            for(int i = 0; i < names.Length; ++i)
+            {
+                Debugger.instance.AddDebugText(i + ": " + names[i]);
+            }
         }
         if(Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
@@ -140,7 +148,7 @@ public class ControllerEx : Singleton<ControllerEx>
         {
             Debugger.instance.AddDebugText("RightStickButton");
         }
-
+        
 
         foreach(var key in keyBindList)
         {
