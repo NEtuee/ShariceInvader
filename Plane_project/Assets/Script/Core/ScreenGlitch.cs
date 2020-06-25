@@ -21,6 +21,8 @@ public class ScreenGlitch : MonoBehaviour
             _analogMat = new Material(analogShader);
             _analogMat.hideFlags = HideFlags.DontSave;
         }
+
+        enabled = false;
     }
 
 

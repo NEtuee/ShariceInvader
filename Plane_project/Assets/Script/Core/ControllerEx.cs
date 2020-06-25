@@ -7,7 +7,14 @@ public class ControllerEx : Singleton<ControllerEx>
     public enum ControllerType
     {
         KeyboardMouse,
-        Gamepad
+        XboxController,
+        PSController
+    };
+
+    public enum KeyType
+    {
+        Button,
+        Axis,
     };
 
     public enum KeyState
@@ -20,8 +27,13 @@ public class ControllerEx : Singleton<ControllerEx>
 
     public class Key
     {
+        public KeyType type;
         public KeyCode code;
         public KeyState state;
+
+        public string axisName;
+        public float axis;
+
 
         public void ChangeState(KeyState s)
         {
@@ -30,15 +42,31 @@ public class ControllerEx : Singleton<ControllerEx>
 
         public Key(KeyCode c)
         {
+            type = KeyType.Button;
             code = c;
+            state = KeyState.None;
+        }
+
+        public Key(string c)
+        {
+            type = KeyType.Axis;
+            axisName = c;
+            axis = 0f;
             state = KeyState.None;
         }
     }
 
-    public Dictionary<string,Key> keyBindList = new Dictionary<string, Key>();
+    public Dictionary<string,Key> keyBindList;// = new Dictionary<string, Key>();
     public ControllerType controller = ControllerType.KeyboardMouse;
     public Vector2 centerAxis;
     public Camera mainView;
+
+    private Dictionary<string,Key> _keyboardBind = new Dictionary<string, Key>();
+    private Dictionary<string,Key> _xboxBind = new Dictionary<string, Key>();
+    private Dictionary<string,Key> _psBind = new Dictionary<string, Key>();
+
+    private float _axisPushStr = 0.4f;
+    private float _deviceCheckTimer = 1f;
 
     public bool KeyDown(string key) {return KeyCheck(key) == KeyState.Down;}
     public bool KeyPress(string key) {return KeyCheck(key) == KeyState.Press;}
@@ -57,34 +85,93 @@ public class ControllerEx : Singleton<ControllerEx>
         }
     }
 
-    public void AddKey(string n, KeyCode k = KeyCode.None)
-    {
-        keyBindList.Add(n,new Key(k));
-    }
+    // public void AddKey(string n, KeyCode k = KeyCode.None, KeyType type = KeyType.Button)
+    // {
+    //     keyBindList.Add(n,new Key(k,type));
+    // }
 
-    public void Setkey(string n, KeyCode k)
+    // public void Setkey(string n, KeyCode k, KeyType t)
+    // {
+    //     if(keyBindList.ContainsKey(n))
+    //     {
+    //         keyBindList[n].code = k;
+    //         keyBindList[n].type = t;
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("Key does not exists");
+    //     }
+    // }
+
+    public void CreateKeyBindDic()
     {
-        if(keyBindList.ContainsKey(n))
-        {
-            keyBindList[n].code = k;
-        }
-        else
-        {
-            Debug.Log("Key does not exists");
-        }
+        _keyboardBind.Add("MainAttack",new Key(KeyCode.W));
+        _keyboardBind.Add("DriveAttack",new Key(KeyCode.Mouse1));
+        _keyboardBind.Add("WeaponChange",new Key(KeyCode.R));
+        _keyboardBind.Add("Pause",new Key(KeyCode.Escape));
+        _keyboardBind.Add("Cancel",new Key(KeyCode.Tab));
+
+        _xboxBind.Add("MainAttack",new Key(KeyCode.JoystickButton0));
+        _xboxBind.Add("DriveAttack",new Key("XBoxRightTrigger"));
+        _xboxBind.Add("WeaponChange",new Key(KeyCode.JoystickButton2));
+        _xboxBind.Add("Pause",new Key(KeyCode.JoystickButton7));
+        _xboxBind.Add("Cancel",new Key(KeyCode.JoystickButton1));
+
+        _psBind.Add("MainAttack",new Key(KeyCode.JoystickButton1));
+        _psBind.Add("DriveAttack",new Key("PSRightTrigger"));
+        _psBind.Add("WeaponChange",new Key(KeyCode.JoystickButton0));
+        _psBind.Add("Pause",new Key(KeyCode.JoystickButton9));
+        _psBind.Add("Cancel",new Key(KeyCode.JoystickButton2));
+
     }
 
     public void CreateKeys()
     {
-        if(keyBindList.Count != 0)
-            return;
+        // if(keyBindList.Count != 0)
+        //     return;
 
-        AddKey("MainAttack",KeyCode.W);
-        AddKey("DriveAttack",KeyCode.Mouse1);
-        AddKey("WeaponChange",KeyCode.R);
-        AddKey("Pause");
-        AddKey("Select");
-        AddKey("Cancel");
+        CreateKeyBindDic();
+        InputDeviceCheck();
+        InputDevieKeyBind();
+
+
+        // AddKey("MainAttack",KeyCode.W);
+        // AddKey("DriveAttack",KeyCode.Mouse1);
+        // AddKey("WeaponChange",KeyCode.R);
+        // AddKey("Pause");
+        // AddKey("Select");
+        // AddKey("Cancel");
+    }
+
+    public void InputDevieKeyBind()
+    {
+        switch(controller)
+        {
+            case ControllerType.KeyboardMouse:
+            keyBindList = _keyboardBind;
+            break;
+            case ControllerType.XboxController:
+            keyBindList = _xboxBind;
+            break;
+            case ControllerType.PSController:
+            keyBindList = _psBind;
+            break;
+        }
+    }
+
+    public void InputDeviceCheck()
+    {
+        ControllerType type = ControllerType.KeyboardMouse;
+        string[] con = Input.GetJoystickNames();
+        if(con != null)
+        {
+            if(con[0].Contains("Xbox"))
+                type = ControllerType.XboxController;
+            else
+                type = ControllerType.PSController;
+        }
+
+        controller = type;
     }
 
     public void BindKeys(string n, KeyCode k)
@@ -95,58 +182,15 @@ public class ControllerEx : Singleton<ControllerEx>
 
     public void UpdateKeyState()
     {
-        float leftAxisX = Input.GetAxis("Horizontal");
-        float leftAxisY = Input.GetAxis("Vertical");
-        float leftTrigger = Input.GetAxis("XBoxLeftTrigger");
-        float rightTrigger = Input.GetAxis("XBoxRightTrigger");
-        string s = "left : " + leftAxisX + ", right : " + leftAxisY + ", left Trigger : " + leftTrigger + ", right Trigger : " + rightTrigger;
-        Debugger.instance.SetDebugText(s);
-
-        if(Input.GetKeyDown(KeyCode.Joystick1Button0))
+        _deviceCheckTimer -= Time.deltaTime;
+        if(_deviceCheckTimer <= 0f)
         {
-            Debugger.instance.AddDebugText("A");
-
-            string[] names = Input.GetJoystickNames();
-            for(int i = 0; i < names.Length; ++i)
-            {
-                Debugger.instance.AddDebugText(i + ": " + names[i]);
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button1))
-        {
-            Debugger.instance.AddDebugText("B");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button2))
-        {
-            Debugger.instance.AddDebugText("X");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button3))
-        {
-            Debugger.instance.AddDebugText("Y");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button4))
-        {
-            Debugger.instance.AddDebugText("LeftBumper");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button5))
-        {
-            Debugger.instance.AddDebugText("RightBumper");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button6))
-        {
-            Debugger.instance.AddDebugText("Back");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button7))
-        {
-            Debugger.instance.AddDebugText("Start");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button8))
-        {
-            Debugger.instance.AddDebugText("LeftStickButton");
-        }
-        if(Input.GetKeyDown(KeyCode.Joystick1Button9))
-        {
-            Debugger.instance.AddDebugText("RightStickButton");
+            var con = controller;
+            InputDeviceCheck();
+            if(con != controller)
+                InputDevieKeyBind();
+            
+            _deviceCheckTimer = 1f;
         }
         
 
@@ -154,27 +198,46 @@ public class ControllerEx : Singleton<ControllerEx>
         {
             var k = key.Value;
             
-            if(Input.GetKeyDown(k.code))
+            if(k.type == KeyType.Button)
             {
-                k.state = KeyState.Down;
+                if(Input.GetKeyDown(k.code))
+                {
+                    k.state = KeyState.Down;
+                }
+                else if(Input.GetKey(k.code))
+                {
+                    k.state = KeyState.Press;
+                }
+                else if(Input.GetKeyUp(k.code))
+                {
+                    k.state = KeyState.Up;
+                }
+                else if(!Input.GetKey(k.code) && (k.state == KeyState.Press || k.state == KeyState.Down))
+                {
+                    k.state = KeyState.Up;
+                }
+                else if(k.state == KeyState.Up)
+                {
+                    k.state = KeyState.None;
+                }
             }
-            else if(Input.GetKey(k.code))
+            else if(k.type == KeyType.Axis)
             {
-                k.state = KeyState.Press;
-            }
-            else if(Input.GetKeyUp(k.code))
-            {
-                k.state = KeyState.Up;
-            }
-            else if(!Input.GetKey(k.code) && (k.state == KeyState.Press || k.state == KeyState.Down))
-            {
-                k.state = KeyState.Up;
-            }
-            else if(k.state == KeyState.Up)
-            {
-                k.state = KeyState.None;
+                k.axis = Input.GetAxis(k.axisName);
+                bool down = k.axis >= _axisPushStr;
+
+                if(down && k.state == KeyState.Down)
+                    k.state = KeyState.Press;
+                else if(down && k.state != KeyState.Press)
+                    k.state = KeyState.Down;
+                else if(!down && (k.state == KeyState.Press || k.state == KeyState.Down))
+                    k.state = KeyState.Up;
+                else if(k.state == KeyState.Up)
+                    k.state = KeyState.None;
             }
         }
+
+        
 
         centerAxis = controller == ControllerType.KeyboardMouse ? GetScreenCenterAxis() : GetJoystickAxis();
     }
@@ -205,7 +268,11 @@ public class ControllerEx : Singleton<ControllerEx>
 
     public Vector2 GetJoystickAxis()
     {
-        return new Vector2(Input.GetAxis("Vertical"),Input.GetAxis("Horizontal"));
+        var axis = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        if(MathEx.abs(axis.magnitude) >= _axisPushStr)
+            return axis.normalized;
+        else
+            return centerAxis;
     }
 
     public void SetMainViewCamera(Camera cam)
