@@ -110,6 +110,14 @@
      <Compile Include="Assets\Script\Core\UI\ToggleGroupEx.cs" />
      <Compile Include="Assets\Script\Core\UI\TouchDetection.cs" />
      <Compile Include="Assets\Script\Core\UI\TouchInfo.cs" />
+     <Compile Include="Assets\Script\Core\UI\UIButtonToggleGroup.cs" />
+     <Compile Include="Assets\Script\Core\UI\UIKeyMapper.cs" />
+     <Compile Include="Assets\Script\Core\UI\UIKeyMappingGroup.cs" />
+     <Compile Include="Assets\Script\Core\UI\UIProgressBar.cs" />
+     <Compile Include="Assets\Script\Core\UI\UISelectBase.cs" />
+     <Compile Include="Assets\Script\Core\UI\UISelectButton.cs" />
+     <Compile Include="Assets\Script\Core\UI\UISelectMenu.cs" />
+     <Compile Include="Assets\Script\Core\UI\UISortManager.cs" />
      <Compile Include="Assets\Script\Game\BulletManager.cs" />
      <Compile Include="Assets\Script\Game\Entity\BulletBase.cs" />
      <Compile Include="Assets\Script\Game\Entity\DecoAnimeController.cs" />

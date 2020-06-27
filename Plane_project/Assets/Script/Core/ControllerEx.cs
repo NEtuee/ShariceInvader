@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,20 +7,21 @@ public class ControllerEx : Singleton<ControllerEx>
 {
     public enum ControllerType
     {
-        KeyboardMouse,
+        KeyboardMouse = 0,
         XboxController,
         PSController
     };
 
     public enum KeyType
     {
-        Button,
+        Button = 0,
         Axis,
+        TwoSideAxisButton,
     };
 
     public enum KeyState
     {
-        Down,
+        Down = 0,
         Press,
         Up,
         None
@@ -31,14 +33,17 @@ public class ControllerEx : Singleton<ControllerEx>
         public KeyCode code;
         public KeyState state;
 
-        public string axisName;
-        public float axis;
+        public string axisName = "";
+        public float axis = 0f;
 
+        public bool side = false;
 
         public void ChangeState(KeyState s)
         {
             state = s;
         }
+
+        public Key(){}
 
         public Key(KeyCode c)
         {
@@ -54,6 +59,15 @@ public class ControllerEx : Singleton<ControllerEx>
             axis = 0f;
             state = KeyState.None;
         }
+
+        public Key(string an, bool s) // false == left
+        {
+            type = KeyType.TwoSideAxisButton;
+            axisName = an;
+            side = s;
+            axis = 0f;
+            state = KeyState.None;
+        }
     }
 
     public Dictionary<string,Key> keyBindList;// = new Dictionary<string, Key>();
@@ -65,14 +79,23 @@ public class ControllerEx : Singleton<ControllerEx>
     private Dictionary<string,Key> _xboxBind = new Dictionary<string, Key>();
     private Dictionary<string,Key> _psBind = new Dictionary<string, Key>();
 
+    private Sprite[] _xboxKeys;
+    private Sprite[] _psKeys;
+
     private string _controllerLists = "";
 
     private float _axisPushStr = 0.4f;
     private float _deviceCheckTimer = 1f;
+    private static readonly KeyCode[] keyCodes = System.Enum.GetValues(typeof(KeyCode))
+                                                 .Cast<KeyCode>()
+                                                 .Where(k => ((int)k < (int)KeyCode.Mouse2))
+                                                 .ToArray();
 
     public bool KeyDown(string key) {return KeyCheck(key) == KeyState.Down;}
     public bool KeyPress(string key) {return KeyCheck(key) == KeyState.Press;}
     public bool KeyUp(string key) {return KeyCheck(key) == KeyState.Up;}
+
+    private bool _keyBreak = false;
 
     public KeyState KeyCheck(string key)
     {
@@ -82,7 +105,7 @@ public class ControllerEx : Singleton<ControllerEx>
         }
         else
         {
-            Debug.Log("Key does not exists");
+            //Debug.Log("Key does not exists");
             return KeyState.None;
         }
     }
@@ -105,6 +128,12 @@ public class ControllerEx : Singleton<ControllerEx>
     //     }
     // }
 
+    public void LoadControllerSprites()
+    {
+        _xboxKeys = ResourceManager.GetInstance().GetSpriteSet("UI/Keys/xbox");
+        _psKeys = ResourceManager.GetInstance().GetSpriteSet("UI/Keys/ps");
+    }
+
     public void CreateKeyBindDic()
     {
         _keyboardBind.Add("MainAttack",new Key(KeyCode.W));
@@ -112,6 +141,11 @@ public class ControllerEx : Singleton<ControllerEx>
         _keyboardBind.Add("WeaponChange",new Key(KeyCode.R));
         _keyboardBind.Add("Pause",new Key(KeyCode.Escape));
         _keyboardBind.Add("Cancel",new Key(KeyCode.Tab));
+        _keyboardBind.Add("Left",new Key(KeyCode.LeftArrow));
+        _keyboardBind.Add("Right",new Key(KeyCode.RightArrow));
+        _keyboardBind.Add("Up",new Key(KeyCode.UpArrow));
+        _keyboardBind.Add("Down",new Key(KeyCode.DownArrow));
+        _keyboardBind.Add("Option",new Key(KeyCode.Escape));
 
         _xboxBind.Add("MainAttack",new Key(KeyCode.JoystickButton0));
         _xboxBind.Add("DriveAttack",new Key("XBoxRightTrigger"));
@@ -124,7 +158,127 @@ public class ControllerEx : Singleton<ControllerEx>
         _psBind.Add("WeaponChange",new Key(KeyCode.JoystickButton0));
         _psBind.Add("Pause",new Key(KeyCode.JoystickButton9));
         _psBind.Add("Cancel",new Key(KeyCode.JoystickButton2));
+        
+        SaveKeyBindInfo();
+    }
 
+    public void LoadKeyBindInfo()
+    {
+        var data = IOManager.ReadiniFile("settings.ini");
+        if(data == null)
+        {
+            CreateKeyBindDic();
+            return;
+        }
+
+        foreach(var block in data)
+        {
+            ControllerType type = block.Key == "km" ? ControllerType.KeyboardMouse : 
+                                (block.Key == "xbox" ? ControllerType.XboxController : 
+                                (block.Key == "ps" ? ControllerType.PSController : ControllerType.PSController));
+            if(block.Value == null)
+                continue;
+            
+            foreach(var keyData in block.Value)
+            {
+                Key key = new Key();
+                var property = keyData.data.Split(',');
+                var keyType = (KeyType)int.Parse(property[0]);
+                key.type = keyType;
+
+                if(keyType == KeyType.Button)
+                {
+                    key.code = (KeyCode)int.Parse(property[1]);
+                }
+                else if(keyType == KeyType.Axis)
+                {
+                    key.axisName = property[2];
+                }
+                else if(keyType == KeyType.TwoSideAxisButton)
+                {
+                    key.axisName = property[2];
+                    key.side = property[3] == "0";
+                }
+
+                BindLoadedKey(keyData.title,type,key);
+            }
+        }
+
+        data = null;
+    }
+
+    public void SaveKeyBindInfo()
+    {
+        List<string> keys = new List<string>();
+        keys.Add("[km]");
+        foreach(var key in _keyboardBind)
+        {
+            keys.Add(key.Key + "=" + (int)key.Value.type + "," +
+                                    (int)key.Value.code + "," +
+                                    key.Value.axisName + "," + 
+                                    (key.Value.side ? "0" : "1"));
+        }
+        keys.Add("[xbox]");
+        foreach(var key in _xboxBind)
+        {
+            keys.Add(key.Key + "=" + (int)key.Value.type + "," +
+                                    (int)key.Value.code + "," +
+                                    key.Value.axisName + "," + 
+                                    (key.Value.side ? "0" : "1"));
+        }
+        keys.Add("[ps]");
+        foreach(var key in _psBind)
+        {
+            keys.Add(key.Key + "=" + (int)key.Value.type + "," +
+                                    (int)key.Value.code + "," +
+                                    key.Value.axisName + "," + 
+                                    (key.Value.side ? "0" : "1"));
+        }
+
+        Debug.Log("Save");
+        IOManager.WriteStringToFile_NoMark(keys.ToArray(),"settings.ini");
+    }
+
+    public void BindLoadedKey(string keyName,ControllerType ct, Key key)
+    {
+        if(ct == ControllerType.KeyboardMouse)
+        {
+            _keyboardBind[keyName] = key;
+        }
+        else if((ct == ControllerType.XboxController))
+        {
+            _xboxBind[keyName] = key;
+        }
+        else if((ct == ControllerType.PSController))
+        {
+            _psBind[keyName] = key;
+        }
+    }
+
+    public void KeyBind(string keyName,ControllerType ct, Key key)
+    {
+        _keyBreak = true;
+        // if(keyBindList.ContainsKey(keyName))
+        // {
+            keyBindList[keyName] = key;
+
+            if(ct == ControllerType.KeyboardMouse)
+            {
+                _keyboardBind[keyName] = key;
+            }
+            else if(ct == ControllerType.XboxController)
+            {
+                _xboxBind[keyName] = key;
+            }
+            else if(ct == ControllerType.PSController)
+            {
+                _psBind[keyName] = key;
+            }
+        // }
+        // else
+        // {
+        //     Debug.Log("KeyName Error : " + keyName);
+        // }
     }
 
     public void CreateKeys()
@@ -132,7 +286,9 @@ public class ControllerEx : Singleton<ControllerEx>
         // if(keyBindList.Count != 0)
         //     return;
 
-        CreateKeyBindDic();
+        LoadControllerSprites();
+
+        LoadKeyBindInfo();
         InputDeviceCheck();
         InputDevieKeyBind();
 
@@ -230,9 +386,18 @@ public class ControllerEx : Singleton<ControllerEx>
         CheckCurrentInputDevice();
         Debugger.instance.SetDebugText(controller.ToString());
 
+        if(_keyBreak)
+        {
+            _keyBreak = false;
+            return;
+        }
+
         foreach(var key in keyBindList)
         {
             var k = key.Value;
+
+            if(k == null)
+                continue;
             
             if(k.type == KeyType.Button)
             {
@@ -264,7 +429,21 @@ public class ControllerEx : Singleton<ControllerEx>
 
                 if(down && k.state == KeyState.Down)
                     k.state = KeyState.Press;
-                else if(down && k.state != KeyState.Press)
+                else if(down && k.state == KeyState.None)
+                    k.state = KeyState.Down;
+                else if(!down && (k.state == KeyState.Press || k.state == KeyState.Down))
+                    k.state = KeyState.Up;
+                else if(k.state == KeyState.Up)
+                    k.state = KeyState.None;
+            }
+            else if(k.type == KeyType.TwoSideAxisButton)
+            {
+                k.axis = Input.GetAxis(k.axisName);
+                bool down = k.side ? k.axis > 0f : (k.axis < 0f);
+
+                if(down && k.state == KeyState.Down)
+                    k.state = KeyState.Press;
+                else if(down && k.state == KeyState.None)
                     k.state = KeyState.Down;
                 else if(!down && (k.state == KeyState.Press || k.state == KeyState.Down))
                     k.state = KeyState.Up;
@@ -278,6 +457,196 @@ public class ControllerEx : Singleton<ControllerEx>
         centerAxis = controller == ControllerType.KeyboardMouse ? GetScreenCenterAxis() : GetJoystickAxis();
 
         //Debugger.instance.SetDebugText(centerAxis.ToString());
+    }
+
+    public Key GetBindedKeyInfo(string key, ControllerType type)
+    {
+        if(type == ControllerType.KeyboardMouse)
+        {
+            if(_keyboardBind.ContainsKey(key))
+                return _keyboardBind[key];
+        }
+        else if(type == ControllerType.XboxController)
+        {
+            if(_xboxBind.ContainsKey(key))
+                return _xboxBind[key];
+        }
+        else if(type == ControllerType.PSController)
+        {
+            if(_psBind.ContainsKey(key))
+                return _psBind[key];
+        }
+
+        return null;
+    }
+
+    public Key GetCurrentKeyInput()
+    {
+        if(controller == ControllerType.KeyboardMouse)
+            return GetCurrentKeyboardMouseInput();
+        else if(controller == ControllerType.XboxController)
+            return GetCurrentXboxControllerInput();
+        else if(controller == ControllerType.PSController)
+            return GetCurrentPSContollerInput();
+        
+        return null;
+    }
+
+    public Sprite GetXboxGraphic(ControllerEx.Key key)
+    {
+        if(key.type == ControllerEx.KeyType.Button)
+        {
+            if(key.code == KeyCode.JoystickButton0)
+                return _xboxKeys[6];
+            else if(key.code == KeyCode.JoystickButton1)
+                return _xboxKeys[7];
+            else if(key.code == KeyCode.JoystickButton2)
+                return _xboxKeys[8];
+            else if(key.code == KeyCode.JoystickButton3)
+                return _xboxKeys[9];
+            else if(key.code == KeyCode.JoystickButton4)
+                return _xboxKeys[11];
+            else if(key.code == KeyCode.JoystickButton5)
+                return _xboxKeys[12];
+            else if(key.code == KeyCode.JoystickButton6)
+                return _xboxKeys[15];
+            else if(key.code == KeyCode.JoystickButton7)
+                return _xboxKeys[14];
+            else if(key.code == KeyCode.JoystickButton8)
+                return _xboxKeys[0];
+            else if(key.code == KeyCode.JoystickButton9)
+                return _xboxKeys[1];
+        }
+        else if(key.type == ControllerEx.KeyType.Axis)
+        {
+            if(key.axisName == "XBoxLeftTrigger")
+                return _xboxKeys[10];
+            else if(key.axisName == "XBoxRightTrigger")
+            {
+                Debug.Log("return");
+                return _xboxKeys[13];
+            }
+        }
+        else if(key.type == ControllerEx.KeyType.TwoSideAxisButton)
+        {
+            if(key.axisName == "XBoxDPadHorizontal")
+                return _xboxKeys[key.side ? 5 : 4];
+            else if(key.axisName == "XBoxDPadVertical")
+                return _xboxKeys[key.side ? 2 : 3];
+        }
+
+        return null;
+    }
+    public Sprite GetPSGraphic(ControllerEx.Key key)
+    {
+        if(key.type == ControllerEx.KeyType.Button)
+        {
+            if(key.code == KeyCode.JoystickButton0)
+                return _psKeys[8];
+            else if(key.code == KeyCode.JoystickButton1)
+                return _psKeys[6];
+            else if(key.code == KeyCode.JoystickButton2)
+                return _psKeys[7];
+            else if(key.code == KeyCode.JoystickButton3)
+                return _psKeys[9];
+            else if(key.code == KeyCode.JoystickButton4)
+                return _psKeys[10];
+            else if(key.code == KeyCode.JoystickButton5)
+                return _psKeys[11];
+            else if(key.code == KeyCode.JoystickButton8)
+                return _psKeys[14];
+            else if(key.code == KeyCode.JoystickButton9)
+                return _psKeys[15];
+            else if(key.code == KeyCode.JoystickButton10)
+                return _psKeys[0];
+            else if(key.code == KeyCode.JoystickButton11)
+                return _psKeys[1];
+        }
+        else if(key.type == ControllerEx.KeyType.Axis)
+        {
+            if(key.axisName == "PSLeftTrigger")
+                return _psKeys[12];
+            else if(key.axisName == "PSRightTrigger")
+                return _psKeys[13];
+        }
+        else if(key.type == ControllerEx.KeyType.TwoSideAxisButton)
+        {
+            if(key.axisName == "PSDPadHorizontal")
+                return _psKeys[key.side ? 5 : 4];
+            else if(key.axisName == "PSDPadVertical")
+                return _psKeys[key.side ? 2 : 3];
+        }
+
+        return null;
+    }
+
+    public Key GetCurrentKeyboardMouseInput()
+    {
+        if (Input.anyKeyDown)
+        {
+            for (int i = 0; i < keyCodes.Length; i++)
+            {
+                if (Input.GetKeyDown(keyCodes[i]))
+                {
+                    Key key = new Key(keyCodes[i]);
+                    return key;
+                }
+            }
+        }
+        
+        return null;
+    }
+
+    public Key GetCurrentXboxControllerInput()
+    {
+        if (Input.anyKeyDown)
+        {
+            if(Input.GetKeyDown(KeyCode.JoystickButton0)) { return new Key(KeyCode.JoystickButton0);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton1)) { return new Key(KeyCode.JoystickButton1);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton2)) { return new Key(KeyCode.JoystickButton2);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton3)) { return new Key(KeyCode.JoystickButton3);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton4)) { return new Key(KeyCode.JoystickButton4);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton5)) { return new Key(KeyCode.JoystickButton5);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton6)) { return new Key(KeyCode.JoystickButton6);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton7)) { return new Key(KeyCode.JoystickButton7);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton8)) { return new Key(KeyCode.JoystickButton8);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton9)) { return new Key(KeyCode.JoystickButton9);}
+        }
+
+        if(Input.GetAxis("XBoxDPadHorizontal") > 0f) {return new Key("XBoxDPadHorizontal",true);}
+        if(Input.GetAxis("XBoxDPadHorizontal") < 0f) {return new Key("XBoxDPadHorizontal",false);}
+        if(Input.GetAxis("XBoxDPadVertical") > 0f) {return new Key("XBoxDPadVertical",true);}
+        if(Input.GetAxis("XBoxDPadVertical") < 0f) {return new Key("XBoxDPadVertical",false);}
+        if(Input.GetAxis("XBoxLeftTrigger") > _axisPushStr) {return new Key("XBoxLeftTrigger");}
+        if(Input.GetAxis("XBoxRightTrigger") > _axisPushStr) {return new Key("XBoxRightTrigger");}
+
+        return null;
+    }
+
+    public Key GetCurrentPSContollerInput()
+    {
+        if (Input.anyKeyDown)
+        {
+            if(Input.GetKeyDown(KeyCode.JoystickButton0)) { return new Key(KeyCode.JoystickButton0);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton1)) { return new Key(KeyCode.JoystickButton1);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton2)) { return new Key(KeyCode.JoystickButton2);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton3)) { return new Key(KeyCode.JoystickButton3);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton4)) { return new Key(KeyCode.JoystickButton4);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton5)) { return new Key(KeyCode.JoystickButton5);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton8)) { return new Key(KeyCode.JoystickButton8);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton9)) { return new Key(KeyCode.JoystickButton9);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton10)) { return new Key(KeyCode.JoystickButton10);}
+            if(Input.GetKeyDown(KeyCode.JoystickButton11)) { return new Key(KeyCode.JoystickButton11);}
+        }
+
+        if(Input.GetAxis("PSDPadHorizontal") > 0f) {return new Key("PSDPadHorizontal",true);}
+        if(Input.GetAxis("PSDPadHorizontal") < 0f) {return new Key("PSDPadHorizontal",false);}
+        if(Input.GetAxis("PSDPadVertical") > 0f) {return new Key("PSDPadVertical",true);}
+        if(Input.GetAxis("PSDPadVertical") < 0f) {return new Key("PSDPadVertical",false);}
+        if(Input.GetAxis("PSLeftTrigger") > _axisPushStr) {return new Key("PSLeftTrigger");}
+        if(Input.GetAxis("PSRightTrigger") > _axisPushStr) {return new Key("PSRightTrigger");}
+
+        return null;
     }
 
     public Vector2 GetWorldScreenCenterAxis(Vector3 c)

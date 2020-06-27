@@ -8,6 +8,7 @@ public class GameMain : SingletonMono<GameMain> {
 	public BackgroundManager background;
 	public StageManager stage;
 	public MainHud mainHud;
+	public UISortManager optionScreen;
 
 	public bool update = true;
 
@@ -89,6 +90,11 @@ public class GameMain : SingletonMono<GameMain> {
 
 		ControllerEx.GetInstance().UpdateKeyState();
 
+		if(ControllerEx.GetInstance().KeyDown("Option"))
+		{
+			optionScreen.Active();
+		}
+
 		if(!update)
 			return;
 
@@ -113,8 +119,6 @@ public class GameMain : SingletonMono<GameMain> {
 		Physics2D.SyncTransforms();
 		Timer.TimeScaleUpdate();
 
-		if(Input.GetKeyDown(KeyCode.Escape))
-			SceneManager.LoadScene(0);
 	}
 
 	public void OnDrawGizmos()

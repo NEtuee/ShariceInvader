@@ -113,6 +113,21 @@ public class MathEx : MonoBehaviour {
 		a = 180 + a;
 		return a;
 	}
+	public static Vector2 easeOutCubicVector2(Vector2 start, Vector2 end ,float time)
+	{
+		return new Vector2(easeOutCubic(start.x,end.x,time),easeOutCubic(start.y,end.y,time));
+	}
+	public static float easeOutCubic(float start, float end, float value)
+	{
+		value--;
+		end -= start;
+		return end * (value * value * value + 1) + start;
+	}
+	public static float easeInCubic(float start, float end, float value)
+	{
+		end -= start;
+		return end * value * value * value + start;
+	}
 	public static bool LineIntersection(out Vector2 intersection, Vector2 linePoint1, Vector2 lineVec1, Vector2 linePoint2, Vector2 lineVec2)
 	{
 	        Vector3 lineVec3 = linePoint2 - linePoint1;

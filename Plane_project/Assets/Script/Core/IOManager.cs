@@ -5,6 +5,14 @@ using UnityEngine;
 
 public static class IOManager {
 
+	public class INIDataInfo
+	{
+		public string title;
+		public string data;
+
+		public INIDataInfo(string t, string d) {title = t; data = d;}
+	};
+
 	public static void WriteStringToFile_NoMark(string[] str,string fileName, bool docu = true)
 	{
 		string path = docu ? PathForDocumentsFile(fileName) : fileName;
@@ -47,6 +55,49 @@ public static class IOManager {
 			Debug.Log("file does not exists");
 			return null;
 		}
+	}
+
+	public static Dictionary<string,INIDataInfo[]> ReadiniFile(string fileName)
+	{
+		var data = ReadStringFromFile(fileName);
+		if(data == null)
+			return null;
+
+		var blockList = new Dictionary<string,INIDataInfo[]>();
+		var dataList = new List<INIDataInfo>();
+		string title = "";
+
+		foreach(var line in data)
+		{
+			if(line == "")
+			{
+				continue;
+			}
+			if(line[0] == '[')
+			{
+				if(title != "" && dataList.Count != 0)
+				{
+					blockList[title] = dataList.ToArray();
+					dataList.Clear();
+				}
+				
+				title = line.Substring(1,line.Length - 2);
+				blockList.Add(title,null);
+			}
+			else
+			{
+				var split = line.Split('=');
+				dataList.Add(new INIDataInfo(split[0],split[1]));
+			}
+		}
+
+		if(title != "" && dataList.Count != 0)
+		{
+			blockList[title] = dataList.ToArray();
+			dataList.Clear();
+		}
+
+		return blockList;
 	}
 
 	public static string ReadStringFromFile_NoSplit(string fileName)

@@ -51,7 +51,7 @@ public class DialogManager : SingletonMono<DialogManager>
     private string scrollText;
 
 
-    void Start()
+    void Awake()
     {
         SetSingleton(this);
 
@@ -231,7 +231,6 @@ public class DialogManager : SingletonMono<DialogManager>
 
             var line = strings[i].Split('/');
             string title = line[0];
-            Debug.Log(line[0]);
             int graphic = int.Parse(line[1]);
 
             for(int j = 2; j < line.Length; ++j)

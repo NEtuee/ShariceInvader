@@ -102,7 +102,7 @@ InputManager:
     axis: 4
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse X
+    m_Name: XBoxDPadHorizontal
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -114,11 +114,11 @@ InputManager:
     sensitivity: 0.1
     snap: 0
     invert: 0
-    type: 1
-    axis: 0
+    type: 2
+    axis: 5
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse Y
+    m_Name: XBoxDPadVertical
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -127,11 +127,11 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0.1
+    sensitivity: 1
     snap: 0
     invert: 0
-    type: 1
-    axis: 1
+    type: 2
+    axis: 6
     joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse ScrollWheel
@@ -182,36 +182,36 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire1
+    m_Name: PSDPadHorizontal
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 0
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
+    gravity: 0
+    dead: 0
+    sensitivity: 1
     snap: 0
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 6
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire2
+    m_Name: PSDPadVertical
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 1
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
+    gravity: 0
+    dead: 0
+    sensitivity: 1
     snap: 0
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 8
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire3
