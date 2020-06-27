@@ -87,7 +87,7 @@ public class BoomDrone : PlaneBase
 
 	public override void progress(float deltaTime)
 	{            
-        if((standPos == null || standPos.deleted || standPos == this) && !master)
+        if((standPos == null || standPos.deleted || standPos == this) && !master && !deleted)
         {
             standPos = Player.instance;
             master = true;

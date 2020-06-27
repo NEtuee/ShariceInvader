@@ -21,6 +21,9 @@ public class Flare : PlaneBase
         {
             Explode();
         }
+
+        if(_stunEffect != null)
+            _stunEffect.SetActive(false);
 		//ComboCount.instance.AddComboCount(1);
 	}
 

@@ -110,10 +110,18 @@ public class ShootingDrone : PlaneBase
                         if(standBase == null || standBase.deleted)
                         {
                             standPos = _position;
+                            if(standPos.y <= 2f)
+                            {
+                                standPos.y = Random.Range(2.5f,4f);
+                            }
                         }
                         else
                         {
                             standPos = standBase.position + new Vector3(Random.Range(-.5f,.5f),0f);
+                            if(standPos.y <= 2f)
+                            {
+                                standPos.y = Random.Range(2.5f,4f);
+                            }
                         }
                     }
                 }
@@ -154,6 +162,10 @@ public class ShootingDrone : PlaneBase
                     flashCount = 0;
                     count = 4;
                     standPos = Player.instance.position + new Vector3(Random.Range(-.2f,.2f),Random.Range(-.2f,.2f));
+                    if(standPos.y <= 2f)
+                            {
+                                standPos.y = Random.Range(2.5f,4f);
+                            }
                 }
             }
         }

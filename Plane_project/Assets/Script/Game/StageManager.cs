@@ -62,6 +62,8 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         private int count;
         float timer = 0f;
         float time = 0f;
+
+        int countOrigin = 0;
         public override bool Progress(float delatTime)
         {
             timer += delatTime;
@@ -102,8 +104,15 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
                 --count;
             }
             
+            if(count <= 0)
+            {
+                count = countOrigin;
+                timer = 0f;
 
-            return count <= 0;
+                return true;
+            }
+
+            return false;
         }
 
         public Vector3 GetSpawnPos(float yDist)
@@ -121,7 +130,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         {
             var s = data.Split(',');
             pos = int.Parse(s[0]);
-            count = int.Parse(s[1]);
+            countOrigin = count = int.Parse(s[1]);
             time = float.Parse(s[2]);
             timer = 0f;
         }
@@ -221,8 +230,9 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         int point;
         public override bool Progress(float delatTime)
         {
-            if(--loopCount >= 0)
+            if(loopCount-- > 0)
             {
+                Debug.Log("Check");
                 StageManager.instance.SetEventPos(point);
                 return false;
             }
@@ -367,6 +377,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         {
             if(events[eventPos].Progress(deltaTime))
             {
+                Debug.Log(eventPos);
                 if(++eventPos >= eventEndPos)
                 {
                     _eventEnd = true;
@@ -452,6 +463,8 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
 
     public void SetEventPos(int pos)
     {
+        Debug.Log("prev pos : " + eventPos);
         eventPos = pos;
+        Debug.Log("curr pos : " + eventPos);
     }
 }

@@ -103,7 +103,7 @@ public static class EnemyCreator
         {
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
 			boom.SetPositionEm(worldPos);
-            boom.standPos = boom.position;
+            boom.standPos = Player.instance.position + MathEx.RandomCircle(3f);//boom.position;
         }
     }
 
@@ -116,6 +116,7 @@ public static class EnemyCreator
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
 			boom.SetPositionEm(worldPos);
             boom.standPos = targetPos;
+            boom.standPos.y = targetPos.y <= 2f ? Random.Range(2.5f,4f) : targetPos.y;
             boom.act = true;
         }
     }

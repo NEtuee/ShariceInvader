@@ -718,7 +718,7 @@ public abstract class PlaneBase : Collisionable {
 
 	public void ControllLock(float time)
 	{
-		if(_stunEffect == null)
+		if(_stunEffect == null && !deleted)
 		{
 			_collider.bound.UpdateRect(_position);
 			var addPos = new Vector3(_collider.bound.box.x + 0.12f,_collider.bound.box.y + 0.12f);

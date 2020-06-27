@@ -15,7 +15,7 @@ directionAngle:False
 trailEmmit:True
 boostAniProgress:True
 hp:50
-bodyAttack:1
+bodyAttack:20
 boostCount:0
 trailCount:1
 trailInfo:RayTrail,0.5,0.03,0.005
