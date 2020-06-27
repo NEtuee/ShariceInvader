@@ -90,9 +90,10 @@ public class GameMain : SingletonMono<GameMain> {
 
 		ControllerEx.GetInstance().UpdateKeyState();
 
-		if(ControllerEx.GetInstance().KeyDown("Option"))
+		if(ControllerEx.GetInstance().KeyDown("Option") && !DialogManager.instance.dialog)
 		{
-			optionScreen.Active();
+			if(!optionScreen.gameObject.activeInHierarchy)
+				optionScreen.Active();
 		}
 
 		if(!update)

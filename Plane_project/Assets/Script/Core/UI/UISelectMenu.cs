@@ -143,7 +143,7 @@ public class UISelectMenu : UISelectBase
                         menuItems[i].tp.position = tp.position + new Vector3(startSpace.x,0f,0f);
                         menuItems[i].gameObject.SetActive(false);
 
-                        //UISizeCalc();
+                        UISizeCalc();
                         color.a = 1f;
                     }
                     else
@@ -196,7 +196,6 @@ public class UISelectMenu : UISelectBase
         else
             selectOrder = 0;
 
-
         selectEvent.Invoke();
     }
 
@@ -228,5 +227,19 @@ public class UISelectMenu : UISelectBase
             parentUI.Select();
         }
         //manager.MenuBind(parentUI.menuOrder);
+    }
+
+    public override void UICloseEvent()
+    {
+        if(open)
+        {
+            foreach(var item in menuItems)
+            {
+                item.UICloseEvent();
+            }
+
+            Deselect();
+            MenuMovementProgress(1000f);
+        }
     }
 }

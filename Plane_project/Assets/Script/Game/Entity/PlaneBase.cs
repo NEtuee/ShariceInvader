@@ -809,7 +809,10 @@ public abstract class PlaneBase : Collisionable {
 		//EffectManager.GetInstance().AddEffect(_position,"Explosion_new").SetAngle(Random.Range(0f,360f));
 		
 		if(_stunEffect != null)
+		{
 			_stunEffect.SetActive(false);
+			_stunEffect = null;
+		}
 		
 		Explosion();
 

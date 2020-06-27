@@ -86,14 +86,18 @@ public class RayDrone : PlaneBase
         {
             if(_shotTimer <= 0f)
             {
-                Vector3 rand = (_direction + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f))).normalized;
-                BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,"SpriteSet/Bullets/Ray",false,3f)
-                                                .NoneDelete()
-                                                .SetAngle(MathEx.directionToAngle(rand));
-
-                EffectManager.GetInstance().AddEffect(_shotPos.localPosition,"SpriteSet/Planes/RayDrone/Fire",false,this)
-                                            .SetAddPoint(new Vector3(0.06f,0f))
-                                            .SetAngle(_eulerAngle);
+                if(!controllLock)
+                {
+                    Vector3 rand = (_direction + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f))).normalized;
+                    BulletManager.GetInstance().Active(BulletType.enemy,_position,rand,_velocity.magnitude + 4f,"SpriteSet/Bullets/Ray",false,3f)
+                                                    .NoneDelete()
+                                                    .SetAngle(MathEx.directionToAngle(rand));
+    
+                    EffectManager.GetInstance().AddEffect(_shotPos.localPosition,"SpriteSet/Planes/RayDrone/Fire",false,this)
+                                                .SetAddPoint(new Vector3(0.06f,0f))
+                                                .SetAngle(_eulerAngle);
+                }
+                
 
                 if(--shotCount <= 0)
                 {

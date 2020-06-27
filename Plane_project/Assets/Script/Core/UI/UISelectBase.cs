@@ -86,6 +86,7 @@ public abstract class UISelectBase : MonoBehaviour
 
     public abstract void SelectEvent();
     public abstract void DeselectEvent();
+    public abstract void UICloseEvent();
 
     public Bounds GetBounds() {return coll.bounds;}
 

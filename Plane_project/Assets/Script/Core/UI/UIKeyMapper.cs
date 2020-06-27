@@ -53,10 +53,11 @@ public class UIKeyMapper : UISelectButton
     {
         if(key == null)
             return;
-        
-        ControllerEx.GetInstance().KeyBind(keyName,checkType,key);
+        var save = bindKey;
         bindKey = key;
-        key.state = ControllerEx.KeyState.Up;
+        key.state = ControllerEx.KeyState.Press;
+
+        ControllerEx.GetInstance().KeyBind(keyName,checkType,key,save);
 
         keyBreak = true;
         Deselect();
@@ -68,12 +69,41 @@ public class UIKeyMapper : UISelectButton
         checkKey = false;
     }
 
+    public override void Select()
+    {
+        if(checkType == ControllerEx.ControllerType.KeyboardMouse)
+        {
+            if(ControllerEx.GetInstance().GetCurrentKeyboardMouseInput() == null)
+            {
+                return;
+            }
+        }
+        else if(checkType == ControllerEx.ControllerType.XboxController)
+        {
+            if(ControllerEx.GetInstance().GetCurrentXboxControllerInput() == null)
+            {
+                return;
+            }
+        }
+        else if(checkType == ControllerEx.ControllerType.PSController)
+        {
+            if(ControllerEx.GetInstance().GetCurrentPSContollerInput() == null)
+            {
+                return;
+            }
+        }
+    
+
+        base.Select();
+    }
+
     public override void SelectEvent()
     {
         base.SelectEvent();
         checkKey = true;
         keyBreak = true;
         manager.keyCheckLock = true;
+        ControllerEx.GetInstance()._keyBreak = true;
     }
 
     public override void DeselectEvent()
@@ -81,5 +111,6 @@ public class UIKeyMapper : UISelectButton
         base.DeselectEvent();
         checkKey = false;
         manager.keyCheckLock = false;
+        ControllerEx.GetInstance()._keyBreak = false;
     }
 }

@@ -78,6 +78,7 @@ public class ControllerEx : Singleton<ControllerEx>
     private Dictionary<string,Key> _keyboardBind = new Dictionary<string, Key>();
     private Dictionary<string,Key> _xboxBind = new Dictionary<string, Key>();
     private Dictionary<string,Key> _psBind = new Dictionary<string, Key>();
+    private Dictionary<string,bool> _axisButtonCheck = new Dictionary<string, bool>();
 
     private Sprite[] _xboxKeys;
     private Sprite[] _psKeys;
@@ -95,7 +96,7 @@ public class ControllerEx : Singleton<ControllerEx>
     public bool KeyPress(string key) {return KeyCheck(key) == KeyState.Press;}
     public bool KeyUp(string key) {return KeyCheck(key) == KeyState.Up;}
 
-    private bool _keyBreak = false;
+    public bool _keyBreak = false;
 
     public KeyState KeyCheck(string key)
     {
@@ -110,24 +111,6 @@ public class ControllerEx : Singleton<ControllerEx>
         }
     }
 
-    // public void AddKey(string n, KeyCode k = KeyCode.None, KeyType type = KeyType.Button)
-    // {
-    //     keyBindList.Add(n,new Key(k,type));
-    // }
-
-    // public void Setkey(string n, KeyCode k, KeyType t)
-    // {
-    //     if(keyBindList.ContainsKey(n))
-    //     {
-    //         keyBindList[n].code = k;
-    //         keyBindList[n].type = t;
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Key does not exists");
-    //     }
-    // }
-
     public void LoadControllerSprites()
     {
         _xboxKeys = ResourceManager.GetInstance().GetSpriteSet("UI/Keys/xbox");
@@ -139,7 +122,6 @@ public class ControllerEx : Singleton<ControllerEx>
         _keyboardBind.Add("MainAttack",new Key(KeyCode.W));
         _keyboardBind.Add("DriveAttack",new Key(KeyCode.Mouse1));
         _keyboardBind.Add("WeaponChange",new Key(KeyCode.R));
-        _keyboardBind.Add("Pause",new Key(KeyCode.Escape));
         _keyboardBind.Add("Cancel",new Key(KeyCode.Tab));
         _keyboardBind.Add("Left",new Key(KeyCode.LeftArrow));
         _keyboardBind.Add("Right",new Key(KeyCode.RightArrow));
@@ -150,13 +132,11 @@ public class ControllerEx : Singleton<ControllerEx>
         _xboxBind.Add("MainAttack",new Key(KeyCode.JoystickButton0));
         _xboxBind.Add("DriveAttack",new Key("XBoxRightTrigger"));
         _xboxBind.Add("WeaponChange",new Key(KeyCode.JoystickButton2));
-        _xboxBind.Add("Pause",new Key(KeyCode.JoystickButton7));
         _xboxBind.Add("Cancel",new Key(KeyCode.JoystickButton1));
 
         _psBind.Add("MainAttack",new Key(KeyCode.JoystickButton1));
         _psBind.Add("DriveAttack",new Key("PSRightTrigger"));
         _psBind.Add("WeaponChange",new Key(KeyCode.JoystickButton0));
-        _psBind.Add("Pause",new Key(KeyCode.JoystickButton9));
         _psBind.Add("Cancel",new Key(KeyCode.JoystickButton2));
         
         SaveKeyBindInfo();
@@ -255,11 +235,51 @@ public class ControllerEx : Singleton<ControllerEx>
         }
     }
 
-    public void KeyBind(string keyName,ControllerType ct, Key key)
+    public void DeleteBindInfo(Key key, ControllerType con)
     {
-        _keyBreak = true;
+        string n = "";
+        foreach(var item in keyBindList)
+        {
+            if(item.Value.axisName == key.axisName && item.Value.code == key.code && item.Value.type == key.type && item.Value.side == key.side)
+            {
+                n = item.Key;
+                break;
+            }
+        }
+
+        if(n == "")
+        {
+            Debug.Log("wath fucfucfucfuck");
+            return;
+        }
+
+        keyBindList[n] = null;
+
+        if(con == ControllerType.KeyboardMouse)
+            _keyboardBind.Remove(n);
+        if(con == ControllerType.XboxController)
+            _xboxBind.Remove(n);
+        if(con == ControllerType.PSController)
+            _psBind.Remove(n);
+    
+        Debug.Log("bind key delete : " + n);
+    }
+
+    public void KeyBind(string keyName,ControllerType ct, Key key,Key prevKey)
+    {
+        //_keyBreak = true;
+
+        var n = FindOverlapKey(key);
+
+        if(n != null)
+        {
+            Debug.Log(n);
+            Debug.Log(keyName);
+        }
+        
         // if(keyBindList.ContainsKey(keyName))
         // {
+            key.state = KeyState.Press;
             keyBindList[keyName] = key;
 
             if(ct == ControllerType.KeyboardMouse)
@@ -274,11 +294,44 @@ public class ControllerEx : Singleton<ControllerEx>
             {
                 _psBind[keyName] = key;
             }
+
+        if(n != null && n != keyName)
+        {
+            prevKey.state = KeyState.Press;
+            keyBindList[n] = prevKey;
+
+            if(ct == ControllerType.KeyboardMouse)
+            {
+                _keyboardBind[n] = prevKey;
+            }
+            else if(ct == ControllerType.XboxController)
+            {
+                _xboxBind[n] = prevKey;
+            }
+            else if(ct == ControllerType.PSController)
+            {
+                _psBind[n] = prevKey;
+            }
+
+        }
         // }
         // else
         // {
         //     Debug.Log("KeyName Error : " + keyName);
         // }
+    }
+
+    public string FindOverlapKey(Key key)
+    {
+        foreach(var item in keyBindList)
+        {
+            if(item.Value.axisName == key.axisName && item.Value.code == key.code && item.Value.type == key.type && item.Value.side == key.side)
+            {
+                return item.Key;
+            }
+        }
+
+        return null;
     }
 
     public void CreateKeys()
@@ -349,7 +402,7 @@ public class ControllerEx : Singleton<ControllerEx>
     public void InputDeviceCheck()
     {
         string[] con = Input.GetJoystickNames();
-        if(con != null && con[0] != _controllerLists)
+        if(con != null && con.Length > 0 && con[0] != _controllerLists)
         {
             ControllerType type = ControllerType.KeyboardMouse;
 
@@ -388,7 +441,6 @@ public class ControllerEx : Singleton<ControllerEx>
 
         if(_keyBreak)
         {
-            _keyBreak = false;
             return;
         }
 
@@ -401,26 +453,37 @@ public class ControllerEx : Singleton<ControllerEx>
             
             if(k.type == KeyType.Button)
             {
-                if(Input.GetKeyDown(k.code))
-                {
-                    k.state = KeyState.Down;
-                }
-                else if(Input.GetKey(k.code))
-                {
+                // if(Input.GetKeyDown(k.code))
+                // {
+                //     k.state = KeyState.Down;
+                // }
+                // else if(Input.GetKey(k.code))
+                // {
+                //     k.state = KeyState.Press;
+                // }
+                // else if(Input.GetKeyUp(k.code))
+                // {
+                //     k.state = KeyState.Up;
+                // }
+                // else if(!Input.GetKey(k.code) && (k.state == KeyState.Press || k.state == KeyState.Down))
+                // {
+                //     k.state = KeyState.Up;
+                // }
+                // else if(k.state == KeyState.Up)
+                // {
+                //     k.state = KeyState.None;
+                // }
+
+                bool down = Input.GetKey(k.code);
+                
+                if(down && k.state == KeyState.Down)
                     k.state = KeyState.Press;
-                }
-                else if(Input.GetKeyUp(k.code))
-                {
+                else if(down && k.state == KeyState.None)
+                    k.state = KeyState.Down;
+                else if(!down && (k.state == KeyState.Press || k.state == KeyState.Down))
                     k.state = KeyState.Up;
-                }
-                else if(!Input.GetKey(k.code) && (k.state == KeyState.Press || k.state == KeyState.Down))
-                {
-                    k.state = KeyState.Up;
-                }
                 else if(k.state == KeyState.Up)
-                {
                     k.state = KeyState.None;
-                }
             }
             else if(k.type == KeyType.Axis)
             {
@@ -523,7 +586,6 @@ public class ControllerEx : Singleton<ControllerEx>
                 return _xboxKeys[10];
             else if(key.axisName == "XBoxRightTrigger")
             {
-                Debug.Log("return");
                 return _xboxKeys[13];
             }
         }

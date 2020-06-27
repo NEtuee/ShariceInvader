@@ -80,6 +80,8 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	}
 
 	public LinkBase<ObjectBase> GetFirstLink(Define.ObjectType type) {return _objectDic[(int)type].front;}
+	
+	public int GetEnemyCount() {return _objectDic[1].count;}
 
 	public void progress(float deltaTime)
 	{

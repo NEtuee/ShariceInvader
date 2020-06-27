@@ -37,6 +37,9 @@ public class DialogManager : SingletonMono<DialogManager>
 
     public bool dialog = false;
     public bool scrollEnd = false;
+    public bool skipped = false;
+    public bool canSkip = true;
+    public bool autoScroll = false;
     public int speachSide = -1;
     public int newLineLength = 1;
     public float textScrollTime;
@@ -84,7 +87,13 @@ public class DialogManager : SingletonMono<DialogManager>
                 }
             }
 
-            if(ControllerEx.GetInstance().KeyUp("MainAttack"))
+            if(ControllerEx.GetInstance().KeyDown("Cancel") && canSkip)
+            {
+                skipped = true;
+                DialogEnd();
+            }
+
+            if(ControllerEx.GetInstance().KeyDown("MainAttack") && !autoScroll)
             {
                 charPos = 0;
                 scrollTimer = 0f;
@@ -98,11 +107,7 @@ public class DialogManager : SingletonMono<DialogManager>
                         ++scriptPos;
                         if(!SetDialogInfo())
                         {
-                            left.SetActive(false);
-                            right.SetActive(false);
-
-                            GameMain.instance.update = true;
-                            dialog = false;
+                            DialogEnd();
                         }
                     }
                     else
@@ -135,6 +140,15 @@ public class DialogManager : SingletonMono<DialogManager>
             }
             
         }
+    }
+
+    public void DialogEnd()
+    {
+        left.SetActive(false);
+        right.SetActive(false);
+
+        GameMain.instance.update = true;
+        dialog = false;
     }
 
     public void SetScrollText()
@@ -193,11 +207,14 @@ public class DialogManager : SingletonMono<DialogManager>
         return true;
     }
 
-    public void ShowDialog(string id, bool auto = false)
+    public void ShowDialog(string id, bool skip, bool auto = false)
     {
         dialog = true;
         GameMain.instance.update = false;
         scrollEnd = false;
+        skipped = false;
+        canSkip = skip;
+        autoScroll = auto;
         currDialog = dialogs[id];
         charPos = 0;
         scriptPos = 0;

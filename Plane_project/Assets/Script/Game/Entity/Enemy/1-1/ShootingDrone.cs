@@ -166,11 +166,15 @@ public class ShootingDrone : PlaneBase
             if(shotTimer <= 0f)
             {
                 --count;
-                shotTimer = .3f;
-                BulletManager.GetInstance().Active(BulletType.enemy,_position + dir * 0.2f,dir,3.5f,0,5f).SetAngle(MathEx.directionToAngle(dir));
-                //EffectManager.GetInstance().AddEffect(_position + dir * 0.2f,"ShootingDrone/Fire",false,null,2).SetAngle(MathEx.directionToAngle(dir));
-                _shotPoint.ChangeAni("Fire",false);
-                _shotPoint._sprRenderer.enabled = true;
+                if(!controllLock)
+                {
+                    shotTimer = .3f;
+                    BulletManager.GetInstance().Active(BulletType.enemy,_position + dir * 0.2f,dir,3.5f,0,5f).SetAngle(MathEx.directionToAngle(dir));
+                    //EffectManager.GetInstance().AddEffect(_position + dir * 0.2f,"ShootingDrone/Fire",false,null,2).SetAngle(MathEx.directionToAngle(dir));
+                    _shotPoint.ChangeAni("Fire",false);
+                    _shotPoint._sprRenderer.enabled = true;
+                }
+                
             }
         }
 

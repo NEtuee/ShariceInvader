@@ -70,6 +70,7 @@ public class UIProgressBar : UISelectButton
     {
         _bind = true;
 
+        manager.uiSelectLock = true;
         progressBar.sprite = selectSprite;
     }
 
@@ -77,6 +78,7 @@ public class UIProgressBar : UISelectButton
     {
         _bind = false;
 
+        manager.uiSelectLock = false;
         progressBar.sprite = baseSprite;
     }
 

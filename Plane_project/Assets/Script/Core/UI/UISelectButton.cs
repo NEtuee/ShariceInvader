@@ -25,4 +25,6 @@ public class UISelectButton : UISelectBase
     {
         deselectEvent.Invoke();
     }
+
+    public override void UICloseEvent(){}
 }

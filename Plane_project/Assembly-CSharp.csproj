@@ -195,6 +195,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Appear\Appear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurve\CuttingCurve_Ani.txt" />
      <None Include="Assets\Script\Shader\TextureSpriteDefault.shader" />
+     <None Include="Assets\MapData\DemoMap.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Sparkle_small\Sparkle_small_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\Start\Start_Ani.txt" />
      <None Include="Assets\Script\Shader\BackgroundScroll.shader" />

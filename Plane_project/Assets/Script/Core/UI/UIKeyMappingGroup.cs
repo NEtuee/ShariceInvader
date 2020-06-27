@@ -19,8 +19,8 @@ public class UIKeyMappingGroup : MonoBehaviour
             GraphicUpdate(keyMappers[j]);
 
             keyMappers[i].selectEvent.AddListener(delegate{
-                keyMappers[j].ClearKey();
-                GraphicUpdate(keyMappers[j]);
+                //keyMappers[j].ClearKey();
+                GraphicUpdate(keyMappers[j],true);
             });
             keyMappers[i].deselectEvent.AddListener(delegate{
                 OverlapCheck(keyMappers,keyMappers[j]);
@@ -34,6 +34,13 @@ public class UIKeyMappingGroup : MonoBehaviour
             
             _isChange = false;
         });
+
+        // parent.manager.deactiveEvent.AddListener(delegate{
+        //     if(_isChange)
+        //         ControllerEx.GetInstance().SaveKeyBindInfo();
+            
+        //     _isChange = false;
+        // });
     }
 
     public void KeyBind(UIKeyMapper key)
@@ -41,25 +48,29 @@ public class UIKeyMappingGroup : MonoBehaviour
         key.bindKey = ControllerEx.GetInstance().GetBindedKeyInfo(key.keyName,key.checkType);
     }
 
-    public void GraphicUpdate(UIKeyMapper mapper)
+    public void GraphicUpdate(UIKeyMapper mapper, bool setNull = false)
     {
         if(mapper.checkType == ControllerEx.ControllerType.KeyboardMouse)
         {
-            if(mapper.bindKey == null)
+            if(mapper.bindKey == null || setNull)
                 mapper.SetButtonText("-");
             else
-                mapper.SetButtonText(mapper.bindKey.code.ToString());
+            {
+                string s = mapper.bindKey.code.ToString();
+                s = s == "Mouse0" ? "LMB" : (s == "Mouse1" ? "RMB" : s);
+                mapper.SetButtonText(s);
+            }
         }
         else if(mapper.checkType == ControllerEx.ControllerType.XboxController)
         {
-            if(mapper.bindKey == null)
+            if(mapper.bindKey == null || setNull)
                 mapper.SetButtonSprite(null);
             else
                 mapper.SetButtonSprite(ControllerEx.GetInstance().GetXboxGraphic(mapper.bindKey));
         }
         else if(mapper.checkType == ControllerEx.ControllerType.PSController)
         {
-            if(mapper.bindKey == null)
+            if(mapper.bindKey == null || setNull)
                 mapper.SetButtonSprite(null);
             else
                 mapper.SetButtonSprite(ControllerEx.GetInstance().GetPSGraphic(mapper.bindKey));
@@ -92,12 +103,15 @@ public class UIKeyMappingGroup : MonoBehaviour
                     else if(mapper.bindKey.type == ControllerEx.KeyType.TwoSideAxisButton)
                     {
                         check = mapper.bindKey.axisName == item.bindKey.axisName &&
-                                (mapper.bindKey.side && item.bindKey.side);
+                                (mapper.bindKey.side == item.bindKey.side);
                     }
 
                     if(check)
                     {
-                        item.ClearKey();
+                        // ControllerEx.GetInstance().DeleteBindInfo(item.bindKey,item.checkType);
+                        // item.ClearKey();
+                        Debug.Log(item.keyName);
+                        item.bindKey = ControllerEx.GetInstance().keyBindList[item.keyName];
                         GraphicUpdate(item);
                         break;
                     }

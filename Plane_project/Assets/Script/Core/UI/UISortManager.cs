@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UISortManager : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class UISortManager : MonoBehaviour
         public void Set(UISelectBase[] s) {items = s;}
     };
 
+    public UnityEvent deactiveEvent;
+
     public List<MenuItemBase> menuItems;
     public UISelectBase[] currentMenu;
     public Transform uiArrow;
 
     public bool lineCrossLock = false;
+    public bool uiSelectLock = false;
     public bool keyCheckLock = false;
 
     public Vector3 menuDist = new Vector3(0f,1f);
@@ -45,8 +49,27 @@ public class UISortManager : MonoBehaviour
 
     public void Active()
     {
-        gameObject.SetActive(!gameObject.activeInHierarchy);
-        GameMain.instance.update = !GameMain.instance.update;
+        gameObject.SetActive(true);
+        GameMain.instance.update = false;
+        
+        uiSelectLock = false;
+        lineCrossLock = false;
+        keyCheckLock = false;
+
+        selectedMenuPos = 0;
+        LineSelect(0);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+        GameMain.instance.update = true;
+
+        foreach(var item in menuItems)
+            foreach(var ui in item.items)
+                ui.UICloseEvent();
+                
+        deactiveEvent.Invoke();
     }
 
     public void UpdateMenuItemPos(List<MenuItemBase> itemList)
@@ -146,6 +169,11 @@ public class UISortManager : MonoBehaviour
         {
             CancleMenu();
         }
+        if(ControllerEx.GetInstance().KeyDown("Option"))
+        {
+            Close();
+        }
+        
         
     }
 
@@ -156,7 +184,7 @@ public class UISortManager : MonoBehaviour
             selectedUI.parentUI.Deselect();
         }
         else
-            Active();
+            Close();
     }
 
     public void ArrowMovement()
@@ -168,6 +196,9 @@ public class UISortManager : MonoBehaviour
 
     public void SetSelectedUI(int pos)
     {
+        if(uiSelectLock)
+            return;
+        
         selectedMenuPos = pos;
         selectedUI = currentMenu[selectedMenuPos];
     }
