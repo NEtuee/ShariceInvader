@@ -8,7 +8,7 @@ public class DialogManager : SingletonMono<DialogManager>
     {   
         public CharacterInfo character;
         public int side;
-        public List<string[]> scripts;
+        public List<TextInfo[]> scripts;
     }
 
     public class CharacterInfo
@@ -17,15 +17,21 @@ public class DialogManager : SingletonMono<DialogManager>
         public Sprite graphic;
     }
 
-    public GameObject left;
-    public SpriteRenderer leftSprite;
-    public TextMesh leftName;
-    public TextMesh leftDialog;
+    public class TextInfo
+    {
+        public string text = "";
+        public float autoTimer = 0f;
+    }
 
-    public GameObject right;
-    public SpriteRenderer rightSprite;
-    public TextMesh rightName;
-    public TextMesh rightDialog;
+    private GameObject left;
+    private SpriteRenderer leftSprite;
+    private SpriteFontTextMesh leftName;
+    private TextMesh leftDialog;
+
+    private GameObject right;
+    private SpriteRenderer rightSprite;
+    private SpriteFontTextMesh rightName;
+    private TextMesh rightDialog;
 
     public TextAsset dialogInfo;
     public TextAsset charInfo;
@@ -45,12 +51,15 @@ public class DialogManager : SingletonMono<DialogManager>
     public float textScrollTime;
     
 
+    private Sprite[] _charPics;
+
     private int scriptPos;
     private int charPos;
     private int characterSpeachPos;
     private float scrollTimer = 0f;
+    private float _autoScrollTimer = 0f;
     private ConversationInfo[] currDialog;
-    private List<string[]> texts;
+    private List<TextInfo[]> texts;
     private string scrollText;
 
 
@@ -73,7 +82,7 @@ public class DialogManager : SingletonMono<DialogManager>
                 {
                     scrollTimer = 0f;
 
-                    if(texts[characterSpeachPos][langague].Length <= charPos)
+                    if(texts[characterSpeachPos][langague].text.Length <= charPos)
                     {
                         ++characterSpeachPos;
                         scrollEnd = true;
@@ -95,51 +104,82 @@ public class DialogManager : SingletonMono<DialogManager>
 
             if(ControllerEx.GetInstance().KeyDown("MainAttack") && !autoScroll)
             {
-                charPos = 0;
-                scrollTimer = 0f;
-
-                if(scrollEnd)
-                {
-                    if(texts.Count <= characterSpeachPos)
-                    {
-                        characterSpeachPos = 0;
-
-                        ++scriptPos;
-                        if(!SetDialogInfo())
-                        {
-                            DialogEnd();
-                        }
-                    }
-                    else
-                    {
-                        if(speachSide == 0)
-                        {
-                            leftDialog.text = "";
-                        }
-                        else if(speachSide == 1)
-                        {
-                            rightDialog.text = "";
-                        }
-                    }
-
-                    scrollEnd = false;
-                }
-                else
-                {
-                    if(speachSide == 0)
-                    {
-                        leftDialog.text = texts[characterSpeachPos][langague];
-                    }
-                    else if(speachSide == 1)
-                    {
-                        rightDialog.text = texts[characterSpeachPos][langague];
-                    }
-                    ++characterSpeachPos;
-                    scrollEnd = true;
-                }
+                DialogClick();
             }
             
+            if(autoScroll)
+            {
+                _autoScrollTimer -= Time.deltaTime;
+                if(_autoScrollTimer <= 0f)
+                {
+                    DialogClick();
+                }
+            }
         }
+    }
+
+    public void DialogClick()
+    {
+        charPos = 0;
+        scrollTimer = 0f;
+
+        if(scrollEnd)
+        {
+            if(texts.Count <= characterSpeachPos)
+            {
+                characterSpeachPos = 0;
+
+                ++scriptPos;
+                if(!SetDialogInfo())
+                {
+                    DialogEnd();
+                }
+                
+            }
+            else
+            {
+                _autoScrollTimer = texts[characterSpeachPos][langague].autoTimer;
+                if(speachSide == 0)
+                {
+                    leftDialog.text = "";
+                }
+                else if(speachSide == 1)
+                {
+                    rightDialog.text = "";
+                }
+            }
+
+            scrollEnd = false;
+        }
+        else
+        {
+            if(speachSide == 0)
+            {
+                leftDialog.text = texts[characterSpeachPos][langague].text;
+            }
+            else if(speachSide == 1)
+            {
+                rightDialog.text = texts[characterSpeachPos][langague].text;
+            }
+            ++characterSpeachPos;
+            scrollEnd = true;
+        }
+    }
+
+    public void SetLeftSideObjects(GameObject obj, SpriteRenderer spr, SpriteFontTextMesh n, TextMesh t)
+    {
+        left = obj;
+        leftSprite = spr;
+        leftName = n;
+        leftDialog = t;
+    }
+
+    public void SetRightSideObjects(GameObject obj, SpriteRenderer spr, SpriteFontTextMesh n, TextMesh t)
+    {
+        right = obj;
+        rightSprite = spr;
+        rightName = n;
+        rightDialog = t;
     }
 
     public void DialogEnd()
@@ -147,7 +187,6 @@ public class DialogManager : SingletonMono<DialogManager>
         left.SetActive(false);
         right.SetActive(false);
 
-        GameMain.instance.update = true;
         dialog = false;
     }
 
@@ -155,11 +194,11 @@ public class DialogManager : SingletonMono<DialogManager>
     {
         if(speachSide == 0)
         {
-            leftDialog.text += texts[characterSpeachPos][langague][charPos];
+            leftDialog.text += texts[characterSpeachPos][langague].text[charPos];
         }
         else if(speachSide == 1)
         {
-            rightDialog.text += texts[characterSpeachPos][langague][charPos];
+            rightDialog.text += texts[characterSpeachPos][langague].text[charPos];
         }
     }
 
@@ -178,12 +217,14 @@ public class DialogManager : SingletonMono<DialogManager>
         texts = curr.scripts;
         speachSide = curr.side;
         characterSpeachPos = 0;
+        _autoScrollTimer = texts[characterSpeachPos][langague].autoTimer;
 
         if(speachSide == 0)
         {
             if(curr.character != null)
             {
-                leftName.text = curr.character.name[langague];
+                leftName.SetText(curr.character.name[langague]);
+                leftSprite.sprite = curr.character.graphic;
             }
 
             left.SetActive(true);
@@ -195,7 +236,8 @@ public class DialogManager : SingletonMono<DialogManager>
         {
             if(curr.character != null)
             {
-                rightName.text = curr.character.name[langague];
+                rightName.SetText(curr.character.name[langague]);
+                rightSprite.sprite = curr.character.graphic;
             }
 
             right.SetActive(true);
@@ -210,7 +252,6 @@ public class DialogManager : SingletonMono<DialogManager>
     public void ShowDialog(string id, bool skip, bool auto = false)
     {
         dialog = true;
-        GameMain.instance.update = false;
         scrollEnd = false;
         skipped = false;
         canSkip = skip;
@@ -219,26 +260,30 @@ public class DialogManager : SingletonMono<DialogManager>
         charPos = 0;
         scriptPos = 0;
         scrollTimer = 0f;
+        _autoScrollTimer = 0f;
 
         SetDialogInfo();
     }
 
     public void ChangeRightColor(Color color)
     {
-        //rightSprite.color = color;
-        rightName.color = color;
+        rightSprite.color = color;
+        rightName.textColor = color;
+        rightName.UpdateColor();
         rightDialog.color = color;
     }
 
     public void ChangeLeftColor(Color color)
     {
-        //leftSprite.color = color;
-        leftName.color = color;
+        leftSprite.color = color;
+        leftName.textColor = color;
+        leftName.UpdateColor();
         leftDialog.color = color;
     }
 
     public void ReadCharacter()
     {
+        _charPics = ResourceManager.GetInstance().GetSpriteSet("UI/Characters");
         List<string> names = new List<string>();
         var strings = SplitReturn(charInfo.text);
         int len = strings.Length;
@@ -257,7 +302,7 @@ public class DialogManager : SingletonMono<DialogManager>
 
             CharacterInfo info = new CharacterInfo();
             info.name = names.ToArray();
-            //info.graphic = graphic;
+            info.graphic = graphic == - 1 ? null : _charPics[graphic];
 
             characters.Add(title,info);
             names.Clear();
@@ -302,8 +347,8 @@ public class DialogManager : SingletonMono<DialogManager>
 
             for(int j = i; j < len;)
             {
-                List<string[]> scripts = new List<string[]>();
-                List<string> langague = new List<string>();
+                List<TextInfo[]> scripts = new List<TextInfo[]>();
+                List<TextInfo> langague = new List<TextInfo>();
                 ConversationInfo con = new ConversationInfo();
 
                 con.character = characters[line[1]];
@@ -314,7 +359,14 @@ public class DialogManager : SingletonMono<DialogManager>
                     int scriptLen = line.Length;
                     for(int l = 3; l < scriptLen; ++l)
                     {
-                        langague.Add(SetNewLine(line[l]));
+                        var t = new TextInfo();
+                        var ti = SetNewLine(line[l]).Split('%');
+                        t.text = ti[0];
+
+                        if(ti.Length > 1 && ti[1] != "")
+                            t.autoTimer = float.Parse(ti[1]);
+
+                        langague.Add(t);
                     }
 
                     scripts.Add(langague.ToArray());

@@ -58,7 +58,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 		_cache = new ObjectCache();
 		_place = new PlaceMapper();
 
-		_place.InitPlace(50,20,6);
+		_place.InitPlace(50,10,6);
 
 		int end = (int)Define.ObjectType.AutoProgressEnd;
 		for(int i = 0; i < end; ++i)

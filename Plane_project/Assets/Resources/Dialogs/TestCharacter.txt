@@ -1,4 +1,4 @@
-char_none/0/???/???
-char_sharice/1/샤리스/Sharice
-char_penny/2/패니 로즈/Penny Rose
-char_reeve/3/리브/Reeve
+char_none/-1/???/???
+char_sharice/0/Sharice/Sharice/Sharice
+char_penny/1/Penny Rose/Penny Rose/Penny Rose
+char_reeve/2/Reeve/Reeve/Reeve

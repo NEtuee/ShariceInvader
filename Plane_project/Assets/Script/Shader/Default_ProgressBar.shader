@@ -3,7 +3,7 @@
 	Properties
 	{
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
-		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
+		[MaterialToggle] PixelSnap("Pixel snap", Float) = 1
 		_Progress("Progress", Range(0.0,1.0)) = 0.0
 	}
 
@@ -51,9 +51,9 @@
 		OUT.vertex = UnityObjectToClipPos(IN.vertex);
 		OUT.texcoord = IN.texcoord;
 		OUT.color = IN.color;
-#ifdef PIXELSNAP_ON
+//#ifdef PIXELSNAP_ON
 		OUT.vertex = UnityPixelSnap(OUT.vertex);
-#endif
+//#endif
 
 		return OUT;
 	}

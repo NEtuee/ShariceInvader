@@ -57,7 +57,7 @@ public class BoomDrone : PlaneBase
 	public override void deleteEvent()
 	{
 		base.deleteEvent();
-		ComboCount.instance.AddComboCount(1);
+		ComboCount.instance.AddComboCount(this);
 
         if(rangeCircle != null)
             rangeCircle.SetActive(false);

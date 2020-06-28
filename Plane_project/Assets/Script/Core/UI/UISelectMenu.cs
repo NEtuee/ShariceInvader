@@ -178,6 +178,16 @@ public class UISelectMenu : UISelectBase
         _timer = 1f - _timer;
     }
 
+    public void MenuSelect(int pos, bool selectEvent)
+    {
+        if(pos < 0 || menuItems == null || pos > menuItems.Length)
+        {
+            return;
+        }
+
+        menuItems[pos].Select(selectEvent);
+    }
+
     public override void SelectEvent()
     {
         foreach(var item in menuItems)

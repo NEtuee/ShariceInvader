@@ -56,7 +56,7 @@ public class MissileDrone : PlaneBase
 	public override void deleteEvent()
 	{
 		base.deleteEvent();
-		ComboCount.instance.AddComboCount(1);
+		ComboCount.instance.AddComboCount(this);
 
 		coll.UpdateBound(_position);
 		for(int i = 0; i < 5; ++i)

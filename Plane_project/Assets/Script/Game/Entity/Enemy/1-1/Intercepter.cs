@@ -18,7 +18,7 @@ public class Intercepter : PlaneBase
     public override void deleteEvent()
 	{
 		base.deleteEvent();
-		ComboCount.instance.AddComboCount(1);
+		ComboCount.instance.AddComboCount(this);
 	}
 
     public override void initialize()

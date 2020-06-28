@@ -69,7 +69,7 @@ public class UIKeyMapper : UISelectButton
         checkKey = false;
     }
 
-    public override void Select()
+    public override void Select(bool selectEvent = true)
     {
         if(checkType == ControllerEx.ControllerType.KeyboardMouse)
         {
@@ -94,7 +94,7 @@ public class UIKeyMapper : UISelectButton
         }
     
 
-        base.Select();
+        base.Select(selectEvent);
     }
 
     public override void SelectEvent()

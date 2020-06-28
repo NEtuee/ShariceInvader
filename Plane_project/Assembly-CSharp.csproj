@@ -74,6 +74,10 @@
      <Compile Include="Assets\GameEditor\PlaneBuilder\Editor_TrailRenderer.cs" />
      <Compile Include="Assets\GlitchEffect.cs" />
      <Compile Include="Assets\GroundAlert.cs" />
+     <Compile Include="Assets\OptionManager.cs" />
+     <Compile Include="Assets\ResultRecorder.cs" />
+     <Compile Include="Assets\ResultUIControll.cs" />
+     <Compile Include="Assets\ScreenManager.cs" />
      <Compile Include="Assets\Script\Core\AnimationControll.cs" />
      <Compile Include="Assets\Script\Core\AnimationControllEx.cs" />
      <Compile Include="Assets\Script\Core\BackgroundManager.cs" />
@@ -107,6 +111,7 @@
      <Compile Include="Assets\Script\Core\UI\ButtonBase.cs" />
      <Compile Include="Assets\Script\Core\UI\ButtonGroup.cs" />
      <Compile Include="Assets\Script\Core\UI\CanvasScript.cs" />
+     <Compile Include="Assets\Script\Core\UI\OptionUIControll.cs" />
      <Compile Include="Assets\Script\Core\UI\ToggleGroupEx.cs" />
      <Compile Include="Assets\Script\Core\UI\TouchDetection.cs" />
      <Compile Include="Assets\Script\Core\UI\TouchInfo.cs" />

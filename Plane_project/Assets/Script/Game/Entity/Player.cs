@@ -202,6 +202,7 @@ public class Player : PlaneBase {
 		{
 			_cam.Zoom(2.9f);
 			_cam.Glitch(0.3f);
+			_cam.Shake(0.2f, _direction / 15f);
 			Timer.SetTimeScaleTimer(0f,0.09f);
 			MainHud.instance.ActiveUIGlitch(.774f,.994f,.862f,.0253f,.5f);
 			MainHud.instance.ShieldDamage();
@@ -213,6 +214,9 @@ public class Player : PlaneBase {
 			_cam.Glitch(0.05f);
 			Timer.SetTimeScaleTimer(0f,0.05f);
 		}
+
+
+		ResultRecorder.GetInstance().damage += d;
 
 		_regenTimer = 3.5f;
 		
@@ -317,7 +321,7 @@ public class Player : PlaneBase {
 						Timer.SetTimeScaleTimer(0.3f,0.5f,true);
 
 
-					_cam.Shake(0.05f, _direction / 20f);
+					_cam.Shake(0.05f, _direction / 10f);
 
 					foreach(var ani in _boostAni)
         			{
@@ -361,10 +365,12 @@ public class Player : PlaneBase {
 		PlaceMapper map = ObjectManager.GetInstance()._place;
 
 		float currHeight = _position.y;
-		
-		_miniMapHeightIcon.localPosition = CanvasScript.instance.
+		Vector3 pos = CanvasScript.instance.
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth / 2f,
 													CanvasScript.instance.canvasHeight * (currHeight / map._mapHeight)));
+		pos.z = 2f;
+
+		_miniMapHeightIcon.localPosition = pos;
 		//Vector2 pos = map.WorldPosToMapPos(position);
 		//_angleCount.text = Mathf.Round(360f * map.GetPosPercentage(this).x).ToString();//Math.Truncate(pos.x * 10f) / 10f + " : " + Math.Truncate(pos.y * 10f) / 10f;
 	}

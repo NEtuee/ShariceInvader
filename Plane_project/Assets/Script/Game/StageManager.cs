@@ -20,6 +20,8 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         WaitForSeconds,
         ShowWaveIcon,
         StageClear,
+        GameUpdateStop,
+        GameUpdate,
     }
 
     [System.Serializable]
@@ -267,10 +269,21 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
     public class Event_Dialog : EventBase
     {
         string[] datas;
+        bool show = false;
         public override bool Progress(float delatTime)
         {
-            DialogManager.instance.ShowDialog(datas[0],datas[1] == "0",datas[2] == "0");
-            return true;
+            if(!show)
+            {
+                show = true;
+                DialogManager.instance.ShowDialog(datas[0],datas[1] == "0",datas[2] == "0");
+            }
+            if(!DialogManager.instance.dialog)
+            {
+                show = false;
+                return true;
+            }
+
+            return false;
         }
 
         public override void DataSet()
@@ -314,11 +327,28 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
     public class Event_SkippedDialog : EventBase
     {
         string[] datas;
+        bool show = false;
         public override bool Progress(float delatTime)
         {
-            if(DialogManager.instance.skipped)
-                DialogManager.instance.ShowDialog(datas[0],datas[1] == "0",datas[2] == "0");
-            return true;
+            if(!show)
+            {
+                if(DialogManager.instance.skipped)
+                {
+                    show = true;
+                    DialogManager.instance.ShowDialog(datas[0],datas[1] == "0",datas[2] == "0");
+                }
+                else
+                    return true;
+            }
+
+            if(!DialogManager.instance.dialog)
+            {
+                show = false;
+                return true;
+            }
+
+
+            return false;
         }
 
         public override void DataSet()
@@ -339,6 +369,36 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         public override void DataSet()
         {
             time = float.Parse(data);
+        }
+    }
+
+    public class Event_GameUpdateStop : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            GameMain.instance.update = false;
+            return true;
+        }
+    }
+
+    public class Event_GameUpdate : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            GameMain.instance.update = true;
+            return true;
+        }
+    }
+
+    public class Event_StageClear : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            ResultRecorder.GetInstance().clear = true;
+
+            GameMain.instance.result.Active();
+
+            return true;
         }
     }
 
@@ -377,13 +437,16 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         {
             if(events[eventPos].Progress(deltaTime))
             {
-                Debug.Log(eventPos);
+                
                 if(++eventPos >= eventEndPos)
                 {
                     _eventEnd = true;
+                    
                 }
             }
         }
+
+
     }
 
     public void lateProgress(float deltaTime)
@@ -438,7 +501,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         }
         else if(head == EventType.StageClear)
         {
-            
+            e = new Event_StageClear();
         }
         else if(head == EventType.WaitForAnnihilation)
         {
@@ -448,6 +511,15 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         {
             e = new Event_WaitForSeconds();
         }
+        else if(head == EventType.GameUpdate)
+        {
+            e = new Event_GameUpdate();
+        }
+        else if(head == EventType.GameUpdateStop)
+        {
+            e = new Event_GameUpdateStop();
+        }
+
 
         if(e == null)
         {

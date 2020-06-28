@@ -126,6 +126,8 @@ public abstract class PlaneBase : Collisionable {
 
 	protected EffectBase _stunEffect;
 
+	public ObjectBase recentAttacker = null;
+
 	private List<DelayItem> _delayHitList = new List<DelayItem>();
 	private static Queue<DelayItem> _delayPool = new Queue<DelayItem>();
 
@@ -290,6 +292,7 @@ public abstract class PlaneBase : Collisionable {
 
 	public virtual void Hit(int val,ObjectBase attacker)
 	{
+		recentAttacker = attacker;
 		DecreaseHP(val);
 		AfterHit(attacker);
 	}
@@ -821,7 +824,7 @@ public abstract class PlaneBase : Collisionable {
 		// for(int i = 0; i < 5; ++i)
 		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
 		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
-		CameraControll.instance.Zoom(2.9f);
+		CameraControll.instance.Zoom(2.7f);
 	}
 
 	public virtual void Explosion()
@@ -929,6 +932,7 @@ public abstract class PlaneBase : Collisionable {
 		ratio = ratio > 1f ? ratio - 1f : ratio < 0 ? ratio + 1f : ratio;
 
 		Vector3 pos = miniMapIcon.transform.localPosition;
+		pos.z = 2f;
 		
 		pos.x = CanvasScript.instance.
 								CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * ratio,CanvasScript.instance.canvasHeight - 20)).x;

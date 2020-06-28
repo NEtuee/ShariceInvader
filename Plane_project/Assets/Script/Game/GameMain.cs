@@ -12,12 +12,27 @@ public class GameMain : SingletonMono<GameMain> {
 
 	public bool update = true;
 
+	public GameObject dialog_left;
+    public SpriteRenderer dialog_leftSprite;
+    public SpriteFontTextMesh dialog_leftName;
+    public TextMesh dialog_leftDialog;
+
+    public GameObject dialog_right;
+    public SpriteRenderer dialog_rightSprite;
+    public SpriteFontTextMesh dialog_rightName;
+    public TextMesh dialog_rightDialog;
+	
+	public ResultUIControll result;
+
 	private CameraControll cam;
 	private ObjectManager _objManager;
 	private BulletManager _bulletManager;
 	private EffectManager _effectManager;
 	private CollisionManager _collisionManager;
 	private DelayActManager _delayActManager;
+
+	private float _endTimer = 0f;
+	private bool _end = false;
 
 	Define.GizmoHelper _gizmoHelper = new Define.GizmoHelper();
 
@@ -31,6 +46,9 @@ public class GameMain : SingletonMono<GameMain> {
 		BulletManager.DeleteSingleton();
 		CollisionManager.DeleteSingleton();
 		DelayActManager.DeleteSingleton();
+
+		OptionManager.GetInstance().LoadSettings();
+		OptionManager.GetInstance().UpdateOptions();
 
 		cam = Camera.main.GetComponent<CameraControll>();
 		cam.firstSetting();
@@ -55,6 +73,8 @@ public class GameMain : SingletonMono<GameMain> {
 		_delayActManager.firstSetting();
 		stage.firstSetting();
 
+		ResultRecorder.GetInstance().Initialize();
+
 		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Lancer/Burst");
 		AnimationControllEx.LoadAnimation("SpriteSet/Effects/Weapon/Lancer/Loop");
 
@@ -74,6 +94,7 @@ public class GameMain : SingletonMono<GameMain> {
 
 		AnimationControllEx.LoadAnimation("SpriteSet/Bullets/Ray");
 
+		SetInGameDialog();
 		
 		// PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		// obj.SetPositionEm(new Vector3(1f,5f));
@@ -99,6 +120,17 @@ public class GameMain : SingletonMono<GameMain> {
 		if(!update)
 			return;
 
+		if(_end)
+		{
+			_endTimer += deltaTime;
+			if(_endTimer >= 3f)
+			{
+				result.Active();
+			}
+		}
+
+		ResultRecorder.GetInstance().timer += Time.deltaTime;
+
 		_objManager.UpdateTransform();
 		mainHud.Progress(Timer.deltaTime);
 		cam.SyncPosition();
@@ -116,10 +148,21 @@ public class GameMain : SingletonMono<GameMain> {
 
 		stage.progress(deltaTime);
 
+		if(Player.instance != null && Player.instance.deleted)
+		{
+			_end = true;
+		}
+
 		_objManager.DeleteProgress();
 		Physics2D.SyncTransforms();
 		Timer.TimeScaleUpdate();
 
+	}
+
+	public void SetInGameDialog()
+	{
+		DialogManager.instance.SetLeftSideObjects(dialog_left,dialog_leftSprite,dialog_leftName,dialog_leftDialog);
+		DialogManager.instance.SetRightSideObjects(dialog_right,dialog_rightSprite,dialog_rightName,dialog_rightDialog);
 	}
 
 	public void OnDrawGizmos()

@@ -25,7 +25,7 @@ public class ComboCount : SingletonMono<ComboCount>
             {
                 comboCount = 0f;
                 combo = 0;
-                AddComboCount(0);
+                UpdateCount();
             }
         }
 
@@ -33,12 +33,27 @@ public class ComboCount : SingletonMono<ComboCount>
         text.gameObject.transform.localScale = Vector3.Lerp(scale,new Vector3(1f,1f,1f),.3f);
     }
 
-    public void AddComboCount(int i)
+    public void AddComboCount(PlaneBase target, bool playerCheck = true)
     {
-        combo += i;
+        if(playerCheck)
+        {
+            if(target.recentAttacker != Player.instance)
+            {
+                return;
+            }
+        }
+
+        combo += 1;
         comboCount = 3f;
         text.gameObject.transform.localScale = new Vector3(1.5f,1.9f);
 
+        ResultRecorder.GetInstance().SetComboCount(combo);
+
+        UpdateCount();
+    }
+
+    public void UpdateCount()
+    {
         if(combo == 0)
         {
             text.SetText("");

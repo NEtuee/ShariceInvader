@@ -119,7 +119,7 @@ public class TheMarker : PlaneBase
     public override void deleteEvent()
 	{
 		base.deleteEvent();
-		ComboCount.instance.AddComboCount(1);
+		ComboCount.instance.AddComboCount(this);
         
         for(int i = 0; i < _defenders.Count; ++i)
         {

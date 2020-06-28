@@ -56,32 +56,36 @@ public abstract class UISelectBase : MonoBehaviour
 
     public virtual void ColorSync(Color color){}
 
-    public virtual void SelectAction()
+    public virtual void SelectAction(bool selectEvent = true)
     {
         if(isSelected)
         {
-            Deselect();
+            Deselect(selectEvent);
         }
         else
         {
-            Select();
+            Select(selectEvent);
         }
     }
 
-    public virtual void Select()
+    public virtual void Select(bool selectEvent = true)
     {
         isSelected = true;
 
         mainText.color = selectTextColor;
-        SelectEvent();
+
+        if(selectEvent)
+            SelectEvent();
     }
 
-    public virtual void Deselect()
+    public virtual void Deselect(bool selectEvent = true)
     {
         isSelected = false;
 
         mainText.color = mainTextColor;
-        DeselectEvent();
+
+        if(selectEvent)
+            DeselectEvent();
     }
 
     public abstract void SelectEvent();

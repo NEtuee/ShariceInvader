@@ -12,9 +12,18 @@ public class UISelectButton : UISelectBase
     public SpriteFontTextMesh buttonText;
 
     public bool isToggle = false;
+    public bool deselectLock = false;
 
     public void SetButtonSprite(Sprite spr) {buttonGraphic.sprite = spr;}
     public void SetButtonText(string s) {buttonText.SetText(s);}
+
+    public override void Deselect(bool selectEvent = true)
+    {
+        if(isSelected && deselectLock)
+            return;
+        
+        base.Deselect(selectEvent);
+    }
 
     public override void SelectEvent()
     {

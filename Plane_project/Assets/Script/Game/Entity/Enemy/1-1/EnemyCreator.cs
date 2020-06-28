@@ -104,6 +104,10 @@ public static class EnemyCreator
 			ShootingDrone boom = _objManager.AddObject<ShootingDrone>(Define.ObjectType.enemy,"ShootingDrone" + i);
 			boom.SetPositionEm(worldPos);
             boom.standPos = Player.instance.position + MathEx.RandomCircle(3f);//boom.position;
+            if(boom.standPos.y <= 2f)
+            {
+                boom.standPos.y = Random.Range(2.5f,3f);
+            }
         }
     }
 

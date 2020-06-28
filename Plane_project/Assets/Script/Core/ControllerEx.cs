@@ -144,7 +144,7 @@ public class ControllerEx : Singleton<ControllerEx>
 
     public void LoadKeyBindInfo()
     {
-        var data = IOManager.ReadiniFile("settings.ini");
+        var data = IOManager.ReadiniFile("keyMapping.ini");
         if(data == null)
         {
             CreateKeyBindDic();
@@ -216,7 +216,7 @@ public class ControllerEx : Singleton<ControllerEx>
         }
 
         Debug.Log("Save");
-        IOManager.WriteStringToFile_NoMark(keys.ToArray(),"settings.ini");
+        IOManager.WriteStringToFile_NoMark(keys.ToArray(),"keyMapping.ini");
     }
 
     public void BindLoadedKey(string keyName,ControllerType ct, Key key)

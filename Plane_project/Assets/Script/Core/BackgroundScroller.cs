@@ -37,7 +37,9 @@ public class BackgroundScroller : MonoBehaviour
         // o.x = o.x > 1f ? 1f : o.x < 0f ? 0f : o.x;
         // o.y = o.y > 1f ? 1f : o.y < 0f ? 0f : o.y;
 
+
         _offset = _offsetLimit * o;
+        _offset.y *= _offset.y < 0 ? -1f : 1f;
         _offset.x += 0.5f - (1f - o.x);
 
         _mainMat.SetFloat("_MainOffsetX",_offset.x);

@@ -13,9 +13,8 @@ public class UIProgressBar : UISelectButton
     public float progressValue{get{return progressEnd * progress;}}
     public float progress{set
     {
-        _progress = value; 
+        SetValue(value);
         whenValueChange.Invoke();
-        UpdateMaterialValue();
     } get{return _progress;}}
 
 
@@ -35,6 +34,7 @@ public class UIProgressBar : UISelectButton
         _material.SetFloat("PixelSnap",1f);
         
         progressBar.material = _material;
+        progressBar.sprite = baseSprite;
         UpdateMaterialValue();
     }
 
@@ -53,6 +53,12 @@ public class UIProgressBar : UISelectButton
                 progress = factor >= 1f ? 1f : factor;
             }
         }
+    }
+
+    public void SetValue(float p)
+    {
+        _progress = p;
+        UpdateMaterialValue();
     }
 
     public override void ColorSync(Color color)

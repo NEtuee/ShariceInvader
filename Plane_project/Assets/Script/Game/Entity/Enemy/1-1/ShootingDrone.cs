@@ -60,7 +60,7 @@ public class ShootingDrone : PlaneBase
 	public override void deleteEvent()
 	{
 		base.deleteEvent();
-		ComboCount.instance.AddComboCount(1);
+		ComboCount.instance.AddComboCount(this);
 	}
 
     public override ObjectBase SetPosition(Vector3 pos) 
@@ -163,9 +163,9 @@ public class ShootingDrone : PlaneBase
                     count = 4;
                     standPos = Player.instance.position + new Vector3(Random.Range(-.2f,.2f),Random.Range(-.2f,.2f));
                     if(standPos.y <= 2f)
-                            {
-                                standPos.y = Random.Range(2.5f,4f);
-                            }
+                    {
+                        standPos.y = Random.Range(2.5f,4f);
+                    }
                 }
             }
         }

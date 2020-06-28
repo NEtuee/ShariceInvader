@@ -13,6 +13,7 @@ public class UISortManager : MonoBehaviour
         public void Set(UISelectBase[] s) {items = s;}
     };
 
+    public UnityEvent activeEvent;
     public UnityEvent deactiveEvent;
 
     public List<MenuItemBase> menuItems;
@@ -22,6 +23,7 @@ public class UISortManager : MonoBehaviour
     public bool lineCrossLock = false;
     public bool uiSelectLock = false;
     public bool keyCheckLock = false;
+    public bool canCloseToKey = true;
 
     public Vector3 menuDist = new Vector3(0f,1f);
     public float arrowSpeed = 0.3f;
@@ -58,6 +60,8 @@ public class UISortManager : MonoBehaviour
 
         selectedMenuPos = 0;
         LineSelect(0);
+
+        activeEvent.Invoke();
     }
 
     public void Close()
@@ -165,13 +169,17 @@ public class UISortManager : MonoBehaviour
         {
             selectedUI.SelectAction();
         }
-        if(ControllerEx.GetInstance().KeyDown("Cancel"))
+
+        if(canCloseToKey)
         {
-            CancleMenu();
-        }
-        if(ControllerEx.GetInstance().KeyDown("Option"))
-        {
-            Close();
+            if(ControllerEx.GetInstance().KeyDown("Cancel"))
+            {
+                CancleMenu();
+            }
+            if(ControllerEx.GetInstance().KeyDown("Option"))
+            {
+                Close();
+            }
         }
         
         
