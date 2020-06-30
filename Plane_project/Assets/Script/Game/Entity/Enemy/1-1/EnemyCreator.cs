@@ -125,6 +125,22 @@ public static class EnemyCreator
         }
     }
 
+    public static void Dummy(int count, Vector2 worldPos)
+    {
+        ObjectManager _objManager = ObjectManager.GetInstance();
+
+        for(int i = 0; i < count; ++i)
+        {
+			Dummy boom = _objManager.AddObject<Dummy>(Define.ObjectType.enemy,"ShootingDrone" + i);
+			boom.SetPositionEm(worldPos);
+            boom.standPos = Player.instance.position + MathEx.RandomCircle(5f);//boom.position;
+            if(boom.standPos.y <= 2f)
+            {
+                boom.standPos.y = Random.Range(2.5f,3f);
+            }
+        }
+    }
+
     public static void CCTV(int shootingDroneCount, Vector2 worldPos)
     {
         ObjectManager _objManager = ObjectManager.GetInstance();

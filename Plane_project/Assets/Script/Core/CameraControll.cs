@@ -19,6 +19,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	private Vector3 _velocity;
 
 
+	private bool _targetSet = false;
+
 	private float _zDist = -10f;
 	private float _shakeTimer = 0f;
 	private float _shakeTurm = .1f;
@@ -29,6 +31,7 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	private float _glitchTimer = 0f;
 	private float _timeSaver = 0f;
 	private float _delayTimer = 0f;
+	private float _lemTimer = 0f;
 
 	private float camWidth;
 	private float camHeight;
@@ -55,6 +58,8 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 	public void SetTarget(PlaneBase target)
 	{
 		_followTarget = target;
+
+		_targetSet = true;
 	}
 
 	public void SetSpeed(float value)
@@ -92,6 +97,12 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 					_delayTimer = 0f;
 				}
 			}
+		}
+		else if(!_targetSet)
+		{
+			_lemTimer += deltaTime * .5f;
+			_position = MathEx.Lemniscate_Gerono(.5f,_lemTimer);
+			_position.z = _zDist;
 		}
 
 		if(_shakeTimer > 0f)

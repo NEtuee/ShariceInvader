@@ -95,8 +95,14 @@ public class MainHud : SingletonMono<MainHud>
 
     public void Progress(float deltaTime)
     {
+        var pos = CameraControll.instance.position;
+        pos.y = 0f;
+        pos.z = 0f;
+        groundLine.transform.position = pos;
+
         if(_followTarget == null || _followTarget.deleted)
             return;
+            
         Vector3 velo = _followTarget.velocity;
         Vector3 dir = -(velo.magnitude > 1f ? velo.normalized : velo);
 
@@ -141,11 +147,6 @@ public class MainHud : SingletonMono<MainHud>
         {
             ShowWaveIcon(3f);
         }
-
-        var pos = CameraControll.instance.position;
-        pos.y = 0f;
-        pos.z = 0f;
-        groundLine.transform.position = pos;
 
         WeaponGaguePositionUpdate(deltaTime);
     }

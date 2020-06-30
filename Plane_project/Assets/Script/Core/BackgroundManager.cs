@@ -20,15 +20,15 @@ public class BackgroundManager : MonoBehaviour, Define.IManager
 
 	public void progress(float deltaTime)
 	{
-        if(_place.mainObject != null)
-        {
+        // if(_place.mainObject != null)
+        // {
             Vector2 percentage = _place.GetPosPercentage(CameraControll.instance.transform.position);
             //percentage.y *= -1f;
             for(int i = 0; i < backgrounds.Length; ++i)
             {
                 backgrounds[i].ScreenScroll(percentage);
             }
-        }
+        //}
 	}
 
 	public void lateProgress(float deltaTime)

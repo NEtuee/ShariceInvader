@@ -179,6 +179,9 @@ public class SpriteFontTextMesh : MonoBehaviour
 
     public void UpdateColor()
     {
+        if(_textMat == null)
+            Initialize();
+            
         _textMat.SetColor("_MainColor",textColor);
     }
 

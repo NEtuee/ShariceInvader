@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: 546dcbbf85d427c47803d90591643081
+guid: 13494f52600a4ff4091e96d14a820eef
 TextureImporter:
   fileIDToRecycleName:
-    21300000: drone1B2_charge_0
-    21300002: drone1B2_charge_1
-    21300004: drone1B2_charge_2
-    21300006: drone1B2_charge_3
-    21300008: drone1B2_charge_4
-    21300010: drone1B2_charge_5
-    21300012: drone1B2_charge_6
-    21300014: drone1B2_charge_7
-    21300016: drone1B2_charge_8
-    21300018: drone1B2_charge_9
-    21300020: drone1B2_charge_10
-    21300022: drone1B2_charge_11
-    21300024: drone1B2_charge_12
-    21300026: drone1B2_charge_13
-    21300028: drone1B2_charge_14
-    21300030: drone1B2_charge_15
-    21300032: drone1B2_charge_16
-    21300034: drone1B2_charge_17
-    21300036: drone1B2_charge_18
-    21300038: drone1B2_charge_19
-    21300040: drone1B2_charge_20
-    21300042: drone1B2_charge_21
-    21300044: drone1B2_charge_22
-    21300046: drone1B2_charge_23
+    21300000: moonjellyfish_charging_0
+    21300002: moonjellyfish_charging_1
+    21300004: moonjellyfish_charging_2
+    21300006: moonjellyfish_charging_3
+    21300008: moonjellyfish_charging_4
+    21300010: moonjellyfish_charging_5
+    21300012: moonjellyfish_charging_6
+    21300014: moonjellyfish_charging_7
+    21300016: moonjellyfish_charging_8
+    21300018: moonjellyfish_charging_9
+    21300020: moonjellyfish_charging_10
+    21300022: moonjellyfish_charging_11
+    21300024: moonjellyfish_charging_12
+    21300026: moonjellyfish_charging_13
+    21300028: moonjellyfish_charging_14
+    21300030: moonjellyfish_charging_15
+    21300032: moonjellyfish_charging_16
+    21300034: moonjellyfish_charging_17
+    21300036: moonjellyfish_charging_18
+    21300038: moonjellyfish_charging_19
+    21300040: moonjellyfish_charging_20
+    21300042: moonjellyfish_charging_21
+    21300044: moonjellyfish_charging_22
+    21300046: moonjellyfish_charging_23
+    21300048: moonjellyfish_charging_24
+    21300050: moonjellyfish_charging_25
+    21300052: moonjellyfish_charging_26
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -71,7 +74,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -104,17 +107,28 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: drone1B2_charge_0
+      name: moonjellyfish_charging_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1152
-        width: 384
-        height: 384
+        y: 1120
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,19 +136,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 699fbf12934601942a945c0a1580a508
+      spriteID: 703bc8110a537364ab74d969c4f2827f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_1
+      name: moonjellyfish_charging_1
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1152
-        width: 384
-        height: 384
+        x: 280
+        y: 1120
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,19 +156,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f45c472f0ec71f44b0706534b603b97
+      spriteID: 6245f9288eb4b9548abf25c9d05bf5f5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_2
+      name: moonjellyfish_charging_2
       rect:
         serializedVersion: 2
-        x: 768
-        y: 1152
-        width: 384
-        height: 384
+        x: 560
+        y: 1120
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,19 +176,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f25aa29f00749f40bd266d330af11e6
+      spriteID: 8eec25b494838054cb8cb24b0c87d9df
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_3
+      name: moonjellyfish_charging_3
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 1152
-        width: 384
-        height: 384
+        x: 840
+        y: 1120
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,19 +196,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d325d17eb12269a4c83ac2c8946e66b1
+      spriteID: 331cc09fe8cc14549833fb493a86cae1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_4
+      name: moonjellyfish_charging_4
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1152
-        width: 384
-        height: 384
+        x: 1120
+        y: 1120
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,19 +216,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9258b489bbdf804aa3f7607740a227d
+      spriteID: e4e58ae4237221e4b9bd63fbdb2b5c0e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_5
+      name: moonjellyfish_charging_5
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1152
-        width: 384
-        height: 384
+        x: 1400
+        y: 1120
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,39 +236,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3f33faf0bd6f6f47b0a1af6d533d1ba
+      spriteID: 97204b46ea3c27d4f8fcddb1d2ae5ad1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_6
-      rect:
-        serializedVersion: 2
-        x: 2304
-        y: 1152
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e23ac7f5a8bfb44db0a992f6d8e4a04
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: drone1B2_charge_7
+      name: moonjellyfish_charging_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 768
-        width: 384
-        height: 384
+        y: 840
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,19 +256,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b43cfcb460e2894a9c56f0c7fc567f0
+      spriteID: 137bbc9b22d118948baa75ea3303ce63
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_8
+      name: moonjellyfish_charging_7
       rect:
         serializedVersion: 2
-        x: 384
-        y: 768
-        width: 384
-        height: 384
+        x: 280
+        y: 840
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,19 +276,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42aee859ecab6bb4aaa1cfdebb263691
+      spriteID: b29255468f2ceee4db00d4141605c2eb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_9
+      name: moonjellyfish_charging_8
       rect:
         serializedVersion: 2
-        x: 768
-        y: 768
-        width: 384
-        height: 384
+        x: 560
+        y: 840
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,19 +296,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d345f97224f298949bee93bf2c3e702a
+      spriteID: e056f4ed74ca83248a54532694ae4ccf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_10
+      name: moonjellyfish_charging_9
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 768
-        width: 384
-        height: 384
+        x: 840
+        y: 840
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,19 +316,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2d831d4f3465a4429d8f2756796215a
+      spriteID: 674866b8203129a4c9cfdad97d4d95f7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_11
+      name: moonjellyfish_charging_10
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 768
-        width: 384
-        height: 384
+        x: 1120
+        y: 840
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,19 +336,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a58c3efc055e90a4f84bcfcdaaebbec2
+      spriteID: 12bf5cd9a563ca84f80b316492c82a77
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_12
+      name: moonjellyfish_charging_11
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 768
-        width: 384
-        height: 384
+        x: 1400
+        y: 840
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,119 +356,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f66d0636d536f534ba68405de9054a64
+      spriteID: e98ec5e390ad2d148b78840c41bfc19a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_13
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 384
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e754ff81e32ade843b926a1facf8e909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: drone1B2_charge_14
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 384
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19f8e9990d9241743abe25801e4a00f1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: drone1B2_charge_15
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 384
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25e7bdfb378f50d40930d29f577fe46b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: drone1B2_charge_16
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 384
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 096121cf8225b134592a7af03744bde6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: drone1B2_charge_17
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 384
-        width: 384
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bce37e6356b76e142a9b2a75fd16db3b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: drone1B2_charge_18
+      name: moonjellyfish_charging_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 384
-        height: 384
+        y: 560
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -482,19 +376,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7df59737dd94e64aaacc4c17f3c3fa7
+      spriteID: 89c635049cab37f47a31dd0c7eba09aa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_19
+      name: moonjellyfish_charging_13
       rect:
         serializedVersion: 2
-        x: 768
-        y: 0
-        width: 384
-        height: 384
+        x: 280
+        y: 560
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,19 +396,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eec0ccef07ea1ae4ea6e934a4b3b2da9
+      spriteID: a7b8a56e48bf39346998ecf535241312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_20
+      name: moonjellyfish_charging_14
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 384
-        height: 384
+        x: 560
+        y: 560
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -522,19 +416,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78c34421dda308344914d3785ee41d0e
+      spriteID: 2e5c7dd0eb88b154eb8659c7bbef2cbf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_21
+      name: moonjellyfish_charging_15
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 384
-        height: 384
+        x: 840
+        y: 560
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -542,19 +436,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5085a4f0aa97ba54bb7d242cd130818a
+      spriteID: a535eb81a8066064c967a928db501f67
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_22
+      name: moonjellyfish_charging_16
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 384
-        height: 384
+        x: 1120
+        y: 560
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -562,19 +456,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aeae2f67524fe848aa9950920fa39a8
+      spriteID: 71f9adf12fe831d48b08da4dad8065d7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drone1B2_charge_23
+      name: moonjellyfish_charging_17
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 0
-        width: 384
-        height: 384
+        x: 1400
+        y: 560
+        width: 280
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -582,7 +476,187 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b93db268e6ac46479e0445a20cce055
+      spriteID: 36011654c796bf14c8376080e5c89b8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ab4e3b841bcbb42acbd13963977f93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_19
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 280
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc292e0aa93b2c49b72303c90f3135d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_20
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 280
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe924222a5613d4ba62078ef71bec5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_21
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 280
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715328164a1f9bb4d900a36a996d93e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_22
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 280
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6897ca133b6c7454489f30b05c5128ad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_23
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 280
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74b7ad64a18cd54ab175947416a00b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbe07563c9fcaf48a6b07e25fa64cbc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_25
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 671e85257f74cd144879e9d9164b6d76
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonjellyfish_charging_26
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793f735d0a30e8d449c0146fe8ecb431
       vertices: []
       indices: 
       edges: []
@@ -590,7 +664,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 012bdfb4b37c5a84d88ba4f54bbc6d02
+    spriteID: 866c35b66e722774dbb1c1d8170b47a8
     vertices: []
     indices: 
     edges: []

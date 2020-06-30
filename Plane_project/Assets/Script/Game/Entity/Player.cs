@@ -53,7 +53,7 @@ public class Player : PlaneBase {
 		_timer = 3f;
 
 		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = ResourceManager.GetInstance().GetSprite("UI/map_arrow");
-		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
 		miniMapIcon.transform.localPosition = CanvasScript.instance.
 						CanvasPosToWorldPos(new Vector2(CanvasScript.instance.canvasWidth * 0.5f,CanvasScript.instance.canvasHeight));
 
@@ -200,10 +200,10 @@ public class Player : PlaneBase {
 	{
 		if(d > 0)
 		{
-			_cam.Zoom(2.9f);
+			_cam.Zoom(2.5f);
 			_cam.Glitch(0.3f);
-			_cam.Shake(0.2f, _direction / 15f);
-			Timer.SetTimeScaleTimer(0f,0.09f);
+			_cam.Shake(0.2f, _direction / 10f);
+			Timer.SetTimeScaleTimer(0f,0.12f);
 			MainHud.instance.ActiveUIGlitch(.774f,.994f,.862f,.0253f,.5f);
 			MainHud.instance.ShieldDamage();
 			_hpRegen = false;

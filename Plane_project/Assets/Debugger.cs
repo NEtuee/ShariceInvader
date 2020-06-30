@@ -35,6 +35,7 @@ public class Debugger : SingletonMono<Debugger>
         objects.Add(7,"Missile");
         objects.Add(8,"Marker");
         objects.Add(9,"LaserIndicator");
+        objects.Add(10,"Dummy");
 
         text.text = objects[pos];
     }
@@ -124,6 +125,9 @@ public class Debugger : SingletonMono<Debugger>
             break;
             case 9:
             obj.AddObject<LaserIndicator>(Define.ObjectType.enemy,"LaserIndicator").SetPositionEm(MouseWorldPos());
+            break;
+            case 10:
+            obj.AddObject<Dummy>(Define.ObjectType.enemy,"dummy").SetPositionEm(MouseWorldPos());
             break;
         }
     }

@@ -409,6 +409,7 @@ public delegate bool BoolObjectDelegate(ObjectBase obj);
 
 		private System.Action<T> _firstSetting;
 		private GameObject _baseObj;
+		private Transform _parent = null;
 
 		public void CreateObject(int count)
 		{
@@ -420,6 +421,9 @@ public delegate bool BoolObjectDelegate(ObjectBase obj);
 				// text.init();
 				target.gameObject.SetActive(false);
 				_cacheQueue.Enqueue(target);
+
+				if(_parent != null)
+					target.transform.SetParent(_parent);
 			}
 		}
 
@@ -449,6 +453,8 @@ public delegate bool BoolObjectDelegate(ObjectBase obj);
 
 			return target;
 		}
+
+		public void SetParent(Transform tp) {_parent = tp;}
 
 		public void DisableAllObject()
 		{

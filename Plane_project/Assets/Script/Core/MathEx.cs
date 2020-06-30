@@ -149,6 +149,10 @@ public class MathEx : MonoBehaviour {
 	            return false;
 	        }
 	}
+	public static Vector3 Lemniscate_Gerono(float factor, float time)
+	{
+		return new Vector3(Mathf.Cos(time), Mathf.Sin(2*time) * .5f) * factor;
+	}
 	public static void nearZero(ref Vector3 value) {value.x = nearZero(value.x); value.y = nearZero(value.y);}
 	public static bool halfCompare(float one,float two) {return abs((one - two)) <= 0.0001f;}
 	public static int Vector3Compare(Vector3 one, Vector3 two)

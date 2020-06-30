@@ -196,6 +196,8 @@ public class UISelectMenu : UISelectBase
         if(!open)
             OpenMenu();
 
+        SoundManager.instance.Play("SE/MenuSelect",false);
+
         manager.lineCrossLock = true;
 
         manager.MenuBind(menuItems,closing ? selectOrder : 0);
@@ -224,6 +226,8 @@ public class UISelectMenu : UISelectBase
         
 
         CloseMenu();
+
+        SoundManager.instance.Play("SE/ButtonSelect",false);
 
         manager.lineCrossLock = false;
 

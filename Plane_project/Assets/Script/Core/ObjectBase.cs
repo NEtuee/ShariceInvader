@@ -72,7 +72,7 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 		_position = pos;
 		return this;
 	}
-	public ObjectBase SetPositionEm(Vector3 pos) 
+	public virtual ObjectBase SetPositionEm(Vector3 pos) 
 	{
 		_position = pos;
 		UpdateTransform();

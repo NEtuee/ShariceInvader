@@ -27,11 +27,13 @@ public class UISelectButton : UISelectBase
 
     public override void SelectEvent()
     {
+        SoundManager.instance.Play("SE/ButtonSelect",false);
         selectEvent.Invoke();
     }
 
     public override void DeselectEvent()
     {
+        SoundManager.instance.Play("SE/ButtonSelect",false);
         deselectEvent.Invoke();
     }
 

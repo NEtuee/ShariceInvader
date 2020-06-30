@@ -35,6 +35,7 @@ public class OptionUIControll : MonoBehaviour
         manager.deactiveEvent.AddListener(delegate{
             DialogManager.instance.DialogEnd();
             GameMain.instance.SetInGameDialog();
+            OptionManager.GetInstance().SaveSettings();
         });
     }
 

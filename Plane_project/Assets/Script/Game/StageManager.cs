@@ -100,6 +100,9 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
                     case 8:
                         //obj.AddObject<TheMarker>(Define.ObjectType.enemy,"Marker").SetPositionEm(MouseWorldPos());
                     break;
+                    case 9:
+                    EnemyCreator.Dummy(1,GetSpawnPos(3f));
+                    break;
                 }
 
                 timer = 0f;
@@ -176,6 +179,9 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
                 break;
                 case 8:
                     //obj.AddObject<TheMarker>(Define.ObjectType.enemy,"Marker").SetPositionEm(MouseWorldPos());
+                break;
+                case 9:
+                EnemyCreator.Dummy(1,GetSpawnPos(3f));
                 break;
             }
 
@@ -392,11 +398,19 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
 
     public class Event_StageClear : EventBase
     {
+        private bool _fade = false;
+
         public override bool Progress(float delatTime)
         {
-            ResultRecorder.GetInstance().clear = true;
+            if(!_fade)
+            {
+                ResultRecorder.GetInstance().clear = true;
+                FadeManager.instance.FadeOut();
+                _fade = true;
+            }  
 
-            GameMain.instance.result.Active();
+            if(!FadeManager.instance.IsFading())
+                GameMain.instance.result.Active();
 
             return true;
         }
@@ -420,10 +434,19 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
     public void ParseMapData()
     {
         var data = mapData.text.Replace("\r",string.Empty).Split('\n');
+        int i = 0;
         foreach(var low in data)
         {
             var split = low.Split('/');
-            events.Add(ParseEventData(split[0],split[1]));
+            try{
+                events.Add(ParseEventData(split[0],split[1]));
+            }
+            catch
+            {
+                Debug.Log(i + " : " + low);
+            }
+            
+            ++i;
         }
 
 

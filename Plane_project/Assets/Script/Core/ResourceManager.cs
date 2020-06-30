@@ -20,7 +20,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 	// 	"", "Effects/", "Planes/", "UI/"
 	// };
 	private static string prefabFilePath = "Prefab/";
-	private static string audioFilePath = "Audio/";
+	private static string audioFilePath = "Sound/";
 	private static string materialPath = "Material/";
 
 	private static Type spriteType = typeof(Sprite);

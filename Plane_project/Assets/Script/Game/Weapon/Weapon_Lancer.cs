@@ -152,6 +152,8 @@ public class Weapon_Lancer : WeaponBase
         _attackRange.PassiveDeactive();
         _attackRange.RealTimeProgress();
 
+        CameraControll.instance.Shake(0.1f,_plane.direction * 0.1f);
+
 
         return false;
     }
@@ -164,10 +166,10 @@ public class Weapon_Lancer : WeaponBase
     public void UiUpdate()
     {
         _uiArrow.SetAngle(_plane.angle);
-        _uiArrow.SetPosition(_plane.position + _plane.direction * 0.35f);
+        _uiArrow.SetPositionEm(_plane.position + _plane.direction * 0.35f);
 
         _backUi.SetAngle(_plane.angle);
-        _backUi.SetPosition(_plane.position - _plane.direction * 0.25f);
+        _backUi.SetPositionEm(_plane.position - _plane.direction * 0.25f);
 
         _attackRange.SetAngle(_plane.angle);
 
@@ -175,12 +177,12 @@ public class Weapon_Lancer : WeaponBase
         if(_driveArrow != null)
         {
             _driveArrow.SetAngle(_plane.angle);
-            _driveArrow.SetPosition(_plane.position + _plane.direction * 0.25f);
-            _attackRange.SetPosition(_plane.position + _plane.direction * 0.35f);
+            _driveArrow.SetPositionEm(_plane.position + _plane.direction * 0.25f);
+            _attackRange.SetPositionEm(_plane.position + _plane.direction * 0.35f);
         }
         else
         {
-            _attackRange.SetPosition(_plane.position + _plane.direction * 2.34f);
+            _attackRange.SetPositionEm(_plane.position + _plane.direction * 2.34f);
         }
     }
 

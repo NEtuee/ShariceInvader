@@ -36,7 +36,7 @@ public class Weapon_PhantomStinger : WeaponBase
         base.Progress(deltaTime);
 
         _aimRange.SetAngle(_plane.angle);
-        _aimRange.SetPosition(_plane.position);
+        _aimRange.SetPositionEm(_plane.position);
 
         if(mainAttack)
         {
@@ -127,7 +127,7 @@ public class Weapon_PhantomStinger : WeaponBase
         BurstAimDirection(15f,0.15f);
 
         Timer.SetTimeScale(1f);
-        _aimTarget.Hit(35,_plane);
+        _aimTarget.Hit(50,_plane);
 
         float dist = Vector2.Distance(_plane.position,_aimTarget.position);
         Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
@@ -183,7 +183,7 @@ public class Weapon_PhantomStinger : WeaponBase
             for(int i = 0; i < _maxTarget; ++i)
             {
                 count = i >= _multiTarget.Count ? 0 : i;
-                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(35,i * 0.07f,_plane,delayEvent);
+                ((PlaneBase)(_multiTarget[count])).AddDelayAttackList(50,i * 0.07f,_plane,delayEvent);
                 ++count;
             }
         }
@@ -208,6 +208,8 @@ public class Weapon_PhantomStinger : WeaponBase
         Vector2 one = Vector2.Lerp(_plane.position,target.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         Vector2 two = Vector2.Lerp(_plane.position,target.position,0.666f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         EffectManager.GetInstance().DrawBezierLine(_plane.position,target.position,one,two,0.05f);
+
+        CameraControll.instance.Zoom(2.8f);
     }
 
     public void BurstAimDirection(float addForce, float time)

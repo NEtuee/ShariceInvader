@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,8 @@ public class GameMain : SingletonMono<GameMain> {
 	public UISortManager optionScreen;
 
 	public bool update = true;
+
+	public EmptyObject emptyObject;
 
 	public GameObject dialog_left;
     public SpriteRenderer dialog_leftSprite;
@@ -95,6 +98,8 @@ public class GameMain : SingletonMono<GameMain> {
 		AnimationControllEx.LoadAnimation("SpriteSet/Bullets/Ray");
 
 		SetInGameDialog();
+
+		_objManager._place.SetMainObject(emptyObject);
 		
 		// PlaneBase obj = _objManager.AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		// obj.SetPositionEm(new Vector3(1f,5f));
@@ -103,6 +108,8 @@ public class GameMain : SingletonMono<GameMain> {
 		//_objManager._place.SetMainObject(obj);
 
 		//mainHud.Initiailize();
+
+		FadeManager.instance.FadeIn();
 	}
 
 	void Update ()
@@ -125,7 +132,18 @@ public class GameMain : SingletonMono<GameMain> {
 			_endTimer += deltaTime;
 			if(_endTimer >= 3f)
 			{
-				result.Active();
+				try
+				{
+					result.Active();
+				}
+				catch(Exception e)
+				{
+					Debugger.instance.AddDebugText(e.Message);
+					Debugger.instance.AddDebugText(e.HelpLink);
+					Debugger.instance.AddDebugText(e.StackTrace);
+					Debugger.instance.AddDebugText(e.Source);
+				}
+				
 			}
 		}
 
@@ -146,10 +164,12 @@ public class GameMain : SingletonMono<GameMain> {
 		_collisionManager.UpdateCollisionList();
 		_collisionManager.SyncCollisionList();
 
-		stage.progress(deltaTime);
+		if(!FadeManager.instance.IsFading())
+			stage.progress(deltaTime);
 
-		if(Player.instance != null && Player.instance.deleted)
+		if(Player.instance != null && Player.instance.deleted && !_end)
 		{
+			FadeManager.instance.FadeOut();
 			_end = true;
 		}
 
@@ -157,6 +177,11 @@ public class GameMain : SingletonMono<GameMain> {
 		Physics2D.SyncTransforms();
 		Timer.TimeScaleUpdate();
 
+	}
+
+	public void Restart()
+	{
+		SceneManager.LoadScene(1);
 	}
 
 	public void SetInGameDialog()

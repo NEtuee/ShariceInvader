@@ -14,6 +14,8 @@ public class UIProgressBar : UISelectButton
     public float progress{set
     {
         SetValue(value);
+
+        SoundManager.instance.Play("SE/ProgressBar",false);
         whenValueChange.Invoke();
     } get{return _progress;}}
 
@@ -76,6 +78,8 @@ public class UIProgressBar : UISelectButton
     {
         _bind = true;
 
+        SoundManager.instance.Play("SE/ButtonSelect",false);
+
         manager.uiSelectLock = true;
         progressBar.sprite = selectSprite;
     }
@@ -83,6 +87,8 @@ public class UIProgressBar : UISelectButton
     public override void DeselectEvent()
     {
         _bind = false;
+
+        SoundManager.instance.Play("SE/ButtonSelect",false);
 
         manager.uiSelectLock = false;
         progressBar.sprite = baseSprite;

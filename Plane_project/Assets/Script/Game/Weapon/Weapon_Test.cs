@@ -116,6 +116,8 @@ public class Weapon_Test : WeaponBase
             link = link.next;
         }
 
+        CameraControll.instance.Zoom(2.5f);
+
         specAttack = true;
 
         EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Pulse/Drive",false)

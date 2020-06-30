@@ -88,6 +88,8 @@ public class ResultUIControll : MonoBehaviour
         UpdateProgressTarget();
 
         this.gameObject.SetActive(true);
+
+        FadeManager.instance.FadeIn();
     }
 
     void Update()

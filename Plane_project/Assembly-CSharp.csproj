@@ -53,8 +53,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Animation\Line.cs" />
+     <Compile Include="Assets\Animation\TitleControll.cs" />
      <Compile Include="Assets\Debugger.cs" />
      <Compile Include="Assets\DialogManager.cs" />
+     <Compile Include="Assets\FadeManager.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyBase.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_AnimationKeyViewer.cs" />
      <Compile Include="Assets\GameEditor\Animator\Editor_KeyDataModifier.cs" />
@@ -124,11 +127,13 @@
      <Compile Include="Assets\Script\Core\UI\UISelectMenu.cs" />
      <Compile Include="Assets\Script\Core\UI\UISortManager.cs" />
      <Compile Include="Assets\Script\Game\BulletManager.cs" />
+     <Compile Include="Assets\Script\Game\EmptyObject.cs" />
      <Compile Include="Assets\Script\Game\Entity\BulletBase.cs" />
      <Compile Include="Assets\Script\Game\Entity\DecoAnimeController.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\BoomDrone.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\BoostDrone.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\CCTV.cs" />
+     <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Dummy.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\EnemyCreator.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Flare.cs" />
      <Compile Include="Assets\Script\Game\Entity\Enemy\1-1\Intercepter.cs" />
@@ -161,6 +166,7 @@
      <Compile Include="Assets\Script\Game\Weapon\WeaponBase.cs" />
      <Compile Include="Assets\Script\Game\Weapon\WeaponInventory.cs" />
      <Compile Include="Assets\Script\Test.cs" />
+     <Compile Include="Assets\SoundManager.cs" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1\AttackHit_1_Ani.txt" />

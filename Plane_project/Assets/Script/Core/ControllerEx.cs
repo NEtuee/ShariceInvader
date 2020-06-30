@@ -437,7 +437,7 @@ public class ControllerEx : Singleton<ControllerEx>
         }
 
         CheckCurrentInputDevice();
-        Debugger.instance.SetDebugText(controller.ToString());
+//        Debugger.instance.SetDebugText(controller.ToString());
 
         if(_keyBreak)
         {
