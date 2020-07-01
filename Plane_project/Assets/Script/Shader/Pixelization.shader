@@ -45,16 +45,9 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 uv = i.uv;
-                uv.x *= _Columns;
-                uv.y *= _Rows;
-                uv.x = round(uv.x);
-                uv.y = round(uv.y);
-                uv.x /= _Columns;
-                uv.y /= _Rows;
 
-                fixed4 col = tex2D(_MainTex, uv);
-                col.a = 1;
+                fixed4 col = tex2D(_MainTex, i.uv);
+                col.r= 1;
                 return col;
             }
             ENDCG

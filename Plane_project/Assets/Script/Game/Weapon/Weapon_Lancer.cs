@@ -85,7 +85,7 @@ public class Weapon_Lancer : WeaponBase
         _uiArrow.Play(false);
         _backUi.Play(false);
 
-
+        SoundManager.instance.Play("SE/Lancer_",false,2);
 
         _attackTime = .18f;
         _plane.SetMaxSpeed(_mainSpeed + 5f);

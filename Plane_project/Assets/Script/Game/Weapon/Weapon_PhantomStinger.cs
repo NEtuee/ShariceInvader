@@ -133,6 +133,8 @@ public class Weapon_PhantomStinger : WeaponBase
         Vector2 one = Vector2.Lerp(_plane.position,_aimTarget.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         Vector2 two = Vector2.Lerp(_plane.position,_aimTarget.position,0.666f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         EffectManager.GetInstance().DrawBezierLine(_plane.position,_aimTarget.position,one,two,0.05f);
+
+        SoundManager.instance.Play("SE/PS_",false,4);
     }
 
     public override bool SpecialAttack(Vector3 dir)
@@ -208,6 +210,8 @@ public class Weapon_PhantomStinger : WeaponBase
         Vector2 one = Vector2.Lerp(_plane.position,target.position,0.111f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         Vector2 two = Vector2.Lerp(_plane.position,target.position,0.666f) + new Vector2(Random.Range(-dist,dist),Random.Range(-dist,dist));
         EffectManager.GetInstance().DrawBezierLine(_plane.position,target.position,one,two,0.05f);
+
+        SoundManager.instance.Play("SE/PS_",false,4);
 
         CameraControll.instance.Zoom(2.8f);
     }

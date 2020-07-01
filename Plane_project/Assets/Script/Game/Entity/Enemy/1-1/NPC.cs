@@ -74,6 +74,7 @@ public class NPC : PlaneBase {
 				_rotateLock = false;
 
 				_ani.ChangeAni("open",false);
+				SoundManager.instance.Play("SE/Missile_",false,4);
 
 				_maxSpeed = Random.Range(3.8f,4.5f);
 				_gravityScale = .7f;

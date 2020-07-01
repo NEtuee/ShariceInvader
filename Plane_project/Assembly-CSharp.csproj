@@ -193,6 +193,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\BurstBurst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\Player_NewPlayer_New_Plane.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\DriveEnd\DriveEnd_Ani.txt" />
+     <None Include="Assets\Script\Shader\ScreenTransitionImageEffect.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\1\Launch\Launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\LaserIndicator\0\Launch\Launch_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Hit\2\2_Ani.txt" />

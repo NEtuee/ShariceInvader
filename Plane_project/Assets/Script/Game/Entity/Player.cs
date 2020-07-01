@@ -235,6 +235,8 @@ public class Player : PlaneBase {
 	{
 		
 		base.BurstActive(false);
+
+		SoundManager.instance.Play("SE/BurstActive_",false,2);
 		_cam.Shake(0.2f, _direction / 15f);
 	}
 
@@ -327,6 +329,8 @@ public class Player : PlaneBase {
         			{
 						ani.ChangeAni("CuttingCurve",false);
         			}
+
+					SoundManager.instance.Play("SE/CuttingCurve",false);
 
 					//EffectManager.GetInstance().AddEffect(_position + _direction * 0.25f,"SpriteSet/Effects/CuttingCurve").SetAngle(_eulerAngle);
 					EffectManager.GetInstance().AddEffect(_position,_sprRenderer.sprite,0.2f).SetAngle(Mathf.LerpAngle(_eulerAngle,controllAngle,0.25f));

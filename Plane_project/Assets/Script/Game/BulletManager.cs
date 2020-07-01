@@ -47,6 +47,8 @@ public class BulletManager : Singleton<BulletManager>, Define.IManager {
 		bullet.Active(pos,dir,speed,timer);
 		bullet.SetSprite(_sprites[sprite]);
 
+		SoundManager.instance.Play("SE/GunShot_",false,3);
+
 		return bullet;
 	}
 
@@ -55,6 +57,8 @@ public class BulletManager : Singleton<BulletManager>, Define.IManager {
 		var bullet = _cache[((int)type)].ActiveObject();
 		bullet.Active(pos,dir,speed,timer);
 		bullet.SetAnimation(ani,loop);
+
+		SoundManager.instance.Play("SE/GunShot_",false,3);
 
 		return bullet;
 	}

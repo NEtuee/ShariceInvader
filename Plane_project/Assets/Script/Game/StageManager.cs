@@ -405,7 +405,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
             if(!_fade)
             {
                 ResultRecorder.GetInstance().clear = true;
-                FadeManager.instance.FadeOut();
+                FadeManager.instance.FadeOut(0f);
                 _fade = true;
             }  
 

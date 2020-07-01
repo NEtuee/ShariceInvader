@@ -108,8 +108,7 @@ public class GameMain : SingletonMono<GameMain> {
 		//_objManager._place.SetMainObject(obj);
 
 		//mainHud.Initiailize();
-
-		FadeManager.instance.FadeIn();
+		FadeManager.instance.FadeIn(1f,1f);
 	}
 
 	void Update ()
@@ -169,7 +168,7 @@ public class GameMain : SingletonMono<GameMain> {
 
 		if(Player.instance != null && Player.instance.deleted && !_end)
 		{
-			FadeManager.instance.FadeOut();
+			FadeManager.instance.FadeOut(3f);
 			_end = true;
 		}
 

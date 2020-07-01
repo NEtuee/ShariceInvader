@@ -59,7 +59,7 @@ public class TitleControll : MonoBehaviour
                 if(Input.anyKey && !_fade)
                 {
                     _fade = true;
-                    FadeManager.instance.FadeOut();
+                    FadeManager.instance.FadeOut(0f);
                 }
             }
         }

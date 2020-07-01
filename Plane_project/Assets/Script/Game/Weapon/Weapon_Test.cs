@@ -122,6 +122,8 @@ public class Weapon_Test : WeaponBase
 
         EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Pulse/Drive",false)
                                 .RealTimeProgress();
+        
+        SoundManager.instance.Play("SE/Pulse_Drive_",false,2);
 
         Timer.SetViTimeScaleTimer(3,0.1f,0.3f);
 

@@ -89,7 +89,7 @@ public class ResultUIControll : MonoBehaviour
 
         this.gameObject.SetActive(true);
 
-        FadeManager.instance.FadeIn();
+        FadeManager.instance.FadeIn(0f);
     }
 
     void Update()

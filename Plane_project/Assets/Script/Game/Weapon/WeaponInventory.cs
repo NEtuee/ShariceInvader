@@ -43,6 +43,8 @@ public class WeaponInventory
             return;
         }
 
+        SoundManager.instance.Play("SE/WeaponChange",false);
+
         if(_currWeapon != null)
 			_currWeapon.WhenChanged();
 		EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/WeaponChange",false,_plane).SetSortingOrder(1);

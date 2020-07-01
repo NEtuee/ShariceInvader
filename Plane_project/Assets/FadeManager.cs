@@ -10,6 +10,7 @@ public class FadeManager : SingletonMono<FadeManager>
     private float _timer = 0f;
     private float _fadeSpeed = 1f;
     private float _alphaTarget = 0f;
+    private float _startTimer = 0f;
 
     private Color _originColor = Color.black;
     private Color _targetColor = Color.black;
@@ -32,7 +33,16 @@ public class FadeManager : SingletonMono<FadeManager>
     {
         if(_fading)
         {
-            _timer += Time.deltaTime;
+            if(_startTimer != 0f)
+            {
+                _startTimer -= Time.deltaTime;
+                if(_startTimer <= 0f)
+                    _startTimer = 0f;
+                
+                return;
+            }
+
+            _timer += _fadeSpeed * Time.deltaTime;
             fadeSprite.color = Color.Lerp(_originColor, _targetColor, _timer);
             if(_timer >= 1f)
             {
@@ -45,14 +55,16 @@ public class FadeManager : SingletonMono<FadeManager>
 
     public bool IsFading() {return _fading;}
 
-    public void FadeIn()
+    public void FadeIn(float timer, float speed = 2f)
     {
-        SetFade(1f,0f,1f);
+        _startTimer = timer;
+        SetFade(1f,0f,speed);
     }
 
-    public void FadeOut()
+    public void FadeOut(float timer, float speed = 2f)
     {
-        SetFade(0f,1f,1f);
+        _startTimer = timer;
+        SetFade(0f,1f,speed);
     }
 
     public void SetFade(float originAlpha, float targetAlpha, float speed)

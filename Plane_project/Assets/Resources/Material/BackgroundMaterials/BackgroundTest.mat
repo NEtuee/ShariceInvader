@@ -47,6 +47,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: e8bc93916c05b7049b44a16854e4b73a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: b2c812cea0db93e439fee34a4ab9e81c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -74,6 +78,7 @@ Material:
     - _MainScale: 0.5625
     - _MainScaleX: 1
     - _MainScaleY: 1
+    - _MaskValue: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -88,4 +93,5 @@ Material:
     - _Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _MaskColor: {r: 0, g: 0, b: 0, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
