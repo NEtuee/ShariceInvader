@@ -35,17 +35,17 @@ public class OptionUIControll : MonoBehaviour
         manager.deactiveEvent.AddListener(delegate{
             DialogManager.instance.DialogEnd();
             GameMain.instance.SetInGameDialog();
-            OptionManager.GetInstance().SaveSettings();
+            OptionManager.instance.SaveSettings();
         });
     }
 
     public void Start()
     {
-        bgm.SetValue(OptionManager.GetInstance().volume_Bgm);
-        fx.SetValue(OptionManager.GetInstance().volume_Fx);
+        bgm.SetValue(OptionManager.instance.volume_Bgm);
+        fx.SetValue(OptionManager.instance.volume_Fx);
 
-        int re = OptionManager.GetInstance().resolutionPos;
-        int la = OptionManager.GetInstance().language;
+        int re = OptionManager.instance.resolutionPos;
+        int la = OptionManager.instance.language;
 
         resol.MenuSelect(re,false);
         lang.MenuSelect(la,false);
@@ -62,19 +62,19 @@ public class OptionUIControll : MonoBehaviour
 
     public void BGMValueChange()
     {
-        OptionManager.GetInstance().SetBGMVolume(bgm.progress);
+        OptionManager.instance.SetBGMVolume(bgm.progress);
     }
-    public void FXalueChange()
+    public void FXValueChange()
     {
-        OptionManager.GetInstance().SetFXVolume(fx.progress);
+        OptionManager.instance.SetFXVolume(fx.progress);
     }
     public void ResolutionValueChange(int i)
     {
-        OptionManager.GetInstance().SetResolution(i);
+        OptionManager.instance.SetResolution(i);
     }
     public void LanguageValueChange(int i)
     {
-        OptionManager.GetInstance().SetLanguage(i);
+        OptionManager.instance.SetLanguage(i);
     }
 
 }

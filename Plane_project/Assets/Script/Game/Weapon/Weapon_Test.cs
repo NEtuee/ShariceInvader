@@ -79,6 +79,9 @@ public class Weapon_Test : WeaponBase
             mainAttack = true;
             EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Pulse/Attack",false)
                                 .SetSortingOrder(1);
+            
+            SoundManager.instance.Play("SE/Pulse_",false);
+            SoundManager.instance.Play("SE/MainHit_",false,2,.5f,false);
             //Timer.SetTimeScaleTimer(0.3f,0.5f,true);
             return true;
         }
@@ -123,7 +126,7 @@ public class Weapon_Test : WeaponBase
         EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Pulse/Drive",false)
                                 .RealTimeProgress();
         
-        SoundManager.instance.Play("SE/Pulse_Drive_",false,2);
+        SoundManager.instance.Play("SE/Pulse_Drive_",false,2,1f,false);
 
         Timer.SetViTimeScaleTimer(3,0.1f,0.3f);
 

@@ -1,0 +1,70 @@
+dialog_tutorial_start/char_penny/1/기분은 좀 어때?/気分はどうか。/How do you feel?
+/char_sharice/0/.../.../...
+///생각보다 나쁘지 않은데/思ったより悪くないね。/Not that bad.
+///이런것 까지 만들어 놓고선 전투원이 한명도 없다니, 그것 참 아이러니하네/こんなことまで作っておいて戦闘員が一人もいないなんて、まったく皮肉なことね。/You're making all this stuff, and there's no combatants? That's ironic.
+/char_penny/1/우리는 연구 개발만으로 충분히 바쁘다. 행성의 방위는 무인기로도 충분해/私たちは研究開発だけで忙しい。 惑星の防衛は無人機で十分だ/We are busy enough just by research and development. The planet's defenses are sufficient with drones.
+/char_sharice/0/글쎄, 나 한명한테 뚫렸잖아?/さあ、私一人で焦土化させたじゃん。/Well, didn't I break it all by myself?
+/char_penny/1/미래에서 온 변칙자 주제에 꽤나 당당하게 말하는군/未来から来た変則者のくせにかなり堂々と話すね。/You sound pretty confident.
+/char_reeve/0/그쯤하고 슬슬 시작하면 안될까?/その辺でそろそろ始めたら駄目か。/Can't we just stop and start?
+/char_penny/1/...그래, 이건 그 때 당시의 우리 행성 상황을 재현한 시뮬레이션이다./…そう、これは当時の私たちの惑星状況を再現したシミュレーション。/...Yes, this is a simulation of our planet situation back then.
+///이번에 개발한 신무기의 실험과 네놈의 연습을 위한 것이니 실전처럼 임해라./今回開発した新兵器の実験と「貴様」の練習のためだから、実戦のように臨め。/It's for the experiment and practice of the newly developed weapon, so do it like a real battle.
+/char_reeve/0/덤으로 우리 행성의 방위 구멍을 매꾸는 용도도 있지./おまけに我が惑星の防衛の穴をあける用途もある。/It's also to strengthen our planet's defenses.
+/char_sharice/0/나한테 좋은게 별로 없는것 같은데./私に良いのがあまりないんじゃない？/I don't think there's much good for me. huh
+/char_penny/1/아무튼 이번에 탑재된 무기의 기본적인 설명을 시작하겠다./とにかく、今回搭載された兵器の基本的な説明を始める。/Anyway, let me begin with the basic explanation of the weapon that was loaded this time.
+///첫번째 무기는 네녀석이 처음 달고왔던 무기다. 랜스라는 이름이었지 아마./一番目の武器は、貴方が最初につけてきた武器だ。 ランスという名前だったよ、たぶん。/The first weapon is the one that was originally equipped. It was called Lance, I guess.
+///누가 만들었는지는 모르겠지만 실로 무식하구나. 기체 그대로 들이 박아버린다니./誰が作ったかは分からないが、実に無知だね。 機体のまま突っ込んでしまうなんて。/I don't know who made it, but this is really ignorant. It's just a rush
+///두번째는 이번에 새로 개발한 에너지 기술을 응용한 무기다. 간단하게 펄스라고 부르도록 하지./二番目は、今回新たに開発したエネルギー技術を応用した武器だ。 簡単にパルスと呼ぶようにしる。/The second is a weapon that uses the newly developed energy technology. Let's simply call it Pulse.
+///안정성을 위해 목표물이 사거리 내에 없을때는 작동하지 않으니 주의해라./安全性のために目標物が射程内にない時は作動しないので注意しろ。/For stability, it doesn't work when the target is not within range, so be careful.
+///마지막 무기는 개발부가 꽤나 자신있어 하더군, 팬텀 스팅어라고 부른다./最後の武器は開発部がかなり自信を持ってましたね、ファントム・スティンガーと呼ぶ。/The last weapon, the development department is pretty confident, It's called a Phantom Stinger.
+///기동성과 공격력 모두 뛰어나지만, 조작하기가 쉽지 않을꺼다./機動性と攻撃力には優れているが、操作は簡単ではないだろう。/Both mobility and aggression are excellent, but it won't be easy to manipulate.
+/char_reeve/0/시뮬레이션이니까 실수해도 괜찮지만, 실전에선 그러면 안된다?/シミュレーションだから間違っても大丈夫だが、本番ではダメだ？/It's a simulation, so it's okay to make mistakes, but not in real life.
+///죽을것 같으면 기체는 두고 가라구./死にそうなら機体は置いて行けよ。/If you think you're going to die, leave the machine behind.
+/char_sharice/0/너네들을 괜히 살려준것 같다는 생각이 자꾸 든단 말이지./お前たちを訳もなく生かしてあげたような気がするんだよ。/I shouldn't have left these guys alive.
+/char_penny/1/시작하기 전에 연습용 더미를 준비해주마, 모두 처치하면 시작할테니 잘 준비해두라고./始める前に練習用のデコを用意してやる、みんな処置したら始めるからちゃんと準備しておけ。/I'll get you a practice dummy before we start, and we'll start when we get rid of them all, so be prepared.
+dialog_tutorial_skip/char_penny/1/미래에는 기본적인 예의라는게 없어진건가? 못해먹겠군./未来には基本的な礼儀というのがなくなったんか。これ以上できないね。/Is there no basic courtesy in the future? I can't do this anymore.
+///네녀석 알아서 해라./勝手にしろ。/You take care of it yourself.
+/char_reeve/0/하하 예민하긴./ははは, 鋭くふるまうんだね。/Haha, you're being sensitive.
+dialog_result_fail_0/char_sharice/1/이거 사기 아니야?%2/これ詐欺じゃないの？/Isn't this a scam?
+/char_penny/1/자신의 실력을 인정하지 못하는 꼴이라니, 실로 추하군.%2/自分の実力を認められない有様とは、実に醜いね/It's ugly that you can't admit your skills.
+/char_reeve/1/뭐, 이번엔 운이 없었을수도 있잖아? 기운 내라구.%2/まあ、今回は運がなかったかも知れないじゃないか。 元気出せ。/Well, maybe you're unlucky this time. Cheer up.
+/char_penny/1/그렇군, 처음 왔었을때는 운이 꽤 좋았나보지?%2/そうなんね、初めて来た時は運が良かったのね？/I see. You must have been pretty lucky when you first came, huh?
+/char_reeve/1/그게 그렇게 된다고?%2/それがそうなるって？/That's what happens?
+/char_sharice/1/너네 아무리 자존심이 상했어도 그렇지 이건 좀 아니지 않냐?%2/お前たちどんなにプライドが傷ついてもそうだろう。 これはちょっと違うんじゃない？/Don't you think this is wrong no matter how much you hurt your pride?
+/char_penny/1/그래. 인간이란 그런거지. 생각하고싶은데로 생각 하라고.%2/そう。人間ってそういうもんだよ。 考えたいから考えろと。/Yeah, that's what humans do. Think whatever you want.
+dialog_result_clear_0/char_sharice/1/너무 쉬운거 아니야?%2/簡単すぎない？/Isn't that too easy?
+/char_penny/1/뭐?%2/は？/What?
+/char_sharice/1/어떻게 조작이라도 좀 하지 그랬냐? 창피하다 진짜.%2/操作でもしたらよかったのに。 恥ずかしい、本当に。/Why didn't you do something to manipulate it? I'm so embarrassed.
+/char_reeve/1/하하 참.%2/はは, それはまあ./Haha.
+/char_penny/1/너는 뭐가 웃겨?%2/お前はどうして笑うの？/What's funny?
+/char_sharice/1/당연히 웃기지. 사람 한명한테 행성이 털렸으니.%2/当然笑えるよね。 一人が惑星を焦土化させたじゃないか。/Of course it's funny, the planet was devastated by one girl.
+/char_penny/1/언젠가 둘 다 죽인다.%2/いつか二人共殺す/Someday I'll kill them both.
+dialog_stting_0/char_penny/1/뭘 그렇게 건드리나?%2/何をそんなに触るんか。/What are you messing with?
+/char_sharice/1/장인도 명작을 만들기 전에 주변 환경부터 만드는 법이야.%2/職人も名作を作る前には周辺環境から作るもの。/Artisans make their surroundings before making masterpieces.
+/char_reeve/1/장인????%2/職人????/Artisans????
+/char_penny/1/자아도취가 좀 심하다고 생각되는데.%2/自我陶酔がちょっとひどいと思うが。/You seem a little narcissistic.
+/char_sharice/1/그래서 나 한명한테 털리셨나?%2/それで私に負けたんか。/So you guys almost fucked up because of me?
+/char_reeve/1/아픈곳을 찌르네.%2/痛いところを突くね。/You're picking up a weak spot.
+/char_penny/1/웃기지도 않는군. 변칙자 주제에.%2/面白くもないね。 変則者のくせに/That's not funny. you cheater
+/char_sharice/1/그래 어쩌겠냐. 내가 참아야지.%2/そう、どうしよう。 私が我慢しないと。/What can I do? I'll hold it in.
+dialog_result_fail_1/char_sharice/1/화나게 하네.%2/怒らせるね。/You guys are making me angry.
+///너네 자꾸 사기칠래? 딱 봐도 원래보다 많이 나오는구만.%2/お前たち、しきりに詐欺を働くの？ ぱっと見ても元々よりたくさん出るね。/Are you guys going to keep cheating me? It's harder than the first time.
+/char_penny/1/이제는 자기 기억조차 속이는건가? 대단하군.%2/今は自分の記憶さえ騙すのか。 すごいね。/Now you're even deceiving your memories? That's great.
+/char_reeve/1/너 머리 괜찮아?%2/頭脳大丈夫？/Is your brain okay?
+/char_sharice/1/진짜 너네 사기꾼들 아니야?%2/本当にお前たちの詐欺師たちじゃないの？/Aren't you guys real crooks?
+/char_penny/1/하. 됐다. 네녀석 좋을때로 생각해라.%2/はぁ、貴様、いい時に考えろ。/Think as you please.
+/char_reeve/1/뭐 그럴수도 있지.%2/そんなこともあるよ。/Ha.
+/char_sharice/1/비행기에 폭탄을 달고 왔었어야 했는데.%2/機体に爆弾をつけてこなければならなかったのに。/I should have brought a bomb to my machine.
+dialog_result_fail_2/char_reeve/1/와 진짜로 죽었네.%2/わぁ、本当に死にた。/Wow, you're really dead.
+/char_penny/1/진짜로 운이었나? 꽤나 놀라운데.%2/本当に運でしたか？ 驚き入ったな。/Did you really win by luck? That's pretty amazing.
+/char_sharice/1/아니 실수좀 할 수 있는거 아니야?%2/いや、ちょっとミスできるんじゃない？/Can't I make mistakes?
+/char_reeve/1/내가 실수해도 된다고 하긴 했지만, 이건 좀...%2/僕がミスしても良いとは言ったけど、これはちょっと…/I did say you could make a mistake, but this is...
+/char_penny/1/우리 행성 방위 시스템 정도면 실수할만 하지.%2/私たちの惑星防衛システム位ならミスするに値しる。/With our planet defense system, you can make mistakes.
+/char_sharice/1/진짜 죽이고 싶다.%2/本当に殺したい。/I really want to kill you.
+dialog_stting_1/char_reeve/1/진짜 설정 하는거 맞아?%2/本当に設定してるんよね？/Are you sure you're setting it up?
+///꼼수 같은거 쓰지 말라구.%2/小細工みたいなの使わないで。/Don't use tricks.
+/char_sharice/1/아 설정할거 있다니까.%2/あ、設定することがあります。/I have something to set up.
+/char_penny/1/놔둬라. 샤리스님 께서 설정할게 있으시다잖아.%2/置いておけ。シャリス様が設定することがあるそうじゃないか。/Let it go. Ms. Sharice has something to setting up.
+/char_reeve/1/우웩.%2/マジか。/Ugh.
+/char_sharice/1/너네 점점 기어오른다.%2/やめろ、本当に。/You'd better stop there.
+/char_penny/1/기어올라? 네 입장을 잘 생각해보는게 좋을거다.%2/は？ 君の立場をよく考えてみたほうがいいだろう。/That's funny. You'd better think about your position.
+/char_sharice/1/이젠 진짜 모르겠다.%2/.../...

@@ -109,8 +109,8 @@ public class MainHud : SingletonMono<MainHud>
         _uiAni.AnimationProgress(Timer.noneScaledDeltaTime);
         _shieldAni.AnimationProgress(Timer.noneScaledDeltaTime);
         
-        transform.position = _followTarget.position + dir * 0.1f;
-        mainUITransform.transform.position = _followTarget.position + dir * 0.12f;
+        transform.position = _followTarget.position + dir * 0.13f;
+        mainUITransform.transform.position = _followTarget.position + dir * 0.1f;
 
         if(_hpBarDisapear != 0f)
         {
@@ -226,6 +226,7 @@ public class MainHud : SingletonMono<MainHud>
     public void ShowWaveIcon(float time)
     {
         waveIcon.SetActive(true);
+        SoundManager.instance.Play("SE/WaveGlitch",false,-1,1f,false);
 
         var c = wave_0.color;
         c.a = 1f;

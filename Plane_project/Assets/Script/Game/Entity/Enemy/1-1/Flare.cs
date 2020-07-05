@@ -20,6 +20,8 @@ public class Flare : PlaneBase
         if(_hit)
         {
             Explode();
+
+            SoundManager.instance.PlayRequest("SE/FlareExplosion");
         }
 
         if(_stunEffect != null)
@@ -65,6 +67,8 @@ public class Flare : PlaneBase
         _actTimer = Random.Range(1.8f,2.3f);
 
         SetSortingOrder(2);
+
+        SoundManager.instance.PlayRequest("SE/FlareShot");
         //_maxSpeed = 0.1f;
     }
 

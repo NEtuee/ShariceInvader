@@ -50,9 +50,6 @@ public class GameMain : SingletonMono<GameMain> {
 		CollisionManager.DeleteSingleton();
 		DelayActManager.DeleteSingleton();
 
-		OptionManager.GetInstance().LoadSettings();
-		OptionManager.GetInstance().UpdateOptions();
-
 		cam = Camera.main.GetComponent<CameraControll>();
 		cam.firstSetting();
 		
@@ -109,6 +106,8 @@ public class GameMain : SingletonMono<GameMain> {
 
 		//mainHud.Initiailize();
 		FadeManager.instance.FadeIn(1f,1f);
+
+		SoundManager.instance.PlayBGM("BGM/PracticeTheme",true,0.8f);
 	}
 
 	void Update ()

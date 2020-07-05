@@ -147,7 +147,7 @@ public class ResourceManager : Singleton<ResourceManager> {
 		AudioClip obj = Load(path, audioType) as AudioClip;
 		if(obj == null)
 		{
-			Debug.Log("file does not exist");
+			Debug.Log("file does not exist : " + fileName);
 			return null;
 		}
 		audio.Add(fileName,obj);

@@ -285,7 +285,7 @@ public abstract class WeaponBase
         if(!target.immortal)
         {
             EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/AttackHit_0").SetAngle(Random.Range(0f,360f));
-		    EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/AttackHit_1").SetAngle(Random.Range(0f,360f));
+		    EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/AttackHit_1").SetSortingOrder(5).SetAngle(Random.Range(0f,360f));
         }
     }
 

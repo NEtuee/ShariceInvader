@@ -85,7 +85,7 @@ public class Weapon_Lancer : WeaponBase
         _uiArrow.Play(false);
         _backUi.Play(false);
 
-        SoundManager.instance.Play("SE/Lancer_",false,2);
+        SoundManager.instance.Play("SE/Lancer_1",false);
 
         _attackTime = .18f;
         _plane.SetMaxSpeed(_mainSpeed + 5f);
@@ -107,7 +107,7 @@ public class Weapon_Lancer : WeaponBase
 
         Vector3 pos = _plane.position;
 		
-		_plane.SetPosition(pos + dir * (_plane._dodgeDist - .2f));
+		_plane.SetPosition(pos + dir * (_plane._dodgeDist + .7f));
         EffectManager.GetInstance().AddEffect(_plane.position - dir * 0.3f,"SpriteSet/Effects/Weapon/Lancer/Drive")
                                     .RealTimeProgress()
                                     .SetDisableEvent(ApearArrow)
@@ -178,7 +178,7 @@ public class Weapon_Lancer : WeaponBase
         {
             _driveArrow.SetAngle(_plane.angle);
             _driveArrow.SetPositionEm(_plane.position + _plane.direction * 0.25f);
-            _attackRange.SetPositionEm(_plane.position + _plane.direction * 0.35f);
+            _attackRange.SetPositionEm(_plane.position + _plane.direction * 1.7f);
         }
         else
         {
@@ -206,6 +206,8 @@ public class Weapon_Lancer : WeaponBase
         if(mainAttack)
 		{
 			ObjectManager.GetInstance().UpdateStop(0.1f);
+
+            SoundManager.instance.Play("SE/MainHit_",false,2,.5f,false);
 
             HitEffect(target);
             _plane.Hit(target);

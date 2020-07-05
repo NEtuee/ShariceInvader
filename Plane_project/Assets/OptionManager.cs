@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionManager : Singleton<OptionManager>
+public class OptionManager : SingletonMono<OptionManager>
 {
     private static readonly string _fileName = "Option.ini";
 
@@ -18,6 +18,14 @@ public class OptionManager : Singleton<OptionManager>
 
     public int resolutionPos = 0;
     public int language = 0;
+
+    public void Start()
+    {
+        SetSingleton(this);
+
+        LoadSettings();
+		UpdateOptions();
+    }
 
     public void LoadSettings()
     {
@@ -53,6 +61,11 @@ public class OptionManager : Singleton<OptionManager>
     public void UpdateOptions()
     {
         ScreenManager.GetInstance().SetScreenResolution(resolutionPos);
+        SoundManager.instance.SetBGMVolume(volume_Bgm);
+        SoundManager.instance.SetSEVolume(volume_Fx);
+
+        if(DialogManager.instance != null)
+            DialogManager.instance.langague = language;
     }
 
     public void SetResolution(int i) 
@@ -65,8 +78,16 @@ public class OptionManager : Singleton<OptionManager>
         language = i;
         DialogManager.instance.langague = i;
     }
-    public void SetBGMVolume(float val) {volume_Bgm = val;}
-    public void SetFXVolume(float val) {volume_Fx = val;}
+    public void SetBGMVolume(float val) 
+    {
+        volume_Bgm = val;
+        SoundManager.instance.SetBGMVolume(val);
+    }
+    public void SetFXVolume(float val) 
+    {
+        volume_Fx = val;
+        SoundManager.instance.SetSEVolume(val);
+    }
 
     public void SaveSettings()
     {

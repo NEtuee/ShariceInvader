@@ -18,6 +18,8 @@ public class BoomDrone : PlaneBase
     EffectBase charge = null;
     Color32 startColor = new Color32(77,136,235,255);
 
+    private SoundOption _buildup;
+
 	public override void firstSetting()
 	{
 		base.firstSetting();
@@ -76,6 +78,9 @@ public class BoomDrone : PlaneBase
                 Player.instance.AddForce(-Player.instance.velocity / 1.5f);
             }
 
+            _buildup.mainAudioItem.Stop();
+            SoundManager.instance.PlayRequest("SE/ElectricBoom");
+
             EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ElectricBoom/explosion",false);
 
             charge.SetActive(false);
@@ -112,6 +117,7 @@ public class BoomDrone : PlaneBase
                     empStun = true;
 
                     charge = EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ElectricBoom/charge",false,this);
+                    _buildup = SoundManager.instance.Play("SE/ElectricBuildUp",false);
                 }
             }
 

@@ -19,6 +19,8 @@ public class Player : PlaneBase {
 	private SpriteRenderer _outline;
 	private Sprite[] _outlineSprite;
 
+	private SoundOption _boostLoop = null;
+
 	int a = 0;
 
 	bool cuttingCurve = true;
@@ -100,6 +102,12 @@ public class Player : PlaneBase {
 	public override void progress(float deltaTime)
 	{
 		weaponInven.WeaponProgress(deltaTime);
+		
+		if(_boostLoop != null && ( _speed == 0f || _controllLock))
+		{
+			_boostLoop.mainAudioItem.Stop();
+			_boostLoop = null;
+		}
 
 		_outline.enabled = _immortal;
 		if(_immortal)
@@ -203,7 +211,10 @@ public class Player : PlaneBase {
 			_cam.Zoom(2.5f);
 			_cam.Glitch(0.3f);
 			_cam.Shake(0.2f, _direction / 10f);
-			Timer.SetTimeScaleTimer(0f,0.12f);
+			Timer.SetTimeScaleTimer(0f,0.14f);
+
+			SoundManager.instance.Play("SE/PlayerHit",false,-1,1f,false);
+
 			MainHud.instance.ActiveUIGlitch(.774f,.994f,.862f,.0253f,.5f);
 			MainHud.instance.ShieldDamage();
 			_hpRegen = false;
@@ -221,6 +232,13 @@ public class Player : PlaneBase {
 		_regenTimer = 3.5f;
 		
 		Debug.Log("HIT");
+	}
+
+	public override void ControllLock(float time)
+	{
+		if(_controllLockTimer == 0f)
+			SoundManager.instance.Play("SE/StunEffect",false);
+		base.ControllLock(time);
 	}
 
 	public override void deleteEvent()
@@ -297,6 +315,11 @@ public class Player : PlaneBase {
 
 			}
 		}
+		else if(ControllerEx.GetInstance().KeyPress("MainAttack"))
+		{
+			if(_boostLoop == null)
+				_boostLoop = SoundManager.instance.Play("SE/BoostLoop",true,-1,0f,false);
+		}
 		else if(!ControllerEx.GetInstance().KeyPress("MainAttack"))
 		{
 			_speed = 0f;
@@ -319,8 +342,8 @@ public class Player : PlaneBase {
 					SetAdditionalSpeed(3f,1f,true);
 					AddForce(_velocity * .5f);
 					
-					if(Timer.timeScale == 1f)
-						Timer.SetTimeScaleTimer(0.3f,0.5f,true);
+					// if(Timer.timeScale == 1f)
+					// 	Timer.SetTimeScaleTimer(0.3f,0.5f,true);
 
 
 					_cam.Shake(0.05f, _direction / 10f);

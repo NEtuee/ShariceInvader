@@ -167,6 +167,7 @@
      <Compile Include="Assets\Script\Game\Weapon\WeaponInventory.cs" />
      <Compile Include="Assets\Script\Test.cs" />
      <Compile Include="Assets\SoundManager.cs" />
+     <Compile Include="Assets\SoundOption.cs" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1\AttackHit_1_Ani.txt" />
@@ -181,7 +182,6 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost1\Boost1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Launch\Launch_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_0\AttackHit_0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Shield\2\2_Ani.txt" />
      <None Include="Assets\Resources\Dialogs\TestCharacter.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\End\End_Ani.txt" />
@@ -219,6 +219,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\BoostDrone\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
+     <None Include="Assets\Resources\Dialogs\TestDialog_Save.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DirectionArrow\DirectionArrow_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Aim\Apear\Apear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\0\0_Ani.txt" />
@@ -295,6 +296,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CircleRange\CircleRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Sparkle\2\2_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\New\New_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_0\AttackHit_0_Ani.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/LeeUmin/Desktop/Invader/ShariceInvader/Plane_project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

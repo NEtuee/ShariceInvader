@@ -20,7 +20,7 @@ public class DialogManager : SingletonMono<DialogManager>
     public class TextInfo
     {
         public string text = "";
-        public float autoTimer = 0f;
+        public float autoTimer = 2f;
     }
 
     private GameObject left;
@@ -69,6 +69,13 @@ public class DialogManager : SingletonMono<DialogManager>
 
         ReadCharacter();
         ReadDialog();
+
+    }
+
+    public void Start()
+    {
+        if(OptionManager.instance != null)
+            langague = OptionManager.instance.language;
     }
 
     void Update()
@@ -327,7 +334,17 @@ public class DialogManager : SingletonMono<DialogManager>
 
             if(!cut)
             {
-                s = s.Insert(i + 2,"\n");
+                try
+                {
+                    var l = i + 2;
+                    l = l > s.Length ? s.Length : l;
+                    s = s.Insert(l,"\n");
+                }
+                catch
+                {
+                    Debug.Log(s);
+                }
+                
             }
         }
 
@@ -360,7 +377,7 @@ public class DialogManager : SingletonMono<DialogManager>
                     for(int l = 3; l < scriptLen; ++l)
                     {
                         var t = new TextInfo();
-                        var ti = SetNewLine(line[l]).Split('%');
+                        var ti = line[l].Split('%');//SetNewLine(line[l]).Split('%');
                         t.text = ti[0];
 
                         if(ti.Length > 1 && ti[1] != "")

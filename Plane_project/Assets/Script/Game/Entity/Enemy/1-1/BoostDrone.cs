@@ -54,6 +54,14 @@ public class BoostDrone : PlaneBase
     {
 		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
+
+        float rat = Vector2.Distance(_position,CameraControll.instance.position);
+        rat = rat < 2f ? 1f : rat;
+		if(rat >= 2f) 
+		{
+			rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+		}
+        SoundManager.instance.PlayRequest("SE/Explosion_",3,rat,false);
     }
 
 	public override void deleteEvent()

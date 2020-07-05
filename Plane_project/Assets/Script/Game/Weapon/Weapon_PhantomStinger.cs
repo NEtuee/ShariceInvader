@@ -86,6 +86,7 @@ public class Weapon_PhantomStinger : WeaponBase
             mainAttack = true;
 
             _aimAni.ChangeAni("Lock",false);
+            SoundManager.instance.Play("SE/PSTarget",false,-1,1f,false);
 
             _dashAim = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/DashAim",false);
             _dashAim.PassiveDeactive();
@@ -135,6 +136,7 @@ public class Weapon_PhantomStinger : WeaponBase
         EffectManager.GetInstance().DrawBezierLine(_plane.position,_aimTarget.position,one,two,0.05f);
 
         SoundManager.instance.Play("SE/PS_",false,4);
+        SoundManager.instance.Play("SE/MainHit_",false,2,.5f,false);
     }
 
     public override bool SpecialAttack(Vector3 dir)
@@ -154,12 +156,17 @@ public class Weapon_PhantomStinger : WeaponBase
                 var effect = EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Effects/PhantomString_Aim/LockOn",false,_multiTarget[count])
                             .RealTimeProgress()
                             .PassiveDeactive()
-                            .DelayApear(i * 0.06f);
+                            .DelayApear((float)i * 0.06f);
                 effect.SetSortingOrder(10);
                 _aimEffects.Add(effect);
 
                 ++count;
             }
+        }
+
+        for(int i = 0; i < _multiTarget.Count; ++i)
+        {
+            SoundManager.instance.PlayRequest("SE/PSTarget",-1,1f,false,(float)i * 0.06f);
         }
 
         _dashAim = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/DashAim",false);
@@ -212,6 +219,7 @@ public class Weapon_PhantomStinger : WeaponBase
         EffectManager.GetInstance().DrawBezierLine(_plane.position,target.position,one,two,0.05f);
 
         SoundManager.instance.Play("SE/PS_",false,4);
+        SoundManager.instance.Play("SE/MainHit_",false,2,.5f,false);
 
         CameraControll.instance.Zoom(2.8f);
     }
@@ -235,6 +243,8 @@ public class Weapon_PhantomStinger : WeaponBase
                             .DelayApear(i * 0.03f)
                             .SetDirection(_plane.direction)
                             .SetSpeed(Random.Range(0.4f,1.3f));
+
+        SoundManager.instance.Play("SE/BurstActive_",false,2);
 
     }
 

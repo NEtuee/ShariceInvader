@@ -139,7 +139,7 @@ public class MissileDrone : PlaneBase
 			}
 		}
         
-		if(_hp < 15)
+		if(_hp < 200)
 		{
 			explosiveTimer -= deltaTime;
 

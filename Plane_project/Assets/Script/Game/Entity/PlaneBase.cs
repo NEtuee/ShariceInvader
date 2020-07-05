@@ -496,7 +496,8 @@ public abstract class PlaneBase : Collisionable {
 			{
 				AddForce(_direction * _speed);
 			}
-			else if(_fall)
+			
+			if(_fall)
 			{
 				_fallTimer -= deltaTime;
 				EffectManager.GetInstance().EmitParticles("Smoke",_position,1);
@@ -509,6 +510,15 @@ public abstract class PlaneBase : Collisionable {
 					_fallExplosion = true;
 					EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
 					EffectManager.GetInstance().Explosion(_position,15,0.2f);
+
+					float rat = Vector2.Distance(_position,CameraControll.instance.position);
+					rat = rat < 2f ? 1f : rat;
+					if(rat >= 2f) 
+					{
+						rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+					}
+
+					SoundManager.instance.PlayRequest("SE/SmallExplosion_",3,rat,false);
 				}
 			}
 		}
@@ -719,7 +729,7 @@ public abstract class PlaneBase : Collisionable {
 		_spriteDisapearTimer = time;
 	}
 
-	public void ControllLock(float time)
+	public virtual void ControllLock(float time)
 	{
 		if(_stunEffect == null && !deleted)
 		{
@@ -864,12 +874,13 @@ public abstract class PlaneBase : Collisionable {
 
 
 		float rat = Vector2.Distance(_position,CameraControll.instance.position);
+		rat = rat < 2f ? 1f : rat;
 		if(rat >= 2f) 
 		{
 			rat = 1f - (MathEx.abs((2f - rat)) * .1f);
 		}
 
-		SoundManager.instance.PlayRequest("SE/Explosion_",3,rat);
+		SoundManager.instance.PlayRequest("SE/Explosion_",3,rat,false);
 		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
 	}
