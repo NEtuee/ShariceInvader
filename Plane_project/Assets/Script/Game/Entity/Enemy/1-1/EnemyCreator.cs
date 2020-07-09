@@ -27,6 +27,13 @@ public static class EnemyCreator
         }
     }
 
+    public static void Marker(Vector2 worldPos)
+    {
+        ObjectManager _objManager = ObjectManager.GetInstance();
+		TheMarker marker = _objManager.AddObject<TheMarker>(Define.ObjectType.enemy,"TheMarker");
+		marker.SetPositionEm(worldPos);
+    }
+
     public static void BoostDrone(int count, Vector2 worldPos)
     {
         ObjectManager _objManager = ObjectManager.GetInstance();

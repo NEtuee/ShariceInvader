@@ -38,6 +38,7 @@ public class LaserIndicator : PlaneBase
         noneTarget = true;
 
         miniMapIcon.gameObject.SetActive(true);
+        SoundManager.instance.PlayRequest("SE/Marker/laserindicator");
     }
 
     public override void progress(float deltaTime)
@@ -81,6 +82,8 @@ public class LaserIndicator : PlaneBase
                 {
                     EffectManager.GetInstance().AddLineEffect(_position + new Vector3(0f,-10f,0f),_position + new Vector3(0f,10f,0f),.4f,.8f)
                                         .SetLerpWidth(0.001f,.1f);
+                    
+                    SoundManager.instance.PlayRequest("SE/Marker/LaserShot");
 
                     if(_isColl)
                     {

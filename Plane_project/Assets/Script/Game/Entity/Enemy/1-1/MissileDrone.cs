@@ -53,6 +53,14 @@ public class MissileDrone : PlaneBase
         RegisteCollisionList();
 	}
 
+	public override ObjectBase SetPositionEm(Vector3 pos)
+	{
+		base.SetPositionEm(pos);
+		_direction = pos.x > Player.instance.position.x ? Vector3.left : Vector3.right;
+
+		return this;
+	} 
+
 	public override void deleteEvent()
 	{
 		base.deleteEvent();
@@ -81,10 +89,9 @@ public class MissileDrone : PlaneBase
 
 	public override void progress(float deltaTime)
 	{            
-        _direction = Vector3.left;
 
-		float dist = Vector3.Distance(Player.instance.position,_position);
-		act = dist < 8f ? true : false;
+		//float dist = Vector3.Distance(Player.instance.position,_position);
+		act = true;//dist < 8f ? true : false;
 
 		if(close != 0f)
 		{
@@ -125,6 +132,8 @@ public class MissileDrone : PlaneBase
 
 				Vector3 pos = _position + shotPoint;
 				pos.x -= (float)(6 - shotCount) * (0.109f * -_scale.x);
+
+				SoundManager.instance.Play("SE/MissileDrone/MissileShot",false);
 
 				var obj = ObjectManager.GetInstance().AddObject<NPC>(Define.ObjectType.enemy,"commonMissile");
 				obj.SetPositionEm(pos).SetDirection(new Vector3(0f,1f));

@@ -98,7 +98,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
                     EnemyCreator.Missile(1,GetSpawnPos(3f));
                     break;
                     case 8:
-                        //obj.AddObject<TheMarker>(Define.ObjectType.enemy,"Marker").SetPositionEm(MouseWorldPos());
+                    EnemyCreator.Marker(GetSpawnPos(3f));
                     break;
                     case 9:
                     EnemyCreator.Dummy(1,GetSpawnPos(3f));
@@ -127,6 +127,9 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
             vec = Player.instance.position + vec;
 
             vec.y = vec.y <= 1f ? Random.Range(2f, 4f) : vec.y;
+
+            var height = ObjectManager.GetInstance()._place._mapHeight - 3f;
+            vec.y = height <= vec.y ? height : vec.y;
 
             return vec;
         }
@@ -178,7 +181,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
                 EnemyCreator.Missile(count,GetSpawnPos(3f));
                 break;
                 case 8:
-                    //obj.AddObject<TheMarker>(Define.ObjectType.enemy,"Marker").SetPositionEm(MouseWorldPos());
+                EnemyCreator.Marker(GetSpawnPos(3f));
                 break;
                 case 9:
                 EnemyCreator.Dummy(1,GetSpawnPos(3f));
@@ -197,6 +200,9 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
             vec = Player.instance.position + vec;
 
             vec.y = vec.y <= 1f ? Random.Range(2f, 4f) : vec.y;
+
+            var height = ObjectManager.GetInstance()._place._mapHeight - 3f;
+            vec.y = height <= vec.y ? height : vec.y;
 
             return vec;
         }

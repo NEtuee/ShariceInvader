@@ -25,6 +25,8 @@ public class OptionManager : SingletonMono<OptionManager>
 
         LoadSettings();
 		UpdateOptions();
+
+        DontDestroyOnLoad(this);
     }
 
     public void LoadSettings()

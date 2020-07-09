@@ -168,6 +168,7 @@
      <Compile Include="Assets\Script\Test.cs" />
      <Compile Include="Assets\SoundManager.cs" />
      <Compile Include="Assets\SoundOption.cs" />
+     <Compile Include="Assets\TitleScreenGlitch.cs" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\drone1C_launchflamecut_Ani.txt" />
      <None Include="Assets\Script\Shader\TestShader.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\AttackHit_1\AttackHit_1_Ani.txt" />

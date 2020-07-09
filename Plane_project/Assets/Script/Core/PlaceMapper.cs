@@ -67,7 +67,7 @@ public class PlaceMapper
     public int _placeCount;
     public int _centerCount;
 
-    private LineRenderer alertLine;
+    //private LineRenderer alertLine;
     private LineRenderer topLine;
 
     public void InitPlace(float mapWidth, float mapHeight, int placeCount)
@@ -91,7 +91,7 @@ public class PlaceMapper
 
         _centerCount = _placeCount / 2;
 
-        alertLine = GameObject.Find("AlertLine").GetComponent<LineRenderer>();
+        //alertLine = GameObject.Find("AlertLine").GetComponent<LineRenderer>();
         topLine = GameObject.Find("TopLine").GetComponent<LineRenderer>();
     }
 
@@ -138,9 +138,9 @@ public class PlaceMapper
         Vector3 pos = _left.leftBottom;
         pos.y = pos.y + 3f;
 
-        alertLine.SetPosition(0,pos);
-        pos.x = _right.leftBottom.x;
-        alertLine.SetPosition(1,pos);
+        //alertLine.SetPosition(0,pos);
+        //pos.x = _right.leftBottom.x;
+        //alertLine.SetPosition(1,pos);
 
         
         topLine.SetPosition(0,new Vector2(_left.leftBottom.x,_mapHeight));

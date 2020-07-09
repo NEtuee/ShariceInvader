@@ -49,6 +49,20 @@ public class Wand_Missile : PlaneBase
 
     }
 
+	public override ObjectBase SetPositionEm(Vector3 pos)
+	{
+		base.SetPositionEm(pos);
+		float rat = Vector2.Distance(_position,CameraControll.instance.position);
+		rat = rat < 2f ? 1f : rat;
+		if(rat >= 2f) 
+		{
+			rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+		}
+		SoundManager.instance.Play("SE/Missile_",false,4,rat);
+
+		return this;
+	}
+
     public override void progress(float deltaTime)
     {
         if(!act)

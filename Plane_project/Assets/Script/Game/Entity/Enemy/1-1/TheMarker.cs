@@ -82,8 +82,8 @@ public class TheMarker : PlaneBase
     private Vector3 _targetDirection;
 
 
-
-
+    private SoundOption _attackSound;
+    private SoundOption _loopSound;
 
 
 
@@ -133,6 +133,9 @@ public class TheMarker : PlaneBase
 
         if(!_archer.deleted)
             _archer.Delete();
+        
+        // _loopSound.mainAudioItem.Stop();
+        // _loopSound.mainAudioItem.gameObject.SetActive(false);
 	}
 
     public override void initialize()
@@ -150,6 +153,14 @@ public class TheMarker : PlaneBase
         _frictionFactor = 0.03f;
 
         RegisteCollisionList();
+
+        float rat = Vector2.Distance(_position,CameraControll.instance.position);
+		rat = rat < 2f ? 1f : rat;
+		if(rat >= 2f) 
+		{
+			rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+		}
+        //_loopSound = SoundManager.instance.Play("SE/Marker/loopSound",true,-1,rat);
     }
 
     public override void BeforeCreated()
@@ -199,6 +210,15 @@ public class TheMarker : PlaneBase
 
     public override void progress(float deltaTime)
     {
+        float rat = Vector2.Distance(_position,CameraControll.instance.position);
+		rat = rat < 2f ? 1f : rat;
+		if(rat >= 2f) 
+		{
+			rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+		}
+
+        //_loopSound.volRatio = rat;
+
         MarkerProgress(deltaTime);
         WandsProgress(deltaTime);
         
@@ -231,6 +251,7 @@ public class TheMarker : PlaneBase
                 if(_sparkleTimer <= 0f)
                 {
                     EffectManager.GetInstance().AddEffect(_position + MathEx.RandomCircle(0.08f),"SpriteSet/Effects/Sparkle_small").SetSortingOrder(3);
+                    SoundManager.instance.Play("SE/Marker/Beep",false);
                     _sparkleTimer = _shotTimer * 0.2f;
                 }
 
@@ -241,6 +262,9 @@ public class TheMarker : PlaneBase
                     _shot = false;
                     _shotTimer = Random.Range(3.5f,4.5f);
 
+                    _attackSound.mainAudioItem.Stop();
+                    _attackSound = null;
+
                     var playerPos = Player.instance.position;
                     var randFactor = 7f * (1f - (_hp / maxHp)) + 4f * (1f - (_defenders.Count / 4f));
                     for(int i = 4; i >= _defenders.Count; --i)
@@ -250,6 +274,7 @@ public class TheMarker : PlaneBase
                     }
 
                     EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Sparkle_big").SetSortingOrder(3);
+                    SoundManager.instance.Play("SE/Marker/Beep",false);
 
                     Fold();
                     RandomSpread();
@@ -288,12 +313,15 @@ public class TheMarker : PlaneBase
                     {
                         ChangeDirection(Vector3.up);
                     }
+
+                    _attackSound = SoundManager.instance.Play("SE/Marker/Attack",false);
                     
                     Spread();
 
                     if(!_piercerShot)
                     {
                         ShotPiercer();
+                        SoundManager.instance.Play("SE/Marker/PiercerOn",false);
                     }
                 }
 

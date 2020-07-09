@@ -162,7 +162,8 @@ public class ResultUIControll : MonoBehaviour
                 hitCount.SetText(((int)Mathf.Lerp(0f,(float)_hitCount,a)).ToString());
             }
 
-            mainScore.SetText(((int)Mathf.Lerp((float)_prevScore,(float)_score,a)).ToString());
+            if(ResultRecorder.GetInstance().clear)
+                mainScore.SetText(((int)Mathf.Lerp((float)_prevScore,(float)_score,a)).ToString());
 
             _timer += Time.deltaTime;
 
@@ -172,11 +173,12 @@ public class ResultUIControll : MonoBehaviour
                 _progressBar = false;
 
                 _progress = _progressTarget;
-
-                mainScore.SetText(_score.ToString());
+                if(ResultRecorder.GetInstance().clear)
+                    mainScore.SetText(_score.ToString());
             }
 
-            _progressMat.SetFloat("_Progress",_progress);
+            if(ResultRecorder.GetInstance().clear)
+                _progressMat.SetFloat("_Progress",_progress);
         }
 
         return _progressBar;

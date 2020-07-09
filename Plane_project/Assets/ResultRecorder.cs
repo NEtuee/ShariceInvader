@@ -9,7 +9,7 @@ public class ResultRecorder : Singleton<ResultRecorder>
     public int damage = 0;
 
     public int score = 0;
-    public int maxScore = 5;
+    public int maxScore = 1680;
 
     public bool clear = false;
 
@@ -39,14 +39,18 @@ public class ResultRecorder : Singleton<ResultRecorder>
 
     public int CurrentTimeScore()
     {
-        return 1;
+        var i = 1000 - (int)timer;
+        i = i < 0 ? 0 : i;
+        return i;
     }
     public int CurrentComboScore()
     {
-        return 1;
+        return combo * 15;
     }
     public int CurrentDamageScore()
     {
-        return 1;
+        var i = 500 - damage;
+        i = i < 0 ? 0 : i;
+        return i;
     }
 }

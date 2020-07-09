@@ -22,6 +22,8 @@ public class TitleControll : MonoBehaviour
     {
         foreach(var item in items)
             item.SetActive(false);
+        
+        SoundManager.instance.PlayBGM("BGM/MainTheme",true,0.8f);
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class TitleControll : MonoBehaviour
                 if(Input.anyKey && !_fade)
                 {
                     _fade = true;
+                    SoundManager.instance.Play("SE/MainHit_",false,2,.5f,false);
                     FadeManager.instance.FadeOut(0f);
                 }
             }

@@ -173,6 +173,7 @@ public class Wand_Piercer : WandsBase
     {
         EffectManager.GetInstance().AddLineEffect(_position ,_position + dir * 100f,.4f,.8f)
                                         .SetLerpWidth(0.001f,.1f);
+        SoundManager.instance.PlayRequest("SE/Marker/LaserShot");
 
         var list = CollisionManager.GetInstance().GetCollisionList(Define.ObjectType.player);
 

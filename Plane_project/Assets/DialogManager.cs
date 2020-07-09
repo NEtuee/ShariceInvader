@@ -20,7 +20,7 @@ public class DialogManager : SingletonMono<DialogManager>
     public class TextInfo
     {
         public string text = "";
-        public float autoTimer = 2f;
+        public float autoTimer = 4f;
     }
 
     private GameObject left;
@@ -47,7 +47,7 @@ public class DialogManager : SingletonMono<DialogManager>
     public bool canSkip = true;
     public bool autoScroll = false;
     public int speachSide = -1;
-    public int newLineLength = 1;
+    public int[] newLineLength;
     public float textScrollTime;
     
 
@@ -316,12 +316,13 @@ public class DialogManager : SingletonMono<DialogManager>
         }
     }
 
-    public string SetNewLine(string s)
+    public string SetNewLine(string s, int lang)
     {
-        for(int i = newLineLength - 1; i < s.Length; i += newLineLength)
+        for(int i = newLineLength[lang] - 1; i < s.Length; i += newLineLength[lang])
         {
             bool cut = false;
-            for(int j = i; j >= 0; --j)
+            int target = lang == 1 ? i - 3 : 0;
+            for(int j = i; j >= target; --j)
             {
                 if(s[j] == ' ')
                 {
@@ -377,7 +378,7 @@ public class DialogManager : SingletonMono<DialogManager>
                     for(int l = 3; l < scriptLen; ++l)
                     {
                         var t = new TextInfo();
-                        var ti = line[l].Split('%');//SetNewLine(line[l]).Split('%');
+                        var ti = SetNewLine(line[l],l - 3).Split('%');//line[l].Split('%');
                         t.text = ti[0];
 
                         if(ti.Length > 1 && ti[1] != "")

@@ -30,6 +30,7 @@ public class SoundManager : SingletonMono<SoundManager> {
 	private float _targetVol = 0f;
 
 	private SoundOption _loop;
+	private AudioClip _changeBGM;
 	private SoundOption _scoreGet;
 
 	public void Awake()
@@ -92,31 +93,6 @@ public class SoundManager : SingletonMono<SoundManager> {
 			//_playList.Clear();
 		}
 
-		if(_loop != null)
-		{
-			_loop.mainAudioItem.mute = !bgm;
-
-			if(_bgmFade)
-			{
-				_loop.mainAudioItem.volume += Time.deltaTime * 0.1f;
-				float target = (bgmVol * masterVol) * _loop.volRatio;
-				if(_loop.mainAudioItem.volume >= target)
-				{
-					_loop.mainAudioItem.volume = target;
-					_bgmFade = false;
-				}
-			}
-
-			// if(_loop.slowMo)
-			// {
-			// 	var scale = Timer.timeScale;
-			// 	scale = scale <= 0.1f ? 0.1f : scale;
-			// 	Debug.Log(_loop.mainAudioItem.pitch);
-			// 	_loop.mainAudioItem.pitch = Mathf.Lerp(_loop.mainAudioItem.pitch,scale,0.1f);
-			// 	Debug.Log(_loop.mainAudioItem.pitch);
-			// }
-		}
-
 		_audioCache.Loop((audio)=>{
 			if(audio.slowMo)
 			{
@@ -125,7 +101,7 @@ public class SoundManager : SingletonMono<SoundManager> {
 				audio.mainAudioItem.pitch = Mathf.Lerp(audio.mainAudioItem.pitch,scale,0.1f);
 			}
 
-			if(audio.type == SoundOption.SoundType.BackgroundMusic)
+			if(audio.type == SoundOption.SoundType.BackgroundMusic && !_bgmFade)
 			{
 				audio.mainAudioItem.volume = (bgmVol * masterVol) * audio.volRatio;
 			}
@@ -134,9 +110,40 @@ public class SoundManager : SingletonMono<SoundManager> {
 				audio.mainAudioItem.volume = (seVol * masterVol) * audio.volRatio;
 			}
 
-			if(!audio.mainAudioItem.isPlaying && !audio.mainAudioItem.loop)
+			if(!audio.mainAudioItem.isPlaying && audio.type == SoundOption.SoundType.SoundEffect)
 				audio.gameObject.SetActive(false);
 		});
+
+		if(_loop != null)
+		{
+			_loop.mainAudioItem.mute = !bgm;
+
+			if(_bgmFade)
+			{
+				if(_changeBGM != null)
+				{
+					_loop.mainAudioItem.volume -= Time.deltaTime * 1f;
+					if(_loop.mainAudioItem.volume <= 0f)
+					{
+						_loop.mainAudioItem.volume = 0f;
+						_loop.mainAudioItem.clip = _changeBGM;
+						_loop.mainAudioItem.Play();
+						_changeBGM = null;
+					}
+				}
+				else
+				{
+					_loop.mainAudioItem.volume += Time.deltaTime * 1f;
+					float target = (bgmVol * masterVol) * _loop.volRatio;
+					if(_loop.mainAudioItem.volume >= target)
+					{
+						_loop.mainAudioItem.volume = target;
+						_bgmFade = false;
+					}
+				}
+				
+			}
+		}
 	}
 
 	public void StopLoop()
@@ -221,7 +228,16 @@ public class SoundManager : SingletonMono<SoundManager> {
 		else
 		{
 			if(_loop.path == path)
-				return null;
+				return _loop;
+			
+			if(fade)
+			{
+				_changeBGM = ResourceManager.GetInstance().GetAudioClip(path);
+				_loop.path = path;
+				_bgmFade = true;
+
+				return _loop;
+			}
 		}
 
 		_loop.path = path;
