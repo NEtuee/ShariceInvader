@@ -62,6 +62,8 @@ public class BoomDrone : PlaneBase
 		base.deleteEvent();
 		ComboCount.instance.AddComboCount(this);
 
+        EffectManager.GetInstance().AddFakeLight(_position,Random.Range(5f,6f),.3f,new Color(1f,.1f,0f,.2f));
+
         if(rangeCircle != null)
             rangeCircle.SetActive(false);
 	}

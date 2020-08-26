@@ -210,6 +210,14 @@ public class SimpleRect
 		_y = y;
 	}
 
+	public void UpdateRect(float l, float u, float r, float d)
+	{
+		_left = l;
+		_up = u;
+		_right = r;
+		_down = d;
+	}
+
 	public void UpdateRect(Vector2 pos)
 	{
 		_pos = pos;
@@ -265,6 +273,120 @@ public abstract class SimpleCollider
 			}
 			return MathEx.DistanceFromPointToLine(point,lineStart,lineEnd) <= radiusOne + radiusTwo;
 		}
+	}
+
+	public static int CircleRaycast(Vector2 point, float radius, Vector2 start, Vector2 end, out Vector2 intersection)
+	{
+		Vector2 i1 = new Vector2();
+		Vector2 i2 = new Vector2();
+		//int result = FindLineCircleIntersections(point.x,point.y,radius,start,end,out i1, out i2);
+		int result = LineCircleIntersection(point,radius,start,end,out i1,out i2);
+
+		if(result == 1)
+			intersection = i1;
+		else if(result == 2)
+		{
+			var len1 = Vector2.Distance(start,i1);
+			var len2 = Vector2.Distance(start,i2);
+
+			intersection = len1 < len2 ? i1 : i2;;
+		}
+		else
+		{
+			intersection = Vector2.zero;
+		}
+		return result;
+	}
+
+	public static int LineCircleIntersection(Vector2 center, float radius, Vector2 start, Vector2 end, 
+											out Vector2 intersection1, out Vector2 intersection2)
+	{
+		var dir = end - start;
+		var save = dir.x;
+		dir.x = dir.y;
+		dir.y = -save;
+
+		Vector2 perpend = Vector2.zero;
+		if(!MathEx.Line_Line(start,end,center - dir,center + (dir),ref perpend))
+		{
+			intersection1 = Vector2.zero;
+			intersection2 = Vector2.zero;
+
+			return 0;
+		}
+
+		var dist = Vector3.Distance(center,perpend);
+
+		if(dist > radius)
+		{
+			intersection1 = Vector2.zero;
+			intersection2 = Vector2.zero;
+
+			return 0;
+		}
+		else if(dist == radius)
+		{
+			intersection1 = perpend;
+			intersection2 = Vector2.zero;
+
+			return 1;
+		}
+		else
+		{
+			var len = Mathf.Sqrt(Mathf.Pow(radius,2f) - Mathf.Pow(dist,2f));
+			Vector2 vec = (start - end).normalized * len;
+
+			intersection1 = perpend - vec;
+			intersection2 = perpend + vec;
+
+			return 2;
+		}
+	}
+
+	public static int FindLineCircleIntersections(
+    float cx, float cy, float radius,
+    Vector2 point1, Vector2 point2,
+    out Vector2 intersection1, out Vector2 intersection2)
+	{
+	    float dx, dy, A, B, C, det, t;
+
+	    dx = point2.x - point1.x;
+	    dy = point2.y - point1.y;
+
+	    A = dx * dx + dy * dy;
+	    B = 2 * (dx * (point1.x - cx) + dy * (point1.y - cy));
+	    C = (point1.x - cx) * (point1.x - cx) +
+	        (point1.y - cy) * (point1.y - cy) -
+	        radius * radius;
+
+	    det = B * B - 4 * A * C;
+	    if ((A <= 0.0000001) || (det < 0))
+	    {
+	        // No real solutions.
+	        intersection1 = new Vector2(float.NaN, float.NaN);
+	        intersection2 = new Vector2(float.NaN, float.NaN);
+	        return 0;
+	    }
+	    else if (det == 0)
+	    {
+	        // One solution.
+	        t = -B / (2 * A);
+	        intersection1 =
+	            new Vector2(point1.x + t * dx, point1.y + t * dy);
+	        intersection2 = new Vector2(float.NaN, float.NaN);
+	        return 1;
+	    }
+	    else
+	    {
+	        // Two solutions.
+	        t = (float)((-B + Math.Sqrt(det)) / (2 * A));
+	        intersection1 =
+	            new Vector2(point1.x + t * dx, point1.y + t * dy);
+	        t = (float)((-B - Math.Sqrt(det)) / (2 * A));
+	        intersection2 =
+	            new Vector2(point1.x + t * dx, point1.y + t * dy);
+	        return 2;
+	    }
 	}
 
 	public static bool PointInCircle(Vector2 point, Vector2 circlePos, float radius)

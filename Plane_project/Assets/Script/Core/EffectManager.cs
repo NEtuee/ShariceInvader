@@ -8,11 +8,13 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 	private ResourceManager _resManager;
 	private Define.SimpleCache<EffectBase> _cache;
 	private Define.SimpleCache<LineEffectBase> _lineCache;
+	private Define.SimpleCache<FakePointLight> _lightCache;
 
 	private const int count = 100;
 	private float timer = 0f;
 	private Action<EffectBase> _effectProgress;
 	private Action<LineEffectBase> _lineEffectProgress;
+	private Action<FakePointLight> _lightProgress;
 
 	private Dictionary<string,ParticleSystem> _particles = new Dictionary<string, ParticleSystem>();
 	private ParticleSystem.EmitParams _param = new ParticleSystem.EmitParams();
@@ -40,8 +42,17 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		});
 		_lineCache.CreateObject(5);
 
+
+		obj = _resManager.GetPrefab("FakeLight");
+		_lightCache = new Define.SimpleCache<FakePointLight>(obj,(FakePointLight e)=>{
+			e.SetNecessary();
+			e.firstSetting();
+		});
+		_lightCache.CreateObject(5);
+
 		_effectProgress = new Action<EffectBase>(Loop);
 		_lineEffectProgress = new Action<LineEffectBase>(LineLoop);
+		_lightProgress = new Action<FakePointLight>(LightLoop);
 
 		GameObject trail = GameObject.FindGameObjectWithTag("BezierTrail");
 		_bezierLine = trail.GetComponent<TrailRenderer>();
@@ -64,6 +75,11 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		return _lineCache.ActiveObject().Active(start,end,width,timer);
 	}
 
+	public FakePointLight AddFakeLight(Vector3 pos, float radius, float time, Color color)
+	{
+		return _lightCache.ActiveObject().Active(pos,radius,time,color);
+	}
+
 	public void GetParticleSystems()
 	{
 		GameObject obj = GameObject.FindGameObjectWithTag("ParticleSystems");
@@ -81,6 +97,7 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		timer = deltaTIme;
 		_cache.Loop(_effectProgress);
 		_lineCache.Loop(_lineEffectProgress);
+		_lightCache.Loop(_lightProgress);
 	}
 
 	public void Loop(EffectBase e)
@@ -92,6 +109,12 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 	public void LineLoop(LineEffectBase e)
 	{
 		e.progress(timer);
+	}
+
+	public void LightLoop(FakePointLight e)
+	{
+		e.progress(timer);
+		e.UpdateTransform();
 	}
 
 	public void EmitParticles(string name, Vector3 pos,int count)

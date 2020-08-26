@@ -7,6 +7,7 @@ public abstract class Collisionable : Drawable {
 	public Define.SimpleCollider coll{get{return _collider;}}
 	public int collisionCount{get{return _collisions.Count;}}
 	public bool noClip{get{return _noclip;}}
+	public bool allowMultiCollision = false;
 
 	
 	protected Define.SimpleCollider _collider;
@@ -39,7 +40,8 @@ public abstract class Collisionable : Drawable {
 
 		if(c)
 		{
-			_collisions.Add(target);
+			if(!target.allowMultiCollision)
+				_collisions.Add(target);
 			target.CollisionSync(this);
 		}
 		
@@ -58,7 +60,7 @@ public abstract class Collisionable : Drawable {
 
 	public void CollisionSync(Collisionable target)
 	{
-		if(!_collisions.Contains(target))
+		if(!_collisions.Contains(target) && !target.allowMultiCollision)
 			_collisions.Add(target);
 	}
 

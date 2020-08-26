@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Animation\Line.cs" />
      <Compile Include="Assets\Animation\TitleControll.cs" />
+     <Compile Include="Assets\castTest.cs" />
      <Compile Include="Assets\Debugger.cs" />
      <Compile Include="Assets\DialogManager.cs" />
      <Compile Include="Assets\FadeManager.cs" />
@@ -94,6 +95,7 @@
      <Compile Include="Assets\Script\Core\Drawable.cs" />
      <Compile Include="Assets\Script\Core\EffectBase.cs" />
      <Compile Include="Assets\Script\Core\EffectManager.cs" />
+     <Compile Include="Assets\Script\Core\GizmoHelperEx.cs" />
      <Compile Include="Assets\Script\Core\IOManager.cs" />
      <Compile Include="Assets\Script\Core\KeyInputManager.cs" />
      <Compile Include="Assets\Script\Core\LineEffectBase.cs" />
@@ -155,6 +157,7 @@
      <Compile Include="Assets\Script\Game\Entity\PlaneBase.cs" />
      <Compile Include="Assets\Script\Game\Entity\Player.cs" />
      <Compile Include="Assets\Script\Game\Entity\SupplyShip.cs" />
+     <Compile Include="Assets\Script\Game\FakePointLight.cs" />
      <Compile Include="Assets\Script\Game\GameMain.cs" />
      <Compile Include="Assets\Script\Game\StageManager.cs" />
      <Compile Include="Assets\Script\Game\UI\ComboCount.cs" />
@@ -232,6 +235,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Front\Front_Ani.txt" />
      <None Include="Assets\Script\Shader\ColorLerp.shader" />
      <None Include="Assets\Resources\Sprites\UI\MainHud\ShieldDamage\ShieldDamage_Ani.txt" />
+     <None Include="Assets\Script\Shader\FakeShadow.shader" />
      <None Include="Assets\Script\Shader\SpriteOutline.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Burst\Burst_Ani.txt" />
