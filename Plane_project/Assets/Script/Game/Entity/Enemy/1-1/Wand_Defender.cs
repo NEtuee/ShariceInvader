@@ -26,6 +26,13 @@ public class Wand_Defender : WandsBase
         hpChangeEvent += HitEvent;
     }
 
+    public override void deleteEvent()
+    {
+        base.deleteEvent();
+
+        EffectManager.GetInstance().AddFakeLight(_position,Random.Range(5f,6f),.3f,new Color(1f,.1f,0f,.2f));
+    }
+
     public void HitEvent()
     {
         _hp += guardFactor;

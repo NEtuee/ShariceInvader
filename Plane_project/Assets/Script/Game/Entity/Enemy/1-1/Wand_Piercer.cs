@@ -47,6 +47,8 @@ public class Wand_Piercer : WandsBase
         {
             _line.SetActive(false);
         }
+
+        EffectManager.GetInstance().AddFakeLight(_position,Random.Range(5f,6f),.3f,new Color(1f,.1f,0f,.2f));
     }
 
     public override void initialize()
@@ -191,6 +193,8 @@ public class Wand_Piercer : WandsBase
 		        {
                     var p = ((PlaneBase)list[i]);
                     p.Hit(50,this);
+
+                    EffectManager.GetInstance().AddFakeLight(p.position,Random.Range(5f,6f),.3f,new Color(1f,.1f,0f,.2f));
                     Debug.Log("LaserHit");
 		        }
             }

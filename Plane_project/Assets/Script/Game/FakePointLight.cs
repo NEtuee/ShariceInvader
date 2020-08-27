@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FakePointLight : Collisionable
 {
+    public Shader shader;
     private List<Collisionable> _coll = new List<Collisionable>();
 
     private SortedDictionary<float,Vector3> _angVert = new SortedDictionary<float, Vector3>();
@@ -41,7 +42,7 @@ public class FakePointLight : Collisionable
         _mainMesh = new Mesh();
 
         _mesh.mesh = _mainMesh;
-        _meshRenderer.material = new Material(Shader.Find("Custom/FakeShadow"));
+        _meshRenderer.material = new Material(shader);
         _meshRenderer.sortingOrder = - 8;
         //_meshRenderer.color = new Color(1f,1f,1f,0.3f);
 

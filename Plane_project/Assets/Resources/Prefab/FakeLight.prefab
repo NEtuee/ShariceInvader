@@ -49,3 +49,5 @@ MonoBehaviour:
   tp: {fileID: 0}
   obj: {fileID: 0}
   type: 0
+  allowMultiCollision: 0
+  shader: {fileID: 4800000, guid: 4b2d2c985fdeb5f418d22a2573ef0b07, type: 3}

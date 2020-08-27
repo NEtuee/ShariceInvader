@@ -63,12 +63,12 @@
 	{
 		fixed4 c = _Color;
         
-        // if(IN.texcoord.x < 0.05)
-        // {
-        //     c.a *= (1 - (IN.texcoord.x / 0.05)) * 2;
-        // }
+        if(IN.texcoord.x < 0.05)
+        {
+            c.a *= (1 - (IN.texcoord.x / 0.05)) * 2;
+        }
 
-        // c.a *= (1 - IN.texcoord.x) * 2;
+        c.a *= (1 - IN.texcoord.x) * 2;
 
 
 		return c;
