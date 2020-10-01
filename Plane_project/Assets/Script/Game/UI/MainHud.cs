@@ -15,6 +15,7 @@ public class MainHud : SingletonMono<MainHud>
     public SpriteFontTextMesh wave_1;
 
     public GameObject hpContainer;
+    public GameObject hpGagueContainer;
     public SpriteRenderer[] weaponGagueContainer;
 
     public Transform mainUITransform;
@@ -37,6 +38,7 @@ public class MainHud : SingletonMono<MainHud>
 
     protected AnimationControllEx _uiAni;
     protected AnimationControllEx _shieldAni;
+    protected AnimationKeyEvent _shieldKeyEvent;
 
     private float _hpBarDisapear = 0f;
     private float _waveTimer = 0f;
@@ -80,6 +82,14 @@ public class MainHud : SingletonMono<MainHud>
         _shieldAni.AddAnimation("Recover","UI/MainHud/HP/Recover");
         _shieldAni.AddAnimation("Closing","UI/MainHud/HP/Closing");
 
+        _shieldKeyEvent = new AnimationKeyEvent();
+        CreateShieldAnimationkeyEvent();
+
+
+
+
+
+
         mainUITransform.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
@@ -109,7 +119,8 @@ public class MainHud : SingletonMono<MainHud>
         Vector3 dir = -(velo.magnitude > 1f ? velo.normalized : velo);
 
         _uiAni.AnimationProgress(Timer.noneScaledDeltaTime);
-        _shieldAni.AnimationProgress(Timer.noneScaledDeltaTime);
+        int frame = _shieldAni.AnimationProgress(Timer.noneScaledDeltaTime);
+        _shieldKeyEvent.EventEntry(_shieldAni.currAni,frame);
         
         transform.position = _followTarget.position + dir * 0.13f;
         mainUITransform.transform.position = _followTarget.position + dir * 0.1f;
@@ -251,8 +262,7 @@ public class MainHud : SingletonMono<MainHud>
 
     public void ShieldDamage()
     {
-        if(_shieldAni.currAni == "Hit"
-            || _shieldAni.currAni == "FirstHit")
+        if(hpContainer.activeInHierarchy)
             _shieldAni.ChangeAni("Hit",false);
         else
             _shieldAni.ChangeAni("FirstHit",false);
@@ -322,6 +332,49 @@ public class MainHud : SingletonMono<MainHud>
         {
             _distLine.enabled = false;
         }
+    }
+
+    public void CreateShieldAnimationkeyEvent()
+    {
+        _shieldKeyEvent.AddActiveEvent("FirstHit",0,hpGagueContainer.transform,false);
+        _shieldKeyEvent.AddActiveEvent("FirstHit",7,hpGagueContainer.transform,true);
+        _shieldKeyEvent.AddTranslateEvent("FirstHit",7,hpGagueContainer.transform,new Vector3(0f,-0.37f));
+        _shieldKeyEvent.AddTranslateEvent("FirstHit",9,hpGagueContainer.transform,new Vector3(0f,-0.38f));
+
+        _shieldKeyEvent.AddActiveEvent("FirstHit",0,hpBar.transform,false);
+        _shieldKeyEvent.AddActiveEvent("FirstHit",7,hpBar.transform,true);
+        _shieldKeyEvent.AddTranslateEvent("FirstHit",7,hpBar.transform,new Vector3(0.67f,-0.60f));
+        _shieldKeyEvent.AddTranslateEvent("FirstHit",9,hpBar.transform,new Vector3(0.67f,-0.61f));
+
+        _shieldKeyEvent.AddActiveEvent("Hit",0,hpGagueContainer.transform,true);
+        _shieldKeyEvent.AddTranslateEvent("Hit",0,hpGagueContainer.transform,new Vector3(0f,-.4f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",1,hpGagueContainer.transform,new Vector3(0f,-.34f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",2,hpGagueContainer.transform,new Vector3(0f,-.39f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",3,hpGagueContainer.transform,new Vector3(0f,-.36f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",4,hpGagueContainer.transform,new Vector3(0f,-.37f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",5,hpGagueContainer.transform,new Vector3(0f,-.38f));
+        
+        _shieldKeyEvent.AddActiveEvent("Hit",0,hpBar.transform,false);
+        _shieldKeyEvent.AddActiveEvent("Hit",1,hpBar.transform,true);
+        _shieldKeyEvent.AddTranslateEvent("Hit",1,hpBar.transform,new Vector3(.67f,-.57f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",2,hpBar.transform,new Vector3(.67f,-.59f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",3,hpBar.transform,new Vector3(.67f,-.60f));
+        _shieldKeyEvent.AddTranslateEvent("Hit",4,hpBar.transform,new Vector3(.67f,-.61f));
+
+
+        _shieldKeyEvent.AddActiveEvent("Recover",0,hpGagueContainer.transform,true);
+        _shieldKeyEvent.AddTranslateEvent("Recover",0,hpGagueContainer.transform,new Vector3(0f,-.36f));
+        _shieldKeyEvent.AddTranslateEvent("Recover",1,hpGagueContainer.transform,new Vector3(0f,-.37f));
+        _shieldKeyEvent.AddTranslateEvent("Recover",2,hpGagueContainer.transform,new Vector3(0f,-.38f));
+        
+        _shieldKeyEvent.AddActiveEvent("Recover",0,hpBar.transform,true);
+        _shieldKeyEvent.AddTranslateEvent("Recover",0,hpBar.transform,new Vector3(.67f,-.57f));
+        _shieldKeyEvent.AddTranslateEvent("Recover",1,hpBar.transform,new Vector3(.67f,-.59f));
+        _shieldKeyEvent.AddTranslateEvent("Recover",2,hpBar.transform,new Vector3(.67f,-.60f));
+        _shieldKeyEvent.AddTranslateEvent("Recover",3,hpBar.transform,new Vector3(.67f,-.61f));
+
+        _shieldKeyEvent.AddActiveEvent("Closing",0,hpGagueContainer.transform,false);
+        _shieldKeyEvent.AddActiveEvent("Closing",0,hpBar.transform,false);
     }
 
 }

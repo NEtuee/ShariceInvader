@@ -84,6 +84,7 @@
      <Compile Include="Assets\ScreenManager.cs" />
      <Compile Include="Assets\Script\Core\AnimationControll.cs" />
      <Compile Include="Assets\Script\Core\AnimationControllEx.cs" />
+     <Compile Include="Assets\Script\Core\AnimationKeyEvent.cs" />
      <Compile Include="Assets\Script\Core\BackgroundManager.cs" />
      <Compile Include="Assets\Script\Core\BackgroundScroller.cs" />
      <Compile Include="Assets\Script\Core\CameraControll.cs" />

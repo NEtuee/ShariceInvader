@@ -1,18 +1,14 @@
 fileFormatVersion: 2
-guid: 9cb61b482c9d3ff4ba165944f54d6464
+guid: 0ec76bef7e9a28440bd022b4c5ae2aa2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hpbar_firsthit_0
-    21300002: hpbar_firsthit_1
-    21300004: hpbar_firsthit_2
-    21300006: hpbar_firsthit_3
-    21300008: hpbar_firsthit_4
-    21300010: hpbar_firsthit_5
-    21300012: hpbar_firsthit_6
-    21300014: hpbar_firsthit_7
-    21300016: hpbar_firsthit_8
-    21300018: hpbar_firsthit_9
-    21300020: hpbar_firsthit_10
+    21300000: hpbar_hit_0
+    21300002: hpbar_hit_1
+    21300004: hpbar_hit_2
+    21300006: hpbar_hit_3
+    21300008: hpbar_hit_4
+    21300010: hpbar_hit_5
+    21300012: hpbar_hit_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -58,7 +54,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -74,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,7 +81,18 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,221 +102,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hpbar_firsthit_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 216
-        width: 155
-        height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c7bf059cd4c69e429a9e36fd740f5b7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hpbar_firsthit_1
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 216
-        width: 155
-        height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38d75c69e228f2242822a11e5b93fb8d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hpbar_firsthit_2
-      rect:
-        serializedVersion: 2
-        x: 310
-        y: 216
-        width: 155
-        height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0415e8b07a07944b9b1ed81208b9aaf
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hpbar_firsthit_3
+      name: hpbar_hit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 144
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20292d28d3d6b624aa414da5f5e981c1
+      spriteID: 80e3fe36ffcb2ff42b7519359100a3cb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hpbar_firsthit_4
+      name: hpbar_hit_1
       rect:
         serializedVersion: 2
         x: 155
         y: 144
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7e829bc86c462e4cbf35c1b93cde842
+      spriteID: 7fb209f9efa822b44bd96c342d02f4c6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hpbar_firsthit_5
+      name: hpbar_hit_2
       rect:
         serializedVersion: 2
         x: 310
         y: 144
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0cce736896aa9c46887ee945c9b2603
+      spriteID: fed55f8394e6a77418683bf3583345bf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hpbar_firsthit_6
+      name: hpbar_hit_3
       rect:
         serializedVersion: 2
         x: 0
         y: 72
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 788b37c8f9dc0594dae25455bf33f975
+      spriteID: 84d3e75108841b6449d29b3036ad805f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hpbar_firsthit_7
+      name: hpbar_hit_4
       rect:
         serializedVersion: 2
         x: 155
         y: 72
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 734e4597fdc337e4dbe9e6c6eae3314e
+      spriteID: d190861644e42e143a5629b24a18d119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hpbar_firsthit_8
+      name: hpbar_hit_5
       rect:
         serializedVersion: 2
         x: 310
         y: 72
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a310f46d44323f240b7b41c78134e5c2
+      spriteID: e9bcac2e76a210f40b290243cc8c22bf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hpbar_firsthit_9
+      name: hpbar_hit_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 155
         height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2896004752c7744f8959dd62c1ddb9d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hpbar_firsthit_10
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 0
-        width: 155
-        height: 72
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 474ddf502c576554fb8356ddbd95787c
+      spriteID: b54a7752194fd4e49831edf0abe405a0
       vertices: []
       indices: 
       edges: []
@@ -317,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 88d147de50a1ada4d99fedb2ac031d65
+    spriteID: e3ec3c8e5fc98ee4c821c2067a6a8016
     vertices: []
     indices: 
     edges: []
