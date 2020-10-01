@@ -152,7 +152,7 @@ public class Weapon_Lancer : WeaponBase
         _attackRange.PassiveDeactive();
         _attackRange.RealTimeProgress();
 
-        CameraControll.instance.Shake(0.1f,_plane.direction * 0.1f);
+        CameraControll.instance.Shake(0.1f,_plane.direction * 0.4f);
 
 
         return false;
@@ -212,7 +212,7 @@ public class Weapon_Lancer : WeaponBase
             HitEffect(target);
             _plane.Hit(target);
 
-            CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
+            CameraControll.instance.Shake(0.2f, _plane.direction / 11f);
 
             return true;
 		}

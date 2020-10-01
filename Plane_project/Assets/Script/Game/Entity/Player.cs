@@ -209,9 +209,9 @@ public class Player : PlaneBase {
 	{
 		if(d > 0)
 		{
-			_cam.Zoom(2.5f);
+			_cam.Zoom(2.3f);
 			_cam.Glitch(0.3f);
-			_cam.Shake(0.2f, _direction / 10f);
+			_cam.Shake(0.2f, _direction / 7f);
 			Timer.SetTimeScaleTimer(0f,0.14f);
 
 			SoundManager.instance.Play("SE/PlayerHit",false,-1,1f,false);
@@ -222,7 +222,7 @@ public class Player : PlaneBase {
 		}
 		else
 		{
-			_cam.Zoom(2.7f);
+			_cam.Zoom(2.5f);
 			_cam.Glitch(0.05f);
 			Timer.SetTimeScaleTimer(0f,0.05f);
 		}
@@ -256,7 +256,7 @@ public class Player : PlaneBase {
 		base.BurstActive(false);
 
 		SoundManager.instance.Play("SE/BurstActive_",false,2);
-		_cam.Shake(0.2f, _direction / 15f);
+		_cam.Shake(0.2f, _direction / 12f);
 	}
 
 	public void DodgeCheck()
@@ -294,7 +294,7 @@ public class Player : PlaneBase {
 						Dodge(mouse,false);
 						_dodge = true;
 
-						_cam.Shake(0.2f, _direction / 20f);
+						_cam.Shake(0.2f, _direction / 17f);
 
 						Timer.SetTimeScale(1f);
 					}
@@ -347,7 +347,7 @@ public class Player : PlaneBase {
 					// 	Timer.SetTimeScaleTimer(0.3f,0.5f,true);
 
 
-					_cam.Shake(0.05f, _direction / 10f);
+					_cam.Shake(0.05f, _direction / 7f);
 
 					foreach(var ani in _boostAni)
         			{

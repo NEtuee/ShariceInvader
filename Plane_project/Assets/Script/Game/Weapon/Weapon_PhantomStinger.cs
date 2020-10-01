@@ -38,6 +38,7 @@ public class Weapon_PhantomStinger : WeaponBase
         _aimRange.SetAngle(_plane.angle);
         _aimRange.SetPositionEm(_plane.position);
 
+
         if(mainAttack)
         {
             _plane.SetAngle(MathEx.directionToAngle(GetAimTargetDirection()));
@@ -123,7 +124,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
         HitEffect(_aimTarget);
 
-        CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
+        CameraControll.instance.Shake(0.2f, _plane.direction / 11f);
 
         BurstAimDirection(15f,0.15f);
 
@@ -221,7 +222,10 @@ public class Weapon_PhantomStinger : WeaponBase
         SoundManager.instance.Play("SE/PS_",false,4);
         SoundManager.instance.Play("SE/MainHit_",false,2,.5f,false);
 
-        CameraControll.instance.Zoom(2.8f);
+        CameraControll.instance.Zoom(2.6f);
+
+        if(_aimRange != null)
+            _aimRange.Play(false);
     }
 
     public void BurstAimDirection(float addForce, float time)
@@ -259,6 +263,7 @@ public class Weapon_PhantomStinger : WeaponBase
         _aimObject.gameObject.SetActive(false);
 
         _aimRange.gameObject.SetActive(false);
+        _aimRange = null;
         // if(_aimObj != null)
         //UnityEngine.GameObject.Destroy(_aimObj.gameObject);
 

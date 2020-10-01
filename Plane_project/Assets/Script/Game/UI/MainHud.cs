@@ -75,8 +75,10 @@ public class MainHud : SingletonMono<MainHud>
         _uiAni.Stop();
 
         _shieldAni = new AnimationControllEx(shieldDamange);
-        _shieldAni.AddAnimation("Active","UI/MainHud/ShieldDamage");
-        _shieldAni.AddAnimation("Recover","UI/MainHud/ShieldRecovering");
+        _shieldAni.AddAnimation("FirstHit","UI/MainHud/HP/FirstHit");
+        _shieldAni.AddAnimation("Hit","UI/MainHud/HP/Hit");
+        _shieldAni.AddAnimation("Recover","UI/MainHud/HP/Recover");
+        _shieldAni.AddAnimation("Closing","UI/MainHud/HP/Closing");
 
         mainUITransform.gameObject.SetActive(false);
         gameObject.SetActive(false);
@@ -112,15 +114,20 @@ public class MainHud : SingletonMono<MainHud>
         transform.position = _followTarget.position + dir * 0.13f;
         mainUITransform.transform.position = _followTarget.position + dir * 0.1f;
 
-        if(_hpBarDisapear != 0f)
+        if(_shieldAni.currAni == "Closing" && _shieldAni.isEnd && hpContainer.activeInHierarchy)
         {
-            _hpBarDisapear -= deltaTime;
-            if(_hpBarDisapear <= 0f)
-            {
-                _hpBarDisapear = 0f;
-                hpContainer.SetActive(false);
-            }
+            hpContainer.SetActive(false);
         }
+
+        // if(_hpBarDisapear != 0f)
+        // {
+        //     _hpBarDisapear -= deltaTime;
+        //     if(_hpBarDisapear <= 0f)
+        //     {
+        //         _hpBarDisapear = 0f;
+        //         hpContainer.SetActive(false);
+        //     }
+        // }
 
         if(_waveTimer != 0f)
         {
@@ -206,7 +213,9 @@ public class MainHud : SingletonMono<MainHud>
         if(_followTarget._hp == _followTarget.maxHp)
         {
             if(_hpBarDisapear == 0f && hpContainer.activeInHierarchy)
-                _hpBarDisapear = 1f;
+            {
+                _shieldAni.ChangeAni("Closing",false);
+            }
         }
         else
         {
@@ -220,7 +229,7 @@ public class MainHud : SingletonMono<MainHud>
 
         var hp = (int)(((float)_followTarget._hp / (float)_followTarget.maxHp) * 100f);
         
-        hpBar.SetText(hp + "%");
+        hpBar.SetText(hp.ToString());
     }
 
     public void ShowWaveIcon(float time)
@@ -242,12 +251,17 @@ public class MainHud : SingletonMono<MainHud>
 
     public void ShieldDamage()
     {
-        _shieldAni.ChangeAni("Active",false);
+        if(_shieldAni.currAni == "Hit"
+            || _shieldAni.currAni == "FirstHit")
+            _shieldAni.ChangeAni("Hit",false);
+        else
+            _shieldAni.ChangeAni("FirstHit",false);
     }
 
     public void ShieldRecover()
     {
-        _shieldAni.ChangeAni("Recover",true);
+        if(_shieldAni.currAni != "Recover")
+            _shieldAni.ChangeAni("Recover",false);
     }
 
     public void UpdateScaleBar(float val)

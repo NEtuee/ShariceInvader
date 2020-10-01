@@ -509,7 +509,7 @@ public abstract class PlaneBase : Collisionable {
 				{
 					_fallExplosion = true;
 					EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
-					EffectManager.GetInstance().Explosion(_position,15,0.2f);
+					EffectManager.GetInstance().Explosion(_position,15);
 
 					float rat = Vector2.Distance(_position,CameraControll.instance.position);
 					rat = rat < 2f ? 1f : rat;
@@ -834,7 +834,7 @@ public abstract class PlaneBase : Collisionable {
 		// for(int i = 0; i < 5; ++i)
 		// 	ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,"Piece").
 		// 				SetDirection(_velocity + new Vector3(Random.Range(-5f,5f),Random.Range(-2f,2f))).SetPosition(_position);
-		CameraControll.instance.Zoom(2.7f);
+		CameraControll.instance.Zoom(2.5f);
 	}
 
 	public virtual void Explosion()
@@ -845,11 +845,11 @@ public abstract class PlaneBase : Collisionable {
 
 			for(int i = 0; i < 4; ++i)
 			{
-				float range = UnityEngine.Random.Range(0.6f,1.5f);
+				float range = UnityEngine.Random.Range(0.8f,2.5f);
 				if(MathEx.RandomInt(0,3) < 3)
-					EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.13f,0.04f,22);
+					EffectManager.GetInstance().ExplosionSmoke(_position,_position + randDir * range,0.26f,0.08f,22);
 				else
-					EffectManager.GetInstance().CurveSmoke(_position,_position + randDir * (range * 0.8f),0.13f,0.04f,40);
+					EffectManager.GetInstance().CurveSmoke(_position,_position + randDir * (range * 0.8f),0.26f,0.08f,40);
 				randDir = MathEx.RandomVector3(-1f,1f,-1f,1f).normalized;
 			}
 			
@@ -860,15 +860,15 @@ public abstract class PlaneBase : Collisionable {
 
 			for(int i = 0; i < 4; ++i)
 			{
-				float range = UnityEngine.Random.Range(0.6f,1.5f);
+				float range = UnityEngine.Random.Range(0.8f,2.5f);
 				Vector3 targetDir = (dir + MathEx.RandomVector3(-1f,1f,-1f,1f)).normalized;
 				// EffectManager.GetInstance().
 				// 			ExplosionSmoke(_position,_position + targetDir * range,0.13f,0.04f,22);
 
 				if(MathEx.RandomInt(0,3) < 3)
-					EffectManager.GetInstance().ExplosionSmoke(_position,_position + targetDir * range,0.13f,0.04f,22);
+					EffectManager.GetInstance().ExplosionSmoke(_position,_position + targetDir * range,0.26f,0.08f,22);
 				else
-					EffectManager.GetInstance().CurveSmoke(_position,_position + targetDir * (range * 0.8f),0.13f,0.04f,40);
+					EffectManager.GetInstance().CurveSmoke(_position,_position + targetDir * (range * 0.8f),0.26f,0.08f,40);
 			}
 		}
 
@@ -882,7 +882,7 @@ public abstract class PlaneBase : Collisionable {
 
 		SoundManager.instance.PlayRequest("SE/Explosion_",3,rat,false);
 		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
-		EffectManager.GetInstance().Explosion(_position,15,0.2f,0.15f,0.23f);
+		EffectManager.GetInstance().Explosion(_position,15,0.3f,0.25f,0.41f);
 	}
 
 	public void BasicDeleteEvents()

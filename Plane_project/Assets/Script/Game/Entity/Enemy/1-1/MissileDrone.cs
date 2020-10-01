@@ -77,7 +77,7 @@ public class MissileDrone : PlaneBase
 
 			Vector3 randPos = new Vector3(Random.Range(-.05f,.05f),Random.Range(-.05f,.05f));
 
-			EffectManager.GetInstance().Explosion(pos + randPos,5,0.2f,0.25f,0.3f);
+			EffectManager.GetInstance().Explosion(pos + randPos,5,0.3f,0.45f,0.55f);
 			EffectManager.GetInstance().AddEffect(pos + randPos,"SpriteSet/Effects/Explosion")
 										.SetTarget(this)
 										.SetAddPoint(randPos)
@@ -158,7 +158,7 @@ public class MissileDrone : PlaneBase
 
 				Vector3 randPos = new Vector3(Random.Range(-1.15f,1.15f),Random.Range(-.2f,.2f));
 
-				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
+				EffectManager.GetInstance().Explosion(_position + randPos,5,0.3f,0.35f,0.55f);
 				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/Explosion")
 											.SetTarget(this)
 											.SetAddPoint(randPos)

@@ -65,7 +65,7 @@ public class Weapon_Test : WeaponBase
 		    		HitEffect(target);
                     AddHitEffect(target.position);
     
-                    CameraControll.instance.Shake(0.2f, _plane.direction / 15f);
+                    CameraControll.instance.Shake(0.2f, _plane.direction / 11f);
     
                     target.Hit(_plane);
 
@@ -119,7 +119,7 @@ public class Weapon_Test : WeaponBase
             link = link.next;
         }
 
-        CameraControll.instance.Zoom(2.5f);
+        CameraControll.instance.Zoom(2.3f);
 
         specAttack = true;
 

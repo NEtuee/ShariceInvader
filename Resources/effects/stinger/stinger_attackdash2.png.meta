@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa078cf2727cc2b49a9f311416edf717
+guid: 4bda23a8d51076b488e58406d2b12937
 TextureImporter:
   fileIDToRecycleName:
     21300000: stinger_attackdash2_0
@@ -104,9 +104,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
-        width: 25
-        height: 12
+        y: 20
+        width: 31
+        height: 10
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,7 +114,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 833febe05a9c9e74fae6611b71991dd9
+      spriteID: 1ab98491f86fc4f48afad94cf0b72efc
       vertices: []
       indices: 
       edges: []
@@ -123,10 +123,10 @@ TextureImporter:
       name: stinger_attackdash2_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 24
-        width: 25
-        height: 12
+        x: 31
+        y: 20
+        width: 31
+        height: 10
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,7 +134,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00e0b530590f75243a88673a51f65338
+      spriteID: 08a9d8c64032d5b45ac8df97d8ef5908
       vertices: []
       indices: 
       edges: []
@@ -144,9 +144,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 25
-        height: 12
+        y: 10
+        width: 31
+        height: 10
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,7 +154,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 713105265a4abaf44b921404ffc0232b
+      spriteID: 34e25236a354d554f8e568d8e6906281
       vertices: []
       indices: 
       edges: []
@@ -163,10 +163,10 @@ TextureImporter:
       name: stinger_attackdash2_3
       rect:
         serializedVersion: 2
-        x: 25
-        y: 12
-        width: 25
-        height: 12
+        x: 31
+        y: 10
+        width: 31
+        height: 10
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,7 +174,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 029c794e145346147a29f1452ef2bd24
+      spriteID: b1855feae8397844881e64863302d420
       vertices: []
       indices: 
       edges: []
@@ -185,8 +185,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 25
-        height: 12
+        width: 31
+        height: 10
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,7 +194,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89d6134ec38aea94bb4c6a62fb3cb5d6
+      spriteID: c97012ae4caa49f4087f73513c475a8c
       vertices: []
       indices: 
       edges: []
@@ -202,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 739213b4f2ea48d45b06c2cb013e8904
+    spriteID: 2addead55257f224b999300895a71b4b
     vertices: []
     indices: 
     edges: []

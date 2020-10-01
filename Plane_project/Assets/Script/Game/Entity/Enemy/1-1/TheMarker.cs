@@ -369,7 +369,7 @@ public class TheMarker : PlaneBase
 
 				Vector3 randPos = new Vector3(Random.Range(-.05f,.05f),Random.Range(-.05f,.05f));
 
-				EffectManager.GetInstance().Explosion(_position + randPos,5,0.2f,0.2f,0.3f);
+				EffectManager.GetInstance().Explosion(_position + randPos,5,0.3f,0.35f,0.55f);
 				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/Explosion")
 											.SetTarget(this)
 											.SetAddPoint(randPos)

@@ -202,7 +202,7 @@ public class EffectManager : Singleton<EffectManager>, Define.IManager  {
 		}
 	}
 
-	public void Explosion(Vector3 pos,int count,float randFactor = 0.2f,float startSize = 0.1f, float endSize = 0.19f)
+	public void Explosion(Vector3 pos,int count,float randFactor = 0.3f,float startSize = 0.15f, float endSize = 0.33f)
 	{
 		ParticleSystem sys;
 		ParticleSystem.EmitParams p = new ParticleSystem.EmitParams();
