@@ -1,0 +1,11 @@
+textbox 288*96
+	left
+		portrait // topleft (0,0)
+		name // topleft (104,12)
+		text // topleft (104,28)
+		icon // topleft (266,78)
+	right
+		portrait // topright (288,96)
+		name // topright (183,12)
+		text // topright (183,28)
+		icon // topright (21,78)

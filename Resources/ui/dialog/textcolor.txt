@@ -1,0 +1,4 @@
+character name // color
+	sharice // #ff4747
+	penny rose // #5e90c8
+	reeve // #f2ca5a
