@@ -240,6 +240,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Front\Front_Ani.txt" />
      <None Include="Assets\Script\Shader\ColorLerp.shader" />
      <None Include="Assets\Resources\Sprites\UI\MainHud\ShieldDamage\ShieldDamage_Ani.txt" />
+     <None Include="Assets\Script\Shader\ShieldGague.shader" />
      <None Include="Assets\Script\Shader\FakeShadow.shader" />
      <None Include="Assets\Script\Shader\SpriteOutline.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\MissileDrone\missile_launching_Ani.txt" />

@@ -16,6 +16,7 @@ public class MainHud : SingletonMono<MainHud>
 
     public GameObject hpContainer;
     public GameObject hpGagueContainer;
+    public SpriteRenderer hpGague;
     public SpriteRenderer[] weaponGagueContainer;
 
     public Transform mainUITransform;
@@ -238,9 +239,11 @@ public class MainHud : SingletonMono<MainHud>
             
         }
 
-        var hp = (int)(((float)_followTarget._hp / (float)_followTarget.maxHp) * 100f);
+        var per = (float)_followTarget._hp / (float)_followTarget.maxHp;
+        var hp = (int)((per) * 100f);
         
         hpBar.SetText(hp.ToString());
+        hpGague.material.SetFloat("_Progress",per);
     }
 
     public void ShowWaveIcon(float time)
