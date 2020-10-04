@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: e6762057b4c9398489ef2f1c5461ca4d
+guid: ff56165d18189ec449b8799752a6cac1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_attacktrail_0
-    21300002: lance_attacktrail_1
-    21300004: lance_attacktrail_2
-    21300006: lance_attacktrail_3
-    21300008: lance_attacktrail_4
-    21300010: lance_attacktrail_5
-    21300012: lance_attacktrail_6
-    21300014: lance_attacktrail_7
+    21300000: icon_talking_0
+    21300002: icon_talking_1
+    21300004: icon_talking_2
+    21300006: icon_talking_3
+    21300008: icon_talking_4
+    21300010: icon_talking_5
+    21300012: icon_talking_6
+    21300014: icon_talking_7
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -103,161 +103,161 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_attacktrail_0
+      name: icon_talking_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83a9dadc86a0b01459ca190cd58320f3
+      spriteID: 4f6b3de8f9cd1c54da4060551471200c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_1
+      name: icon_talking_1
       rect:
         serializedVersion: 2
-        x: 119
-        y: 90
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 12
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dd00fd0de295d545a2f23f2e4d4d7cb
+      spriteID: 168be9b111468944cbd3e7c30844d786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_2
+      name: icon_talking_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 24
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b59ed3acc80ecd548ac6090de0d19b06
+      spriteID: ce820cfefb955f14fa5c052a974e50f2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_3
+      name: icon_talking_3
       rect:
         serializedVersion: 2
-        x: 119
-        y: 60
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 36
+        y: 12
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 500968f33f5f1134f99189e75315f673
+      spriteID: bf4f5085e8c6485448b454b93ba1b4d1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 30
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90d037dfbb456254690b59d1515cd5ad
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attacktrail_5
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 30
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0f6ba0e737aee447a71ac36a0213b70
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attacktrail_6
+      name: icon_talking_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2f80f7ee25d05b468b4eff845792a29
+      spriteID: 40596c55cb0530046b68e1aad11f8e0e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_7
+      name: icon_talking_5
       rect:
         serializedVersion: 2
-        x: 119
+        x: 12
         y: 0
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45fe893ed0643384a8cccc8eb68b65fa
+      spriteID: 307121a6c0bf96843adc02ee1ba4a25c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_talking_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de991e467845d1845948c811916f4612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_talking_7
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ab257c8c3661b409182030ed8a0494
       vertices: []
       indices: 
       edges: []
@@ -265,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1dd623f306426104297e6d21632f63eb
+    spriteID: d81dfea0598015444b9d6b654c81e534
     vertices: []
     indices: 
     edges: []

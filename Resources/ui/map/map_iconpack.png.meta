@@ -1,15 +1,16 @@
 fileFormatVersion: 2
-guid: e6762057b4c9398489ef2f1c5461ca4d
+guid: 3136aece8ab4559459b1be1a79cbc858
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_attacktrail_0
-    21300002: lance_attacktrail_1
-    21300004: lance_attacktrail_2
-    21300006: lance_attacktrail_3
-    21300008: lance_attacktrail_4
-    21300010: lance_attacktrail_5
-    21300012: lance_attacktrail_6
-    21300014: lance_attacktrail_7
+    21300000: map_iconpack_0
+    21300002: map_iconpack_1
+    21300004: map_iconpack_2
+    21300006: map_iconpack_3
+    21300008: map_iconpack_4
+    21300010: map_iconpack_5
+    21300012: map_iconpack_6
+    21300014: map_iconpack_7
+    21300016: map_iconpack_8
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -103,161 +104,181 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_attacktrail_0
+      name: map_iconpack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83a9dadc86a0b01459ca190cd58320f3
+      spriteID: 132f3fdbe6c7e324c8e1a1cf383de281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_1
+      name: map_iconpack_1
       rect:
         serializedVersion: 2
-        x: 119
-        y: 90
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 24
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dd00fd0de295d545a2f23f2e4d4d7cb
+      spriteID: 4eef558a97b9fb2478175b8eb0e9c19e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_2
+      name: map_iconpack_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 48
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b59ed3acc80ecd548ac6090de0d19b06
+      spriteID: 5386e11d354cc12408fe6792ab45f18b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_3
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 60
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 500968f33f5f1134f99189e75315f673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attacktrail_4
+      name: map_iconpack_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 30
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90d037dfbb456254690b59d1515cd5ad
+      spriteID: fb491d102b3c90542a5ad1459a827b4c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_5
+      name: map_iconpack_4
       rect:
         serializedVersion: 2
-        x: 119
-        y: 30
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 24
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f6ba0e737aee447a71ac36a0213b70
+      spriteID: 72e77dd83fa19dd428331ec028673930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_6
+      name: map_iconpack_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa76095f9044b94399aa7208d1864b6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: map_iconpack_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2f80f7ee25d05b468b4eff845792a29
+      spriteID: 12658e3b962097942a2023bd0cbbf67e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_7
+      name: map_iconpack_7
       rect:
         serializedVersion: 2
-        x: 119
+        x: 24
         y: 0
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45fe893ed0643384a8cccc8eb68b65fa
+      spriteID: 9d869620f50699f4fa61c64d5fc6b977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: map_iconpack_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd43e03a0e670f242bf794cbf8bd0c8f
       vertices: []
       indices: 
       edges: []
@@ -265,7 +286,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1dd623f306426104297e6d21632f63eb
+    spriteID: d496d40a6db34b448b7e85f9c10a5d59
     vertices: []
     indices: 
     edges: []

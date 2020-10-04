@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f35cab7ebf796b048933a202d952538a
+guid: 432aaaee4732a4642af92519c1958f7b
 TextureImporter:
   fileIDToRecycleName:
     21300000: pulse_attacktrail_0
@@ -8,6 +8,8 @@ TextureImporter:
     21300006: pulse_attacktrail_3
     21300008: pulse_attacktrail_4
     21300010: pulse_attacktrail_5
+    21300012: pulse_attacktrail_6
+    21300014: pulse_attacktrail_7
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -69,7 +71,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -80,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,9 +107,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 220
-        width: 220
-        height: 220
+        y: 218
+        width: 218
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,7 +117,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b9aaa96cd06704468d6740505436472
+      spriteID: ac3a2f469aa850141a3db6ccbafdb88d
       vertices: []
       indices: 
       edges: []
@@ -124,10 +126,10 @@ TextureImporter:
       name: pulse_attacktrail_1
       rect:
         serializedVersion: 2
-        x: 220
-        y: 220
-        width: 220
-        height: 220
+        x: 218
+        y: 218
+        width: 218
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,7 +137,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e890b4ea09f806441a76976d7573815b
+      spriteID: 58ee5b1ac14238f42988ae5a271961d1
       vertices: []
       indices: 
       edges: []
@@ -144,10 +146,10 @@ TextureImporter:
       name: pulse_attacktrail_2
       rect:
         serializedVersion: 2
-        x: 440
-        y: 220
-        width: 220
-        height: 220
+        x: 436
+        y: 218
+        width: 218
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed82fa96624697d49b0a13934b9b00f9
+      spriteID: 9fea6e01bf13ef742a7616bab0f7aaff
       vertices: []
       indices: 
       edges: []
@@ -164,10 +166,10 @@ TextureImporter:
       name: pulse_attacktrail_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 220
-        height: 220
+        x: 654
+        y: 218
+        width: 218
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,7 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de75044804fabbf46993d0c31af189fd
+      spriteID: e22ea1757c5f0d447b0906b00613dcf3
       vertices: []
       indices: 
       edges: []
@@ -184,10 +186,10 @@ TextureImporter:
       name: pulse_attacktrail_4
       rect:
         serializedVersion: 2
-        x: 220
+        x: 0
         y: 0
-        width: 220
-        height: 220
+        width: 218
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,7 +197,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8e381b0e3fb2904890ad42d845518ca
+      spriteID: 77d3789a7528fac428d7d4a172d83a06
       vertices: []
       indices: 
       edges: []
@@ -204,10 +206,10 @@ TextureImporter:
       name: pulse_attacktrail_5
       rect:
         serializedVersion: 2
-        x: 440
+        x: 218
         y: 0
-        width: 220
-        height: 220
+        width: 218
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,7 +217,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b384ad43af3e154d907e555a35ae774
+      spriteID: 4739bd41bf6abfd49b9b8d34369dadea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_attacktrail_6
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 0
+        width: 218
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be1c77012fb55d4a9b6ae6c0f634c63
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_attacktrail_7
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 0
+        width: 218
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a9a809a279fd5f4895bca05ebc4e395
       vertices: []
       indices: 
       edges: []
@@ -223,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 55b996b220a097341a80911d32f1eee9
+    spriteID: 94e2a1f71c8f7b148be3ee49094e5e9b
     vertices: []
     indices: 
     edges: []

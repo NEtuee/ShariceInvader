@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: e6762057b4c9398489ef2f1c5461ca4d
+guid: 5133606baa160984ba8cf96f8c2266e4
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_attacktrail_0
-    21300002: lance_attacktrail_1
-    21300004: lance_attacktrail_2
-    21300006: lance_attacktrail_3
-    21300008: lance_attacktrail_4
-    21300010: lance_attacktrail_5
-    21300012: lance_attacktrail_6
-    21300014: lance_attacktrail_7
+    21300000: drive_openingtext_0
+    21300002: drive_openingtext_1
+    21300004: drive_openingtext_2
+    21300006: drive_openingtext_3
+    21300008: drive_openingtext_4
+    21300010: drive_openingtext_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -103,161 +101,121 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_attacktrail_0
+      name: drive_openingtext_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        y: 158
+        width: 88
+        height: 158
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83a9dadc86a0b01459ca190cd58320f3
+      spriteID: eb7e7338aff256a47ba596c7ecdf0452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_1
+      name: drive_openingtext_1
       rect:
         serializedVersion: 2
-        x: 119
-        y: 90
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 88
+        y: 158
+        width: 88
+        height: 158
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dd00fd0de295d545a2f23f2e4d4d7cb
+      spriteID: cefe2a79233d03d4db818b4b21b41986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_2
+      name: drive_openingtext_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 176
+        y: 158
+        width: 88
+        height: 158
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b59ed3acc80ecd548ac6090de0d19b06
+      spriteID: 2d0f0b456a6a37842b8ed8bfacd25104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_3
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 60
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 500968f33f5f1134f99189e75315f673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attacktrail_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 30
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90d037dfbb456254690b59d1515cd5ad
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attacktrail_5
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 30
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0f6ba0e737aee447a71ac36a0213b70
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_attacktrail_6
+      name: drive_openingtext_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 88
+        height: 158
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2f80f7ee25d05b468b4eff845792a29
+      spriteID: 614fdd7898864fe4187081a11e0553ed
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_attacktrail_7
+      name: drive_openingtext_4
       rect:
         serializedVersion: 2
-        x: 119
+        x: 88
         y: 0
-        width: 119
-        height: 30
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 88
+        height: 158
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45fe893ed0643384a8cccc8eb68b65fa
+      spriteID: 79dfc5656754f6247b3ddc9025d76177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drive_openingtext_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 88
+        height: 158
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8510a81e7e6aaf94ea1d07651d514366
       vertices: []
       indices: 
       edges: []
@@ -265,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1dd623f306426104297e6d21632f63eb
+    spriteID: b41c40627fb708c4fbae8fafcbe91e18
     vertices: []
     indices: 
     edges: []
