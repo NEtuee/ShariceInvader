@@ -37,6 +37,7 @@
             v2f vert(appdata v)
             {
                 v2f o;
+                
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = float4(v.uv.xy,0,0);
 

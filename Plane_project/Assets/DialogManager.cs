@@ -15,6 +15,7 @@ public class DialogManager : SingletonMono<DialogManager>
     {
         public string[] name;
         public Sprite graphic;
+        public Sprite background;
     }
 
     public class TextInfo
@@ -23,15 +24,9 @@ public class DialogManager : SingletonMono<DialogManager>
         public float autoTimer = 4f;
     }
 
-    private GameObject left;
-    private SpriteRenderer leftSprite;
-    private SpriteFontTextMesh leftName;
-    private TextMesh leftDialog;
+    private DialogHelper left;
 
-    private GameObject right;
-    private SpriteRenderer rightSprite;
-    private SpriteFontTextMesh rightName;
-    private TextMesh rightDialog;
+    private DialogHelper right;
 
     public TextAsset dialogInfo;
     public TextAsset charInfo;
@@ -52,6 +47,7 @@ public class DialogManager : SingletonMono<DialogManager>
     
 
     private Sprite[] _charPics;
+    private Sprite[] _charBacks;
 
     private int scriptPos;
     private int charPos;
@@ -93,6 +89,11 @@ public class DialogManager : SingletonMono<DialogManager>
                     {
                         ++characterSpeachPos;
                         scrollEnd = true;
+
+                        if(speachSide == 0)
+                            left.AnimationTalkingEnd();
+                        else
+                            right.AnimationTalkingEnd();
                     }
                     else
                     {
@@ -122,6 +123,9 @@ public class DialogManager : SingletonMono<DialogManager>
                     DialogClick();
                 }
             }
+
+            left.AnimationProgress(Time.deltaTime);
+            right.AnimationProgress(Time.deltaTime);
         }
     }
 
@@ -148,11 +152,13 @@ public class DialogManager : SingletonMono<DialogManager>
                 _autoScrollTimer = texts[characterSpeachPos][langague].autoTimer;
                 if(speachSide == 0)
                 {
-                    leftDialog.text = "";
+                    left.SetMainText("");
+                    left.AnimationTalkingStart();
                 }
                 else if(speachSide == 1)
                 {
-                    rightDialog.text = "";
+                    right.SetMainText("");
+                    right.AnimationTalkingStart();
                 }
             }
 
@@ -162,37 +168,37 @@ public class DialogManager : SingletonMono<DialogManager>
         {
             if(speachSide == 0)
             {
-                leftDialog.text = texts[characterSpeachPos][langague].text;
+                left.SetMainText(texts[characterSpeachPos][langague].text);
             }
             else if(speachSide == 1)
             {
-                rightDialog.text = texts[characterSpeachPos][langague].text;
+                right.SetMainText(texts[characterSpeachPos][langague].text);
             }
             ++characterSpeachPos;
             scrollEnd = true;
         }
     }
 
-    public void SetLeftSideObjects(GameObject obj, SpriteRenderer spr, SpriteFontTextMesh n, TextMesh t)
+    public void SetLeftSideObjects(DialogHelper dialog)
     {
-        left = obj;
-        leftSprite = spr;
-        leftName = n;
-        leftDialog = t;
+        left = dialog;
+        left.Initialize();
+        // left = obj;
+        // leftSprite = spr;
+        // leftName = n;
+        // leftDialog = t;
     }
 
-    public void SetRightSideObjects(GameObject obj, SpriteRenderer spr, SpriteFontTextMesh n, TextMesh t)
+    public void SetRightSideObjects(DialogHelper dialog)
     {
-        right = obj;
-        rightSprite = spr;
-        rightName = n;
-        rightDialog = t;
+        right = dialog;
+        right.Initialize();
     }
 
     public void DialogEnd()
     {
-        left.SetActive(false);
-        right.SetActive(false);
+        left.gameObject.SetActive(false);
+        right.gameObject.SetActive(false);
 
         dialog = false;
     }
@@ -201,20 +207,26 @@ public class DialogManager : SingletonMono<DialogManager>
     {
         if(speachSide == 0)
         {
-            leftDialog.text += texts[characterSpeachPos][langague].text[charPos];
+            left.AddMainText(texts[characterSpeachPos][langague].text[charPos]);
         }
         else if(speachSide == 1)
         {
-            rightDialog.text += texts[characterSpeachPos][langague].text[charPos];
+            right.AddMainText(texts[characterSpeachPos][langague].text[charPos]);
         }
     }
 
     public bool SetDialogInfo()
     {
         if(speachSide == 0)
+        {
             ChangeLeftColor(Color.gray);
+            left.AnimationTalkingEnd();
+        }
         else if(speachSide == 1)
+        {
             ChangeRightColor(Color.gray);
+            right.AnimationTalkingEnd();
+        }
 
         if(currDialog.Length <= scriptPos)
             return false;
@@ -230,27 +242,31 @@ public class DialogManager : SingletonMono<DialogManager>
         {
             if(curr.character != null)
             {
-                leftName.SetText(curr.character.name[langague]);
-                leftSprite.sprite = curr.character.graphic;
+                left.SetInfo(curr.character.name[langague],curr.character.graphic,curr.character.background);
+                // leftName.SetText(curr.character.name[langague]);
+                // leftSprite.sprite = curr.character.graphic;
             }
 
-            left.SetActive(true);
+            left.gameObject.SetActive(true);
             ChangeLeftColor(Color.white);
 
-            leftDialog.text = "";
+            left.SetMainText("");
+            left.AnimationTalkingStart();
         }
         else
         {
             if(curr.character != null)
             {
-                rightName.SetText(curr.character.name[langague]);
-                rightSprite.sprite = curr.character.graphic;
+                right.SetInfo(curr.character.name[langague],curr.character.graphic,curr.character.background);
+                // rightName.SetText(curr.character.name[langague]);
+                // rightSprite.sprite = curr.character.graphic;
             }
 
-            right.SetActive(true);
+            right.gameObject.SetActive(true);
             ChangeRightColor(Color.white);
 
-            rightDialog.text = "";
+            right.SetMainText("");
+            right.AnimationTalkingStart();
         }
         
         return true;
@@ -269,28 +285,42 @@ public class DialogManager : SingletonMono<DialogManager>
         scrollTimer = 0f;
         _autoScrollTimer = 0f;
 
+        if(auto)
+        {
+            left.SetType(DialogHelper.ProgressType.Auto);
+            right.SetType(DialogHelper.ProgressType.Auto);
+        }
+        else
+        {
+            left.SetType(DialogHelper.ProgressType.Normal);
+            right.SetType(DialogHelper.ProgressType.Normal);
+        }
+
         SetDialogInfo();
     }
 
     public void ChangeRightColor(Color color)
     {
-        rightSprite.color = color;
-        rightName.textColor = color;
-        rightName.UpdateColor();
-        rightDialog.color = color;
+        right.SetColor(color);
+        // rightSprite.color = color;
+        // rightName.textColor = color;
+        // rightName.UpdateColor();
+        // rightDialog.color = color;
     }
 
     public void ChangeLeftColor(Color color)
     {
-        leftSprite.color = color;
-        leftName.textColor = color;
-        leftName.UpdateColor();
-        leftDialog.color = color;
+        left.SetColor(color);
+        // leftSprite.color = color;
+        // leftName.textColor = color;
+        // leftName.UpdateColor();
+        // leftDialog.color = color;
     }
 
     public void ReadCharacter()
     {
         _charPics = ResourceManager.GetInstance().GetSpriteSet("UI/Characters");
+        _charBacks = ResourceManager.GetInstance().GetSpriteSet("UI/Dialog/Background");
         List<string> names = new List<string>();
         var strings = SplitReturn(charInfo.text);
         int len = strings.Length;
@@ -310,6 +340,7 @@ public class DialogManager : SingletonMono<DialogManager>
             CharacterInfo info = new CharacterInfo();
             info.name = names.ToArray();
             info.graphic = graphic == - 1 ? null : _charPics[graphic];
+            info.background = graphic == - 1 ? null : _charBacks[graphic];
 
             characters.Add(title,info);
             names.Clear();
@@ -378,7 +409,7 @@ public class DialogManager : SingletonMono<DialogManager>
                     for(int l = 3; l < scriptLen; ++l)
                     {
                         var t = new TextInfo();
-                        var ti = SetNewLine(line[l],l - 3).Split('%');//line[l].Split('%');
+                        var ti = /*SetNewLine(line[l],l - 3).Split('%');*/line[l].Split('%');
                         t.text = ti[0];
 
                         if(ti.Length > 1 && ti[1] != "")

@@ -59,13 +59,13 @@ public abstract class ObjectBase : MonoBehaviour, Define.IProgress {
 		if(tp.position != _position || 
 			tp.localEulerAngles.z != _eulerAngle)
 		{
-			double x = _position.x;
-			double y = _position.y;
+			// double x = _position.x;
+			// double y = _position.y;
 
-			x = System.Math.Truncate(x * 100) * 0.01f;
-			y = System.Math.Truncate(y * 100) * 0.01f;
+			// x = System.Math.Truncate(x * 100) * 0.01f;
+			// y = System.Math.Truncate(y * 100) * 0.01f;
 
-			_position = new Vector3((float)x,(float)y,0f);
+			// _position = new Vector3((float)x,(float)y,0f);
 
 			tp.SetPositionAndRotation(_position,Quaternion.Euler(0f,0f,_eulerAngle));
 			_eulerAngle = tp.localEulerAngles.z;

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ResultUIControll : MonoBehaviour
 {
-    public SpriteFontTextMesh dialog_title;
-    public TextMesh dialog_text;
-    public GameObject dialog;
-    public SpriteRenderer dialog_sprite;
+    public DialogHelper dialog;
+    // public SpriteFontTextMesh dialog_title;
+    // public TextMesh dialog_text;
+    // public GameObject dialog;
+    // public SpriteRenderer dialog_sprite;
 
 
     public SpriteFontTextMesh mainScore;
@@ -80,7 +81,8 @@ public class ResultUIControll : MonoBehaviour
         string dialogCode = _clear ? dialogCode_clear[Random.Range(0,dialogCode_clear.Length)] : 
                             dialogCode_fail[Random.Range(0,dialogCode_fail.Length)];
         
-        DialogManager.instance.SetRightSideObjects(dialog,dialog_sprite,dialog_title,dialog_text);
+        //DialogManager.instance.SetRightSideObjects(dialog,dialog_sprite,dialog_title,dialog_text);
+        DialogManager.instance.SetRightSideObjects(dialog);
         DialogManager.instance.ShowDialog(dialogCode,false,true);
 
         mainScore.SetText("0");

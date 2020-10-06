@@ -7,10 +7,12 @@ public class OptionUIControll : MonoBehaviour
     public UISortManager manager;
 
 
-    public SpriteFontTextMesh dialog_title;
-    public TextMesh dialog_text;
-    public GameObject dialog;
-    public SpriteRenderer dialog_sprite;
+    public DialogHelper dialog;
+
+    // public SpriteFontTextMesh dialog_title;
+    // public TextMesh dialog_text;
+    // public GameObject dialog;
+    // public SpriteRenderer dialog_sprite;
 
 
     public UIProgressBar bgm;
@@ -56,7 +58,7 @@ public class OptionUIControll : MonoBehaviour
 
     public void DialogSetup()
     {
-        DialogManager.instance.SetRightSideObjects(dialog,dialog_sprite,dialog_title,dialog_text);
+        DialogManager.instance.SetRightSideObjects(dialog);
         DialogManager.instance.ShowDialog(dialogCodes[Random.Range(0,dialogCodes.Length)],false,true);
     }
 

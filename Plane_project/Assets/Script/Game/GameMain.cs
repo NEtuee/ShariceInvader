@@ -15,15 +15,15 @@ public class GameMain : SingletonMono<GameMain> {
 
 	public EmptyObject emptyObject;
 
-	public GameObject dialog_left;
-    public SpriteRenderer dialog_leftSprite;
-    public SpriteFontTextMesh dialog_leftName;
-    public TextMesh dialog_leftDialog;
+	public DialogHelper dialog_left;
+    // public SpriteRenderer dialog_leftSprite;
+    // public SpriteFontTextMesh dialog_leftName;
+    // public TextMesh dialog_leftDialog;
 
-    public GameObject dialog_right;
-    public SpriteRenderer dialog_rightSprite;
-    public SpriteFontTextMesh dialog_rightName;
-    public TextMesh dialog_rightDialog;
+    public DialogHelper dialog_right;
+    // public SpriteRenderer dialog_rightSprite;
+    // public SpriteFontTextMesh dialog_rightName;
+    // public TextMesh dialog_rightDialog;
 	
 	public ResultUIControll result;
 
@@ -184,8 +184,8 @@ public class GameMain : SingletonMono<GameMain> {
 
 	public void SetInGameDialog()
 	{
-		DialogManager.instance.SetLeftSideObjects(dialog_left,dialog_leftSprite,dialog_leftName,dialog_leftDialog);
-		DialogManager.instance.SetRightSideObjects(dialog_right,dialog_rightSprite,dialog_rightName,dialog_rightDialog);
+		DialogManager.instance.SetLeftSideObjects(dialog_left);
+		DialogManager.instance.SetRightSideObjects(dialog_right);
 	}
 
 	public void OnDrawGizmos()
