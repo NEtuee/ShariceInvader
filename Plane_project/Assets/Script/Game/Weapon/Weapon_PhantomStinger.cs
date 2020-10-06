@@ -120,7 +120,7 @@ public class Weapon_PhantomStinger : WeaponBase
         mainAttack = false;
         //_plane._rotateLock = true;
         Vector3 pos = _plane.position + _plane.direction * 0.25f;
-        EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Effects/Fire").SetAngle(_plane.angle);
+        //EffectManager.GetInstance().AddEffect(pos,"SpriteSet/Effects/Fire").SetAngle(_plane.angle);
 
         HitEffect(_aimTarget);
 
@@ -256,6 +256,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
     public override void HitEffect(PlaneBase target)
     {
+        base.HitEffect(target);
         var angle = MathEx.directionToAngle((target.position - _plane.position).normalized);
 
         EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/Weapon/PS/Hit",false)

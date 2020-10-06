@@ -26,6 +26,11 @@ public class Flare : PlaneBase
 
         if(_stunEffect != null)
             _stunEffect.SetActive(false);
+        if(_stunSpark != null)
+		{
+			_stunSpark.SetActive(false);
+			_stunSpark = null;
+		}
 		//ComboCount.instance.AddComboCount(1);
 	}
 

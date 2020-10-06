@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 37d07cad20b1fa443aff0bcd730578b7
+guid: 9eebaac1709f17e4a9720c7cbbd492f1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_attackingui1_0
-    21300002: pulse_attackingui1_1
-    21300004: pulse_attackingui1_2
-    21300006: pulse_attackingui1_3
-    21300008: pulse_attackingui1_4
-    21300010: pulse_attackingui1_5
+    21300000: pulse_boostingui1_0
+    21300002: pulse_boostingui1_1
+    21300004: pulse_boostingui1_2
+    21300006: pulse_boostingui1_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -69,7 +67,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -80,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,7 +89,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_attackingui1_0
+      name: pulse_boostingui1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,13 +113,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b0be07a28d1a5542b699c477d09ed90
+      spriteID: 931f1eae1d3594e4f8ead58ff4d852ef
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_attackingui1_1
+      name: pulse_boostingui1_1
       rect:
         serializedVersion: 2
         x: 224
@@ -135,33 +133,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a02105b35bf5a6b45a4cd90b188b12d6
+      spriteID: 6d1d0bbaa92f5d34ba0b52f960377e44
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_attackingui1_2
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 224
-        width: 224
-        height: 224
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c161a397f045534aba139f942e55140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_attackingui1_3
+      name: pulse_boostingui1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -175,13 +153,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe86777aabc63dc45aa3560576749703
+      spriteID: 0a1fd95feb5475240a9a5ef151d54b06
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_attackingui1_4
+      name: pulse_boostingui1_3
       rect:
         serializedVersion: 2
         x: 224
@@ -195,27 +173,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56ab698caa3b5b64d81183ae01327c1c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pulse_attackingui1_5
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 224
-        height: 224
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afd72e76adf57a941a8109cb39d6710f
+      spriteID: 2ba0f639051252e4b93ad2c3a1056757
       vertices: []
       indices: 
       edges: []
@@ -223,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ccd64804887fd9149b35d5e4a59e3d37
+    spriteID: c814204cec0a7284c94a98b8b038794f
     vertices: []
     indices: 
     edges: []

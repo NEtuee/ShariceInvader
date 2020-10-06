@@ -185,7 +185,6 @@
      <None Include="Assets\Script\Shader\SpriteDefault.shader" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Hit\Hit_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveBack\End\lance_drivingui2_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\DriveOn\DriveOn_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ElectricBoom\explosion\explosion_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost1\Boost1_Ani.txt" />
@@ -211,13 +210,14 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\StunSpark\2\2_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\ShootingDrone\Fire\Fire_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Electric\Electric_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Exparticle\0\0_Ani.txt" />
      <None Include="Assets\Resources\Sprites\UI\Weapon\Lancer\MainRange\MainRange_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Drive\Drive_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\DriveOn\DriveOn_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\commonMissileBoost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Appear\Appear_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\CuttingCurve\CuttingCurve_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Attack\Attack_Ani.txt" />
      <None Include="Assets\Script\Shader\TextureSpriteDefault.shader" />
      <None Include="Assets\MapData\DemoMap.txt" />
      <None Include="Assets\Resources\Sprites\UI\MainHud\HP\FirstHit\FirstHit_Ani.txt" />
@@ -301,6 +301,7 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\PhantomString_Aim\Shot\Shot_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\StunEffect\StunEffect_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\ImmortalHit\ImmortalHit_Ani.txt" />
+     <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\RayDrone\Flare\Spark\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveBack\Start\lance_drivemodeui2_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Hit\1\1_Ani.txt" />
@@ -311,7 +312,6 @@
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\PS\Boost2\Boost2_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Sparkle_big\Sparkle_big_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\LaserDrone\Back\Back_Ani.txt" />
-     <None Include="Assets\Resources\Sprites\UI\Weapon\Pulse\Attack\Attack_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Attack\Attack_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\Shield\1\1_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveArrow\End\lance_drivingui1_Ani.txt" />

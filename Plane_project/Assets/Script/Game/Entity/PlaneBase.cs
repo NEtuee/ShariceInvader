@@ -840,6 +840,12 @@ public abstract class PlaneBase : Collisionable {
 			_stunEffect.SetActive(false);
 			_stunEffect = null;
 		}
+
+		if(_stunSpark != null)
+		{
+			_stunSpark.SetActive(false);
+			_stunSpark = null;
+		}
 		
 		Explosion();
 
