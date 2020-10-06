@@ -1,10 +1,10 @@
 textbox 288*96
-	left
+	left // topleft (32,472)
 		portrait // topleft (0,0)
 		name // topleft (104,12)
 		text // topleft (104,28)
 		icon // topleft (266,78)
-	right
+	right // topright (767,472)
 		portrait // topright (288,96)
 		name // topright (183,12)
 		text // topright (183,28)
