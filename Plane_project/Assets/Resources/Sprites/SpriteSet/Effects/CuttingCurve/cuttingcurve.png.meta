@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 94718cd088c7cc945be1c6692795251f
+guid: 50923317bf7dc4b488faabe5697d69cf
 TextureImporter:
   fileIDToRecycleName:
     21300000: cuttingcurve_0
@@ -71,7 +71,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,9 +107,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 72
-        width: 37
-        height: 24
+        y: 56
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,7 +117,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b00636d8847522a45b70b4c525a56ca1
+      spriteID: 1210e20043e7ac94aa268abb4dd5b6eb
       vertices: []
       indices: 
       edges: []
@@ -126,10 +126,10 @@ TextureImporter:
       name: cuttingcurve_1
       rect:
         serializedVersion: 2
-        x: 37
-        y: 72
-        width: 37
-        height: 24
+        x: 70
+        y: 56
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,7 +137,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d6db92617f79ea4d91146269a14f345
+      spriteID: 45a84ed47d8af7748af201539f7f17aa
       vertices: []
       indices: 
       edges: []
@@ -146,10 +146,10 @@ TextureImporter:
       name: cuttingcurve_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 37
-        height: 24
+        x: 140
+        y: 56
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b01b5d381a6c26d4a8630181ea53ac8f
+      spriteID: f86efed8a8f82114c87cf381d6aaa26a
       vertices: []
       indices: 
       edges: []
@@ -166,10 +166,10 @@ TextureImporter:
       name: cuttingcurve_3
       rect:
         serializedVersion: 2
-        x: 37
-        y: 48
-        width: 37
-        height: 24
+        x: 210
+        y: 56
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,7 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ba5edbad68f34841803d7692708fc3c
+      spriteID: 19879d104f3742a4f8c64a27afe676cd
       vertices: []
       indices: 
       edges: []
@@ -187,9 +187,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
-        width: 37
-        height: 24
+        y: 0
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,7 +197,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87d829c474e81a64cb4ff5373bbf836f
+      spriteID: 3edea1ded2bd4d849bcdfee978e909e0
       vertices: []
       indices: 
       edges: []
@@ -206,10 +206,10 @@ TextureImporter:
       name: cuttingcurve_5
       rect:
         serializedVersion: 2
-        x: 37
-        y: 24
-        width: 37
-        height: 24
+        x: 70
+        y: 0
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,7 +217,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4890e3bdbdeec6340b77cf876ad524c0
+      spriteID: f0281c945c873ae4580d16c4def5aff2
       vertices: []
       indices: 
       edges: []
@@ -226,10 +226,10 @@ TextureImporter:
       name: cuttingcurve_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 140
         y: 0
-        width: 37
-        height: 24
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,7 +237,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 311962e65c96bb14d8bd5220d1c03088
+      spriteID: 81e10eac7c9590e4b85f52d63878c266
       vertices: []
       indices: 
       edges: []
@@ -246,10 +246,10 @@ TextureImporter:
       name: cuttingcurve_7
       rect:
         serializedVersion: 2
-        x: 37
+        x: 210
         y: 0
-        width: 37
-        height: 24
+        width: 70
+        height: 56
       alignment: 5
       pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,7 +257,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1da3f7c1ead60514196339ac11df7cbd
+      spriteID: b6f11aa12c4694f4386b6c469a352fb5
       vertices: []
       indices: 
       edges: []
@@ -265,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c51e3da5294ba444799c1df0149ed63f
+    spriteID: 6b6e7099adbc6d542a842c1bac27cc9c
     vertices: []
     indices: 
     edges: []

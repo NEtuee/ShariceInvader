@@ -130,8 +130,11 @@ public class Weapon_Test : WeaponBase
 
         Timer.SetViTimeScaleTimer(3,0.1f,0.3f);
 
+        CloseDriveText();
+
         return false;
     }
+
 
     public void AddHitEffect(Vector3 pos)
     {
@@ -197,6 +200,11 @@ public class Weapon_Test : WeaponBase
         MainHud.instance.MainUIAniSwap("Boost","UI/Weapon/Pulse/Boost");
         MainHud.instance.MainUIAniSwap("DriveOn","UI/Weapon/Pulse/DriveOn");
         MainHud.instance.MainUIAniSwap("DriveAttack","UI/Weapon/Pulse/DriveEnd");
+    }
+
+    public override void DriveOn()
+    {
+        OpenDriveText();
     }
 
     public override bool CollisionCheck(PlaneBase target)

@@ -11,6 +11,7 @@ public class Weapon_Lancer : WeaponBase
     private EffectBase _uiArrow;
     private EffectBase _backUi;
     private EffectBase _driveArrow;
+    private EffectBase _driveBack;
 
     private EffectBase _attackRange;
 
@@ -84,6 +85,7 @@ public class Weapon_Lancer : WeaponBase
 
         _uiArrow.Play(false);
         _backUi.Play(false);
+        _attackRange.Play(false);
 
         SoundManager.instance.Play("SE/Lancer_1",false);
 
@@ -102,6 +104,9 @@ public class Weapon_Lancer : WeaponBase
         float da = _driveArrow.angle;
         _driveArrow.SetActive(false);
         _driveArrow = null;
+
+        _driveBack.SetActive(false);
+        _driveBack = null;
 
         _dodgeStartPos = _plane.position;
 
@@ -142,18 +147,27 @@ public class Weapon_Lancer : WeaponBase
         _plane.SpriteDisapear(0.1f);
         CameraControll.instance.FollowDelay(0.5f);
 
+
+
         EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DriveArrow/End",false,_plane)
                         .RealTimeProgress()
-                        .SetAddPoint(_plane.direction * 0.25f)
+                        .SetAddPoint(_plane.direction * 0.33f)
                         .SetAngle(da);
+
+        EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DriveBack/End",false,_plane)
+                        .RealTimeProgress()
+                        .SetAddPoint(_plane.direction * 0.22f)
+                        .SetAngle(da);
+
+
 
         _attackRange.SetActive(false);
         _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/MainRange",false,null);
         _attackRange.PassiveDeactive();
         _attackRange.RealTimeProgress();
 
-        CameraControll.instance.Shake(0.1f,_plane.direction * 0.4f);
-
+        CameraControll.instance.Shake(0.1f,_plane.direction * 0.2f);
+        CloseDriveText();
 
         return false;
     }
@@ -166,10 +180,10 @@ public class Weapon_Lancer : WeaponBase
     public void UiUpdate()
     {
         _uiArrow.SetAngle(_plane.angle);
-        _uiArrow.SetPositionEm(_plane.position + _plane.direction * 0.35f);
+        _uiArrow.SetPositionEm(_plane.position + _plane.direction * 0.33f);
 
         _backUi.SetAngle(_plane.angle);
-        _backUi.SetPositionEm(_plane.position - _plane.direction * 0.25f);
+        _backUi.SetPositionEm(_plane.position - _plane.direction * 0.1f);
 
         _attackRange.SetAngle(_plane.angle);
 
@@ -177,8 +191,10 @@ public class Weapon_Lancer : WeaponBase
         if(_driveArrow != null)
         {
             _driveArrow.SetAngle(_plane.angle);
-            _driveArrow.SetPositionEm(_plane.position + _plane.direction * 0.25f);
-            _attackRange.SetPositionEm(_plane.position + _plane.direction * 1.7f);
+            _driveArrow.SetPositionEm(_plane.position + _plane.direction * 0.33f);
+
+            _driveBack.SetAngle(_plane.angle);
+            _driveBack.SetPositionEm(_plane.position + _plane.direction * 0.22f);
         }
         else
         {
@@ -192,13 +208,16 @@ public class Weapon_Lancer : WeaponBase
         _driveArrow.PassiveDeactive();
         _driveArrow.RealTimeProgress();
 
+        _driveBack = EffectManager.GetInstance().AddEffect(_plane.position,"SpriteSet/Effects/Weapon/Lancer/DriveBack/Start",false,null);
+        _driveBack.PassiveDeactive();
+        _driveBack.RealTimeProgress();
+
         _uiArrow.sprRenderer.enabled = false;
         _backUi.sprRenderer.enabled = false;
 
         _attackRange.SetActive(false);
-        _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/DriveRange",false,null);
-        _attackRange.PassiveDeactive();
-        _attackRange.RealTimeProgress();
+
+        OpenDriveText();
     }
 
     public override bool CollisionCheck(PlaneBase target)
@@ -273,6 +292,8 @@ public class Weapon_Lancer : WeaponBase
 
         if(_driveArrow != null)
             _driveArrow.SetActive(false);
+        if(_driveBack != null)
+            _driveBack.SetActive(false);
 
         foreach(var ani in _plane._boostAni)
         {

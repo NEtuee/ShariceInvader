@@ -35,8 +35,9 @@ public class Wand_Piercer : WandsBase
         // _dirSprites = ResourceManager.GetInstance().GetSpriteSet("StarFish/Defender",2);
         // _spriteAngle = 360f / _dirSprites.Length;
 
-        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
-        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_eliteicondown");
+        _minimapIcons[2] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_eliteiconup");
         miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
     }
 

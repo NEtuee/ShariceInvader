@@ -55,6 +55,12 @@ public class CameraControll : SingletonMono<CameraControll>, Define.IProgress {
 							_position.y - camHeight, _position.y + camHeight);
 	}
 
+	public bool IsInCamera(Vector3 pos)
+	{
+		var bound = GetCamBounds();
+		return (pos.x >= bound.x && pos.x <= bound.y && pos.y >= bound.z && pos.y <= bound.w);
+	}
+
 	public void SetTarget(PlaneBase target)
 	{
 		_followTarget = target;

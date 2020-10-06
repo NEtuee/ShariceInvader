@@ -43,6 +43,9 @@ public abstract class WeaponBase
     protected static SpriteRenderer _aimObject = null;
 	protected static AnimationControllEx _aimAni;
 
+
+    private EffectBase _driveText = null;
+
     public virtual void Initialize()
     {
         mainCoolTime = 0.5f;
@@ -111,7 +114,8 @@ public abstract class WeaponBase
     }
     public virtual void WhenChanged()
     {
-
+        if(_driveText != null)
+            _driveText.SetActive(false);
     }
 
     public virtual void DriveOn(){}
@@ -278,6 +282,29 @@ public abstract class WeaponBase
         }
 
         _canAim = true;
+    }
+
+    public void OpenDriveText()
+    {
+        if(_driveText != null)
+            _driveText.SetActive(false);
+
+        _driveText = EffectManager.GetInstance().AddEffect(_plane.position + new Vector3(0f,2.68f),"UI/Weapon/DriveText/Open",false,_plane)
+                                .SetAddPoint(new Vector3(0f,2.68f))
+                                .PassiveDeactive()
+                                .RealTimeProgress();
+    }
+
+    public void CloseDriveText()
+    {
+        if(_driveText != null)
+        {
+            _driveText.SetActive(false);
+            _driveText = null;
+        }
+        EffectManager.GetInstance().AddEffect(_plane.position + new Vector3(0f,2.68f),"UI/Weapon/DriveText/Close",false,_plane)
+                                .SetAddPoint(new Vector3(0f,2.68f))
+                                .RealTimeProgress();
     }
 
     public virtual void HitEffect(PlaneBase target)

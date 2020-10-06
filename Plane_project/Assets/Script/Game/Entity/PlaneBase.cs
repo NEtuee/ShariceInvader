@@ -66,7 +66,7 @@ public abstract class PlaneBase : Collisionable {
 	public Action hpChangeEvent = new Action(()=>{});
 
 	protected Sprite[] _dirSprites;
-	protected Sprite[] _minimapIcons = new Sprite[2];
+	protected Sprite[] _minimapIcons = new Sprite[3];
 	protected Vector3 _velocity = new Vector2();
 	protected Vector3 _friction = new Vector2();
 	public float _mass = 1f;
@@ -125,6 +125,7 @@ public abstract class PlaneBase : Collisionable {
 	protected LineRenderer velocityViewer;
 
 	protected EffectBase _stunEffect;
+	protected EffectBase _stunSpark;
 
 	public ObjectBase recentAttacker = null;
 
@@ -462,11 +463,24 @@ public abstract class PlaneBase : Collisionable {
 		{
 			_controllLockTimer = _controllLock ? _controllLockTimer - deltaTime : 0f;
 
+			if(_stunSpark == null || _stunSpark.IsEnd())
+			{
+				if(_stunSpark != null)
+					_stunSpark.SetActive(false);
+
+				int rand = MathEx.RandomInt(0,2);
+				_stunSpark = EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/StunSpark/" + rand,false,this)
+													.PassiveDeactive();
+				_stunSpark.SetSortingOrder(5);
+			}
+
 			if(_controllLockTimer <= 0f)
 			{
 				_controllLockTimer = 0f;
 				_stunEffect.SetActive(false);
+				_stunSpark.SetActive(false);
 				_stunEffect = null;
+				_stunSpark = null;
 				_controllLock = false;
 			}
 		}
@@ -902,8 +916,9 @@ public abstract class PlaneBase : Collisionable {
 	public void MiniMapIconSetup()
 	{
 		miniMapIcon = CanvasScript.instance.GetMinimapIcon();
-		_minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_enemyicon");
-		_minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_enemyiconarrow");
+		_minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_enemyicon");
+		_minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_enemyicondown");
+		_minimapIcons[2] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_enemyiconup");
 		miniMapIcon.sprite = _minimapIcons[0];
 
 		miniMapIcon.transform.localPosition = CanvasScript.instance.
@@ -963,13 +978,20 @@ public abstract class PlaneBase : Collisionable {
 			float camY = CameraControll.instance.position.y;
 			if(MathEx.distance(camY,_position.y) >= 1.5f)
 			{
-				miniMapIcon.sprite = _minimapIcons[1];
-				miniMapIcon.transform.localScale = new Vector3(1f,camY > _position.y ? -1f : 1f,1f);
+				miniMapIcon.sprite = _minimapIcons[_position.y > camY ? 2 : 1];
 			}
 			else
 			{
 				miniMapIcon.sprite = _minimapIcons[0];
-				miniMapIcon.transform.localScale = new Vector3(1f,1f,1f);
+			}
+
+			if(CameraControll.instance.IsInCamera(_position))
+			{
+				miniMapIcon.color = Color.white;
+			}
+			else
+			{
+				miniMapIcon.color = new Color32(217,22,70,255);
 			}
 		}
 	}

@@ -195,12 +195,23 @@ public class MainHud : SingletonMono<MainHud>
             if(i != _currWeapon)
             {
                 var scale = weaponGagueContainer[i].transform.localScale;
+                var color = gagueMats[i].GetColor("_RestColor");
                 weaponGagueContainer[i].transform.localScale = Vector3.Lerp(scale,new Vector3(1f,0.15f,1f),0.2f);
+                gagueMats[i].SetColor("_RestColor",Color.Lerp(color,new Color32(217,22,70,255),0.2f));
+
+
+                var restColor = weaponGagueContainer[i].material.GetColor("_RestColor");
+                weaponGagueContainer[i].material.SetColor("_RestColor",Color.Lerp(restColor,new Color32(217,22,70,0),0.2f));
             }
             else
             {
                 var scale = weaponGagueContainer[i].transform.localScale;
+                var color = gagueMats[i].GetColor("_RestColor");
                 weaponGagueContainer[i].transform.localScale = Vector3.Lerp(scale,new Vector3(1f,1f,1f),0.2f);
+                gagueMats[i].SetColor("_RestColor",Color.Lerp(color,Color.white,0.2f));
+
+                var restColor = weaponGagueContainer[i].material.GetColor("_RestColor");
+                weaponGagueContainer[i].material.SetColor("_RestColor",Color.Lerp(restColor,new Color32(217,22,70,255),0.2f));
             }
 
             if(i > 0)

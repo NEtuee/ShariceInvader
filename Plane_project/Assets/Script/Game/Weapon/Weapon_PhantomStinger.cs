@@ -170,6 +170,7 @@ public class Weapon_PhantomStinger : WeaponBase
             SoundManager.instance.PlayRequest("SE/PSTarget",-1,1f,false,(float)i * 0.06f);
         }
 
+        OpenDriveText();
         _dashAim = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/PS/DashAim",false);
         _dashAim.PassiveDeactive();
         _dashAim.RealTimeProgress();
@@ -208,6 +209,7 @@ public class Weapon_PhantomStinger : WeaponBase
         _plane.SetControll(false);
 
         BurstAimDirection(24f,0.15f);
+        CloseDriveText();
     }
 
     public void SpecialTargetHitEvent(PlaneBase target)
@@ -250,6 +252,14 @@ public class Weapon_PhantomStinger : WeaponBase
 
         SoundManager.instance.Play("SE/BurstActive_",false,2);
 
+    }
+
+    public override void HitEffect(PlaneBase target)
+    {
+        var angle = MathEx.directionToAngle((target.position - _plane.position).normalized);
+
+        EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/Weapon/PS/Hit",false)
+                                    .SetAngle(angle);
     }
 
     public override bool CollisionCheck(PlaneBase target)

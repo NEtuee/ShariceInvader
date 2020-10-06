@@ -224,6 +224,11 @@ public class EffectBase : Drawable {
 		}
 	}
 
+	public bool IsEnd()
+	{
+		return ani.isEnd;
+	}
+
 	public override void release()
 	{
 		

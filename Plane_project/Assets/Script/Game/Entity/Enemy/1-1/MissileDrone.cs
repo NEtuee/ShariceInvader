@@ -37,8 +37,9 @@ public class MissileDrone : PlaneBase
         _trailEmmit = false;
 		_bounceOff = true;
 		
-		_minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/map_eliteicon");
-        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/map_eliteiconarrow");
+		_minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_eliteicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_eliteicondown");
+        _minimapIcons[2] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_eliteiconup");
         miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
 	}
 

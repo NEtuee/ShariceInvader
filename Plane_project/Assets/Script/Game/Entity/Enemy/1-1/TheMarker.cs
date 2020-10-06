@@ -114,6 +114,11 @@ public class TheMarker : PlaneBase
         _mass = 5f;
 
         maxHp = _hp = 350;
+
+        _minimapIcons[0] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_bossicon");
+        _minimapIcons[1] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_bossicondown");
+        _minimapIcons[2] = ResourceManager.GetInstance().GetSprite("UI/MinimapIcon/map_bossiconup");
+        miniMapIcon.gameObject.GetComponent<SpriteRenderer>().sprite = _minimapIcons[0];
     }
 
     public override void deleteEvent()
