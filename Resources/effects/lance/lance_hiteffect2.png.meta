@@ -1,15 +1,11 @@
 fileFormatVersion: 2
-guid: 06cdccfad7e090d439fa38257b184d76
+guid: 6812ef1d70ad4ef4bbc3595e6256ae36
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lance_drivetrail_0
-    21300002: lance_drivetrail_1
-    21300004: lance_drivetrail_2
-    21300006: lance_drivetrail_3
-    21300008: lance_drivetrail_4
-    21300010: lance_drivetrail_5
-    21300012: lance_drivetrail_6
-    21300014: lance_drivetrail_7
+    21300000: lance_hiteffect2_0
+    21300002: lance_hiteffect2_1
+    21300004: lance_hiteffect2_2
+    21300006: lance_hiteffect2_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -103,161 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lance_drivetrail_0
+      name: lance_hiteffect2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 558
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26e71be56b38910478d9118d6d3c7fcd
+      spriteID: 8967199b7574f7c488d0051f9f075959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivetrail_1
+      name: lance_hiteffect2_1
       rect:
         serializedVersion: 2
-        x: 321
-        y: 558
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3b14133d16cce9468bb482710e4cf51
+      spriteID: dfc900c474c394a44b8856a0f5f85233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivetrail_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 372
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4fb47abd54d52f64d8caeb4b18e16365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivetrail_3
-      rect:
-        serializedVersion: 2
-        x: 321
-        y: 372
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47ccc3850a5a99240be364742a297c6c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivetrail_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 186
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bfa7ec6f844a4e4a8a8ef8cf42640cb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivetrail_5
-      rect:
-        serializedVersion: 2
-        x: 321
-        y: 186
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a3c1df9ce58e804da80070416039972
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lance_drivetrail_6
+      name: lance_hiteffect2_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5341c36fbe44d941ab2850fdac641a0
+      spriteID: bfeff3a6de245054d9c1f5c07ce7bde8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lance_drivetrail_7
+      name: lance_hiteffect2_3
       rect:
         serializedVersion: 2
-        x: 321
+        x: 128
         y: 0
-        width: 321
-        height: 186
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54a0c31cf1745614eaa4cbe84f66514e
+      spriteID: deb831eb8b8a17042abfeb051a79d776
       vertices: []
       indices: 
       edges: []
@@ -265,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2463ffbec9f808f4cb325855b38518b2
+    spriteID: da026195db83e934e9841344e0c913e5
     vertices: []
     indices: 
     edges: []
