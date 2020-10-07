@@ -65,7 +65,8 @@ public class DialogHelper : MonoBehaviour
 
     public void AddMainText(char c)
     {
-        mainText.SetText(mainText.text + c);
+        string s = mainText.text + c;
+        mainText.SetText(s);
     }
 
     public void SetType(ProgressType type)

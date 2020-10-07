@@ -210,11 +210,11 @@ public class DialogManager : SingletonMono<DialogManager>
     {
         if(speachSide == 0)
         {
-            left.AddMainText(texts[characterSpeachPos][langague].text[charPos]);
+            left.SetMainText(texts[characterSpeachPos][langague].text.Substring(0,charPos));
         }
         else if(speachSide == 1)
         {
-            right.AddMainText(texts[characterSpeachPos][langague].text[charPos]);
+            right.SetMainText(texts[characterSpeachPos][langague].text.Substring(0,charPos));
         }
     }
 
