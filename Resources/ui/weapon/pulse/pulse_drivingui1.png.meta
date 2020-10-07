@@ -1,11 +1,15 @@
 fileFormatVersion: 2
-guid: 12fd01273305bcd429986c5cf96b8fa3
+guid: 788646d57e6bfff4b83284af2a04826c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pulse_drivemodeui1_0
-    21300002: pulse_drivemodeui1_1
-    21300004: pulse_drivemodeui1_2
-    21300006: pulse_drivemodeui1_3
+    21300000: pulse_drivingui1_0
+    21300002: pulse_drivingui1_1
+    21300004: pulse_drivingui1_2
+    21300006: pulse_drivingui1_3
+    21300008: pulse_drivingui1_4
+    21300010: pulse_drivingui1_5
+    21300012: pulse_drivingui1_6
+    21300014: pulse_drivingui1_7
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -99,7 +103,87 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pulse_drivemodeui1_0
+      name: pulse_drivingui1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 800
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c0b6e1b18f3ea42a8f995656ac13c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_drivingui1_1
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1800
+        width: 800
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e5a70397622aa449c37705a537b5e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_drivingui1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 800
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c3a2a34877ac74da890b058f13689e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_drivingui1_3
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1200
+        width: 800
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20379299aebe125438673111c74dc4a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulse_drivingui1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -113,13 +197,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ce2090debd8d9a4b8b0b9c1659a95e5
+      spriteID: 382b268aa53165a4983d8d847f91733d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_drivemodeui1_1
+      name: pulse_drivingui1_5
       rect:
         serializedVersion: 2
         x: 800
@@ -133,13 +217,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3de153b072cc7f34e8c045cc7bf52b1c
+      spriteID: a91aae4c8daf5fd4886fb347e915ab98
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_drivemodeui1_2
+      name: pulse_drivingui1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -153,13 +237,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d336a8376d7db60479900940cc9e4199
+      spriteID: cc7ba90d599117f468477c1618b6aab8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pulse_drivemodeui1_3
+      name: pulse_drivingui1_7
       rect:
         serializedVersion: 2
         x: 800
@@ -173,7 +257,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f053888b548b4594d9f9bda3733e2ff5
+      spriteID: 502a49e5866fcdf49b70e3f7dc8a901d
       vertices: []
       indices: 
       edges: []
@@ -181,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8e80c88a99dc31a45b310da08a3d6422
+    spriteID: 04268b916b356a748967d0fb5d5d3859
     vertices: []
     indices: 
     edges: []
