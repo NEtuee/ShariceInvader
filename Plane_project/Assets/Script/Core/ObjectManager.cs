@@ -80,6 +80,7 @@ public class ObjectManager : Singleton<ObjectManager>, Define.IManager {
 	}
 
 	public LinkBase<ObjectBase> GetFirstLink(Define.ObjectType type) {return _objectDic[(int)type].front;}
+	public LinkBase<ObjectBase> GetBackLink(Define.ObjectType type) {return _objectDic[(int)type].back;}
 	
 	public int GetEnemyCount() {return _objectDic[1].count;}
 

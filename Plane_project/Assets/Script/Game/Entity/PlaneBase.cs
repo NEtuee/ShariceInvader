@@ -103,6 +103,8 @@ public abstract class PlaneBase : Collisionable {
 	protected bool _fallExplosion = false;
 	protected bool _trailEmmit = false;
 	protected bool _boostAniProgress = false;
+	public bool _weaponChangeLock = false;
+	public bool _weaponGagueLock = false;
 
 	private float _fallTimer = 1f;
 	protected float _controllLockTimer = 0f;
@@ -228,6 +230,9 @@ public abstract class PlaneBase : Collisionable {
 
 	public virtual void WeaponChange(int pos)
 	{
+		if(_weaponChangeLock)
+			return;
+		
 		weaponInven.WeaponChange(pos);
 	}
 
@@ -939,6 +944,16 @@ public abstract class PlaneBase : Collisionable {
 			_velocity.y *= -1f;
 			DecreaseHP(50);
 		}
+	}
+
+	public void WeaponChangeLock(bool value)
+	{
+		_weaponChangeLock = value;
+	}
+
+	public void WeaponGagueLock(bool value)
+	{
+		_weaponGagueLock = value;
 	}
 
 	public void SkyCheck(float deltaTime)

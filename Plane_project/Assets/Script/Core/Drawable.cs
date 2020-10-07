@@ -39,7 +39,12 @@ public abstract class Drawable : ObjectBase {
 
 	protected void AddSpriteRenderer()
 	{
-		_sprRenderer = obj.AddComponent<SpriteRenderer>();
+		var spr = GetComponent<SpriteRenderer>();
+		if(spr == null)
+			_sprRenderer = obj.AddComponent<SpriteRenderer>();
+		else
+			_sprRenderer = spr;
+			
 		_sprRenderer.material = ResourceManager.GetInstance().GetPixelSnapMaterial();
 	}
 

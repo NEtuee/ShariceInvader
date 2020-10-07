@@ -22,6 +22,12 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         StageClear,
         GameUpdateStop,
         GameUpdate,
+        WeaponChange,
+        PlayerFuncLock,
+        PlayerFuncUnLock,
+        IfTriggerJump,
+        SetTrigger,
+        CreateTutorialSign,
     }
 
     [System.Serializable]
@@ -278,6 +284,72 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         }
     }
 
+    public class Event_IfTriggerJump : EventBase
+    {
+        string trigger;
+        int point;
+        public override bool Progress(float delatTime)
+        {
+            if(PlayerPrefs.GetInt(trigger,-1) == 0)
+                StageManager.instance.SetEventPos(point);
+            return true;
+
+        }
+
+        public override void DataSet()
+        {
+            var datas = data.Split(',');
+
+            trigger = datas[0];
+            point = int.Parse(datas[1]);
+        }
+    }
+
+    public class Event_SetTrigger : EventBase
+    {
+        string trigger;
+        bool value;
+
+        public override bool Progress(float delatTime)
+        {
+            PlayerPrefs.SetInt(trigger, value ? 0 : 1);
+            return true;
+
+        }
+
+        public override void DataSet()
+        {
+            var datas = data.Split(',');
+            trigger = datas[0];
+            value = bool.Parse(datas[1]);
+        }
+    }
+
+    public class Event_CreateTutorialSign : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            var recentEnemy = ObjectManager.GetInstance().GetBackLink(Define.ObjectType.enemy);
+            if(recentEnemy == null)
+            {
+                return true;
+            }
+            var obj = ResourceManager.GetInstance().GetPrefab("TutorialSign");
+            var objBase = ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,obj);
+
+            var sign = objBase.gameObject.GetComponent<TutorialSign>();
+
+            sign.Active(recentEnemy.target,"");
+
+            return true;
+        }
+
+        // public override void DataSet()
+        // {
+        //     datas = data.Split(',');
+        // }
+    }
+
     public class Event_Dialog : EventBase
     {
         string[] datas;
@@ -389,6 +461,55 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         public override bool Progress(float delatTime)
         {
             GameMain.instance.update = false;
+            return true;
+        }
+    }
+
+    public class Event_WeaponChange : EventBase
+    {
+        int pos = 0;
+        public override bool Progress(float delatTime)
+        {
+            Player.instance.weaponInven.WeaponChange(pos);
+            return true;
+        }
+
+        public override void DataSet()
+        {
+            pos = int.Parse(data);
+        }
+    }
+
+    public class Event_PlayerFuncLock : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            if(data == "WeaponChange")
+            {
+                Player.instance.WeaponChangeLock(true);
+            }
+            else if(data == "WeaponGague")
+            {
+                Player.instance.WeaponGagueLock(true);
+            }
+
+            return true;
+        }
+    }
+
+    public class Event_PlayerFuncUnLock : EventBase
+    {
+        public override bool Progress(float delatTime)
+        {
+            if(data == "WeaponChange")
+            {
+                Player.instance.WeaponChangeLock(false);
+            }
+            else if(data == "WeaponGague")
+            {
+                Player.instance.WeaponGagueLock(false);
+            }
+
             return true;
         }
     }
@@ -547,6 +668,30 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         else if(head == EventType.GameUpdateStop)
         {
             e = new Event_GameUpdateStop();
+        }
+        else if(head == EventType.WeaponChange)
+        {
+            e = new Event_WeaponChange();
+        }
+        else if(head == EventType.PlayerFuncLock)
+        {
+            e = new Event_PlayerFuncLock();
+        }
+        else if(head == EventType.PlayerFuncUnLock)
+        {
+            e = new Event_PlayerFuncUnLock();
+        }
+        else if(head == EventType.IfTriggerJump)
+        {
+            e = new Event_IfTriggerJump();
+        }
+        else if(head == EventType.SetTrigger)
+        {
+            e = new Event_SetTrigger();
+        }
+        else if(head == EventType.CreateTutorialSign)
+        {
+            e = new Event_CreateTutorialSign();
         }
 
 

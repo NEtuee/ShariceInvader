@@ -169,11 +169,14 @@ public class DialogManager : SingletonMono<DialogManager>
             if(speachSide == 0)
             {
                 left.SetMainText(texts[characterSpeachPos][langague].text);
+                left.AnimationTalkingEnd();
             }
             else if(speachSide == 1)
             {
                 right.SetMainText(texts[characterSpeachPos][langague].text);
+                right.AnimationTalkingEnd();
             }
+
             ++characterSpeachPos;
             scrollEnd = true;
         }

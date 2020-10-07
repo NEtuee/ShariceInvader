@@ -32,6 +32,8 @@ public class FakePointLight : Collisionable
     private Color _mainColor = Color.white;
     private Color _lerpColor = Color.white;
 
+    private ObjectBase _target;
+
     public override void firstSetting()
     {
         SetCollider(new Define.SimpleCircleCollider(10f,10f,_position));
@@ -71,6 +73,8 @@ public class FakePointLight : Collisionable
         _mainColor = _lerpColor = color;
         _lerpColor.a = 0f;
 
+        _target = null;
+
         UpdateTransform();
 
         SetActive(true);
@@ -88,6 +92,8 @@ public class FakePointLight : Collisionable
         return this;
     }
 
+    public FakePointLight SetTarget(ObjectBase obj) {_target = obj; return this;}
+
     public override void progress(float deltaTime)
     {
         _meshRenderer.material.SetColor("_Color",Color.Lerp(_mainColor,_lerpColor,(updateTime - _timer) / _timer));
@@ -98,6 +104,16 @@ public class FakePointLight : Collisionable
             Delete();
             SetActive(false);
         }
+
+        if(_target != null)
+		{
+			if(_target.deleted)
+			{
+				SetActive(false);
+
+			}
+			_position = _target.position;
+		}
 
         // updateTime -= deltaTime;
         // if(_collision)

@@ -32,6 +32,8 @@ public class WeaponInventory
 
     public void WeaponChange(int p)
     {
+        pos = p;
+
         if(_weaponList.Count <= p)
         {
             Debug.Log("Weapon position Error : " + p);
@@ -53,16 +55,18 @@ public class WeaponInventory
 		_currWeapon.Change();
 
         MainHud.instance.WeaponChange(_currWeapon._icon,_currWeapon._ui);
+        MainHud.instance.SetCurrWeapon(p);
         GagueUpdate();
     }
 
     public void WeaponChange()
     {
+        if(_plane._weaponChangeLock)
+            return;
+
         ++pos;
         pos = pos >= _weaponList.Count ? 0 : pos;
         WeaponChange(pos);
-
-        MainHud.instance.SetCurrWeapon(pos);
     }
 
     public void WeaponProgress(float deltaTime)
@@ -71,6 +75,16 @@ public class WeaponInventory
             return;
         
         _currWeapon.Progress(deltaTime);
+    }
+
+    public WeaponBase.WeaponList GetCurrentWeaponType()
+    {
+        return _weaponList[pos].type;
+    }
+
+    public WeaponBase GetCurrentWeapon()
+    {
+        return _currWeapon;
     }
 
     public void MainAttack()

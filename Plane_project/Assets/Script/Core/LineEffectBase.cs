@@ -27,6 +27,7 @@ public class LineEffectBase : ObjectBase
     private bool _lerpColor = false;
     private bool _intervalColor = false;
     private bool _offsetScroll = false;
+    private bool _passiveDeactive = false;
 
     private float _lerpColorTime = 0f;
     private float _lerpColorTimer = 0f;
@@ -68,6 +69,7 @@ public class LineEffectBase : ObjectBase
         _offsetScroll = false;
         _lerpColor = false;
         _intervalColor = false;
+        _passiveDeactive = false;
 
         SetMaterial(pixelSnapMat);
         SetColor(Color.white);
@@ -139,6 +141,8 @@ public class LineEffectBase : ObjectBase
         return this;
     }
 
+    public LineEffectBase PassiveDeactive() {_passiveDeactive = true; return this;}
+
     public override void initialize()
     {
 
@@ -148,7 +152,7 @@ public class LineEffectBase : ObjectBase
     {
         _mainTimer -= deltaTime;
 
-        if(_mainTimer <= 0f)
+        if(_mainTimer <= 0f && !_passiveDeactive)
         {
             _mainTimer = 0f;
             SetActive(false);

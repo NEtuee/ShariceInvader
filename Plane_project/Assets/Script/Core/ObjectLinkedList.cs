@@ -34,6 +34,7 @@ public class LinkedList<T> where T : ObjectBase
 {
 	public int count{get{return _count;}}
 	public LinkBase<T> front{get{return _front;}}
+	public LinkBase<T> back{get{return _back;}}
 
 	private int _count = 0;
 

@@ -170,6 +170,7 @@
      <Compile Include="Assets\Script\Game\UI\ComboCount.cs" />
      <Compile Include="Assets\Script\Game\UI\DialogHelper.cs" />
      <Compile Include="Assets\Script\Game\UI\MainHud.cs" />
+     <Compile Include="Assets\Script\Game\UI\TutorialSign.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_Lancer.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_None.cs" />
      <Compile Include="Assets\Script\Game\Weapon\Weapon_PhantomStinger.cs" />
@@ -243,6 +244,7 @@
      <None Include="Assets\Resources\Sprites\UI\Dialog\Auto\Auto_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Pulse\Loop\Loop_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Weapon\Lancer\DriveBack\End\End_Ani.txt" />
+     <None Include="Assets\MapData\TestMap.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Planes\BoostDrone\Boost\Boost_Ani.txt" />
      <None Include="Assets\Resources\Sprites\SpriteSet\Effects\Boost\Burst\Burst_Ani.txt" />
      <None Include="Assets\Resources\Dialogs\TestDialog_Save.txt" />

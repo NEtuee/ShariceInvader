@@ -1,0 +1,16 @@
+0/0,5
+16/WeaponChange
+16/WeaponGague
+1/9,0
+20/
+9/0,1
+15/1
+1/9,0
+20/
+9/0,1
+15/2
+1/9,0
+20/
+9/0,1
+17/WeaponChange
+17/WeaponGague

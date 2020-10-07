@@ -94,6 +94,9 @@ public abstract class WeaponBase
 
     public bool DecreaseGague(float value)
     {
+        if(_plane._weaponGagueLock)
+            return true;
+        
         if(_currGague <= 0f)
             return false;
         _currGague -= value;
@@ -330,6 +333,8 @@ public abstract class WeaponBase
 
         return false;
     }
+
+    public bool Aimed() {return _aim;}
 
     public WeaponBase(PlaneBase plane) 
     {

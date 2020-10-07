@@ -7,6 +7,7 @@ public class ControllerEx : Singleton<ControllerEx>
 {
     public enum ControllerType
     {
+        None = -1, 
         KeyboardMouse = 0,
         XboxController,
         PSController
@@ -553,6 +554,24 @@ public class ControllerEx : Singleton<ControllerEx>
             return GetCurrentPSContollerInput();
         
         return null;
+    }
+
+    public string GetKeyboardString(string type)
+    {
+        var s = _keyboardBind[type].code.ToString();
+        s = s == "Mouse0" ? "LMB" : (s == "Mouse1" ? "RMB" : s);
+
+        return s;
+    }
+
+    public Sprite GetXboxGraphic(string s)
+    {
+        return GetXboxGraphic(_xboxBind[s]);
+    }
+
+    public Sprite GetPSGraphic(string s)
+    {
+        return GetPSGraphic(_xboxBind[s]);
     }
 
     public Sprite GetXboxGraphic(ControllerEx.Key key)
