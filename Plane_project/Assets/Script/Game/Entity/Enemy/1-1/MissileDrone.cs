@@ -79,6 +79,12 @@ public class MissileDrone : PlaneBase
 			Vector3 randPos = new Vector3(Random.Range(-.05f,.05f),Random.Range(-.05f,.05f));
 
 			EffectManager.GetInstance().Explosion(pos + randPos,5,0.3f,0.45f,0.55f);
+			EffectManager.GetInstance().AddEffect(pos + randPos,"SpriteSet/Effects/ExplosionSpike")
+										.SetTarget(this)
+										.SetAddPoint(randPos)
+										.SetSortingOrder(2)
+										.SetAngle(UnityEngine.Random.Range(0f,360f));
+
 			EffectManager.GetInstance().AddEffect(pos + randPos,"SpriteSet/Effects/Explosion")
 										.SetTarget(this)
 										.SetAddPoint(randPos)
@@ -160,10 +166,16 @@ public class MissileDrone : PlaneBase
 				Vector3 randPos = new Vector3(Random.Range(-1.15f,1.15f),Random.Range(-.2f,.2f));
 
 				EffectManager.GetInstance().Explosion(_position + randPos,5,0.3f,0.35f,0.55f);
+				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/ExplosionSpike")
+										.SetTarget(this)
+										.SetAddPoint(randPos)
+										.SetSortingOrder(2)
+										.SetAngle(UnityEngine.Random.Range(0f,360f));
+
 				EffectManager.GetInstance().AddEffect(_position + randPos,"SpriteSet/Effects/Explosion")
-											.SetTarget(this)
-											.SetAddPoint(randPos)
-											.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+										.SetTarget(this)
+										.SetAddPoint(randPos)
+										.SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
 			
 				EffectManager.GetInstance().EmitParticles("ExplosionSmoke",_position + randPos,4);
 				//EffectManager.GetInstance().ExplosionSmoke(_position + randPos,_position + randPos + new Vector3(Random.Range(-0.2f,0.2f),Random.Range(-0.2f,0.2f)),0.15f,0.01f,4);

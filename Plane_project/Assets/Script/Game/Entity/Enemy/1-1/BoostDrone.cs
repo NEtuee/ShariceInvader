@@ -52,7 +52,8 @@ public class BoostDrone : PlaneBase
 
     public override void Explosion()
     {
-		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ExplosionSpike").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(3).SetAngle(UnityEngine.Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.3f,0.25f,0.41f);
 
         float rat = Vector2.Distance(_position,CameraControll.instance.position);

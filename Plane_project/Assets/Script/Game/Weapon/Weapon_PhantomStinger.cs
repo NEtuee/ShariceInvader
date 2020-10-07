@@ -29,7 +29,7 @@ public class Weapon_PhantomStinger : WeaponBase
 
         delayEvent = SpecialTargetHitEvent;
 
-        GagueSetup(1f,5f,15f,5f);
+        GagueSetup(1f,5f,8f,3f);
     }
     public override void Progress(float deltaTime)
     {

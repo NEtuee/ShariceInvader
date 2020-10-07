@@ -28,6 +28,7 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         IfTriggerJump,
         SetTrigger,
         CreateTutorialSign,
+        TriggerDialog,
     }
 
     [System.Serializable]
@@ -46,6 +47,9 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         Vector3 pos;
         public override bool Progress(float delatTime)
         {
+            if(Player.instance != null)
+                return true;
+
             PlaneBase obj = ObjectManager.GetInstance().AddObject<Player>(Define.ObjectType.player,"Player");//_objManager.AddObject(Define.ObjectType.one,player);
 		    obj.SetPositionEm(pos);
 		    CameraControll.instance.SetTarget(obj);
@@ -329,25 +333,73 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
     {
         public override bool Progress(float delatTime)
         {
-            var recentEnemy = ObjectManager.GetInstance().GetBackLink(Define.ObjectType.enemy);
-            if(recentEnemy == null)
-            {
-                return true;
-            }
+            TutorialSign.TutorialType type = (TutorialSign.TutorialType)int.Parse(data);
             var obj = ResourceManager.GetInstance().GetPrefab("TutorialSign");
             var objBase = ObjectManager.GetInstance().AddObject(Define.ObjectType.effect,obj);
-
+    
             var sign = objBase.gameObject.GetComponent<TutorialSign>();
 
-            sign.Active(recentEnemy.target,"");
+            if(type == TutorialSign.TutorialType.MainAttack)
+            {
+                var recentEnemy = ObjectManager.GetInstance().GetBackLink(Define.ObjectType.enemy);
+                if(recentEnemy == null)
+                {
+                    return true;
+                }
+
+                sign.Active(recentEnemy.target,int.Parse(data));
+            }
+            else if(type == TutorialSign.TutorialType.DriveAttack)
+            {
+                var recentEnemy = ObjectManager.GetInstance().GetBackLink(Define.ObjectType.enemy);
+                if(recentEnemy == null)
+                {
+                    return true;
+                }
+
+                sign.Active(recentEnemy.target,int.Parse(data));
+            }
+            else if(type == TutorialSign.TutorialType.Movement)
+            {
+                sign.Active(Player.instance,int.Parse(data));
+            }
+
+
 
             return true;
         }
 
-        // public override void DataSet()
-        // {
-        //     datas = data.Split(',');
-        // }
+    }
+
+    public class Event_TriggerDialog : EventBase
+    {
+        string[] datas;
+        bool show = false;
+        public override bool Progress(float delatTime)
+        {
+            if(PlayerPrefs.GetInt(datas[0],-1) != 0)
+            {
+                return true;
+            }
+
+            if(!show)
+            {
+                show = true;
+                DialogManager.instance.ShowDialog(datas[1],datas[2] == "0",datas[3] == "0");
+            }
+            if(!DialogManager.instance.dialog)
+            {
+                show = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        public override void DataSet()
+        {
+            datas = data.Split(',');
+        }
     }
 
     public class Event_Dialog : EventBase
@@ -460,7 +512,8 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
     {
         public override bool Progress(float delatTime)
         {
-            GameMain.instance.update = false;
+            //GameMain.instance.update = false;
+            ObjectManager.GetInstance().UpdateStop(9999999f);
             return true;
         }
     }
@@ -518,7 +571,8 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
     {
         public override bool Progress(float delatTime)
         {
-            GameMain.instance.update = true;
+            //GameMain.instance.update = true;
+            ObjectManager.GetInstance().UpdateStop(0f);
             return true;
         }
     }
@@ -692,6 +746,10 @@ public class StageManager : SingletonMono<StageManager>, Define.IManager
         else if(head == EventType.CreateTutorialSign)
         {
             e = new Event_CreateTutorialSign();
+        }
+        else if(head == EventType.TriggerDialog)
+        {
+            e = new Event_TriggerDialog();
         }
 
 

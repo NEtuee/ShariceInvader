@@ -15,7 +15,7 @@ public class Weapon_Test : WeaponBase
         _icon = ResourceManager.GetInstance().GetSprite("UI/icon_nova");
         _ui = ResourceManager.GetInstance().GetSprite("UI/ui_nova");
 
-        GagueSetup(1f,5f,15f,5f);
+        GagueSetup(1f,10f,8f,3f);
 
     }
     public override void Progress(float deltaTime)

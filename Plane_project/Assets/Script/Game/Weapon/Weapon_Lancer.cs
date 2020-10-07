@@ -32,7 +32,7 @@ public class Weapon_Lancer : WeaponBase
 
         _hideAimObject = true;
 
-        GagueSetup(1f,5f,15f,5f);
+        GagueSetup(1f,3f,8f,5f);
     }
 
     public override void Progress(float deltaTime)
@@ -163,7 +163,7 @@ public class Weapon_Lancer : WeaponBase
 
         _attackRange.SetActive(false);
         _attackRange = EffectManager.GetInstance().AddEffect(_plane.position,"UI/Weapon/Lancer/MainRange",false,null);
-        _attackRange.PassiveDeactive();
+        _attackRange.PassiveDeactive(); 
         _attackRange.RealTimeProgress();
 
         CameraControll.instance.Shake(0.1f,_plane.direction * 0.2f);
@@ -238,6 +238,15 @@ public class Weapon_Lancer : WeaponBase
 
 
         return false;
+    }
+
+    public override void HitEffect(PlaneBase target)
+    {
+        base.HitEffect(target);
+
+        EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/Weapon/Lancer/Hit/0").SetSortingOrder(5).SetAngle(Random.Range(0f,360f));
+        EffectManager.GetInstance().AddEffect(target.position,"SpriteSet/Effects/Weapon/Lancer/Hit/0")
+                                .SetSortingOrder(5).SetAngle(MathEx.directionToAngle((_plane.position - target.position).normalized));
     }
 
     public override void Change()

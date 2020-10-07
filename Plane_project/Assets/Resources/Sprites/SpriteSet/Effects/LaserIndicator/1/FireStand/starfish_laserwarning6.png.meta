@@ -68,7 +68,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -79,7 +79,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -90,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +105,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
+        width: 64
         height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -114,7 +114,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23f45f59a353fc04c9c0713e9d941d5b
+      spriteID: d8bdf289a89641f4b8a2c12bf1a71c04
       vertices: []
       indices: 
       edges: []
@@ -123,9 +123,9 @@ TextureImporter:
       name: starfish_laserwarning6_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
-        width: 48
+        width: 64
         height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,7 +134,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 331bf491035724f439c21743245048c0
+      spriteID: b86cc0565e26f824e9b113a47971b87e
       vertices: []
       indices: 
       edges: []
@@ -143,9 +143,9 @@ TextureImporter:
       name: starfish_laserwarning6_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 128
         y: 0
-        width: 48
+        width: 64
         height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,7 +154,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b60b6dfa867af44e9365cb409210c7c
+      spriteID: c51845e95add69b488d054d54a82dc19
       vertices: []
       indices: 
       edges: []
@@ -163,9 +163,9 @@ TextureImporter:
       name: starfish_laserwarning6_3
       rect:
         serializedVersion: 2
-        x: 144
+        x: 192
         y: 0
-        width: 48
+        width: 64
         height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,7 +174,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f47d8acd1a22aa543b4e28f2ad0d3187
+      spriteID: ba2eabf1be8e84c4bbc71699f4d1d31b
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
       name: starfish_laserwarning6_4
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 0
-        width: 48
+        width: 64
         height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,7 +194,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7aa0e049dbdde624a82e71cf5e5940b7
+      spriteID: 9313fa22cb6b260438cff0353fa6e022
       vertices: []
       indices: 
       edges: []
@@ -202,7 +202,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f4c0c3a6761721a4a8da327365606a98
+    spriteID: ce815cfb226260f42ae1710d29a602f7
     vertices: []
     indices: 
     edges: []

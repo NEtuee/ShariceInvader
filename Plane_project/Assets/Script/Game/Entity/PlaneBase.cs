@@ -403,8 +403,8 @@ public abstract class PlaneBase : Collisionable {
 		if(!_immortal)
 		{
 			ChangeHp(-value);
-			if(_hp <= -15)
-				Delete();
+			// if(_hp <= -15)
+			// 	Delete();
 
 			if(_hp <= 0 && !_fall && !deleted)
 			{
@@ -518,27 +518,37 @@ public abstract class PlaneBase : Collisionable {
 			
 			if(_fall)
 			{
-				_fallTimer -= deltaTime;
-				EffectManager.GetInstance().EmitParticles("Smoke",_position,1);
-				if(_fallTimer <= 0f)
+				if(_hp <= -15)
 				{
 					Delete();
 				}
-				else if(_fallTimer <= 0.7f && !_fallExplosion)
+				else
 				{
-					_fallExplosion = true;
-					EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
-					EffectManager.GetInstance().Explosion(_position,15);
-
-					float rat = Vector2.Distance(_position,CameraControll.instance.position);
-					rat = rat < 2f ? 1f : rat;
-					if(rat >= 2f) 
+					_fallTimer -= deltaTime;
+					EffectManager.GetInstance().EmitParticles("Smoke",_position,1);
+					if(_fallTimer <= 0f)
 					{
-						rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+						Delete();
 					}
-
-					SoundManager.instance.PlayRequest("SE/SmallExplosion_",3,rat,false);
+					else if(_fallTimer <= 0.7f && !_fallExplosion)
+					{
+						_fallExplosion = true;
+						EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ExplosionSpike").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
+						EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(3).SetAngle(UnityEngine.Random.Range(0f,360f));
+						EffectManager.GetInstance().Explosion(_position,15);
+	
+						float rat = Vector2.Distance(_position,CameraControll.instance.position);
+						rat = rat < 2f ? 1f : rat;
+						if(rat >= 2f) 
+						{
+							rat = 1f - (MathEx.abs((2f - rat)) * .1f);
+						}
+	
+						SoundManager.instance.PlayRequest("SE/SmallExplosion_",3,rat,false);
+					}
 				}
+
+			
 			}
 		}
 		else
@@ -906,7 +916,8 @@ public abstract class PlaneBase : Collisionable {
 		}
 
 		SoundManager.instance.PlayRequest("SE/Explosion_",3,rat,false);
-		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/ExplosionSpike").SetSortingOrder(2).SetAngle(UnityEngine.Random.Range(0f,360f));
+		EffectManager.GetInstance().AddEffect(_position,"SpriteSet/Effects/Explosion").SetSortingOrder(3).SetAngle(UnityEngine.Random.Range(0f,360f));
 		EffectManager.GetInstance().Explosion(_position,15,0.3f,0.25f,0.41f);
 	}
 
@@ -1008,11 +1019,11 @@ public abstract class PlaneBase : Collisionable {
 
 			if(CameraControll.instance.IsInCamera(_position))
 			{
-				miniMapIcon.color = Color.white;
+				miniMapIcon.color = new Color32(255,255,0,255);
 			}
 			else
 			{
-				miniMapIcon.color = new Color32(217,22,70,255);
+				miniMapIcon.color = new Color32(77,136,255,255);
 			}
 		}
 	}
